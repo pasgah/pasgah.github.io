@@ -1,0 +1,9 @@
+<nav style="font-size:0.85rem; margin-bottom:1rem; opacity:0.7;">
+  <a href="{{ '/' | relative_url }}">خانه</a>
+  {% if page.categories %}
+    {% for cat in page.categories %}
+      › <a href="/categories/#{{ cat }}">{{ cat }}</a>
+    {% endfor %}
+  {% endif %}
+  › {{ page.title }}
+</nav>
