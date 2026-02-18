@@ -3,11 +3,13 @@ layout: default
 ---
 
 <article class="post">
+
+  {% include breadcrumbs.html %}
+
   <header>
     <h1>{{ page.title }}</h1>
     <p style="color:#6b7280; font-size:0.9rem;">
-      منتشر شده در
-      {{ page.date | date: "%Y/%m/%d" }}
+      منتشر شده در {{ page.date | date: "%Y/%m/%d" }}
       {% if page.author %} | نویسنده: {{ page.author }}{% endif %}
     </p>
   </header>
@@ -17,15 +19,25 @@ layout: default
   </section>
 
   <section class="post-meta" style="margin-top:2rem; font-size:0.9rem; color:#6b7280;">
+    {% if page.categories %}
+      <p><strong>دسته‌بندی:</strong>
+        {% for cat in page.categories %}
+          <a href="/categories/#{{ cat }}">{{ cat }}</a>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </p>
+    {% endif %}
+
     {% if page.tags %}
-      <strong>برچسب‌ها:</strong>
-      {% for tag in page.tags %}
-        <span>#{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
-      {% endfor %}
+      <p><strong>برچسب‌ها:</strong>
+        {% for tag in page.tags %}
+          <a href="/tags/#{{ tag }}">#{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </p>
     {% endif %}
   </section>
 
   <section style="margin-top:3rem;">
     <a href="{{ '/' | relative_url }}">← بازگشت به خانه</a>
   </section>
+
 </article>
