@@ -167,6 +167,68 @@
       transition: height 0.1s linear;
     }
 
+    /* استایل ساده برای کامنت‌ها */
+    .comments-section {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .comments-list {
+      margin-bottom: 1.5rem;
+    }
+    .comment-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.8rem;
+      background: var(--card);
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+      opacity: 0.8;
+    }
+    .comment-name {
+      font-weight: 600;
+    }
+    .comment-content {
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+    }
+    .comment-form .form-group {
+      margin-bottom: 0.8rem;
+    }
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .comment-submit {
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--link);
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .comment-submit:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+    .form-message {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 700px) {
       nav {
         display: none;
@@ -197,19 +259,19 @@
 
     <!-- لوگو -->
     <a href="{{ '/' | relative_url }}">
-      <img src="https://www.pasgah.org/blog.svg" alt="لوگو" class="site-logo">
+      <img src="https://www.pasgah.org/blog.svg" alt="وبلاگ پاسگاه" class="site-logo">
     </a>
 
     <nav id="nav">
-      <a href="/">خانه</a>
-      <a href="/archive/">آرشیو</a>
-      <a href="/categories/">دسته‌بندی‌ها</a>
-      <a href="/tags/">برچسب‌ها</a>
-      <a href="/timeline/">تایم‌لاین</a>
-      <a href="/about/">درباره</a>
+      <a href="{{ '/' | relative_url }}">خانه</a>
+      <a href="{{ '/archive/' | relative_url }}">آرشیو</a>
+      <a href="{{ '/categories/' | relative_url }}">دسته‌بندی‌ها</a>
+      <a href="{{ '/tags/' | relative_url }}">برچسب‌ها</a>
+      <a href="{{ '/timeline/' | relative_url }}">تایم‌لاین</a>
+      <a href="{{ '/about/' | relative_url }}">درباره</a>
 
       <div class="search-box">
-        <form action="/search/" method="get">
+        <form action="{{ '/search/' | relative_url }}" method="get">
           <input type="text" name="q" placeholder="جستجو..." />
         </form>
       </div>
@@ -223,16 +285,15 @@
   {{ content }}
 
   <footer>
-    © {{ site.time | date: '%Y' }} وبلاگ پاسگاه — تاریخ و تمدن ایران و جهان
+    © 2026 وبلاگ پاسگاه.
   </footer>
 </div>
 
 <script>
-  // تم تاریک پیش‌فرض
+  // تم: پیش‌فرض روشن، فقط اگر قبلاً dark ذخیره شده باشد، dark می‌شود
   const savedTheme = localStorage.getItem('theme');
-  if (!savedTheme || savedTheme === 'dark') {
+  if (savedTheme === 'dark') {
     document.body.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
   }
 
   document.getElementById('theme-toggle').onclick = () => {
