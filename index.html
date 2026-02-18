@@ -5,20 +5,26 @@ title: خانه
 
 <h2>آخرین نوشته‌ها</h2>
 
-<ul style="list-style:none; padding:0; margin:1.5rem 0;">
+<div style="display:grid; gap:1.5rem;">
   {% for post in site.posts limit:10 %}
-    <li style="margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--border);">
-      <h3 style="margin:0 0 0.3rem;">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
-      <p style="margin:0; font-size:0.85rem; opacity:0.7;">
-        {{ post.date | date: "%Y/%m/%d" }}
-      </p>
-      {% if post.excerpt %}
-        <p style="margin-top:0.5rem; font-size:0.95rem;">
-          {{ post.excerpt | strip_html | truncate: 140 }}
-        </p>
-      {% endif %}
-    </li>
+  <a href="{{ post.url | relative_url }}" style="
+    display:block;
+    padding:1.2rem;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    transition:0.2s;
+  " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.1)';"
+     onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+
+    <h3 style="margin:0;">{{ post.title }}</h3>
+    <p style="opacity:0.6; margin:0.3rem 0;">
+      {{ post.date | date: "%Y/%m/%d" }}
+    </p>
+    <p style="margin-top:0.5rem;">
+      {{ post.excerpt | strip_html | truncate: 140 }}
+    </p>
+
+  </a>
   {% endfor %}
-</ul>
+</div>
