@@ -1,0 +1,39 @@
+{% assign max_related = 4 %}
+{% assign min_common = 1 %}
+{% assign related = "" | split: "" %}
+
+{% for post in site.posts %}
+  {% if post.url != page.url %}
+    {% assign same_cat = 0 %}
+    {% assign same_tag = 0 %}
+
+    {% for cat in post.categories %}
+      {% if page.categories contains cat %}
+        {% assign same_cat = same_cat | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% for tag in post.tags %}
+      {% if page.tags contains tag %}
+        {% assign same_tag = same_tag | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign score = same_cat | plus: same_tag %}
+    {% if score >= min_common %}
+      {% assign related = related | push: post %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign related = related | uniq | slice: 0, max_related %}
+
+{% if related.size > 0 %}
+<hr>
+<h3>نوشته‌های مرتبط</h3>
+<ul>
+  {% for post in related %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
