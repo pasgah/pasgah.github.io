@@ -12,6 +12,8 @@ layout: default
     زمان مطالعه: {{ page.content | number_of_words | divided_by: 180 | plus: 1 }} دقیقه
   </p>
 
+  {% include toc.html %}
+
   <div class="post-content">
     {{ content }}
   </div>
