@@ -6,7 +6,7 @@ title: خانه
 <h2>آخرین نوشته‌ها</h2>
 
 <div style="display:grid; gap:1.5rem;">
-  {% for post in site.posts limit:10 %}
+  {% for post in paginator.posts %}
   <a href="{{ post.url | relative_url }}" style="
     display:block;
     padding:1.2rem;
@@ -28,3 +28,17 @@ title: خانه
   </a>
   {% endfor %}
 </div>
+
+{% if paginator.total_pages > 1 %}
+<nav style="margin-top:2rem; display:flex; justify-content:center; gap:0.5rem; font-size:0.9rem;">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">← قبلی</a>
+  {% endif %}
+
+  <span>صفحه {{ paginator.page }} از {{ paginator.total_pages }}</span>
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">بعدی →</a>
+  {% endif %}
+</nav>
+{% endif %}
