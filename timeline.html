@@ -1,0 +1,25 @@
+---
+layout: default
+title: تایم‌لاین
+permalink: /timeline/
+---
+
+<h2>تایم‌لاین نوشته‌ها</h2>
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+<ul style="list-style:none; padding:0;">
+  {% for year in posts_by_year %}
+    <li style="margin-bottom:2rem;">
+      <h3>{{ year.name }}</h3>
+      <ul>
+        {% for post in year.items %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <span style="opacity:0.6;">— {{ post.date | date: "%Y/%m/%d" }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
