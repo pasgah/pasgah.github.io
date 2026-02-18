@@ -46,6 +46,7 @@
       font-family: "Vazirmatn", system-ui, sans-serif;
       line-height: 1.9;
       transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
     }
 
     a { color: var(--link); text-decoration: none; }
@@ -119,6 +120,7 @@
       max-width: 900px;
       margin: auto;
       padding: 2rem 1rem 3rem;
+      overflow-x: hidden;
     }
 
     footer {
@@ -167,42 +169,71 @@
       transition: height 0.1s linear;
     }
 
-    /* استایل ساده برای کامنت‌ها */
+    /* ============================
+       کامنت‌ها – نسخهٔ ریسپانسیو
+    ============================ */
+
     .comments-section {
       margin-top: 2.5rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
+      width: 100%;
+      overflow-x: hidden;
     }
+
     .comments-list {
       margin-bottom: 1.5rem;
+      width: 100%;
+      overflow-x: hidden;
     }
+
     .comment-item {
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 0.8rem 1rem;
       margin-bottom: 0.8rem;
       background: var(--card);
+      width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
     }
+
     .comment-header {
       display: flex;
       justify-content: space-between;
+      gap: 0.5rem;
       font-size: 0.85rem;
       margin-bottom: 0.4rem;
       opacity: 0.8;
+      flex-wrap: wrap;
     }
+
     .comment-name {
       font-weight: 600;
     }
+
+    .comment-date {
+      white-space: nowrap;
+    }
+
     .comment-content {
       font-size: 0.9rem;
       white-space: pre-wrap;
+      overflow-wrap: break-word;
     }
+
+    .comment-form {
+      width: 100%;
+    }
+
     .comment-form .form-group {
       margin-bottom: 0.8rem;
     }
+
     .comment-form input,
     .comment-form textarea {
       width: 100%;
+      max-width: 100%;
       padding: 0.5rem 0.7rem;
       border-radius: 8px;
       border: 1px solid var(--border);
@@ -210,7 +241,9 @@
       color: var(--text);
       font-family: inherit;
       font-size: 0.9rem;
+      box-sizing: border-box;
     }
+
     .comment-submit {
       padding: 0.5rem 1.1rem;
       border-radius: 999px;
@@ -220,10 +253,12 @@
       cursor: pointer;
       font-size: 0.9rem;
     }
+
     .comment-submit:disabled {
       opacity: 0.6;
       cursor: default;
     }
+
     .form-message {
       margin-top: 0.5rem;
       font-size: 0.85rem;
@@ -243,6 +278,13 @@
       }
       #progress-side {
         display:none !important;
+      }
+      .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .comment-date {
+        margin-top: 0.2rem;
       }
     }
   </style>
@@ -290,7 +332,7 @@
 </div>
 
 <script>
-  // تم: پیش‌فرض روشن، فقط اگر قبلاً dark ذخیره شده باشد، dark می‌شود
+  // تم: پیش‌فرض روشن
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark');
