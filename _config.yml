@@ -1,7 +1,7 @@
 title: "وبلاگ من"
 description: "توضیح کوتاه درباره وبلاگ"
 url: "https://pasgah.github.io"
-baseurl: ""   # اگر در ساب‌پروژه است، اینجا مسیر رو بذار
+baseurl: ""
 
 markdown: kramdown
 theme: null
@@ -10,6 +10,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate
 
 permalink: /:categories/:title/
 
@@ -31,3 +32,6 @@ feed:
 
 seo:
   lang: fa_IR
+
+paginate: 10
+paginate_path: "/page:num/"
