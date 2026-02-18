@@ -18,39 +18,50 @@ permalink: /search/
 
 <ul id="results" style="list-style:none; padding:0; margin-top:1.5rem;"></ul>
 
+<script src="https://unpkg.com/lunr/lunr.js"></script>
 <script>
-  const posts = [
-    {% for post in site.posts %}
-    {
-      "title": {{ post.title | jsonify }},
-      "url": "{{ post.url | relative_url }}",
-      "excerpt": {{ post.excerpt | strip_html | truncate: 140 | jsonify }}
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+  const searchInput = document.getElementById('search-input');
+  const resultsEl = document.getElementById('results');
+  let idx = null;
+  let documents = [];
 
-  const input = document.getElementById('search-input');
-  const results = document.getElementById('results');
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(r => r.json())
+    .then(data => {
+      documents = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        this.field('tags', { boost: 5 });
+        this.field('categories', { boost: 5 });
 
-  input.addEventListener('input', function() {
-    const q = this.value.trim().toLowerCase();
-    results.innerHTML = '';
-    if (!q) return;
-
-    const matched = posts.filter(p =>
-      p.title.toLowerCase().includes(q) ||
-      p.excerpt.toLowerCase().includes(q)
-    );
-
-    matched.forEach(p => {
-      const li = document.createElement('li');
-      li.style.marginBottom = '1rem';
-      li.innerHTML = `<a href="${p.url}">${p.title}</a><p style="opacity:0.7; margin:0.3rem 0;">${p.excerpt}</p>`;
-      results.appendChild(li);
+        data.forEach(doc => this.add(doc));
+      });
     });
 
-    if (matched.length === 0) {
-      results.innerHTML = '<li>چیزی پیدا نشد.</li>';
+  searchInput.addEventListener('input', function() {
+    const q = this.value.trim();
+    resultsEl.innerHTML = '';
+    if (!q || !idx) return;
+
+    const results = idx.search(q);
+
+    if (!results.length) {
+      resultsEl.innerHTML = '<li>چیزی پیدا نشد.</li>';
+      return;
     }
+
+    results.forEach(r => {
+      const doc = documents.find(d => d.url === r.ref);
+      if (!doc) return;
+      const li = document.createElement('li');
+      li.style.marginBottom = '1rem';
+      li.innerHTML = `
+        <a href="${doc.url}">${doc.title}</a>
+        <p style="opacity:0.7; margin:0.3rem 0;">${doc.content.slice(0, 140)}...</p>
+      `;
+      resultsEl.appendChild(li);
+    });
   });
 </script>
