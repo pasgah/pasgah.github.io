@@ -1,37 +1,14 @@
-title: "وبلاگ پاسگاه"
-description: "تاریخ و تمدن ایران و جهان"
-url: "https://www.pasgah.org"
-baseurl: ""   # اگر در ساب‌پروژه است، اینجا مسیر رو بذار
-
+title: وبلاگ من
+description: وبلاگ شخصی با پیمایش بی‌نهایت و جستجوی زنده
+url: "https://pasgah.github.io"
+baseurl: ""
+author: نام نویسنده
+permalink: /posts/:title/
 markdown: kramdown
-theme: null
-
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
-
-permalink: /:categories/:title/
-
-collections:
-  posts:
-    output: true
-
 defaults:
   - scope:
-      path: ""
-      type: posts
+      path: "_posts"
     values:
       layout: post
-
-excerpt_separator: "<!--more-->"
-
-feed:
-  path: feed.xml
-
-seo:
-  lang: fa_IR
-
-paginate: 10
-paginate_path: "/page:num/"
