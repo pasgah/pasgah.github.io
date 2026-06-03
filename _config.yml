@@ -1,12 +1,9 @@
-title: وبلاگ من
-description: وبلاگ شخصی با پیمایش بی‌نهایت و جستجوی زنده
+title: پاسگاه؛ پاسدار تاریخ و تمدن ایران و جهان
+description: پاسگاه؛ پاسدار تاریخ و تمدن ایران و جهان
 url: "https://pasgah.github.io"
 baseurl: ""
 author: نام نویسنده
-permalink: /posts/:title/
-markdown: kramdown
-plugins:
-  - jekyll-sitemap
+permalink: /blog/:title
 defaults:
   - scope:
       path: "_posts"
