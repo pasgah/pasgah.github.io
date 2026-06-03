@@ -1,46 +1,20 @@
 ---
 layout: default
-title: خانه
+title: پاسگاه؛ پاسدار تاریخ و تمدن ایران و جهان
+description: پاسگاه؛ پاسدار تاریخ و تمدن ایران و جهان
+permalink: /
 ---
-
-<h2>آخرین نوشته‌ها</h2>
-
-<div style="display:grid; gap:1.5rem;">
-  {% for post in paginator.posts %}
-  <a href="{{ post.url | relative_url }}" style="
-    display:block;
-    padding:1.2rem;
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:var(--card);
-    transition:0.2s;
-  " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.25)';"
-     onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-
-    <h3 style="margin:0;">{{ post.title }}</h3>
-    <p style="opacity:0.6; margin:0.3rem 0;">
-      {{ post.date | date: "%Y/%m/%d" }}
-    </p>
-    <p style="margin-top:0.5rem;">
-      {{ post.excerpt | strip_html | truncate: 140 }}
-    </p>
-
-  </a>
-  {% endfor %}
+<div class="posts-grid" id="postsGrid" aria-live="polite"></div>
+<div id="sentinel" class="sentinel"></div>
+<div id="loader" class="loader" style="display:none;">
+    <div class="spinner"></div>
+    <p>در حال بارگذاری...</p>
 </div>
-
-{% if paginator.total_pages > 1 %}
-<nav style="margin-top:2rem; display:flex; justify-content:center; gap:0.5rem; font-size:0.9rem;">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}">← قبلی</a>
-  {% endif %}
-
-  <span>صفحه {{ paginator.page }} از {{ paginator.total_pages }}</span>
-
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}">بعدی →</a>
-  {% endif %}
-</nav>
-{% endif %}
-
-{% include newsletter.html %}
+<div id="noMorePosts" style="display:none; text-align:center; padding:2rem;">همهٔ پست‌ها نمایش داده شدند.</div>
+<div class="post-overlay" id="postOverlay" style="display:none;">
+    <div class="overlay-content">
+        <button class="close-overlay" id="closeOverlay" aria-label="بستن">&times;</button>
+        <article class="post-full" id="postFullContent"></article>
+    </div>
+</div>
+<script src="{{ '/script.js' | relative_url }}" defer></script>
