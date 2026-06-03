@@ -2,7 +2,7 @@ title: پاسگاه؛ پاسدار تاریخ و تمدن ایران و جهان
 description: پاسگاه؛ پاسدار تاریخ و تمدن ایران و جهان
 url: "https://pasgah.github.io"
 baseurl: ""
-author: نام نویسنده
+author: احسان چهری
 permalink: /blog/:title
 defaults:
   - scope:
