@@ -1,14 +1,6 @@
 title: پروژه‌های وبلاگ پاسگاه
 description: در این وبلاگ، پروژه‌های html وبلاگ پاسگاه نگهداری می‌شه
 url: "https://pasgah.github.io"
-baseurl: ""
-author: احسان چهری
-permalink: /blog/:title
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-defaults:
-  - scope:
-      path: "_posts"
-    values:
-      layout: post
