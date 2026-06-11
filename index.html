@@ -4,16 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 
   <style>
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('https://www.pasgah.org/blog.woff2') format('woff2');
-      font-weight: 100 1000;
-      font-style: normal;
-      font-display: swap;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -35,7 +28,7 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 max(12px, 3vw);
+      padding: 0 20px;
       width: 100%;
     }
 
@@ -53,15 +46,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem max(10px, 3vw);
+      padding: 0.5rem 20px;
       gap: 1rem;
-      flex-wrap: wrap;
+      position: relative;
     }
 
     .logo-area {
       display: flex;
       align-items: center;
-      gap: max(8px, 2vw);
+      gap: 14px;
       text-decoration: none;
       color: inherit;
       z-index: 10;
@@ -69,15 +62,15 @@
     }
 
     .logo-frame {
-      background: linear-gradient(145deg, #f7e5c2 0%, #e7cf9e 100%);
+      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
       border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
-      padding: max(6px, 1.5vw);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 200, 0.7);
+      padding: 10px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.08);
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(180, 130, 70, 0.5);
+      border: 1px solid rgba(80, 80, 80, 0.6);
       position: relative;
     }
 
@@ -86,9 +79,9 @@
       position: absolute;
       inset: -4px;
       border-radius: inherit;
-      background: conic-gradient(from 90deg at 50% 50%, #c9a063, #f3d59c, #c9a063);
-      opacity: 0.4;
-      filter: blur(4px);
+      background: conic-gradient(from 90deg at 50% 50%, #444, #222, #444);
+      opacity: 0.5;
+      filter: blur(5px);
       z-index: -1;
       transition: opacity 0.3s;
     }
@@ -96,20 +89,18 @@
     .logo-area:hover .logo-frame {
       transform: rotate(3deg) scale(1.06);
       border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5), inset 0 2px 6px rgba(255, 255, 220, 0.9);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7), inset 0 2px 6px rgba(255, 255, 255, 0.12);
     }
 
     .logo-area:hover .logo-frame::after {
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
     .logo-img {
-      width: max(38px, 8vw);
-      height: max(38px, 8vw);
-      max-width: 52px;
-      max-height: 52px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+      filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.15));
       transition: transform 0.3s;
       position: relative;
       z-index: 2;
@@ -121,7 +112,8 @@
 
     .logo-fallback {
       display: none;
-      font-size: max(2rem, 5vw);
+      font-size: 2.2rem;
+      color: #f3d59c;
     }
 
     .logo-text {
@@ -130,7 +122,7 @@
     }
 
     .site-title {
-      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: 1px;
       color: #f3d59c;
@@ -139,7 +131,7 @@
     }
 
     .site-desc {
-      font-size: clamp(0.65rem, 2vw, 0.9rem);
+      font-size: 0.9rem;
       color: #ebd6b0;
       font-weight: 500;
     }
@@ -149,17 +141,14 @@
     }
 
     .menu-icon {
-      display: flex;
+      display: none;
       cursor: pointer;
       padding: 10px;
       z-index: 20;
       background: rgba(255, 255, 240, 0.08);
-      border-radius: 16px;
+      border-radius: 12px;
       transition: background 0.3s, transform 0.2s;
       border: 1px solid rgba(201, 160, 99, 0.3);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
 
     .menu-icon:hover {
@@ -169,17 +158,17 @@
 
     .menu-icon span {
       display: block;
-      width: 26px;
+      width: 28px;
       height: 3px;
       background: #f3d59c;
-      margin: 5px 0;
-      border-radius: 4px;
+      margin: 6px 0;
+      border-radius: 3px;
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     #menu-toggle:checked~.menu-icon span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
+      transform: rotate(45deg) translate(7px, 7px);
     }
 
     #menu-toggle:checked~.menu-icon span:nth-child(2) {
@@ -194,59 +183,28 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: max(0.2rem, 1vw);
+      gap: 0.6rem 1.5rem;
       flex-wrap: wrap;
       transition: all 0.4s ease;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      left: 0;
-      background: linear-gradient(180deg, #4a3424 0%, #3a2719 100%);
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.2rem;
-      padding: 1.2rem 1.5rem;
-      border-radius: 0 0 35px 35px;
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-      border-bottom: 3px solid #c9a063;
-      transform-origin: top center;
-      transform: scaleY(0);
-      opacity: 0;
-      visibility: hidden;
-      z-index: 5;
-    }
-
-    #menu-toggle:checked~.nav-links {
-      transform: scaleY(1);
-      opacity: 1;
-      visibility: visible;
     }
 
     .nav-links a {
       color: #feeac1;
       text-decoration: none;
-      font-weight: 650;
-      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
-      padding: 0.5rem max(0.8rem, 2vw);
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 0.5rem 1rem;
       border-radius: 30px;
       transition: all 0.25s ease;
-      background-color: rgba(255, 255, 240, 0.06);
+      background-color: rgba(255, 255, 240, 0.08);
       white-space: nowrap;
-      backdrop-filter: blur(2px);
-      display: block;
-      text-align: center;
-      font-size: 1.1rem;
-      padding: 0.9rem 1rem;
-      border-radius: 25px;
-      margin: 0.2rem 0;
     }
 
     .nav-links a:hover {
       background-color: #c9a063;
       color: #2d1e0f;
       transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
-      font-weight: 750;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .hero {
@@ -255,7 +213,7 @@
       background-position: center;
       color: white;
       text-align: center;
-      padding: max(3rem, 10vw) 1.5rem;
+      padding: 5rem 1.5rem;
       margin-bottom: 2.5rem;
       border-radius: 0 0 70px 70px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -265,7 +223,7 @@
     }
 
     .hero-content h2 {
-      font-size: clamp(1.8rem, 7vw, 2.8rem);
+      font-size: 2.8rem;
       font-weight: 900;
       margin-bottom: 1rem;
       text-shadow: 2px 2px 6px black;
@@ -273,19 +231,18 @@
     }
 
     .hero-content p {
-      font-size: clamp(1rem, 4vw, 1.4rem);
+      font-size: 1.4rem;
       max-width: 700px;
       margin: 0 auto;
-      font-weight: 550;
-      background: rgba(30, 20, 10, 0.55);
-      padding: 0.7rem 2rem;
+      font-weight: 500;
+      background: rgba(30, 20, 10, 0.5);
+      padding: 0.8rem 2rem;
       border-radius: 40px;
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 215, 140, 0.3);
+      backdrop-filter: blur(4px);
     }
 
     .section-title {
-      font-size: clamp(1.5rem, 6vw, 2rem);
+      font-size: 2rem;
       font-weight: 800;
       color: #4d3824;
       text-align: center;
@@ -300,14 +257,14 @@
     .section-title::after {
       content: "";
       height: 3px;
-      width: clamp(40px, 15%, 70px);
+      width: 70px;
       background: linear-gradient(to left, #c9a063, #8b6f4c);
       border-radius: 5px;
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin: 2rem 0 3rem;
     }
@@ -315,9 +272,9 @@
     .history-card {
       background: #fff9ef;
       border-radius: 35px;
-      padding: 1.8rem 1.2rem;
+      padding: 1.8rem 1.2rem 1.8rem;
       box-shadow: 0 15px 30px rgba(100, 70, 30, 0.12);
-      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.3s, border-color 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s;
       text-align: center;
       border: 1px solid #e3cfaa;
       display: flex;
@@ -332,12 +289,12 @@
     }
 
     .card-emoji {
-      font-size: clamp(2.8rem, 7vw, 3.5rem);
+      font-size: 3.5rem;
       margin-bottom: 1rem;
       background: #f3e3cc;
       border-radius: 50%;
-      width: clamp(75px, 15vw, 90px);
-      height: clamp(75px, 15vw, 90px);
+      width: 90px;
+      height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -345,7 +302,7 @@
     }
 
     .history-card h3 {
-      font-size: clamp(1.3rem, 5vw, 1.6rem);
+      font-size: 1.6rem;
       color: #4d3119;
       margin: 0.8rem 0 0.5rem;
       font-weight: 800;
@@ -353,7 +310,7 @@
 
     .history-card p {
       color: #5f4a33;
-      font-size: clamp(0.9rem, 3vw, 1rem);
+      font-size: 1rem;
       margin-bottom: 1.2rem;
       flex: 1;
     }
@@ -364,8 +321,8 @@
       padding: 0.5rem 1.8rem;
       border-radius: 30px;
       text-decoration: none;
-      font-weight: 650;
-      transition: background 0.2s, transform 0.2s;
+      font-weight: 600;
+      transition: background 0.2s;
       margin-top: auto;
       border: none;
       cursor: pointer;
@@ -374,18 +331,17 @@
 
     .btn-more:hover {
       background: #8b5e2f;
-      transform: scale(1.03);
     }
 
     .quote-box {
       background: #ece0cd;
       border-right: 8px solid #b68b4c;
       border-radius: 20px;
-      padding: max(1.5rem, 4vw) max(1.5rem, 5vw);
+      padding: 2rem 2.5rem;
       margin: 3rem 0 2.5rem;
       font-style: italic;
-      font-weight: 550;
-      font-size: clamp(1rem, 4vw, 1.25rem);
+      font-weight: 500;
+      font-size: 1.25rem;
       color: #3b2a1a;
       text-align: center;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
@@ -394,7 +350,7 @@
     .quote-box span {
       display: block;
       margin-top: 0.8rem;
-      font-weight: 750;
+      font-weight: 700;
       font-style: normal;
       color: #7b5b38;
     }
@@ -406,9 +362,63 @@
       margin-top: auto;
       text-align: center;
       border-top: 4px solid #b68b4c;
-      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-      font-weight: 550;
+      font-size: 1.1rem;
+      font-weight: 500;
       letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 850px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: linear-gradient(180deg, #4a3424 0%, #3a2719 100%);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.2rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 0 0 35px 35px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+        border-bottom: 3px solid #c9a063;
+        transform-origin: top center;
+        transform: scaleY(0);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s;
+        z-index: 5;
+      }
+
+      #menu-toggle:checked~.nav-links {
+        transform: scaleY(1);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        display: block;
+        text-align: center;
+        font-size: 1.15rem;
+        padding: 0.9rem 1rem;
+        border-radius: 25px;
+        margin: 0.2rem 0;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .hero-content h2 {
+        font-size: 1.9rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
