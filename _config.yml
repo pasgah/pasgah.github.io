@@ -1,6 +1,3 @@
-title: پروژه‌های وبلاگ پاسگاه
-description: در این وبلاگ، پروژه‌های html وبلاگ پاسگاه نگهداری می‌شه
-url: "https://pasgah.github.io"
 plugins:
   - jekyll-feed
   - jekyll-sitemap
