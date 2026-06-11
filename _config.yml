@@ -4,6 +4,9 @@ url: "https://pasgah.github.io"
 baseurl: ""
 author: احسان چهری
 permalink: /blog/:title
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
 defaults:
   - scope:
       path: "_posts"
