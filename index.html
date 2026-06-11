@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران</title>
   
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.0.3/Vazirmatn-font-face.min.css" rel="stylesheet">
   
   <style>
     * {
@@ -59,51 +59,25 @@
 
     .logo-frame {
       background: #000000;
-      border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
-      padding: 14px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 200, 0.15);
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 15px;
+      padding: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #333333;
-      position: relative;
-    }
-
-    .logo-frame::after {
-      content: "";
-      position: absolute;
-      inset: -4px;
-      border-radius: inherit;
-      background: conic-gradient(from 90deg at 50% 50%, #444444, #111111, #444444);
-      opacity: 0.5;
-      filter: blur(5px);
-      z-index: -1;
-      transition: opacity 0.3s;
+      border: 1px solid #333333;
+      transition: transform 0.2s ease;
     }
 
     .logo-link:hover .logo-frame {
-      transform: rotate(3deg) scale(1.06);
-      border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8), inset 0 2px 6px rgba(255, 255, 255, 0.2);
-    }
-
-    .logo-link:hover .logo-frame::after {
-      opacity: 0.75;
+      transform: scale(1.05);
     }
 
     .logo-img {
       width: clamp(38px, 6vw, 46px);
       height: clamp(38px, 6vw, 46px);
       object-fit: contain;
-      filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.25));
-      transition: transform 0.3s;
-      position: relative;
-      z-index: 2;
-    }
-
-    .logo-link:hover .logo-img {
-      transform: scale(1.08);
+      filter: brightness(1.1);
+      display: block;
     }
 
     .logo-fallback {
