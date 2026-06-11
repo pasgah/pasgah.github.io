@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هخامنشیان | پاسگاه تاریخ</title>
+
+  <style>
+    @font-face {
+      font-family: 'Vazirmatn';
+      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Vazirmatn';
+      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Vazirmatn';
+      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Black.woff2') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+      background-color: #fdf8f0;
+      color: #2e241b;
+      line-height: 1.8;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20 20 L30 15 L40 20 L35 30 L25 30 Z" fill="none" stroke="%23d4b68c" stroke-width="0.8" opacity="0.3"/><circle cx="70" cy="70" r="8" fill="none" stroke="%23d4b68c" stroke-width="0.8" opacity="0.3"/></svg>');
+      background-size: 180px 180px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-header {
+      background: linear-gradient(135deg, #3e2c1c 0%, #5e4330 100%);
+      border-bottom: 3px solid #c9a063;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      container-type: inline-size;
+      container-name: headerContainer;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem clamp(10px, 3vw, 20px);
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 2.5vw, 16px);
+      text-decoration: none;
+      color: inherit;
+      flex-shrink: 0;
+    }
+
+    .emblem-frame {
+      position: relative;
+      width: clamp(44px, 8vw, 52px);
+      height: clamp(44px, 8vw, 52px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .shamseh {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .petal {
+      position: absolute;
+      width: 18%;
+      height: 45%;
+      background: linear-gradient(180deg, #c9a063 0%, #8b6f4c 100%);
+      border-radius: 50% 50% 20% 20%;
+      transform-origin: bottom center;
+      box-shadow: 0 0 8px rgba(201, 160, 99, 0.6);
+      top: 2%;
+      left: 41%;
+    }
+
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(45deg); }
+    .petal:nth-child(3) { transform: rotate(90deg); }
+    .petal:nth-child(4) { transform: rotate(135deg); }
+    .petal:nth-child(5) { transform: rotate(180deg); }
+    .petal:nth-child(6) { transform: rotate(225deg); }
+    .petal:nth-child(7) { transform: rotate(270deg); }
+    .petal:nth-child(8) { transform: rotate(315deg); }
+
+    .center-dot {
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      background: radial-gradient(circle, #f3d59c 0%, #c9a063 60%, #8b6f4c 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(201, 160, 99, 0.9);
+      z-index: 2;
+    }
+
+    .logo-link:hover .shamseh {
+      animation: spin-slow 3s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-title {
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #f3d59c;
+      text-shadow: 2px 2px 0 #3a2819;
+      line-height: 1.2;
+    }
+
+    .site-desc {
+      font-size: clamp(0.65rem, 2vw, 0.9rem);
+      color: #ebd6b0;
+      font-weight: 500;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 20;
+      background: rgba(255, 255, 240, 0.08);
+      border-radius: 12px;
+      transition: background 0.3s, transform 0.2s;
+      border: 1px solid rgba(201, 160, 99, 0.3);
+    }
+
+    .menu-icon:hover {
+      background: rgba(201, 160, 99, 0.25);
+      transform: scale(0.96);
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #f3d59c;
+      margin: 6px 0;
+      border-radius: 3px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    #menu-toggle:checked~.menu-icon span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    #menu-toggle:checked~.menu-icon span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    #menu-toggle:checked~.menu-icon span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.3rem, 1.5vw, 1.5rem);
+      flex-wrap: wrap;
+      transition: all 0.4s ease;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #feeac1;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      padding: 0.5rem clamp(0.8rem, 2vw, 1.1rem);
+      border-radius: 30px;
+      transition: all 0.25s ease;
+      background-color: rgba(255, 255, 240, 0.06);
+      white-space: nowrap;
+      display: block;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: #c9a063;
+      color: #2d1e0f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      font-weight: 700;
+    }
+
+    @container headerContainer (max-width: 850px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: linear-gradient(180deg, #4a3424 0%, #3a2719 100%);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.2rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 0 0 35px 35px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+        border-bottom: 3px solid #c9a063;
+        transform-origin: top center;
+        transform: scaleY(0);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 5;
+      }
+
+      #menu-toggle:checked~.nav-links {
+        transform: scaleY(1);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        text-align: center;
+        font-size: 1.1rem;
+        padding: 0.9rem 1rem;
+        border-radius: 25px;
+        margin: 0.2rem 0;
+      }
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><rect width="1200" height="400" fill="%23332211"/><path d="M0 300 Q150 240 300 280 T600 250 T900 270 T1200 230 L1200 400 L0 400 Z" fill="%23553b22" opacity="0.9"/><circle cx="200" cy="150" r="60" fill="%23b9924b" opacity="0.2"/><circle cx="950" cy="180" r="90" fill="%23b9924b" opacity="0.15"/><path d="M500 120 L520 80 L540 120 L580 130 L550 160 L560 200 L520 180 L480 200 L490 160 L460 130 Z" fill="%23c9a063" opacity="0.5"/></svg>');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: clamp(3rem, 10vw, 5rem) 1.5rem;
+      margin-bottom: 2.5rem;
+      border-radius: 0 0 70px 70px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px black;
+      color: #ffefcf;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      font-weight: 500;
+      background: rgba(30, 20, 10, 0.6);
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      border: 1px solid rgba(255, 215, 140, 0.4);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(12px, 3vw, 20px);
+      width: 100%;
+    }
+
+    .section-title {
+      font-weight: 800;
+      color: #4d3824;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 2.5rem 0 1.8rem;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      height: 3px;
+      width: clamp(40px, 15%, 70px);
+      background: linear-gradient(to left, #c9a063, #8b6f4c);
+      border-radius: 5px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .history-card {
+      background: #fff9ef;
+      border-radius: 35px;
+      padding: 1.8rem 1.2rem;
+      box-shadow: 0 15px 30px rgba(100, 70, 30, 0.12);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.3s, border-color 0.2s;
+      text-align: center;
+      border: 1px solid #e3cfaa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .history-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px rgba(130, 90, 40, 0.25);
+      border-color: #b38b4a;
+    }
+
+    .card-emoji {
+      font-size: clamp(2.8rem, 7vw, 3.5rem);
+      margin-bottom: 1rem;
+      background: #f3e3cc;
+      border-radius: 50%;
+      width: clamp(75px, 15vw, 90px);
+      height: clamp(75px, 15vw, 90px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .history-card h3 {
+      font-size: clamp(1.3rem, 5vw, 1.6rem);
+      color: #4d3119;
+      margin: 0.8rem 0 0.5rem;
+      font-weight: 800;
+    }
+
+    .history-card p {
+      color: #5f4a33;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+
+    .btn-more {
+      background: #b68b4c;
+      color: white;
+      padding: 0.5rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: auto;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-more:hover {
+      background: #8b5e2f;
+      transform: scale(1.03);
+    }
+
+    .quote-box {
+      background: #ece0cd;
+      border-right: 8px solid #b68b4c;
+      border-radius: 20px;
+      padding: clamp(1.5rem, 4vw, 2rem) clamp(1.5rem, 5vw, 2.5rem);
+      margin: 3rem 0 2.5rem;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1rem, 4vw, 1.25rem);
+      color: #3b2a1a;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .quote-box span {
+      display: block;
+      margin-top: 0.8rem;
+      font-weight: 700;
+      font-style: normal;
+      color: #7b5b38;
+    }
+
+    .footer {
+      background: #2e241b;
+      color: #dac29c;
+      padding: 1.8rem 1rem;
+      margin-top: auto;
+      text-align: center;
+      border-top: 4px solid #b68b4c;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="https://pasgah.github.io" class="logo-link">
+        <div class="emblem-frame">
+          <div class="shamseh">
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="center-dot"></div>
+          </div>
+        </div>
+        <div class="logo-text">
+          <span class="site-title">پاسگاه تاریخ</span>
+          <span class="site-desc">روایتگر شکوه ایران زمین</span>
+        </div>
+      </a>
+
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="منو">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-links">
+        <a href="https://pasgah.github.io">خانه</a>
+        <a href="#" class="active">دوران باستان</a>
+        <a href="#">ایران اسلامی</a>
+        <a href="#">معاصر</a>
+        <a href="#">میراث فرهنگی</a>
+        <a href="#">درباره ما</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>هخامنشیان</h2>
+        <p>نخستین امپراتوری جهانی؛ طلوع عظمت ایران</p>
+      </div>
+    </section>
+
+    <h2 class="section-title">
+      <span>👑</span> پادشاهان بزرگ <span>👑</span>
+    </h2>
+
+    <div class="card-grid">
+      <article class="history-card">
+        <div class="card-emoji">🏆</div>
+        <h3>کوروش بزرگ</h3>
+        <p>بنیان‌گذار امپراتوری هخامنشی و فاتح بابل. صادرکننده نخستین منشور حقوق بشر در تاریخ جهان.</p>
+        <a href="#" class="btn-more">بیشتر بدانید</a>
+      </article>
+
+      <article class="history-card">
+        <div class="card-emoji">⚔️</div>
+        <h3>داریوش بزرگ</h3>
+        <p>سازمان‌دهنده تشکیلات اداری، ایجاد راه شاهی و تقسیم امپراتوری به ساتراپی‌ها.</p>
+        <a href="#" class="btn-more">بیشتر بدانید</a>
+      </article>
+
+      <article class="history-card">
+        <div class="card-emoji">🌉</div>
+        <h3>خشایارشا</h3>
+        <p>فرمانروای نبردهای مشهور با یونان، سازنده پل‌های شگفت‌انگیز بر روی داردانل.</p>
+        <a href="#" class="btn-more">بیشتر بدانید</a>
+      </article>
+
+      <article class="history-card">
+        <div class="card-emoji">📜</div>
+        <h3>اردشیر یکم</h3>
+        <p>تثبیت صلح و ادامه سیاست‌های پدر، دوره‌ای از بازسازی و رونق فرهنگی هخامنشی.</p>
+        <a href="#" class="btn-more">بیشتر بدانید</a>
+      </article>
+    </div>
+
+    <div class="quote-box">
+      "من کوروش، شاه جهان، شاه بزرگ، شاه نیرومند، شاه بابل، شاه سومر و اکد، شاه چهار گوشه جهان..."
+      <span>— منشور کوروش</span>
+    </div>
+
+    <h2 class="section-title">
+      <span>🏛️</span> میراث هخامنشیان <span>🏛️</span>
+    </h2>
+
+    <div class="card-grid">
+      <div class="history-card">
+        <div class="card-emoji">🗿</div>
+        <h3>تخت جمشید</h3>
+        <p>پایتخت تشریفاتی و نماد شکوه و هنر معماری هخامنشیان؛ کاخی برای همه ملل.</p>
+        <span class="btn-more" style="background: #8b6f4c;">فارس</span>
+      </div>
+
+      <div class="history-card">
+        <div class="card-emoji">📄</div>
+        <h3>منشور کوروش</h3>
+        <p>نخستین سند حقوق بشر جهان که آزادی مذهبی و اجتماعی را در قلمرو پارس تضمین کرد.</p>
+        <span class="btn-more" style="background: #8b6f4c;">لندن</span>
+      </div>
+
+      <div class="history-card">
+        <div class="card-emoji">🛤️</div>
+        <h3>راه شاهی</h3>
+        <p>شاهکار مهندسی باستان به طول ۲۷۰۰ کیلومتر، متصل‌کننده سارد به شوش.</p>
+        <span class="btn-more" style="background: #8b6f4c;">امپراتوری</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    طراحی شده برای عاشقان ایران
+  </footer>
+</body>
+</html>
