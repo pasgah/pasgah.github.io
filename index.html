@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران</title>
-  
+
   <style>
     @font-face {
       font-family: 'Vazirmatn';
@@ -78,21 +78,38 @@
     }
 
     .logo-frame {
-      background: #f5e6d3;
-      background: linear-gradient(145deg, #f7e5c2 0%, #e7cf9e 100%);
-      border-radius: 12px;
-      padding: 8px;
+      background: #1a1a1a;
+      background-image: radial-gradient(circle at 30% 30%, #3a3a3a, #0a0a0a);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      padding: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      border: 1px solid #b49460;
+      box-shadow: 0 0 0 2px #c9a063, 0 0 0 5px #1a1a1a, 0 8px 20px rgba(0,0,0,0.7);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .logo-frame::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: inherit;
+      background: conic-gradient(from 0deg, #c9a063, #8b6f4c, #c9a063, #5e4330, #c9a063);
+      opacity: 0.7;
+      z-index: -1;
+      filter: blur(6px);
+      transition: opacity 0.4s;
     }
 
     .logo-link:hover .logo-frame {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      transform: scale(1.05) rotate(2deg);
+      border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+      box-shadow: 0 0 0 3px #f3d59c, 0 0 0 7px #1a1a1a, 0 12px 28px rgba(0,0,0,0.9);
+    }
+
+    .logo-link:hover .logo-frame::before {
+      opacity: 1;
     }
 
     .logo-img {
@@ -100,13 +117,15 @@
       height: clamp(38px, 6vw, 46px);
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 2px 4px rgba(255,215,0,0.5));
+      position: relative;
+      z-index: 2;
     }
 
     .logo-fallback {
       display: none;
       font-size: clamp(2rem, 5vw, 2.5rem);
-      color: #3e2c1c;
+      color: #f3d59c;
     }
 
     .logo-text {
