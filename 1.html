@@ -6,8 +6,64 @@ permalink: hakhamanesh
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هخامنشیان | پاسگاه تاریخ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>هخامنشیان | نخستین امپراتوری جهانی | پاسگاه تاریخ</title>
+  <meta name="title" content="هخامنشیان | کوروش، داریوش و شکوه تخت جمشید | پاسگاه تاریخ">
+  <meta name="description" content="همه چیز درباره امپراتوری هخامنشیان: از کوروش بزرگ و فتح بابل تا منشور حقوق بشر، داریوش بزرگ، تخت جمشید، جاده شاهی و سازمان ساتراپی‌ها. طلوع عظمت ایران باستان.">
+  <meta name="keywords" content="هخامنشیان, کوروش بزرگ, داریوش بزرگ, خشایارشا, اردشیر یکم, تخت جمشید, منشور کوروش, جاده شاهی, ساتراپی, امپراتوری پارس, ایران باستان">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://pasgah.github.io/hakhamanesh">
+  <link rel="alternate" hreflang="fa" href="https://pasgah.github.io/hakhamanesh" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://pasgah.github.io/hakhamanesh">
+  <meta property="og:title" content="هخامنشیان | نخستین امپراتوری جهانی | پاسگاه تاریخ">
+  <meta property="og:description" content="طلوع عظمت ایران باستان: از کوروش کبیر و فتح بابل تا شکوه تخت جمشید و سازمان اداری داریوش بزرگ. تاریخ هخامنشیان را عمیق‌تر بشناسید.">
+  <meta property="og:image" content="https://pasgah.github.io/og-hakhamanesh.jpg">
+  <meta property="og:locale" content="fa_IR">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://pasgah.github.io/hakhamanesh">
+  <meta property="twitter:title" content="هخامنشیان | نخستین امپراتوری جهانی | پاسگاه تاریخ">
+  <meta property="twitter:description" content="طلوع عظمت ایران باستان: از کوروش کبیر و فتح بابل تا شکوه تخت جمشید و سازمان اداری داریوش بزرگ.">
+  <meta property="twitter:image" content="https://pasgah.github.io/og-hakhamanesh.jpg">
+
+  <!-- Schema.org Structured Data for Historical Article -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "هخامنشیان: نخستین امپراتوری جهانی و طلوع عظمت ایران",
+      "description": "همه چیز درباره امپراتوری هخامنشیان: از کوروش بزرگ و فتح بابل تا منشور حقوق بشر، داریوش بزرگ، تخت جمشید، جاده شاهی و سازمان ساتراپی‌ها.",
+      "author": {
+        "@type": "Organization",
+        "name": "پاسگاه تاریخ",
+        "url": "https://pasgah.github.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "پاسگاه تاریخ",
+        "url": "https://pasgah.github.io"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://pasgah.github.io/hakhamanesh"
+      },
+      "about": [
+        { "@type": "Person", "name": "کوروش بزرگ" },
+        { "@type": "Person", "name": "داریوش بزرگ" },
+        { "@type": "Person", "name": "خشایارشا" },
+        { "@type": "Person", "name": "اردشیر یکم" },
+        { "@type": "Place", "name": "تخت جمشید" },
+        { "@type": "CreativeWork", "name": "منشور کوروش" }
+      ],
+      "inLanguage": "fa"
+    }
+  </script>
 
   <style>
     @font-face {
@@ -290,7 +346,7 @@ permalink: hakhamanesh
       justify-content: center;
     }
 
-    .hero h2 {
+    .hero h1 {
       font-size: clamp(2rem, 8vw, 3.2rem);
       font-weight: 900;
       margin-bottom: 1rem;
@@ -338,7 +394,7 @@ permalink: hakhamanesh
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
       gap: 2rem;
       margin: 2rem 0 3rem;
     }
@@ -346,7 +402,7 @@ permalink: hakhamanesh
     .history-card {
       background: #fff9ef;
       border-radius: 35px;
-      padding: 1.8rem 1.2rem;
+      padding: 1.8rem 1.4rem;
       box-shadow: 0 15px 30px rgba(100, 70, 30, 0.12);
       transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.3s, border-color 0.2s;
       text-align: center;
@@ -354,6 +410,7 @@ permalink: hakhamanesh
       display: flex;
       flex-direction: column;
       align-items: center;
+      height: 100%;
     }
 
     .history-card:hover {
@@ -378,21 +435,24 @@ permalink: hakhamanesh
     .history-card h3 {
       font-size: clamp(1.3rem, 5vw, 1.6rem);
       color: #4d3119;
-      margin: 0.8rem 0 0.5rem;
+      margin: 0.8rem 0 0.8rem;
       font-weight: 800;
     }
 
-    .history-card p {
-      color: #5f4a33;
-      font-size: clamp(0.9rem, 3vw, 1rem);
-      margin-bottom: 1.2rem;
+    .history-card .card-desc {
+      color: #4a3826;
+      font-size: clamp(0.9rem, 2.8vw, 0.98rem);
+      margin-bottom: 1.4rem;
       flex: 1;
+      text-align: justify;
+      line-height: 1.9;
+      font-weight: 400;
     }
 
     .btn-more {
       background: #b68b4c;
       color: white;
-      padding: 0.5rem 1.8rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
@@ -401,11 +461,23 @@ permalink: hakhamanesh
       border: none;
       cursor: pointer;
       display: inline-block;
+      font-size: 0.95rem;
     }
 
     .btn-more:hover {
       background: #8b5e2f;
       transform: scale(1.03);
+    }
+
+    .tag-static {
+      background: #8b6f4c;
+      color: #fff7e6;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: auto;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
     }
 
     .quote-box {
@@ -446,7 +518,7 @@ permalink: hakhamanesh
 <body>
   <header class="main-header">
     <div class="header-inner">
-      <a href="https://pasgah.github.io" class="logo-link">
+      <a href="https://pasgah.github.io" class="logo-link" title="پاسگاه تاریخ - صفحه اصلی" aria-label="بازگشت به خانه">
         <div class="emblem-frame">
           <div class="shamseh">
             <div class="petal"></div>
@@ -467,15 +539,15 @@ permalink: hakhamanesh
       </a>
 
       <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon" aria-label="منو">
+      <label for="menu-toggle" class="menu-icon" aria-label="منوی اصلی" title="باز کردن منو">
         <span></span>
         <span></span>
         <span></span>
       </label>
 
-      <nav class="nav-links">
-        <a href="https://pasgah.github.io" class="active">خانه</a>
-        <a href="#">دوران باستان</a>
+      <nav class="nav-links" aria-label="ناوبری اصلی">
+        <a href="https://pasgah.github.io">خانه</a>
+        <a href="#" class="active" title="تاریخ ایران باستان">دوران باستان</a>
         <a href="#">ایران اسلامی</a>
         <a href="#">معاصر</a>
         <a href="#">میراث فرهنگی</a>
@@ -487,76 +559,94 @@ permalink: hakhamanesh
   <main class="container">
     <section class="hero">
       <div>
-        <h2>هخامنشیان</h2>
+        <h1>هخامنشیان</h1>
         <p>نخستین امپراتوری جهانی؛ طلوع عظمت ایران</p>
       </div>
     </section>
 
-    <h2 class="section-title">
-      <span>👑</span> پادشاهان بزرگ <span>👑</span>
-    </h2>
+    <section aria-labelledby="kings-heading">
+      <h2 id="kings-heading" class="section-title">
+        <span>👑</span> پادشاهان بزرگ هخامنشی <span>👑</span>
+      </h2>
 
-    <div class="card-grid">
-      <article class="history-card">
-        <div class="card-emoji">🏆</div>
-        <h3>کوروش بزرگ</h3>
-        <p>بنیان‌گذار امپراتوری هخامنشی و فاتح بابل. صادرکننده نخستین منشور حقوق بشر در تاریخ جهان.</p>
-        <a href="#" class="btn-more">بیشتر بدانید</a>
-      </article>
+      <div class="card-grid">
+        <article class="history-card">
+          <div class="card-emoji" aria-hidden="true">🏆</div>
+          <h3>کوروش بزرگ</h3>
+          <p class="card-desc">
+            کوروش دوم (کوروش کبیر)، بنیان‌گذار امپراتوری هخامنشی، نه فقط یک فاتح، بلکه یک مصلح اجتماعی و الگوی حکمرانی خردمندانه در جهان باستان بود. او با متحد کردن قبایل ماد و پارس، قدرتی بی‌نظیر را پایه‌ریزی کرد و سپس با فتح امپراتوری بابل بدون خون‌ریزی گسترده، تصویری از یک رهایی‌بخش را از خود به نمایش گذاشت. اقدام بی‌سابقه او در آزادی یهودیان از اسارت بابلی و اجازه بازسازی معبد اورشلیم، در تورات به عنوان برگزیده خداوند ستوده شده است. اما بزرگ‌ترین میراث او، «منشور کوروش» است؛ استوانه‌ای گلی که در آن اصول آزادی مذهبی، احترام به فرهنگ و آداب ملل تابعه و لغو برده‌داری و کار اجباری برای اولین بار در تاریخ بشر به عنوان سیاست رسمی یک حکومت اعلام شد و امروز از آن به عنوان نخستین اعلامیه حقوق بشر یاد می‌شود. آرامگاه ساده اما باشکوه او در پاسارگاد، همچنان نمادی از فروتنی در عین قدرت مطلق است.
+          </p>
+          <a href="#" class="btn-more" title="زندگینامه کامل کوروش بزرگ">کاوش در زندگی کوروش</a>
+        </article>
 
-      <article class="history-card">
-        <div class="card-emoji">⚔️</div>
-        <h3>داریوش بزرگ</h3>
-        <p>سازمان‌دهنده تشکیلات اداری، ایجاد راه شاهی و تقسیم امپراتوری به ساتراپی‌ها.</p>
-        <a href="#" class="btn-more">بیشتر بدانید</a>
-      </article>
+        <article class="history-card">
+          <div class="card-emoji" aria-hidden="true">⚔️</div>
+          <h3>داریوش بزرگ</h3>
+          <p class="card-desc">
+            داریوش اول، ملقب به داریوش بزرگ، نه یک کشورگشای صرف، بلکه معمار اصلی ساختار اداری، اقتصادی و حقوقی امپراتوری هخامنشی بود که قلمرویی از هند تا مصر و یونان را به یکی از منظم‌ترین دولت‌های جهان باستان تبدیل کرد. هوش سرشار مدیریتی او در تقسیم امپراتوری به واحدهای اداری منظم موسوم به «ساتراپی» متجلی شد که هر یک توسط یک شهربان (ساتراپ) اداره می‌شد، اما تحت نظارت بازرسان ویژه شاه (چشم و گوش شاه) قرار داشت تا از بروز فساد و شورش جلوگیری شود. برای تسهیل تجارت و ارتباطات، او نخستین پول رسمی بین‌المللی یعنی سکه طلای «دریک» را ضرب کرد و دستور ساخت «راه شاهی» را داد؛ شاهکاری مهندسی به طول تقریبی ۲۷۰۰ کیلومتر که سارد در غرب آناتولی را به شوش، پایتخت اداری، متصل می‌کرد و پیام‌رسان‌های سلطنتی می‌توانستند آن را تنها در هفت روز طی کنند. سنگ‌نبشته بیستون نیز به فرمان او، روایت‌گر پیروزی‌ها و مشروعیت الهی حکومتش به سه زبان پارسی باستان، ایلامی و بابِلی است.
+          </p>
+          <a href="#" class="btn-more" title="تشکیلات اداری داریوش بزرگ">بیشتر بدانید</a>
+        </article>
 
-      <article class="history-card">
-        <div class="card-emoji">🌉</div>
-        <h3>خشایارشا</h3>
-        <p>فرمانروای نبردهای مشهور با یونان، سازنده پل‌های شگفت‌انگیز بر روی داردانل.</p>
-        <a href="#" class="btn-more">بیشتر بدانید</a>
-      </article>
+        <article class="history-card">
+          <div class="card-emoji" aria-hidden="true">🌉</div>
+          <h3>خشایارشا</h3>
+          <p class="card-desc">
+            خشایارشا (خشایارشای یکم)، پسر داریوش بزرگ و مادرش آتوسا (دختر کوروش کبیر)، وارث امپراتوری‌ای بود که در اوج قدرت به سر می‌برد، اما نام او بیش از هر چیز با لشکرکشی عظیم به یونان و نبردهای ترموپیل و سالامیس گره خورده است. او برای عبور نیروی زمینی عظیم خود از تنگه داردانل (هلسپونت)، دستور ساخت پلی شگفت‌انگیز از قایق‌ها را صادر کرد که یک شاهکار لجستیکی در تاریخ نظامی باستان محسوب می‌شود. هرچند نبرد سالامیس با شکست نیروی دریایی پارس همراه شد، اما خشایارشا موفق شد آتن را فتح و آکروپلیس را به آتش بکشد. دوران حکومت او همچنین با پروژه‌های عظیم ساختمانی در تخت جمشید گره خورده است؛ تکمیل کاخ آپادانا، ساخت کاخ اختصاصی خود (کاخ هدیش) و دروازه ملل با گاوهای عظیم‌الجثه و نقش‌برجسته‌های سربازان جاویدان، همگی گواهی بر تداوم شکوه و عظمت معماری هخامنشی در عصر او هستند.
+          </p>
+          <a href="#" class="btn-more" title="لشکرکشی خشایارشا به یونان">نبردها و سازه‌ها</a>
+        </article>
 
-      <article class="history-card">
-        <div class="card-emoji">📜</div>
-        <h3>اردشیر یکم</h3>
-        <p>تثبیت صلح و ادامه سیاست‌های پدر، دوره‌ای از بازسازی و رونق فرهنگی هخامنشی.</p>
-        <a href="#" class="btn-more">بیشتر بدانید</a>
-      </article>
-    </div>
+        <article class="history-card">
+          <div class="card-emoji" aria-hidden="true">📜</div>
+          <h3>اردشیر یکم</h3>
+          <p class="card-desc">
+            اردشیر یکم (درازدست) که پس از آشوب‌های درباری و قتل خشایارشا به قدرت رسید، نماد دوران تثبیت، دیپلماسی و بازسازی فرهنگی در امپراتوری هخامنشی است. دوران طولانی حکومت او با سیاست مماشات و صلح نسبی با یونان همراه بود و «صلح کالیاس» به جنگ‌های طولانی ایران و یونان برای مدتی پایان داد. اردشیر یکم برخلاف اسلاف خود، بیشتر به امور داخلی و تکمیل پروژه‌های عمرانی ناتمام پرداخت و به هنرمندان، معماران و کاتبان اجازه شکوفایی داد. او نقشی کلیدی در تثبیت آیین زرتشتی در ساختار قدرت ایفا کرد و همچنین با یهودیان ساکن در امپراتوری رابطه دوستانه‌ای برقرار نمود و به عزرا و نحمیا اجازه داد به اورشلیم بازگردند و ساختارهای مذهبی و اجتماعی خود را بازسازی کنند، سیاستی که وفاداری این اقلیت مهم را برای قرن‌ها تضمین کرد.
+          </p>
+          <a href="#" class="btn-more" title="صلح و بازسازی در عصر اردشیر">بیشتر بدانید</a>
+        </article>
+      </div>
+    </section>
 
-    <div class="quote-box">
+    <aside class="quote-box" aria-label="بخشی از منشور کوروش">
       "من کوروش، شاه جهان، شاه بزرگ، شاه نیرومند، شاه بابل، شاه سومر و اکد، شاه چهار گوشه جهان..."
       <span>— منشور کوروش</span>
-    </div>
+    </aside>
 
-    <h2 class="section-title">
-      <span>🏛️</span> میراث هخامنشیان <span>🏛️</span>
-    </h2>
+    <section aria-labelledby="legacy-heading">
+      <h2 id="legacy-heading" class="section-title">
+        <span>🏛️</span> میراث ماندگار هخامنشیان <span>🏛️</span>
+      </h2>
 
-    <div class="card-grid">
-      <div class="history-card">
-        <div class="card-emoji">🗿</div>
-        <h3>تخت جمشید</h3>
-        <p>پایتخت تشریفاتی و نماد شکوه و هنر معماری هخامنشیان؛ کاخی برای همه ملل.</p>
-        <span class="btn-more" style="background: #8b6f4c;">فارس</span>
+      <div class="card-grid">
+        <div class="history-card">
+          <div class="card-emoji" aria-hidden="true">🗿</div>
+          <h3>تخت جمشید</h3>
+          <p class="card-desc">
+            تخت جمشید (پارسه) نه صرفاً یک کاخ، بلکه نماد باشکوه‌ترین تجلی تمدن هخامنشی و قلب تشریفاتی امپراتوری پارس در دل کوه رحمت است. این مجموعه عظیم که ساخت آن توسط داریوش بزرگ آغاز و توسط خشایارشا و اردشیر یکم ادامه یافت، برای برگزاری جشن‌های نوروزی و پذیرایی رسمی از نمایندگان تمامی اقوام و ملل تابعه طراحی شده بود. دروازه ملل با گاوهای عظیم محافظ، پلکان آپادانا با نقش‌برجسته‌های بی‌همتای هدیه‌آوران از سی گانه مختلف (از هندی و سغدی تا مصری و حبشی) که همگی در نهایت صلح و احترام در کنار یکدیگر نقش بسته‌اند، پیام روشنی از کثرت‌گرایی و همزیستی مسالمت‌آمیز در این امپراتوری جهانی است. کتیبه‌های میخی، کاخ صدستون، خزانه سلطنتی و آرامگاه‌های شاهانه در نقش رستم، مجموعه‌ای را شکل می‌دهند که پس از ۲۵۰۰ سال هنوز هم عظمت و نبوغ مهندسی و هنری ایرانیان را فریاد می‌زند.
+          </p>
+          <span class="tag-static">فارس</span>
+        </div>
+
+        <div class="history-card">
+          <div class="card-emoji" aria-hidden="true">📄</div>
+          <h3>منشور کوروش</h3>
+          <p class="card-desc">
+            منشور کوروش (استوانه گلی کوروش) که در پی فتح بابل در سال ۵۳۹ پیش از میلاد صادر شد، یک سند سیاسی و اخلاقی بی‌نظیر است که مفاهیمی چون آزادی، حقوق بشر و تساهل دینی را برای نخستین بار در تاریخ مدون بشری مطرح می‌کند. برخلاف رسم فرمانروایان پیشین بین‌النهرینی که ملل مغلوب را به بردگی و استثمار می‌کشیدند، کوروش در این بیانیه خود را نه به عنوان فاتح، بلکه به عنوان پشتیبان و محافظ مردمان بابل معرفی می‌کند. او صراحتاً دستور بازگشت اقوام تبعیدشده (از جمله یهودیان) به سرزمین‌هایشان، بازسازی معابد ویران‌شده، لغو بیگاری اجباری و احترام به خدایان و آیین‌های محلی را صادر کرد. امروزه این استوانه نه فقط یک شیء موزه‌ای در لندن، بلکه به عنوان «نخستین اعلامیه حقوق بشر» از سوی سازمان ملل متحد به رسمیت شناخته شده و ترجمه آن زینت‌بخش تالارهای این سازمان است.
+          </p>
+          <span class="tag-static">موزه بریتانیا</span>
+        </div>
+
+        <div class="history-card">
+          <div class="card-emoji" aria-hidden="true">🛤️</div>
+          <h3>راه شاهی</h3>
+          <p class="card-desc">
+            راه شاهی هخامنشی یکی از شگفت‌انگیزترین پروژه‌های زیرساختی جهان باستان و نماد نبوغ لجستیکی و مهندسی داریوش بزرگ است. این شاهراه حیاتی به طول حدود ۲۷۰۰ کیلومتر، پایتخت اداری امپراتوری یعنی شوش را به سارد، مرکز ساتراپی لیدیه در غرب آناتولی (ترکیه امروزی) متصل می‌کرد و همچون شاهرگ اصلی، نبض اقتصاد، تجارت و ارتباطات سیاسی را در این قلمرو پهناور به گردش درمی‌آورد. در طول مسیر، ۱۱۱ ایستگاه چاپاری (پیک‌خانه) با اسب‌های تازه‌نفس تعبیه شده بود که به پیک‌های سلطنتی امکان می‌داد پیام‌ها را با سرعتی خیره‌کننده و طی تنها ۷ تا ۹ روز از یک سر امپراتوری به سر دیگر برسانند، چیزی که هرودوت مورخ یونانی را به تحسین واداشت. امنیت این مسیر توسط پادگان‌های نظامی تضمین می‌شد و زمینه‌ساز رونق بی‌سابقه بازرگانی بین‌المللی، از ادویه هند تا فلزات یونان، در عصر هخامنشی گردید.
+          </p>
+          <span class="tag-static">امپراتوری</span>
+        </div>
       </div>
-
-      <div class="history-card">
-        <div class="card-emoji">📄</div>
-        <h3>منشور کوروش</h3>
-        <p>نخستین سند حقوق بشر جهان که آزادی مذهبی و اجتماعی را در قلمرو پارس تضمین کرد.</p>
-        <span class="btn-more" style="background: #8b6f4c;">لندن</span>
-      </div>
-
-      <div class="history-card">
-        <div class="card-emoji">🛤️</div>
-        <h3>راه شاهی</h3>
-        <p>شاهکار مهندسی باستان به طول ۲۷۰۰ کیلومتر، متصل‌کننده سارد به شوش.</p>
-        <span class="btn-more" style="background: #8b6f4c;">امپراتوری</span>
-      </div>
-    </div>
+    </section>
   </main>
 
   <footer class="footer">
