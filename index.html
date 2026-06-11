@@ -2,8 +2,9 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران</title>
+  <meta name="description" content="سفری عمیق به دوران طلایی ایران: از شکوه بی‌بدیل هخامنشیان و عظمت ساسانیان تا هنر صفوی و بیداری مشروطه. تاریخ ایران را با روایتی جدید کشف کنید.">
 
   <style>
     @font-face {
@@ -334,7 +335,7 @@
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
       gap: 2rem;
       margin: 2rem 0 3rem;
     }
@@ -342,7 +343,7 @@
     .history-card {
       background: #fff9ef;
       border-radius: 35px;
-      padding: 1.8rem 1.2rem;
+      padding: 1.8rem 1.4rem;
       box-shadow: 0 15px 30px rgba(100, 70, 30, 0.12);
       transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.3s, border-color 0.2s;
       text-align: center;
@@ -350,6 +351,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      height: 100%;
     }
 
     .history-card:hover {
@@ -374,21 +376,24 @@
     .history-card h3 {
       font-size: clamp(1.3rem, 5vw, 1.6rem);
       color: #4d3119;
-      margin: 0.8rem 0 0.5rem;
+      margin: 0.8rem 0 0.8rem;
       font-weight: 800;
     }
 
-    .history-card p {
-      color: #5f4a33;
-      font-size: clamp(0.9rem, 3vw, 1rem);
-      margin-bottom: 1.2rem;
+    .history-card .card-desc {
+      color: #4a3826;
+      font-size: clamp(0.9rem, 2.8vw, 0.98rem);
+      margin-bottom: 1.4rem;
       flex: 1;
+      text-align: justify;
+      line-height: 1.9;
+      font-weight: 400;
     }
 
     .btn-more {
       background: #b68b4c;
       color: white;
-      padding: 0.5rem 1.8rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
@@ -397,11 +402,23 @@
       border: none;
       cursor: pointer;
       display: inline-block;
+      font-size: 0.95rem;
     }
 
     .btn-more:hover {
       background: #8b5e2f;
       transform: scale(1.03);
+    }
+
+    .tag-static {
+      background: #8b6f4c;
+      color: #fff7e6;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: auto;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
     }
 
     .quote-box {
@@ -442,7 +459,7 @@
 <body>
   <header class="main-header">
     <div class="header-inner">
-      <a href="https://pasgah.github.io" class="logo-link">
+      <a href="https://pasgah.github.io" class="logo-link" aria-label="پاسگاه تاریخ - صفحه اصلی">
         <div class="emblem-frame">
           <div class="shamseh">
             <div class="petal"></div>
@@ -463,13 +480,13 @@
       </a>
 
       <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon" aria-label="منو">
+      <label for="menu-toggle" class="menu-icon" aria-label="منوی اصلی">
         <span></span>
         <span></span>
         <span></span>
       </label>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="ناوبری اصلی">
         <a href="#" class="active">خانه</a>
         <a href="#">دوران باستان</a>
         <a href="#">ایران اسلامی</a>
@@ -493,32 +510,44 @@
     </h2>
 
     <div class="card-grid">
+      <!-- کارت هخامنشیان با پاراگراف بلند -->
       <article class="history-card">
         <div class="card-emoji">👑</div>
         <h3>هخامنشیان</h3>
-        <p>نخستین امپراتوری جهانی؛ از کوروش کبیر تا داریوش بزرگ. بنیان‌گذار حقوق بشر و نظم در جهان باستان.</p>
-        <a href="#" class="btn-more">کاوش کنید</a>
+        <p class="card-desc">
+          هخامنشیان (۵۵۰ تا ۳۳۰ پیش از میلاد) تنها یک سلسله نبودند، بلکه بنیان‌گذاران مفهوم «امپراتوری جهانی» در تاریخ بشر به شمار می‌روند. کوروش بزرگ با فتح بابل و صدور منشور معروف خود، برای نخستین بار اصول آزادی مذهبی، حقوق بشر و مدارا با اقوام مغلوب را به عنوان سیاست رسمی یک حکومت اعلام کرد. در ادامه، داریوش بزرگ با ایجاد سیستم اداری ساتراپی‌ها، ضرب سکه طلای «دریک» و احداث راه شاهی به طول بیش از ۲۵۰۰ کیلومتر، زیرساخت‌های اقتصادی و ارتباطی عظیمی را بنا نهاد که موجب یکپارچگی قلمرویی از هند تا مصر شد. شکوه معماری هخامنشی در تخت جمشید (پارسه) با الهام از هنر ملل مختلف، نمادی از احترام به تنوع فرهنگی در عین حفظ مرکزیت سیاسی بود.
+        </p>
+        <a href="#" class="btn-more">کاوش در امپراتوری</a>
       </article>
 
+      <!-- کارت ساسانیان با پاراگراف بلند -->
       <article class="history-card">
         <div class="card-emoji">🔥</div>
         <h3>ساسانیان</h3>
-        <p>اوج شکوه ایران پیش از اسلام؛ هنر، معماری، و نبردهای حماسی با روم شرقی. میراث دار تمدن ایرانی.</p>
-        <a href="#" class="btn-more">بیشتر بدانید</a>
+        <p class="card-desc">
+          ساسانیان (۲۲۴ تا ۶۵۱ میلادی) آخرین و درخشان‌ترین سلسله ایران پیش از اسلام بودند که خود را وارث تمدن هخامنشی و مظهر احیای «ایران‌شهر» می‌دانستند. این دوره اوج رقابت تمدنی با امپراتوری روم شرقی (بیزانس) بود و نبردهای حماسی مانند نبرد «ذوقار» و لشکرکشی‌های خسرو انوشیروان، مرزهای سیاسی و فرهنگی ایران را تثبیت کرد. در عرصه فرهنگ، سنگ‌نگاره‌های باشکوه طاق بستان، کاخ ویران‌شده اما پرشکوه تیسفون (طاق کسری) و رواج هنر فلزکاری و ابریشم‌بافی نشان‌دهنده اوج زیبایی‌شناسی ایرانی است. از همه مهم‌تر، رسمیت یافتن دین زرتشتی و تدوین اوستا در کنار ظهور جنبش‌های فکری مانند مانی و مزدک، فضای فکری پویایی را رقم زد که میراث آن در دانش و هنر دوران اسلامی کاملاً مشهود است.
+        </p>
+        <a href="#" class="btn-more">تماشای شکوه ساسانی</a>
       </article>
 
+      <!-- کارت صفویه با پاراگراف بلند -->
       <article class="history-card">
         <div class="card-emoji">🕌</div>
         <h3>صفویه</h3>
-        <p>عصر طلایی ایران اسلامی؛ یکپارچگی ملی، رونق هنر و معماری در اصفهان نصف جهان.</p>
-        <a href="#" class="btn-more">مشاهده</a>
+        <p class="card-desc">
+          عصر صفوی (۱۵۰۱ تا ۱۷۳۶ میلادی) نقطه عطفی در تاریخ ایران بود که پس از قرن‌ها حکومت‌های محلی، یکپارچگی ملی را با محوریت مذهب تشیع اثنی‌عشری به ایران بازگرداند. شاه اسماعیل اول با تکیه بر قدرت قزلباشان و هویت مذهبی-سیاسی، ایران را از زیر سایه تجزیه نجات داد، اما شاه عباس بزرگ بود که با انتقال پایتخت به اصفهان، «دولت مدرن» صفوی را پایه‌گذاری کرد. دوران شکوفایی اصفهان تنها به ساخت میدان نقش جهان، مسجد شیخ لطف‌الله و عالی‌قاپو محدود نمی‌شود؛ این شهر به مرکز تجارت ابریشم، دیپلماسی بین‌المللی (با حضور شرق‌شناسان و سفرای اروپایی) و کانون هنرهایی چون نگارگری، فرش‌بافی و فلسفه بدل گشت. صفویان ایران را به عنوان یک قدرت بزرگ جهانی در برابر عثمانی و ازبکان مطرح کردند.
+        </p>
+        <a href="#" class="btn-more">گشت و گذار در اصفهان</a>
       </article>
 
+      <!-- کارت مشروطه با پاراگراف بلند -->
       <article class="history-card">
         <div class="card-emoji">📖</div>
         <h3>مشروطه</h3>
-        <p>طلوع آزادی‌خواهی و قانون‌گرایی در ایران؛ نقطه عطف تاریخ معاصر و بیداری ملی.</p>
-        <a href="#" class="btn-more">ادامه مطلب</a>
+        <p class="card-desc">
+          انقلاب مشروطیت در سال ۱۲۸۵ خورشیدی (۱۹۰۶ میلادی) سرآغاز بیداری سیاسی و حقوقی در تاریخ معاصر ایران بود. جنبشی که با اعتراض بازاریان، روحانیون و روشنفکران علیه استبداد قاجار آغاز شد، به سرعت به صدور فرمان مشروطیت توسط مظفرالدین شاه انجامید و برای اولین بار، قدرت مطلقه شاه را با قانون و پارلمان (مجلس شورای ملی) محدود ساخت. این انقلاب دستاوردهای بنیادینی مانند قانون اساسی، آزادی بیان و اندیشه، و مفهوم «ملت» را وارد ادبیات سیاسی ایران کرد. هرچند مسیر مشروطه با چالش‌های داخلی و مداخلات خارجی (مانند به توپ بستن مجلس توسط محمدعلی شاه) دچار تلاطم شد، اما نهال عدالت‌خواهی، حاکمیت قانون و مسئولیت‌پذیری دولت در برابر شهروندان را کاشت که ثمره آن تا به امروز در مبارزات آزادی‌خواهانه ایرانیان جاری است.
+        </p>
+        <a href="#" class="btn-more">خواندن داستان آزادی</a>
       </article>
     </div>
 
@@ -535,28 +564,28 @@
       <div class="history-card">
         <div class="card-emoji">🗿</div>
         <h3>تخت جمشید</h3>
-        <p>نماد شکوه و عظمت هخامنشیان؛ پایتخت تشریفاتی امپراتوری پارس.</p>
-        <span class="btn-more" style="background: #8b6f4c;">فارس</span>
+        <p class="card-desc">نماد شکوه و عظمت هخامنشیان؛ پایتخت تشریفاتی امپراتوری پارس و میراث جهانی یونسکو در دل کوه رحمت.</p>
+        <span class="tag-static">فارس</span>
       </div>
 
       <div class="history-card">
         <div class="card-emoji">🏹</div>
         <h3>شاهنامه</h3>
-        <p>حماسه جاودان فردوسی؛ پاسدار زبان فارسی و اسطوره‌های ایران.</p>
-        <span class="btn-more" style="background: #8b6f4c;">ادبیات</span>
+        <p class="card-desc">حماسه جاودان فردوسی؛ پاسدار زبان فارسی و اسطوره‌های ایران از پیدایش تا فتح اعراب.</p>
+        <span class="tag-static">ادبیات</span>
       </div>
 
       <div class="history-card">
         <div class="card-emoji">🕌</div>
         <h3>میدان نقش جهان</h3>
-        <p>شاهکار معماری صفوی در قلب اصفهان؛ تلفیق هنر و معنویت.</p>
-        <span class="btn-more" style="background: #8b6f4c;">اصفهان</span>
+        <p class="card-desc">شاهکار معماری صفوی در قلب اصفهان؛ تلفیق هنر، تجارت و معنویت در یک میدان تاریخی.</p>
+        <span class="tag-static">اصفهان</span>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    طراحی شده با ♥️
+    © ۲۰۲۵ پاسگاه تاریخ · طراحی شده با عشق به ایران زمین
   </footer>
 </body>
 </html>
