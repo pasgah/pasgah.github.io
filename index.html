@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران</title>
-  <!-- استفاده از فونت وزیرمتن برای زیبایی تایپوگرافی فارسی -->
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+  
+  <!-- فونت سفارشی وریبل -->
+  <style>
+    @font-face {
+      font-family: 'Varyable';
+      src: url('https://www.pasgah.org/blog.woff2') format('woff2');
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
   <style>
     * {
       margin: 0;
@@ -14,7 +24,7 @@
     }
 
     body {
-      font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+      font-family: 'Varyable', 'Vazirmatn', 'Tahoma', sans-serif;
       background-color: #fdf8f0;
       color: #2e241b;
       line-height: 1.8;
@@ -32,11 +42,10 @@
       width: 100%;
     }
 
-    /* هدر اصلی */
+    /* ===== هدر با منوی بازشو فقط CSS ===== */
     .main-header {
       background: linear-gradient(135deg, #3e2c1c 0%, #5e4330 100%);
       color: #f7e5c2;
-      padding: 1.8rem 0 0.5rem 0;
       box-shadow: 0 6px 18px rgba(0,0,0,0.3);
       position: sticky;
       top: 0;
@@ -44,22 +53,39 @@
       border-bottom: 3px solid #c9a063;
     }
 
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* لوگو و عنوان */
     .logo-area {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      z-index: 10;
     }
 
-    .logo-icon {
-      font-size: 2.8rem;
-      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.5));
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.4));
+      transition: transform 0.3s;
+    }
+
+    .logo-area:hover .logo-img {
+      transform: rotate(5deg) scale(1.05);
     }
 
     .site-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: 1px;
       color: #f3d59c;
@@ -68,38 +94,125 @@
     }
 
     .site-desc {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       color: #ebd6b0;
-      margin-top: 0.2rem;
       font-weight: 400;
+      display: block;
     }
 
-    /* نویگیشن */
+    /* ===== منوی بازشو با CSS فقط (checkbox hack) ===== */
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 20;
+      background: rgba(255,255,240,0.1);
+      border-radius: 12px;
+      transition: background 0.3s;
+    }
+
+    .menu-icon:hover {
+      background: rgba(201, 160, 99, 0.3);
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #f3d59c;
+      margin: 6px 0;
+      border-radius: 3px;
+      transition: all 0.35s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* انیمیشن تبدیل به ضربدر */
+    #menu-toggle:checked ~ .menu-icon span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    #menu-toggle:checked ~ .menu-icon span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    #menu-toggle:checked ~ .menu-icon span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* لینک‌های نویگیشن */
     .nav-links {
       display: flex;
-      justify-content: center;
+      align-items: center;
+      gap: 0.6rem 1.5rem;
       flex-wrap: wrap;
-      gap: 0.8rem 1.8rem;
-      padding: 0.8rem 0 0.4rem;
-      border-top: 1px dashed #b49460;
-      margin-top: 0.5rem;
+      transition: all 0.4s ease;
     }
 
     .nav-links a {
       color: #feeac1;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.3rem 0.7rem;
+      font-size: 1.05rem;
+      padding: 0.5rem 1rem;
       border-radius: 30px;
       transition: all 0.25s ease;
       background-color: rgba(255,255,240,0.08);
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
       background-color: #c9a063;
       color: #2d1e0f;
       transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* حالت موبایل: منو بازشو */
+    @media (max-width: 850px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: linear-gradient(180deg, #4a3424 0%, #3a2719 100%);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.2rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 0 0 35px 35px;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+        border-bottom: 3px solid #c9a063;
+        transform-origin: top center;
+        transform: scaleY(0);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s;
+        z-index: 5;
+      }
+
+      #menu-toggle:checked ~ .nav-links {
+        transform: scaleY(1);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        display: block;
+        text-align: center;
+        font-size: 1.15rem;
+        padding: 0.9rem 1rem;
+        border-radius: 25px;
+        margin: 0.2rem 0;
+      }
     }
 
     /* بخش قهرمان */
@@ -144,7 +257,6 @@
       color: #4d3824;
       text-align: center;
       margin: 2.5rem 0 1.8rem;
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -230,7 +342,7 @@
       background: #8b5e2f;
     }
 
-    /* نقل قول یا بخش ویژه */
+    /* نقل قول */
     .quote-box {
       background: #ece0cd;
       border-right: 8px solid #b68b4c;
@@ -253,50 +365,58 @@
       color: #7b5b38;
     }
 
-    /* فوتر */
+    /* فوتر ساده */
     .footer {
       background: #2e241b;
       color: #dac29c;
-      padding: 2rem 1rem;
+      padding: 1.8rem 1rem;
       margin-top: auto;
       text-align: center;
       border-top: 4px solid #b68b4c;
-      font-size: 0.95rem;
-    }
-
-    .footer a {
-      color: #f3d59c;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     @media (max-width: 600px) {
       .site-title {
-        font-size: 1.9rem;
+        font-size: 1.5rem;
+      }
+      .logo-img {
+        width: 42px;
+        height: 42px;
       }
       .hero-content h2 {
-        font-size: 2rem;
+        font-size: 1.9rem;
       }
       .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <header class="main-header">
-    <div class="container">
-      <div class="logo-area">
-        <span class="logo-icon">🏛️</span>
+    <div class="header-inner">
+      <!-- لوگو و عنوان -->
+      <a href="https://pasgah.github.io" class="logo-area">
+        <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span style="display:none; font-size:2.5rem;" aria-hidden="true">🏛️</span>
         <div>
-          <h1 class="site-title">پاسگاه تاریخ</h1>
-          <div class="site-desc">روایتگر شکوه ایران زمین</div>
+          <span class="site-title">پاسگاه تاریخ</span>
+          <span class="site-desc">روایتگر شکوه ایران زمین</span>
         </div>
-      </div>
+      </a>
+
+      <!-- چک باکس مخفی برای منوی بازشو -->
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="منو">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- لینک‌های نویگیشن -->
       <nav class="nav-links">
         <a href="#">خانه</a>
         <a href="#">دوران باستان</a>
@@ -309,7 +429,7 @@
   </header>
 
   <main class="container">
-    <!-- بخش اصلی با تصویر پس‌زمینه نمادین -->
+    <!-- بخش اصلی -->
     <section class="hero">
       <div class="hero-content">
         <h2>از سپیده‌دم تاریخ تا ایران امروز</h2>
@@ -354,7 +474,7 @@
       </article>
     </div>
 
-    <!-- نقل قول الهام بخش -->
+    <!-- نقل قول -->
     <div class="quote-box">
       "ملتی که تاریخ خود را نداند، محکوم به تکرار اشتباهات آن است. ایران گنجینه‌ای از درس‌های جاودانه است."
       <span>— پاسگاه تاریخ</span>
@@ -390,15 +510,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p>© 2025 <strong>پاسگاه تاریخ</strong> | روایتگر تمدن ایرانی</p>
-      <p style="margin-top: 0.7rem;">
-        <a href="https://pasgah.github.io">pasgah.github.io</a> 
-        <span style="margin:0 10px;">|</span> 
-        <span>تاریخ را با هم زنده نگه داریم</span>
-      </p>
-      <p style="font-size:0.8rem; margin-top:1rem; opacity:0.7;">طراحی شده برای عاشقان ایران</p>
-    </div>
+    طراحی شده برای عاشقان ایران
   </footer>
 </body>
 </html>
