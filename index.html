@@ -2,17 +2,13 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Vazirmatn', 'Tahoma', sans-serif;
       background-color: #fdf8f0;
@@ -25,52 +21,25 @@
       min-height: 100vh;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      width: 100%;
-    }
-
     .main-header {
       background: linear-gradient(135deg, #3e2c1c 0%, #5e4330 100%);
-      color: #f7e5c2;
+      border-bottom: 3px solid #c9a063 !important;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 3px solid #c9a063;
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 20px;
-      gap: 1rem;
-      position: relative;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: inherit;
-      z-index: 10;
-      flex-shrink: 0;
+      z-index: 1030;
     }
 
     .logo-frame {
-      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+      background: #000000;
       border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
-      padding: 10px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.08);
+      padding: 8px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 200, 0.3);
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(80, 80, 80, 0.6);
+      border: 2px solid #333333;
       position: relative;
     }
 
@@ -79,50 +48,39 @@
       position: absolute;
       inset: -4px;
       border-radius: inherit;
-      background: conic-gradient(from 90deg at 50% 50%, #444, #222, #444);
+      background: conic-gradient(from 90deg at 50% 50%, #444444, #111111, #444444);
       opacity: 0.5;
       filter: blur(5px);
       z-index: -1;
       transition: opacity 0.3s;
     }
 
-    .logo-area:hover .logo-frame {
+    .logo-link:hover .logo-frame {
       transform: rotate(3deg) scale(1.06);
       border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7), inset 0 2px 6px rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7), inset 0 2px 6px rgba(255, 255, 255, 0.15);
     }
 
-    .logo-area:hover .logo-frame::after {
+    .logo-link:hover .logo-frame::after {
       opacity: 0.75;
     }
 
     .logo-img {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.15));
+      filter: drop-shadow(0 2px 3px rgba(255, 255, 255, 0.2));
       transition: transform 0.3s;
       position: relative;
       z-index: 2;
     }
 
-    .logo-area:hover .logo-img {
+    .logo-link:hover .logo-img {
       transform: scale(1.08);
     }
 
-    .logo-fallback {
-      display: none;
-      font-size: 2.2rem;
-      color: #f3d59c;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
     .site-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 900;
       letter-spacing: 1px;
       color: #f3d59c;
@@ -131,109 +89,63 @@
     }
 
     .site-desc {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #ebd6b0;
       font-weight: 500;
     }
 
-    #menu-toggle {
-      display: none;
-    }
-
-    .menu-icon {
-      display: none;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 20;
-      background: rgba(255, 255, 240, 0.08);
-      border-radius: 12px;
-      transition: background 0.3s, transform 0.2s;
-      border: 1px solid rgba(201, 160, 99, 0.3);
-    }
-
-    .menu-icon:hover {
-      background: rgba(201, 160, 99, 0.25);
-      transform: scale(0.96);
-    }
-
-    .menu-icon span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: #f3d59c;
-      margin: 6px 0;
-      border-radius: 3px;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    #menu-toggle:checked~.menu-icon span:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
-    }
-
-    #menu-toggle:checked~.menu-icon span:nth-child(2) {
-      opacity: 0;
-      transform: scale(0);
-    }
-
-    #menu-toggle:checked~.menu-icon span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem 1.5rem;
-      flex-wrap: wrap;
-      transition: all 0.4s ease;
-    }
-
-    .nav-links a {
-      color: #feeac1;
-      text-decoration: none;
+    .navbar-nav .nav-link {
+      color: #feeac1 !important;
       font-weight: 600;
-      font-size: 1.05rem;
-      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      padding: 0.5rem 1rem !important;
       border-radius: 30px;
       transition: all 0.25s ease;
-      background-color: rgba(255, 255, 240, 0.08);
-      white-space: nowrap;
+      background-color: rgba(255, 255, 240, 0.06);
+      margin: 0 0.15rem;
     }
 
-    .nav-links a:hover {
+    .navbar-nav .nav-link:hover {
       background-color: #c9a063;
-      color: #2d1e0f;
+      color: #2d1e0f !important;
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(201, 160, 99, 0.5) !important;
+      background: rgba(255, 255, 240, 0.08);
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(243, 213, 156, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 3px rgba(201, 160, 99, 0.4) !important;
     }
 
     .hero {
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><rect width="1200" height="400" fill="%23332211"/><path d="M0 300 Q150 240 300 280 T600 250 T900 270 T1200 230 L1200 400 L0 400 Z" fill="%23553b22" opacity="0.9"/><circle cx="200" cy="150" r="60" fill="%23b9924b" opacity="0.2"/><circle cx="950" cy="180" r="90" fill="%23b9924b" opacity="0.15"/><path d="M500 120 L520 80 L540 120 L580 130 L550 160 L560 200 L520 180 L480 200 L490 160 L460 130 Z" fill="%23c9a063" opacity="0.5"/></svg>');
       background-size: cover;
       background-position: center;
-      color: white;
-      text-align: center;
-      padding: 5rem 1.5rem;
-      margin-bottom: 2.5rem;
       border-radius: 0 0 70px 70px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin-bottom: 2.5rem;
     }
 
-    .hero-content h2 {
+    .hero h2 {
       font-size: 2.8rem;
       font-weight: 900;
-      margin-bottom: 1rem;
       text-shadow: 2px 2px 6px black;
       color: #ffefcf;
     }
 
-    .hero-content p {
+    .hero p {
       font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto;
       font-weight: 500;
       background: rgba(30, 20, 10, 0.5);
       padding: 0.8rem 2rem;
@@ -242,15 +154,13 @@
     }
 
     .section-title {
-      font-size: 2rem;
       font-weight: 800;
       color: #4d3824;
-      text-align: center;
-      margin: 2.5rem 0 1.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 15px;
+      margin: 2.5rem 0 1.8rem;
     }
 
     .section-title::before,
@@ -262,35 +172,22 @@
       border-radius: 5px;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0 3rem;
-    }
-
     .history-card {
       background: #fff9ef;
       border-radius: 35px;
-      padding: 1.8rem 1.2rem 1.8rem;
       box-shadow: 0 15px 30px rgba(100, 70, 30, 0.12);
       transition: transform 0.3s ease, box-shadow 0.3s;
-      text-align: center;
-      border: 1px solid #e3cfaa;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      border: 1px solid #e3cfaa !important;
     }
 
     .history-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 25px 35px rgba(130, 90, 40, 0.25);
-      border-color: #b38b4a;
+      border-color: #b38b4a !important;
     }
 
     .card-emoji {
       font-size: 3.5rem;
-      margin-bottom: 1rem;
       background: #f3e3cc;
       border-radius: 50%;
       width: 90px;
@@ -299,20 +196,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .history-card h3 {
-      font-size: 1.6rem;
-      color: #4d3119;
-      margin: 0.8rem 0 0.5rem;
-      font-weight: 800;
-    }
-
-    .history-card p {
-      color: #5f4a33;
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-      flex: 1;
+      margin: 0 auto 1rem;
     }
 
     .btn-more {
@@ -323,33 +207,27 @@
       text-decoration: none;
       font-weight: 600;
       transition: background 0.2s;
-      margin-top: auto;
-      border: none;
-      cursor: pointer;
       display: inline-block;
+      border: none;
     }
 
     .btn-more:hover {
       background: #8b5e2f;
+      color: white;
     }
 
     .quote-box {
       background: #ece0cd;
       border-right: 8px solid #b68b4c;
       border-radius: 20px;
-      padding: 2rem 2.5rem;
-      margin: 3rem 0 2.5rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
       font-style: italic;
       font-weight: 500;
       font-size: 1.25rem;
       color: #3b2a1a;
-      text-align: center;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
     }
 
     .quote-box span {
-      display: block;
-      margin-top: 0.8rem;
       font-weight: 700;
       font-style: normal;
       color: #7b5b38;
@@ -358,181 +236,166 @@
     .footer {
       background: #2e241b;
       color: #dac29c;
-      padding: 1.8rem 1rem;
-      margin-top: auto;
-      text-align: center;
       border-top: 4px solid #b68b4c;
+      margin-top: auto;
       font-size: 1.1rem;
       font-weight: 500;
       letter-spacing: 0.5px;
     }
 
-    @media (max-width: 850px) {
-      .menu-icon {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
+    @media (max-width: 991.98px) {
+      .navbar-nav {
         background: linear-gradient(180deg, #4a3424 0%, #3a2719 100%);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.2rem;
-        padding: 1.2rem 1.5rem;
-        border-radius: 0 0 35px 35px;
-        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-        border-bottom: 3px solid #c9a063;
-        transform-origin: top center;
-        transform: scaleY(0);
-        opacity: 0;
-        visibility: hidden;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s;
-        z-index: 5;
+        border-radius: 0 0 25px 25px;
+        padding: 1rem;
+        border-bottom: 2px solid #c9a063;
+        margin-top: 0.5rem;
       }
-
-      #menu-toggle:checked~.nav-links {
-        transform: scaleY(1);
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .nav-links a {
-        display: block;
+      
+      .navbar-nav .nav-link {
         text-align: center;
-        font-size: 1.15rem;
-        padding: 0.9rem 1rem;
-        border-radius: 25px;
         margin: 0.2rem 0;
       }
-
-      .site-title {
-        font-size: 1.5rem;
-      }
-
-      .hero-content h2 {
+      
+      .hero h2 {
         font-size: 1.9rem;
       }
-
-      .hero-content p {
+      
+      .hero p {
         font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+      }
+      
+      .site-title {
+        font-size: 1.4rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-inner">
-      <a href="https://pasgah.github.io" class="logo-area">
-        <div class="logo-frame">
-          <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <span class="logo-fallback" aria-hidden="true">🏛️</span>
-        </div>
-        <div class="logo-text">
-          <span class="site-title">پاسگاه تاریخ</span>
-          <span class="site-desc">روایتگر شکوه ایران زمین</span>
+  <header class="main-header navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a href="https://pasgah.github.io" class="navbar-brand logo-link d-flex align-items-center gap-3 text-decoration-none">
+        <span class="logo-frame">
+          <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+          <span style="display:none; font-size:2rem;" aria-hidden="true">🏛️</span>
+        </span>
+        <div>
+          <span class="site-title d-block">پاسگاه تاریخ</span>
+          <span class="site-desc d-block">روایتگر شکوه ایران زمین</span>
         </div>
       </a>
 
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon" aria-label="منو">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تغییر وضعیت منو">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <nav class="nav-links">
-        <a href="#">خانه</a>
-        <a href="#">دوران باستان</a>
-        <a href="#">ایران اسلامی</a>
-        <a href="#">معاصر</a>
-        <a href="#">میراث فرهنگی</a>
-        <a href="#">درباره ما</a>
+      <nav class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#">خانه</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">دوران باستان</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ایران اسلامی</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">معاصر</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">میراث فرهنگی</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">درباره ما</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-content">
-        <h2>از سپیده‌دم تاریخ تا ایران امروز</h2>
-        <p>سفری به اعماق تمدن کهن</p>
+  <main class="container flex-grow-1">
+    <section class="hero d-flex align-items-center justify-content-center text-center text-white py-5 px-3">
+      <div>
+        <h2 class="mb-3">از سپیده‌دم تاریخ تا ایران امروز</h2>
+        <p class="d-inline-block">سفری به اعماق تمدن کهن</p>
       </div>
     </section>
 
-    <div>
-      <h2 class="section-title">
-        <span>📜</span> دوره‌های درخشان <span>📜</span>
-      </h2>
+    <h2 class="section-title h4">
+      <span>📜</span> دوره‌های درخشان <span>📜</span>
+    </h2>
+
+    <div class="row g-4 mb-5">
+      <div class="col-sm-6 col-lg-3">
+        <article class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">👑</div>
+          <h3 class="h5 fw-bold">هخامنشیان</h3>
+          <p class="flex-grow-1">نخستین امپراتوری جهانی؛ از کوروش کبیر تا داریوش بزرگ. بنیان‌گذار حقوق بشر و نظم در جهان باستان.</p>
+          <a href="#" class="btn-more mt-auto">کاوش کنید</a>
+        </article>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <article class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">🔥</div>
+          <h3 class="h5 fw-bold">ساسانیان</h3>
+          <p class="flex-grow-1">اوج شکوه ایران پیش از اسلام؛ هنر، معماری، و نبردهای حماسی با روم شرقی. میراث دار تمدن ایرانی.</p>
+          <a href="#" class="btn-more mt-auto">بیشتر بدانید</a>
+        </article>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <article class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">🕌</div>
+          <h3 class="h5 fw-bold">صفویه</h3>
+          <p class="flex-grow-1">عصر طلایی ایران اسلامی؛ یکپارچگی ملی، رونق هنر و معماری در اصفهان نصف جهان.</p>
+          <a href="#" class="btn-more mt-auto">مشاهده</a>
+        </article>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <article class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">📖</div>
+          <h3 class="h5 fw-bold">مشروطه</h3>
+          <p class="flex-grow-1">طلوع آزادی‌خواهی و قانون‌گرایی در ایران؛ نقطه عطف تاریخ معاصر و بیداری ملی.</p>
+          <a href="#" class="btn-more mt-auto">ادامه مطلب</a>
+        </article>
+      </div>
     </div>
 
-    <div class="card-grid">
-      <article class="history-card">
-        <div class="card-emoji">👑</div>
-        <h3>هخامنشیان</h3>
-        <p>نخستین امپراتوری جهانی؛ از کوروش کبیر تا داریوش بزرگ. بنیان‌گذار حقوق بشر و نظم در جهان باستان.</p>
-        <a href="#" class="btn-more">کاوش کنید</a>
-      </article>
-
-      <article class="history-card">
-        <div class="card-emoji">🔥</div>
-        <h3>ساسانیان</h3>
-        <p>اوج شکوه ایران پیش از اسلام؛ هنر، معماری، و نبردهای حماسی با روم شرقی. میراث دار تمدن ایرانی.</p>
-        <a href="#" class="btn-more">بیشتر بدانید</a>
-      </article>
-
-      <article class="history-card">
-        <div class="card-emoji">🕌</div>
-        <h3>صفویه</h3>
-        <p>عصر طلایی ایران اسلامی؛ یکپارچگی ملی، رونق هنر و معماری در اصفهان نصف جهان.</p>
-        <a href="#" class="btn-more">مشاهده</a>
-      </article>
-
-      <article class="history-card">
-        <div class="card-emoji">📖</div>
-        <h3>مشروطه</h3>
-        <p>طلوع آزادی‌خواهی و قانون‌گرایی در ایران؛ نقطه عطف تاریخ معاصر و بیداری ملی.</p>
-        <a href="#" class="btn-more">ادامه مطلب</a>
-      </article>
-    </div>
-
-    <div class="quote-box">
+    <div class="quote-box p-4 my-5 text-center">
       "ملتی که تاریخ خود را نداند، محکوم به تکرار اشتباهات آن است. ایران گنجینه‌ای از درس‌های جاودانه است."
-      <span>— پاسگاه تاریخ</span>
+      <span class="d-block mt-2">— پاسگاه تاریخ</span>
     </div>
 
-    <div>
-      <h2 class="section-title">
-        <span>🏺</span> گنجینه های ماندگار <span>🏺</span>
-      </h2>
-    </div>
+    <h2 class="section-title h4">
+      <span>🏺</span> گنجینه های ماندگار <span>🏺</span>
+    </h2>
 
-    <div class="card-grid">
-      <div class="history-card">
-        <div class="card-emoji">🗿</div>
-        <h3>تخت جمشید</h3>
-        <p>نماد شکوه و عظمت هخامنشیان؛ پایتخت تشریفاتی امپراتوری پارس.</p>
-        <span class="btn-more" style="background: #8b6f4c;">فارس</span>
+    <div class="row g-4 mb-5">
+      <div class="col-sm-6 col-lg-4">
+        <div class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">🗿</div>
+          <h3 class="h5 fw-bold">تخت جمشید</h3>
+          <p class="flex-grow-1">نماد شکوه و عظمت هخامنشیان؛ پایتخت تشریفاتی امپراتوری پارس.</p>
+          <span class="btn-more mt-auto" style="background: #8b6f4c;">فارس</span>
+        </div>
       </div>
-      <div class="history-card">
-        <div class="card-emoji">🏹</div>
-        <h3>شاهنامه</h3>
-        <p>حماسه جاودان فردوسی؛ پاسدار زبان فارسی و اسطوره‌های ایران.</p>
-        <span class="btn-more" style="background: #8b6f4c;">ادبیات</span>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">🏹</div>
+          <h3 class="h5 fw-bold">شاهنامه</h3>
+          <p class="flex-grow-1">حماسه جاودان فردوسی؛ پاسدار زبان فارسی و اسطوره‌های ایران.</p>
+          <span class="btn-more mt-auto" style="background: #8b6f4c;">ادبیات</span>
+        </div>
       </div>
-      <div class="history-card">
-        <div class="card-emoji">🕌</div>
-        <h3>میدان نقش جهان</h3>
-        <p>شاهکار معماری صفوی در قلب اصفهان؛ تلفیق هنر و معنویت.</p>
-        <span class="btn-more" style="background: #8b6f4c;">اصفهان</span>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="history-card card border-0 p-4 h-100 text-center">
+          <div class="card-emoji">🕌</div>
+          <h3 class="h5 fw-bold">میدان نقش جهان</h3>
+          <p class="flex-grow-1">شاهکار معماری صفوی در قلب اصفهان؛ تلفیق هنر و معنویت.</p>
+          <span class="btn-more mt-auto" style="background: #8b6f4c;">اصفهان</span>
+        </div>
       </div>
     </div>
   </main>
 
-  <footer class="footer">
+  <footer class="footer py-3 text-center">
     طراحی شده برای عاشقان ایران
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
