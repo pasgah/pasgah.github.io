@@ -373,6 +373,9 @@
       border-radius: 1.5rem;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
 
     .article-item:hover {
@@ -519,7 +522,7 @@
       <nav class="desktop-nav" aria-label="منوی اصلی">
         <ul>
           <li>
-            <h1><a href="#">پاسگاه</a></h1>
+            <h1><a href="{{ site.url }}/blog">پاسگاه</a></h1>
           </li>
           <li><a href="#">مقالات</a></li>
           <li><a href="#">فرهنگ</a></li>
@@ -540,7 +543,7 @@
   <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
     <ul>
       <li>
-        <h1><a href="#" class="mobile-link">پاسگاه</a></h1>
+        <h1><a href="{{ site.url }}/blog" class="mobile-link">پاسگاه</a></h1>
       </li>
       <li><a href="#" class="mobile-link">مقالات</a></li>
       <li><a href="#" class="mobile-link">فرهنگ</a></li>
@@ -553,116 +556,40 @@
     <article class="main-content-inner">
       <section class="articles-section" aria-label="مطالب وبلاگ پاسگاه">
         <ul class="article-list">
-          <li class="article-item">
-            <article>
-              <figure>
-                <img src="https://picsum.photos/id/1015/800/500" alt="تصویر تزیینی مربوط به کوروش کبیر" loading="lazy" />
-                <figcaption class="sr-only">تصویر تزیینی مقاله کوروش کبیر</figcaption>
-              </figure>
-              <section class="article-body">
-                <time datetime="1404-01-15">فروردین ۱۴۰۴</time>
-                <h3>کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
-                <p>منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست که نشان‌دهندهٔ پیشگامی ایران در عدالت و آزادی‌های بنیادین است.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
-              </section>
-            </article>
+          {% assign posts_per_page = 10 %}
+          {% for post in site.posts %}
+          <li class="article-item {% if forloop.index > posts_per_page %}hidden-article{% endif %}">
+            <a href="{{ post.url | relative_url }}">
+              <article>
+                {% if post.image %}
+                <figure>
+                  <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" />
+                  <figcaption class="sr-only">{{ post.title }}</figcaption>
+                </figure>
+                {% endif %}
+                <section class="article-body">
+                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                  <h3>{{ post.title }}</h3>
+                  <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+                  <span class="read-more">
+                    ادامه مطلب
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </span>
+                </section>
+              </article>
+            </a>
           </li>
-          <li class="article-item">
-            <article>
-              <figure>
-                <img src="https://picsum.photos/id/133/800/500" alt="تصویر تزیینی از معماری ایرانی" loading="lazy" />
-                <figcaption class="sr-only">تصویر تزیینی مقاله معماری ایرانی</figcaption>
-              </figure>
-              <section class="article-body">
-                <time datetime="1404-01-12">فروردین ۱۴۰۴</time>
-                <h3>معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
-                <p>سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر؛ از ستون‌های بلند تخت‌جمشید تا طرح‌های مدرن الهام‌گرفته از هندسهٔ ایرانی.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
-              </section>
-            </article>
-          </li>
-          <li class="article-item">
-            <article>
-              <figure>
-                <img src="https://picsum.photos/id/201/800/500" alt="تصویر تزیینی از هویت فرهنگی دیجیتال" loading="lazy" />
-                <figcaption class="sr-only">تصویر تزیینی مقاله هویت فرهنگی در عصر دیجیتال</figcaption>
-              </figure>
-              <section class="article-body">
-                <time datetime="1404-01-08">فروردین ۱۴۰۴</time>
-                <h3>هویت فرهنگی ایرانی در عصر دیجیتال</h3>
-                <p>چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟ بررسی چالش‌ها و فرصت‌های فضای مجازی برای ترویج فرهنگ ایرانی.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
-              </section>
-            </article>
-          </li>
-          <li class="article-item hidden-article">
-            <article>
-              <figure>
-                <img src="https://picsum.photos/id/104/800/500" alt="تصویر تزیینی نوروز" loading="lazy" />
-                <figcaption class="sr-only">تصویر تزیینی مقاله نوروز</figcaption>
-              </figure>
-              <section class="article-body">
-                <time datetime="1403-12-29">اسفند ۱۴۰۳</time>
-                <h3>نوروز؛ جشن همبستگی و نوزایی طبیعت</h3>
-                <p>آیین‌های نوروزی از دیرباز نماد همبستگی، امید و پیوند ایرانیان با طبیعت بوده‌اند. نگاهی به ریشه‌های فرهنگی این جشن جهانی.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
-              </section>
-            </article>
-          </li>
-          <li class="article-item hidden-article">
-            <article>
-              <figure>
-                <img src="https://picsum.photos/id/163/800/500" alt="تصویر تزیینی شاهنامه" loading="lazy" />
-                <figcaption class="sr-only">تصویر تزیینی مقاله شاهنامه</figcaption>
-              </figure>
-              <section class="article-body">
-                <time datetime="1403-12-22">اسفند ۱۴۰۳</time>
-                <h3>شاهنامه؛ خردنامه‌ای برای تمام اعصار</h3>
-                <p>حکیم فردوسی با سرایش شاهنامه، نه تنها تاریخ که درس‌های زندگی، جوانمردی و خرد را برای نسل‌های آینده به یادگار گذاشت.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
-              </section>
-            </article>
-          </li>
-          <li class="article-item hidden-article">
-            <article>
-              <figure>
-                <img src="https://picsum.photos/id/180/800/500" alt="تصویر تزیینی صنایع دستی" loading="lazy" />
-                <figcaption class="sr-only">تصویر تزیینی مقاله صنایع دستی</figcaption>
-              </figure>
-              <section class="article-body">
-                <time datetime="1403-12-15">اسفند ۱۴۰۳</time>
-                <h3>صنایع دستی ایران؛ گنجینه‌ای از هنر و هویت</h3>
-                <p>از فرش و میناکاری تا خاتم‌کاری، صنایع دستی ایران بازتابی از فرهنگ غنی و ذوق هنری مردمان این سرزمین است.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
-              </section>
-            </article>
-          </li>
+          {% endfor %}
         </ul>
 
+        {% if site.posts.size > posts_per_page %}
         <footer class="load-more-wrapper" id="loadMoreWrapper">
           <button class="btn-primary" id="loadMoreBtn">
             پست‌های بیشتر
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
         </footer>
+        {% endif %}
       </section>
     </article>
   </main>
@@ -770,9 +697,8 @@
       });
 
       const loadMoreBtn = document.getElementById('loadMoreBtn');
-      const hiddenArticles = document.querySelectorAll('.hidden-article');
-
       if (loadMoreBtn) {
+        const hiddenArticles = document.querySelectorAll('.hidden-article');
         loadMoreBtn.addEventListener('click', function() {
           hiddenArticles.forEach(function(article) {
             article.style.display = 'block';
