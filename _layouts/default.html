@@ -705,6 +705,7 @@
           </span>
           <time datetime="{{ page.date | date_to_xmlschema }}">
             <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+            <span class="date-text"></span>
           </time>
         </section>
       </header>
@@ -795,11 +796,17 @@
         if (!datetime) return;
         const date = new Date(datetime);
         if (isNaN(date)) return;
-        element.textContent = new Intl.DateTimeFormat('fa-IR', {
+        const span = element.querySelector('.date-text');
+        const formatted = new Intl.DateTimeFormat('fa-IR', {
           year: 'numeric',
           month: 'long',
           day: 'numeric'
         }).format(date);
+        if (span) {
+          span.textContent = formatted;
+        } else {
+          element.textContent = formatted;
+        }
       }
 
       document.querySelectorAll('time').forEach(formatJalaliDate);
