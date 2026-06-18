@@ -30,7 +30,7 @@
       left: 0;
       right: 0;
       z-index: 50;
-      background-color: #0a0a0a;
+      background-color: #000000;
       border-bottom: 1px solid #2a2a2a;
       transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
         opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -76,7 +76,7 @@
     .brand img {
       height: 2.5rem;
       width: auto;
-      filter: brightness(0) invert(1);
+      filter: invert(1);
     }
 
     .brand span {
@@ -111,12 +111,13 @@
       top: 4.5625rem;
       left: 0;
       right: 0;
-      bottom: 0;
-      background-color: #0a0a0a;
+      background-color: #000000;
       padding: 2rem 1.5rem;
       z-index: 49;
-      overflow-y: auto;
       border-top: 1px solid #2a2a2a;
+      height: auto;
+      max-height: calc(100vh - 4.5625rem);
+      overflow-y: auto;
     }
 
     .mobile-nav.open {
@@ -344,7 +345,7 @@
     }
 
     .site-footer {
-      background-color: #0a0a0a;
+      background-color: #000000;
       padding: 3rem 1.5rem;
       text-align: center;
     }
@@ -352,9 +353,11 @@
     .site-footer img {
       height: 3.5rem;
       width: auto;
-      filter: brightness(0) invert(1);
+      filter: invert(1);
       opacity: 0.9;
       transition: opacity 0.2s;
+      display: block;
+      margin: 0 auto;
     }
 
     .site-footer img:hover {
