@@ -57,16 +57,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      /* لوگو چپ، منو و همبرگر راست */
     }
 
-    /* برند (لوگو) – حالا در سمت چپ قرار می‌گیرد */
+    /* لوگو در چپ */
     .brand {
       display: flex;
       align-items: center;
       text-decoration: none;
       color: white;
-      margin-left: auto;
-      /* لوگو را به چپ می‌چسباند */
+      /* حذف margin-left:auto چون space-between آن را به چپ می‌چسباند */
     }
 
     .brand img {
@@ -74,7 +74,7 @@
       width: auto;
     }
 
-    /* منوی دسکتاپ – در سمت راست باقی می‌ماند */
+    /* منوی دسکتاپ (در راست) */
     .desktop-nav ul {
       display: flex;
       align-items: center;
@@ -96,7 +96,7 @@
       color: #2dd4bf;
     }
 
-    /* ---------- همبرگر (سمت راست) ---------- */
+    /* ---------- همبرگر (در راست) ---------- */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -105,8 +105,7 @@
       border: none;
       padding: 0.25rem;
       cursor: pointer;
-      margin-right: 1rem;
-      /* فاصله از لبه راست */
+      /* در راست قرار دارد چون بعد از منوی دسکتاپ می‌آید و space-between آن را به راست می‌فرستد */
     }
 
     .hamburger span {
@@ -127,7 +126,7 @@
       transform: rotate(-45deg) translate(6px, -6px);
     }
 
-    /* ---------- منوی موبایل (اسلاید از راست) ---------- */
+    /* ---------- منوی موبایل (اسلاید از راست به چپ) ---------- */
     .mobile-nav-overlay {
       position: fixed;
       top: 0;
@@ -158,6 +157,7 @@
       padding: 5rem 2rem 2rem 2rem;
       z-index: 49;
       transform: translateX(100%);
+      /* کاملاً در راست پنهان */
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       box-shadow: -8px 0 30px rgba(0, 0, 0, 0.3);
@@ -165,6 +165,7 @@
 
     .mobile-nav.open {
       transform: translateX(0);
+      /* از راست به چپ می‌آید */
     }
 
     .mobile-nav ul {
@@ -208,7 +209,7 @@
       }
     }
 
-    /* ---------- محتوای اصلی ---------- */
+    /* ---------- محتوای اصلی (بدون تغییر) ---------- */
     .main-content {
       padding-top: 5.5rem;
       padding-bottom: 4rem;
@@ -384,7 +385,6 @@
       opacity: 1;
     }
 
-    /* قفل اسکرول هنگام باز بودن منو */
     body.no-scroll {
       overflow: hidden;
     }
@@ -396,13 +396,13 @@
   <header class="site-header visible-nav" role="banner">
     <div class="header-inner">
 
-      <!-- لوگو (اکنون در سمت چپ) -->
+      <!-- لوگو در سمت چپ -->
       <a href="https://www.pasgah.org/" class="brand" aria-label="صفحه اصلی پاسگاه">
         <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
         <!-- عنوان "پاسگاه" حذف شد -->
       </a>
 
-      <!-- منوی دسکتاپ (سمت راست) -->
+      <!-- منوی دسکتاپ (در سمت راست) -->
       <nav class="desktop-nav" aria-label="منوی اصلی">
         <ul>
           <li><a href="#">خانه</a></li>
@@ -413,7 +413,7 @@
         </ul>
       </nav>
 
-      <!-- دکمه همبرگر (سمت راست) -->
+      <!-- دکمه همبرگر (در سمت راست، کنار منوی دسکتاپ) -->
       <button class="hamburger" id="hamburger" aria-label="باز و بسته کردن منو" aria-expanded="false">
         <span></span>
         <span></span>
@@ -425,7 +425,7 @@
   <!-- ========== OVERLAY (پشت منوی موبایل) ========== -->
   <div class="mobile-nav-overlay" id="mobileOverlay"></div>
 
-  <!-- ========== منوی موبایل (اسلاید از راست) ========== -->
+  <!-- ========== منوی موبایل (اسلاید از راست به چپ) ========== -->
   <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
     <ul>
       <li><a href="#" class="mobile-link">خانه</a></li>
@@ -531,13 +531,11 @@
 
       function toggleMenu() {
         const isOpen = mobileMenu.classList.contains('open');
-        // تغییر وضعیت کلاس‌ها
         hamburger.classList.toggle('active');
         mobileMenu.classList.toggle('open');
         mobileOverlay.classList.toggle('open');
         hamburger.setAttribute('aria-expanded', String(!isOpen));
 
-        // قفل اسکرول
         if (!isOpen) {
           body.classList.add('no-scroll');
         } else {
@@ -545,13 +543,11 @@
         }
       }
 
-      // کلیک روی همبرگر
       hamburger.addEventListener('click', function(e) {
         e.stopPropagation();
         toggleMenu();
       });
 
-      // کلیک روی لینک‌های منو → بستن منو
       mobileLinks.forEach(function(link) {
         link.addEventListener('click', function() {
           if (mobileMenu.classList.contains('open')) {
@@ -560,28 +556,25 @@
         });
       });
 
-      // کلیک روی overlay → بستن منو
       mobileOverlay.addEventListener('click', function() {
         if (mobileMenu.classList.contains('open')) {
           toggleMenu();
         }
       });
 
-      // بستن منو با دکمه Escape
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
           toggleMenu();
         }
       });
 
-      // ===== مدیریت مخفی/نمایش هدر هنگام اسکرول =====
+      // مخفی/نمایش هدر هنگام اسکرول
       const header = document.querySelector('.site-header');
       let lastScrollY = window.scrollY;
       const SCROLL_THRESHOLD = 30;
       let ticking = false;
 
       function updateNavbarVisibility(currentScrollY) {
-        // اگر منو باز است، آن را ببندیم (اختیاری)
         if (mobileMenu.classList.contains('open')) {
           toggleMenu();
         }
@@ -611,7 +604,6 @@
         }
       });
 
-      // اطمینان از نمایش هدر در هنگام بارگذاری
       window.addEventListener('load', function() {
         header.classList.add('visible-nav');
         header.classList.remove('hidden-nav');
