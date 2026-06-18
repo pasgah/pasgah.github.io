@@ -57,7 +57,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      /* لوگو چپ، منو و همبرگر راست */
     }
 
     /* لوگو در چپ */
@@ -66,7 +65,8 @@
       align-items: center;
       text-decoration: none;
       color: white;
-      /* حذف margin-left:auto چون space-between آن را به چپ می‌چسباند */
+      order: 0;
+      /* چپ */
     }
 
     .brand img {
@@ -74,7 +74,11 @@
       width: auto;
     }
 
-    /* منوی دسکتاپ (در راست) */
+    /* منوی دسکتاپ در راست */
+    .desktop-nav {
+      order: 1;
+    }
+
     .desktop-nav ul {
       display: flex;
       align-items: center;
@@ -96,7 +100,7 @@
       color: #2dd4bf;
     }
 
-    /* ---------- همبرگر (در راست) ---------- */
+    /* همبرگر در راست */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -105,7 +109,8 @@
       border: none;
       padding: 0.25rem;
       cursor: pointer;
-      /* در راست قرار دارد چون بعد از منوی دسکتاپ می‌آید و space-between آن را به راست می‌فرستد */
+      order: 2;
+      /* راست */
     }
 
     .hamburger span {
@@ -157,7 +162,6 @@
       padding: 5rem 2rem 2rem 2rem;
       z-index: 49;
       transform: translateX(100%);
-      /* کاملاً در راست پنهان */
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       box-shadow: -8px 0 30px rgba(0, 0, 0, 0.3);
@@ -165,7 +169,6 @@
 
     .mobile-nav.open {
       transform: translateX(0);
-      /* از راست به چپ می‌آید */
     }
 
     .mobile-nav ul {
@@ -192,7 +195,6 @@
       color: #2dd4bf;
     }
 
-    /* Responsive: نمایش همبرگر در موبایل */
     @media (max-width: 768px) {
       .desktop-nav {
         display: none;
@@ -209,7 +211,7 @@
       }
     }
 
-    /* ---------- محتوای اصلی (بدون تغییر) ---------- */
+    /* ---------- بقیه استایل‌ها (بدون تغییر) ---------- */
     .main-content {
       padding-top: 5.5rem;
       padding-bottom: 4rem;
@@ -392,17 +394,16 @@
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
   <header class="site-header visible-nav" role="banner">
     <div class="header-inner">
 
-      <!-- لوگو در سمت چپ -->
+      <!-- لوگو (چپ) -->
       <a href="https://www.pasgah.org/" class="brand" aria-label="صفحه اصلی پاسگاه">
         <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
-        <!-- عنوان "پاسگاه" حذف شد -->
+        <!-- عنوان حذف شد -->
       </a>
 
-      <!-- منوی دسکتاپ (در سمت راست) -->
+      <!-- منوی دسکتاپ (راست) -->
       <nav class="desktop-nav" aria-label="منوی اصلی">
         <ul>
           <li><a href="#">خانه</a></li>
@@ -413,7 +414,7 @@
         </ul>
       </nav>
 
-      <!-- دکمه همبرگر (در سمت راست، کنار منوی دسکتاپ) -->
+      <!-- همبرگر (راست) -->
       <button class="hamburger" id="hamburger" aria-label="باز و بسته کردن منو" aria-expanded="false">
         <span></span>
         <span></span>
@@ -422,10 +423,8 @@
     </div>
   </header>
 
-  <!-- ========== OVERLAY (پشت منوی موبایل) ========== -->
+  <!-- Overlay و منوی موبایل -->
   <div class="mobile-nav-overlay" id="mobileOverlay"></div>
-
-  <!-- ========== منوی موبایل (اسلاید از راست به چپ) ========== -->
   <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
     <ul>
       <li><a href="#" class="mobile-link">خانه</a></li>
@@ -436,17 +435,15 @@
     </ul>
   </nav>
 
-  <!-- ========== MAIN ========== -->
+  <!-- محتوای اصلی (بدون تغییر) -->
   <main class="main-content" role="main">
     <article class="main-content-inner">
       <header class="page-title">
         <h1>پاسگاه</h1>
         <p>مرجعی برای اندیشه، فرهنگ و تاریخ ایران</p>
       </header>
-
       <section class="articles-section" aria-labelledby="latest-heading">
         <h2 id="latest-heading">آخرین نوشته‌ها</h2>
-
         <ul class="article-list">
           <li class="article-item">
             <article>
@@ -458,14 +455,10 @@
                 <time datetime="1404-01-15">فروردین ۱۴۰۴</time>
                 <h3>کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
                 <p>منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست که نشان‌دهندهٔ پیشگامی ایران در عدالت و آزادی‌های بنیادین است.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
+                <a href="#" class="read-more">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
               </div>
             </article>
           </li>
-
           <li class="article-item">
             <article>
               <figure>
@@ -476,14 +469,10 @@
                 <time datetime="1404-01-12">فروردین ۱۴۰۴</time>
                 <h3>معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
                 <p>سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر؛ از ستون‌های بلند تخت‌جمشید تا طرح‌های مدرن الهام‌گرفته از هندسهٔ ایرانی.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
+                <a href="#" class="read-more">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
               </div>
             </article>
           </li>
-
           <li class="article-item">
             <article>
               <figure>
@@ -494,35 +483,27 @@
                 <time datetime="1404-01-08">فروردین ۱۴۰۴</time>
                 <h3>هویت فرهنگی ایرانی در عصر دیجیتال</h3>
                 <p>چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟ بررسی چالش‌ها و فرصت‌های فضای مجازی برای ترویج فرهنگ ایرانی.</p>
-                <a href="#" class="read-more">
-                  ادامه مطلب
-                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                </a>
+                <a href="#" class="read-more">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
               </div>
             </article>
           </li>
         </ul>
-
         <div class="view-all-wrapper">
           <a href="https://www.pasgah.org/" class="btn-primary">
-            مشاهده همه نوشته‌ها
-            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            مشاهده همه نوشته‌ها <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
           </a>
         </div>
       </section>
     </article>
   </main>
 
-  <!-- ========== FOOTER ========== -->
   <footer class="site-footer" role="contentinfo">
     <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
   </footer>
 
-  <!-- ========== SCRIPT ========== -->
   <script>
     (function() {
       'use strict';
-
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
       const mobileOverlay = document.getElementById('mobileOverlay');
@@ -535,12 +516,7 @@
         mobileMenu.classList.toggle('open');
         mobileOverlay.classList.toggle('open');
         hamburger.setAttribute('aria-expanded', String(!isOpen));
-
-        if (!isOpen) {
-          body.classList.add('no-scroll');
-        } else {
-          body.classList.remove('no-scroll');
-        }
+        body.classList.toggle('no-scroll');
       }
 
       hamburger.addEventListener('click', function(e) {
@@ -550,35 +526,26 @@
 
       mobileLinks.forEach(function(link) {
         link.addEventListener('click', function() {
-          if (mobileMenu.classList.contains('open')) {
-            toggleMenu();
-          }
+          if (mobileMenu.classList.contains('open')) toggleMenu();
         });
       });
 
       mobileOverlay.addEventListener('click', function() {
-        if (mobileMenu.classList.contains('open')) {
-          toggleMenu();
-        }
+        if (mobileMenu.classList.contains('open')) toggleMenu();
       });
 
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-          toggleMenu();
-        }
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu();
       });
 
-      // مخفی/نمایش هدر هنگام اسکرول
+      // اسکرول هدر
       const header = document.querySelector('.site-header');
       let lastScrollY = window.scrollY;
       const SCROLL_THRESHOLD = 30;
       let ticking = false;
 
       function updateNavbarVisibility(currentScrollY) {
-        if (mobileMenu.classList.contains('open')) {
-          toggleMenu();
-        }
-
+        if (mobileMenu.classList.contains('open')) toggleMenu();
         if (currentScrollY > SCROLL_THRESHOLD) {
           if (currentScrollY > lastScrollY) {
             header.classList.remove('visible-nav');
@@ -608,7 +575,6 @@
         header.classList.add('visible-nav');
         header.classList.remove('hidden-nav');
       });
-
     })();
   </script>
 
