@@ -112,7 +112,7 @@
                         <p class="text-zinc-600 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
                         <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
                             ادامه مطلب
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                         <p class="text-zinc-600 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
                         <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
                             ادامه مطلب
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                         <p class="text-zinc-600 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
                         <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
                             ادامه مطلب
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                 <a href="https://www.pasgah.org/" 
                    class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-2xl hover:bg-black transition-colors">
                     مشاهده همه نوشته‌ها
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
                 </a>
             </div>
         </div>
@@ -194,19 +194,6 @@
                 !hamburger.contains(e.target)) {
                 toggleMenu();
             }
-        });
-
-        const progressBar = document.createElement('div');
-        progressBar.style.cssText = `
-            position: fixed; top: 0; left: 0; height: 3px; 
-            background: linear-gradient(to right, #2dd4bf, #14b8a6); 
-            z-index: 100; transition: width 0.15s ease;
-        `;
-        document.body.appendChild(progressBar);
-
-        window.addEventListener('scroll', () => {
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            progressBar.style.width = scrollPercent + '%';
         });
     </script>
 </body>
