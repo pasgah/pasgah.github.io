@@ -105,18 +105,13 @@
 
     <!-- Hero Slider -->
     <div class="hero-slider relative">
-        <!-- Slide 1 -->
         <div class="slide active" style="background-image: url('https://picsum.photos/id/1015/2000/1400')"></div>
-        <!-- Slide 2 -->
         <div class="slide" style="background-image: url('https://picsum.photos/id/133/2000/1400')"></div>
-        <!-- Slide 3 -->
         <div class="slide" style="background-image: url('https://picsum.photos/id/201/2000/1400')"></div>
-        <!-- Slide 4 -->
         <div class="slide" style="background-image: url('https://picsum.photos/id/866/2000/1400')"></div>
 
         <div class="hero-overlay"></div>
 
-        <!-- Content -->
         <div class="absolute inset-0 flex items-center z-10">
             <div class="max-w-5xl mx-auto px-6 text-center text-white">
                 <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tight mb-6">
@@ -135,6 +130,7 @@
             <h2 class="text-4xl font-bold text-center mb-16">آخرین نوشته‌ها</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
                 <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/1015/800/500" class="w-full h-56 object-cover" alt="پست">
                     <div class="p-7">
@@ -173,6 +169,16 @@
                         </a>
                     </div>
                 </div>
+
+            </div>
+
+            <!-- دکمه مشاهده همه نوشته‌ها -->
+            <div class="text-center mt-12">
+                <a href="https://www.pasgah.org/" 
+                   class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-2xl hover:bg-black transition-colors">
+                    مشاهده همه نوشته‌ها
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -189,7 +195,7 @@
     </footer>
 
     <script>
-        // Simple CSS Slider with JS for auto change
+        // Simple Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
 
@@ -204,7 +210,6 @@
             showSlide(currentSlide);
         }
 
-        // Auto slide every 5 seconds
         setInterval(nextSlide, 5000);
 
         // Mobile Menu
