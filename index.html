@@ -1,645 +1,630 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" itemscope itemtype="https://schema.org/WebPage">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  
-  <!-- Primary Meta Tags -->
-  <title>پاسگاه تاریخ | کاوش در اعماق تاریخ ایران باستان و معاصر</title>
-  <meta name="title" content="پاسگاه تاریخ | کاوش در اعماق تاریخ ایران">
-  <meta name="description" content="سفری عمیق به دوران طلایی ایران: از شکوه بی‌بدیل هخامنشیان، عظمت ساسانیان، هنر صفوی تا بیداری مشروطه. گنجینه‌های ماندگار مانند تخت جمشید و شاهنامه را کشف کنید.">
-  <meta name="keywords" content="تاریخ ایران, هخامنشیان, ساسانیان, صفویه, مشروطه, تخت جمشید, شاهنامه, میدان نقش جهان, تاریخ باستان, ایران اسلامی, میراث فرهنگی">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <link rel="canonical" href="https://pasgah.github.io">
-  <link rel="alternate" hreflang="fa" href="https://pasgah.github.io" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pasgah.github.io">
-  <meta property="og:title" content="پاسگاه تاریخ | کاوش در اعماق تاریخ ایران">
-  <meta property="og:description" content="سفری عمیق به دوران طلایی ایران: از شکوه بی‌بدیل هخامنشیان تا بیداری مشروطه. گنجینه‌های ماندگار ایران را کشف کنید.">
-  <meta property="og:image" content="https://pasgah.github.io/og-image.jpg">
-  <meta property="og:locale" content="fa_IR">
+    {%- capture desc_raw -%}
+      {%- if page.type == 'post' -%}
+        {{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}
+      {%- elsif page.is_home -%}
+        {{ page.description | strip_html | strip_newlines | truncate: 160 }}
+      {%- endif -%}
+    {%- endcapture -%}
+    {%- assign desc = desc_raw | strip -%}
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://pasgah.github.io">
-  <meta property="twitter:title" content="پاسگاه تاریخ | کاوش در اعماق تاریخ ایران">
-  <meta property="twitter:description" content="سفری عمیق به دوران طلایی ایران: از شکوه بی‌بدیل هخامنشیان تا بیداری مشروطه. گنجینه‌های ماندگار ایران را کشف کنید.">
-  <meta property="twitter:image" content="https://pasgah.github.io/og-image.jpg">
+    <title>{{ page.title }}</title>
 
-  <!-- Schema.org Structured Data for Brand -->
-  <script type="application/ld+json">
+    <link rel="preload" href="/blog.woff2" as="font" type="font/woff2" crossorigin>
+
+    <meta itemprop="name" content="{{ page.title }}">
+    {%- if desc != "" -%}
+    <meta name="description" content="{{ desc }}">
+    <meta itemprop="description" content="{{ desc }}">
+    {%- endif -%}
+
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="وبلاگ پاسگاه">
+    {%- if desc != "" -%}
+    <meta property="og:description" content="{{ desc }}">
+    {%- endif -%}
+    {%- if page.type == 'post' -%}
+    <meta property="og:type" content="article">
+    {%- if page.date -%}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    {%- endif -%}
+    {%- if page.last_modified_at -%}
+    <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
+    {%- endif -%}
+    {%- else -%}
+    <meta property="og:type" content="website">
+    {%- endif -%}
+    {%- if page.image -%}
+    <meta property="og:image" content="{{ page.image | absolute_url }}">
+    <meta property="og:image:alt" content="{{ page.title }}">
+    {%- endif -%}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title }}">
+    {%- if desc != "" -%}
+    <meta name="twitter:description" content="{{ desc }}">
+    {%- endif -%}
+    {%- if page.image -%}
+    <meta name="twitter:image" content="{{ page.image | absolute_url }}">
+    {%- endif -%}
+
+    {%- if page.type == 'post' -%}
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "پاسگاه تاریخ | روایتگر شکوه ایران زمین",
-      "description": "سفری عمیق به دوران طلایی ایران: از شکوه بی‌بدیل هخامنشیان و عظمت ساسانیان تا هنر صفوی و بیداری مشروطه. تاریخ ایران را با روایتی جدید کشف کنید.",
-      "url": "https://pasgah.github.io",
-      "inLanguage": "fa",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "پاسگاه تاریخ",
-        "url": "https://pasgah.github.io"
-      },
-      "about": [
-        { "@type": "Thing", "name": "هخامنشیان" },
-        { "@type": "Thing", "name": "ساسانیان" },
-        { "@type": "Thing", "name": "صفویه" },
-        { "@type": "Thing", "name": "مشروطه" },
-        { "@type": "Thing", "name": "تخت جمشید" },
-        { "@type": "Thing", "name": "شاهنامه" },
-        { "@type": "Thing", "name": "میدان نقش جهان" }
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ page.url | absolute_url }}"
+          },
+          "headline": {{ page.title | jsonify }},
+          "description": {{ desc | jsonify }},
+          "author": {
+            "@type": "Person",
+            "name": "احسان چهری"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "وبلاگ پاسگاه",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.pasgah.org/blog.svg"
+            }
+          },
+          "datePublished": "{{ page.date | date_to_xmlschema }}",
+          "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}"
+          {%- if page.image -%}
+          ,"image": "{{ page.image | absolute_url }}"
+          {%- endif -%}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "خانه",
+              "item": "https://www.pasgah.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "وبلاگ",
+              "item": "https://www.pasgah.org/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": {{ page.title | jsonify }},
+              "item": "{{ page.url | absolute_url }}"
+            }
+          ]
+        }
       ]
     }
-  </script>
+    </script>
+    {%- endif -%}
 
-  <style>
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Black.woff2') format('woff2');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="icon" type="image/svg+xml" href="https://www.pasgah.org/blog.svg">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    body {
-      font-family: 'Vazirmatn', 'Tahoma', sans-serif;
-      background-color: #fdf8f0;
-      color: #2e241b;
-      line-height: 1.8;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20 20 L30 15 L40 20 L35 30 L25 30 Z" fill="none" stroke="%23d4b68c" stroke-width="0.8" opacity="0.3"/><circle cx="70" cy="70" r="8" fill="none" stroke="%23d4b68c" stroke-width="0.8" opacity="0.3"/></svg>');
-      background-size: 180px 180px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url("/blog.woff2") format("woff2");
+            font-weight: 100 1000;
+            font-display: swap;
+            font-style: normal;
+            ascent-override: 85%;
+            descent-override: 20%;
+            line-gap-override: 0%;
+            size-adjust: 105%;
+        }
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-light: #cccccc;
+            --text-accent: #ffb48a;
+            --text-green: #5dbe7e;
+            --text-blue: #6bb5e0;
+            --border: #333333;
+            --card-bg: #080808;
+            --more-card-bg: #0f0f0f;
+            --more-card-border: rgba(255, 255, 255, 0.07);
+            --more-card-hover-border: rgba(107, 181, 224, 0.5);
+            --header-footer-bg: #040404;
+            --blockquote-bg: #111111;
+            --table-header-bg: #1a1a1a;
+            --table-even-bg: #0d0d0d;
+            --w: min(92%, 780px);
+            --lg: 2rem;
+            --md: 1.5rem;
+            --font-primary: 'Vazir', sans-serif;
+            --line-height: 1.85;
+            --font-size-lg: 1.15rem;
+            --font-size-xl: 1.4rem;
+            --focus-ring: 0 0 0 0.125rem var(--text-accent);
+            color-scheme: dark;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        ::selection {
+            background-color: var(--text-green);
+            color: #000000;
+        }
+        ::-moz-selection {
+            background-color: var(--text-green);
+            color: #000000;
+        }
 
-    .main-header {
-      background: linear-gradient(135deg, #3e2c1c 0%, #5e4330 100%);
-      border-bottom: 3px solid #c9a063;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1030;
-      container-type: inline-size;
-      container-name: headerContainer;
-    }
+        body {
+            font-family: var(--font-primary);
+            background: var(--bg);
+            color: var(--text);
+            line-height: var(--line-height);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+        :focus-visible {
+            outline: var(--focus-ring);
+            outline-offset: 0.1875rem;
+        }
+        .container {
+            width: var(--w);
+            margin-inline: auto;
+        }
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem clamp(10px, 3vw, 20px);
-      gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            right: 0;
+            background: var(--text-accent);
+            color: #000;
+            padding: 0.5rem 1rem;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            z-index: 9999;
+            transition: top 0.2s;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
 
-    .logo-link {
-      display: flex;
-      align-items: center;
-      gap: clamp(10px, 2.5vw, 16px);
-      text-decoration: none;
-      color: inherit;
-      flex-shrink: 0;
-    }
+        header, footer {
+            background: var(--header-footer-bg);
+            padding-block: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header img {
+            width: 4rem;
+            height: 4rem;
+        }
+        footer img {
+            width: 3rem;
+            height: 3rem;
+        }
+        main {
+            flex: 1;
+            padding-block: 2rem;
+        }
+        .posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--lg);
+        }
+        .post-card {
+            background: var(--more-card-bg);
+            padding: var(--md);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 0.0625rem solid var(--more-card-border);
+            transition: border-color 0.2s ease, transform 0.1s ease;
+        }
+        a.post-card:hover {
+            border-color: var(--more-card-hover-border);
+        }
+        a.post-card:active {
+            transform: scale(0.99);
+        }
+        .post-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--text-blue);
+            margin-block-end: 0.5rem;
+        }
+        .post-excerpt {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-block-start: 0.5rem;
+            overflow-wrap: break-word;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.4;
+            color: var(--text-green);
+            margin-block-end: 1rem;
+            padding-block-end: 0;
+            letter-spacing: -0.02em;
+        }
+        .page-title-home {
+            text-align: center;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-green);
+            letter-spacing: -0.01em;
+            margin-block: 1rem 0.75rem;
+        }
+        .section-title-home {
+            text-align: center;
+        }
+        .hidden-post {
+            display: none !important;
+        }
+        .load-more-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--more-card-bg);
+            color: var(--text-blue);
+            border: 0.0625rem solid var(--more-card-border);
+            font-size: 1.1rem;
+            font-family: var(--font-primary);
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            text-align: center;
+        }
+        .load-more-button:hover {
+            background-color: #1a1a1a;
+            border-color: var(--more-card-hover-border);
+        }
+        .load-more-button:focus-visible {
+            outline: var(--focus-ring);
+            outline-offset: 0.125rem;
+        }
 
-    .emblem-frame {
-      position: relative;
-      width: clamp(44px, 8vw, 52px);
-      height: clamp(44px, 8vw, 52px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .shamseh {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .petal {
-      position: absolute;
-      width: 18%;
-      height: 45%;
-      background: linear-gradient(180deg, #c9a063 0%, #8b6f4c 100%);
-      border-radius: 50% 50% 20% 20%;
-      transform-origin: bottom center;
-      box-shadow: 0 0 8px rgba(201, 160, 99, 0.6);
-      top: 2%;
-      left: 41%;
-    }
-
-    .petal:nth-child(1) { transform: rotate(0deg); }
-    .petal:nth-child(2) { transform: rotate(45deg); }
-    .petal:nth-child(3) { transform: rotate(90deg); }
-    .petal:nth-child(4) { transform: rotate(135deg); }
-    .petal:nth-child(5) { transform: rotate(180deg); }
-    .petal:nth-child(6) { transform: rotate(225deg); }
-    .petal:nth-child(7) { transform: rotate(270deg); }
-    .petal:nth-child(8) { transform: rotate(315deg); }
-
-    .center-dot {
-      position: absolute;
-      width: 25%;
-      height: 25%;
-      background: radial-gradient(circle, #f3d59c 0%, #c9a063 60%, #8b6f4c 100%);
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(201, 160, 99, 0.9);
-      z-index: 2;
-    }
-
-    .logo-link:hover .shamseh {
-      animation: spin-slow 3s linear infinite;
-    }
-
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .site-title {
-      font-size: clamp(1.2rem, 4vw, 2rem);
-      font-weight: 900;
-      letter-spacing: 1px;
-      color: #f3d59c;
-      text-shadow: 2px 2px 0 #3a2819;
-      line-height: 1.2;
-    }
-
-    .site-desc {
-      font-size: clamp(0.65rem, 2vw, 0.9rem);
-      color: #ebd6b0;
-      font-weight: 500;
-    }
-
-    #menu-toggle {
-      display: none;
-    }
-
-    .menu-icon {
-      display: none;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 20;
-      background: rgba(255, 255, 240, 0.08);
-      border-radius: 12px;
-      transition: background 0.3s, transform 0.2s;
-      border: 1px solid rgba(201, 160, 99, 0.3);
-    }
-
-    .menu-icon:hover {
-      background: rgba(201, 160, 99, 0.25);
-      transform: scale(0.96);
-    }
-
-    .menu-icon span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: #f3d59c;
-      margin: 6px 0;
-      border-radius: 3px;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    #menu-toggle:checked~.menu-icon span:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
-    }
-
-    #menu-toggle:checked~.menu-icon span:nth-child(2) {
-      opacity: 0;
-      transform: scale(0);
-    }
-
-    #menu-toggle:checked~.menu-icon span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: clamp(0.3rem, 1.5vw, 1.5rem);
-      flex-wrap: wrap;
-      transition: all 0.4s ease;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #feeac1;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
-      padding: 0.5rem clamp(0.8rem, 2vw, 1.1rem);
-      border-radius: 30px;
-      transition: all 0.25s ease;
-      background-color: rgba(255, 255, 240, 0.06);
-      white-space: nowrap;
-      display: block;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      background-color: #c9a063;
-      color: #2d1e0f;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-      font-weight: 700;
-    }
-
-    @container headerContainer (max-width: 850px) {
-      .menu-icon {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        background: linear-gradient(180deg, #4a3424 0%, #3a2719 100%);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.2rem;
-        padding: 1.2rem 1.5rem;
-        border-radius: 0 0 35px 35px;
-        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-        border-bottom: 3px solid #c9a063;
-        transform-origin: top center;
-        transform: scaleY(0);
-        opacity: 0;
-        visibility: hidden;
-        z-index: 5;
-      }
-
-      #menu-toggle:checked~.nav-links {
-        transform: scaleY(1);
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .nav-links a {
-        text-align: center;
-        font-size: 1.1rem;
-        padding: 0.9rem 1rem;
-        border-radius: 25px;
-        margin: 0.2rem 0;
-      }
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><rect width="1200" height="400" fill="%23332211"/><path d="M0 300 Q150 240 300 280 T600 250 T900 270 T1200 230 L1200 400 L0 400 Z" fill="%23553b22" opacity="0.9"/><circle cx="200" cy="150" r="60" fill="%23b9924b" opacity="0.2"/><circle cx="950" cy="180" r="90" fill="%23b9924b" opacity="0.15"/><path d="M500 120 L520 80 L540 120 L580 130 L550 160 L560 200 L520 180 L480 200 L490 160 L460 130 Z" fill="%23c9a063" opacity="0.5"/></svg>');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: clamp(3rem, 10vw, 5rem) 1.5rem;
-      margin-bottom: 2.5rem;
-      border-radius: 0 0 70px 70px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero h2 {
-      font-size: clamp(1.8rem, 7vw, 2.8rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 6px black;
-      color: #ffefcf;
-    }
-
-    .hero p {
-      font-size: clamp(1rem, 4vw, 1.4rem);
-      font-weight: 500;
-      background: rgba(30, 20, 10, 0.55);
-      padding: 0.7rem 2rem;
-      border-radius: 40px;
-      backdrop-filter: blur(6px);
-      display: inline-block;
-      border: 1px solid rgba(255, 215, 140, 0.3);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 clamp(12px, 3vw, 20px);
-      width: 100%;
-    }
-
-    .section-title {
-      font-weight: 800;
-      color: #4d3824;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin: 2.5rem 0 1.8rem;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-    }
-
-    .section-title::before,
-    .section-title::after {
-      content: "";
-      height: 3px;
-      width: clamp(40px, 15%, 70px);
-      background: linear-gradient(to left, #c9a063, #8b6f4c);
-      border-radius: 5px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-      gap: 2rem;
-      margin: 2rem 0 3rem;
-    }
-
-    .history-card {
-      background: #fff9ef;
-      border-radius: 35px;
-      padding: 1.8rem 1.4rem;
-      box-shadow: 0 15px 30px rgba(100, 70, 30, 0.12);
-      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.3s, border-color 0.2s;
-      text-align: center;
-      border: 1px solid #e3cfaa;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-    }
-
-    .history-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 35px rgba(130, 90, 40, 0.25);
-      border-color: #b38b4a;
-    }
-
-    .card-emoji {
-      font-size: clamp(2.8rem, 7vw, 3.5rem);
-      margin-bottom: 1rem;
-      background: #f3e3cc;
-      border-radius: 50%;
-      width: clamp(75px, 15vw, 90px);
-      height: clamp(75px, 15vw, 90px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .history-card h3 {
-      font-size: clamp(1.3rem, 5vw, 1.6rem);
-      color: #4d3119;
-      margin: 0.8rem 0 0.8rem;
-      font-weight: 800;
-    }
-
-    .history-card .card-desc {
-      color: #4a3826;
-      font-size: clamp(0.9rem, 2.8vw, 0.98rem);
-      margin-bottom: 1.4rem;
-      flex: 1;
-      text-align: justify;
-      line-height: 1.9;
-      font-weight: 400;
-    }
-
-    .btn-more {
-      background: #b68b4c;
-      color: white;
-      padding: 0.6rem 1.8rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s, transform 0.2s;
-      margin-top: auto;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 0.95rem;
-    }
-
-    .btn-more:hover {
-      background: #8b5e2f;
-      transform: scale(1.03);
-    }
-
-    .tag-static {
-      background: #8b6f4c;
-      color: #fff7e6;
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      font-weight: 600;
-      margin-top: auto;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-    }
-
-    .quote-box {
-      background: #ece0cd;
-      border-right: 8px solid #b68b4c;
-      border-radius: 20px;
-      padding: clamp(1.5rem, 4vw, 2rem) clamp(1.5rem, 5vw, 2.5rem);
-      margin: 3rem 0 2.5rem;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(1rem, 4vw, 1.25rem);
-      color: #3b2a1a;
-      text-align: center;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-    }
-
-    .quote-box span {
-      display: block;
-      margin-top: 0.8rem;
-      font-weight: 700;
-      font-style: normal;
-      color: #7b5b38;
-    }
-
-    .footer {
-      background: #2e241b;
-      color: #dac29c;
-      padding: 1.8rem 1rem;
-      margin-top: auto;
-      text-align: center;
-      border-top: 4px solid #b68b4c;
-      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-  </style>
+        {% if page.type == 'post' %}
+        .breadcrumb-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-primary);
+        }
+        .breadcrumb-link:hover {
+            color: var(--text-blue);
+        }
+        .breadcrumb-link svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+        article {
+            margin-block-end: var(--lg);
+        }
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            margin-block-end: 1.5rem;
+        }
+        .post-author, .post-date {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .post-author svg, .post-date svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            fill: currentColor;
+        }
+        .article-content {
+            font-size: var(--font-size-lg);
+            color: var(--text);
+            line-height: var(--line-height);
+            overflow-wrap: break-word;
+        }
+        .article-content h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text-green);
+            margin-block: 0 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .article-content p {
+            margin-block: 1.5rem;
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-accent);
+            margin-block: 2rem 1rem;
+        }
+        .article-content h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-block: 1.5rem 1rem;
+            color: var(--text-light);
+        }
+        .article-content a {
+            color: var(--text-blue);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 0.125rem dotted var(--text-blue);
+            padding-block-end: 0.125rem;
+            transition: opacity 0.25s ease;
+        }
+        .article-content a:hover {
+            opacity: 0.8;
+        }
+        .article-content ul, .article-content ol {
+            margin-block: 1.5rem;
+            padding-inline: 0 1.5rem;
+        }
+        .article-content ul li, .article-content ol li {
+            margin-block-end: 0.75rem;
+        }
+        .article-content blockquote {
+            border-inline-start: 0.1875rem solid var(--text-accent);
+            padding: 1rem 1.5rem;
+            margin-block: 1.5rem;
+            background: var(--blockquote-bg);
+            font-style: italic;
+            color: var(--text-light);
+        }
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            margin-block: 1.5rem;
+            display: block;
+        }
+        .table-scroll {
+            margin-block: 1.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+            border: 0.0625rem solid var(--border);
+        }
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 37.5rem;
+        }
+        .article-content table th, .article-content table td {
+            padding: 0.75rem 1rem;
+            text-align: right;
+            border: 0.0625rem solid var(--border);
+        }
+        .article-content table th {
+            background: var(--table-header-bg);
+            color: var(--text);
+        }
+        .article-content table tbody tr:nth-child(even) {
+            background: var(--table-even-bg);
+        }
+        {% endif %}
+    </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-inner">
-      <a href="https://pasgah.github.io" class="logo-link" title="پاسگاه تاریخ - صفحه نخست" aria-label="پاسگاه تاریخ، کاوش در اعماق تاریخ ایران">
-        <div class="emblem-frame">
-          <div class="shamseh">
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="center-dot"></div>
-          </div>
-        </div>
-        <div class="logo-text">
-          <h1 class="site-title">پاسگاه تاریخ</h1>
-          <span class="site-desc">روایتگر شکوه ایران زمین</span>
-        </div>
-      </a>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
 
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon" aria-label="منوی اصلی" title="باز کردن منوی ناوبری">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+    <svg hidden aria-hidden="true">
+        <defs>
+            <g id="home-icon">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </g>
+        </defs>
+    </svg>
 
-      <nav class="nav-links" aria-label="ناوبری اصلی">
-        <a href="#" class="active" title="صفحه اصلی پاسگاه تاریخ">خانه</a>
-        <a href="#" title="تاریخ ایران باستان">دوران باستان</a>
-        <a href="#" title="تاریخ ایران در دوره اسلامی">ایران اسلامی</a>
-        <a href="#" title="تاریخ معاصر ایران">معاصر</a>
-        <a href="#" title="میراث فرهنگی و آثار باستانی ایران">میراث فرهنگی</a>
-        <a href="#" title="درباره پاسگاه تاریخ">درباره ما</a>
-      </nav>
-    </div>
-  </header>
+    <header role="banner">
+        <a href="https://www.pasgah.org/" aria-label="صفحهٔ نخست وبلاگ پاسگاه" {% if page.is_home %} aria-current="page"{% endif %} rel="home">
+            <img src="https://www.pasgah.org/blog.svg" alt="وبلاگ پاسگاه">
+        </a>
+    </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <h2>از سپیده‌دم تاریخ تا ایران امروز</h2>
-        <p>سفری به اعماق تمدن کهن</p>
-      </div>
-    </section>
+    <main id="main-content" tabindex="-1">
+        <section class="container">
+            {% if page.type == 'post' %}
+            <nav aria-label="مسیر صفحه">
+                <a href="https://www.pasgah.org/blog" class="breadcrumb-link" aria-label="بازگشت به وبلاگ">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#home-icon"/></svg>
+                    <span>وبلاگ</span>
+                </a>
+            </nav>
+            {% endif %}
 
-    <section aria-labelledby="periods-heading">
-      <h2 id="periods-heading" class="section-title">
-        <span>📜</span> دوره‌های درخشان تاریخ ایران <span>📜</span>
-      </h2>
+            {% if page.is_home %}
+            <h1 class="page-title page-title-home">سفر به اعماق تاریخ</h1>
+            {% endif %}
 
-      <div class="card-grid">
-        <article class="history-card">
-          <div class="card-emoji" aria-hidden="true">👑</div>
-          <h3>هخامنشیان</h3>
-          <p class="card-desc">
-            هخامنشیان (۵۵۰ تا ۳۳۰ پیش از میلاد) تنها یک سلسله نبودند، بلکه بنیان‌گذاران مفهوم «امپراتوری جهانی» در تاریخ بشر به شمار می‌روند. کوروش بزرگ با فتح بابل و صدور منشور معروف خود، برای نخستین بار اصول آزادی مذهبی، حقوق بشر و مدارا با اقوام مغلوب را به عنوان سیاست رسمی یک حکومت اعلام کرد. در ادامه، داریوش بزرگ با ایجاد سیستم اداری ساتراپی‌ها، ضرب سکه طلای «دریک» و احداث راه شاهی به طول بیش از ۲۵۰۰ کیلومتر، زیرساخت‌های اقتصادی و ارتباطی عظیمی را بنا نهاد که موجب یکپارچگی قلمرویی از هند تا مصر شد. شکوه معماری هخامنشی در تخت جمشید (پارسه) با الهام از هنر ملل مختلف، نمادی از احترام به تنوع فرهنگی در عین حفظ مرکزیت سیاسی بود.
-          </p>
-          <a href="#" class="btn-more" title="مطالعه بیشتر در مورد امپراتوری هخامنشی">کاوش در امپراتوری</a>
-        </article>
+            {% if page.type == 'post' %}
+            <article itemscope itemtype="https://schema.org/BlogPosting">
+                <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+                <h1 class="page-title" itemprop="headline">{{ page.title }}</h1>
+                <section class="post-meta">
+                    <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        <span itemprop="name">احسان چهری</span>
+                    </span>
+                    <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM7 12h5v5H7v-5z"/>
+                        </svg>
+                        <span class="date-text"></span>
+                    </time>
+                </section>
+                <section class="article-content" itemprop="articleBody">
+                    {{ content }}
+                </section>
+            </article>
+            {% endif %}
 
-        <article class="history-card">
-          <div class="card-emoji" aria-hidden="true">🔥</div>
-          <h3>ساسانیان</h3>
-          <p class="card-desc">
-            ساسانیان (۲۲۴ تا ۶۵۱ میلادی) آخرین و درخشان‌ترین سلسله ایران پیش از اسلام بودند که خود را وارث تمدن هخامنشی و مظهر احیای «ایران‌شهر» می‌دانستند. این دوره اوج رقابت تمدنی با امپراتوری روم شرقی (بیزانس) بود و نبردهای حماسی مانند نبرد «ذوقار» و لشکرکشی‌های خسرو انوشیروان، مرزهای سیاسی و فرهنگی ایران را تثبیت کرد. در عرصه فرهنگ، سنگ‌نگاره‌های باشکوه طاق بستان، کاخ ویران‌شده اما پرشکوه تیسفون (طاق کسری) و رواج هنر فلزکاری و ابریشم‌بافی نشان‌دهنده اوج زیبایی‌شناسی ایرانی است. از همه مهم‌تر، رسمیت یافتن دین زرتشتی و تدوین اوستا در کنار ظهور جنبش‌های فکری مانند مانی و مزدک، فضای فکری پویایی را رقم زد که میراث آن در دانش و هنر دوران اسلامی کاملاً مشهود است.
-          </p>
-          <a href="#" class="btn-more" title="دیدن جزئیات بیشتر درباره هنر و تمدن ساسانی">تماشای شکوه ساسانی</a>
-        </article>
+            {% if page.type == 'post' %}
+            <h2 class="section-title section-title-home">آخرین پست‌های وبلاگ</h2>
+            {% endif %}
 
-        <article class="history-card">
-          <div class="card-emoji" aria-hidden="true">🕌</div>
-          <h3>صفویه</h3>
-          <p class="card-desc">
-            عصر صفوی (۱۵۰۱ تا ۱۷۳۶ میلادی) نقطه عطفی در تاریخ ایران بود که پس از قرن‌ها حکومت‌های محلی، یکپارچگی ملی را با محوریت مذهب تشیع اثنی‌عشری به ایران بازگرداند. شاه اسماعیل اول با تکیه بر قدرت قزلباشان و هویت مذهبی-سیاسی، ایران را از زیر سایه تجزیه نجات داد، اما شاه عباس بزرگ بود که با انتقال پایتخت به اصفهان، «دولت مدرن» صفوی را پایه‌گذاری کرد. دوران شکوفایی اصفهان تنها به ساخت میدان نقش جهان، مسجد شیخ لطف‌الله و عالی‌قاپو محدود نمی‌شود؛ این شهر به مرکز تجارت ابریشم، دیپلماسی بین‌المللی (با حضور شرق‌شناسان و سفرای اروپایی) و کانون هنرهایی چون نگارگری، فرش‌بافی و فلسفه بدل گشت. صفویان ایران را به عنوان یک قدرت بزرگ جهانی در برابر عثمانی و ازبکان مطرح کردند.
-          </p>
-          <a href="#" class="btn-more" title="گشت و گذار در اصفهان عصر صفوی">گشت و گذار در اصفهان</a>
-        </article>
+            <section class="posts-list" aria-label="فهرست پست‌ها">
+                {% assign posts_per_page = 10 %}
+                {% assign max_posts = 100 %}
+                {% if page.type == 'post' %}
+                  {% assign display_posts = site.posts | where_exp: "item", "item.id != page.id" %}
+                {% else %}
+                  {% assign display_posts = site.posts %}
+                {% endif %}
 
-        <article class="history-card">
-          <div class="card-emoji" aria-hidden="true">📖</div>
-          <h3>مشروطه</h3>
-          <p class="card-desc">
-            انقلاب مشروطیت در سال ۱۲۸۵ خورشیدی (۱۹۰۶ میلادی) سرآغاز بیداری سیاسی و حقوقی در تاریخ معاصر ایران بود. جنبشی که با اعتراض بازاریان، روحانیون و روشنفکران علیه استبداد قاجار آغاز شد، به سرعت به صدور فرمان مشروطیت توسط مظفرالدین شاه انجامید و برای اولین بار، قدرت مطلقه شاه را با قانون و پارلمان (مجلس شورای ملی) محدود ساخت. این انقلاب دستاوردهای بنیادینی مانند قانون اساسی، آزادی بیان و اندیشه، و مفهوم «ملت» را وارد ادبیات سیاسی ایران کرد. هرچند مسیر مشروطه با چالش‌های داخلی و مداخلات خارجی (مانند به توپ بستن مجلس توسط محمدعلی شاه) دچار تلاطم شد، اما نهال عدالت‌خواهی، حاکمیت قانون و مسئولیت‌پذیری دولت در برابر شهروندان را کاشت که ثمره آن تا به امروز در مبارزات آزادی‌خواهانه ایرانیان جاری است.
-          </p>
-          <a href="#" class="btn-more" title="خواندن داستان کامل انقلاب مشروطه ایران">خواندن داستان آزادی</a>
-        </article>
-      </div>
-    </section>
+                {% for post in display_posts limit: max_posts %}
+                <a href="{{ post.url | relative_url }}"
+                   class="post-card post-card-item {% if forloop.index > posts_per_page %}hidden-post{% endif %}"
+                   {% if forloop.index > posts_per_page %}aria-hidden="true" tabindex="-1"{% endif %}>
+                    {% if page.type == 'post' %}
+                    <h3 class="post-title">{{ post.title }}</h3>
+                    {% else %}
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    {% endif %}
+                    <p class="post-excerpt">
+                        {{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}
+                    </p>
+                </a>
+                {% endfor %}
 
-    <aside class="quote-box" aria-label="نقل قول درباره تاریخ">
-      "ملتی که تاریخ خود را نداند، محکوم به تکرار اشتباهات آن است. ایران گنجینه‌ای از درس‌های جاودانه است."
-      <span>— پاسگاه تاریخ</span>
-    </aside>
+                {% assign total_count = display_posts.size %}
+                {% if total_count > max_posts %}
+                    {% assign total_count = max_posts %}
+                {% endif %}
+                {% if total_count > posts_per_page %}
+                <button id="load-more-shared" class="load-more-button" aria-label="نمایش پست‌های بیشتر">پست‌های بیشتر...</button>
+                {% endif %}
+            </section>
 
-    <section aria-labelledby="treasures-heading">
-      <h2 id="treasures-heading" class="section-title">
-        <span>🏺</span> گنجینه های ماندگار ایران <span>🏺</span>
-      </h2>
+        </section>
+    </main>
 
-      <div class="card-grid">
-        <div class="history-card">
-          <div class="card-emoji" aria-hidden="true">🗿</div>
-          <h3>تخت جمشید</h3>
-          <p class="card-desc">
-            تخت جمشید (پارسه) تنها یک ویرانه باستانی نیست، بلکه نماد باشکوه‌ترین دوران تمدنی ایران و میراث ملموس هخامنشیان در دل کوه رحمت است. این محوطه که توسط داریوش بزرگ بنیان نهاده شد، نه یک پایتخت مسکونی، بلکه یک مجموعه تشریفاتی عظیم برای برگزاری جشن‌های نوروزی و پذیرایی از نمایندگان اقوام مختلف امپراتوری بود. پلکان‌های ورودی با نقش‌برجسته‌های نمایندگان ملل (از هندی و ایلامی گرفته تا سکایی و مصری) پیام‌آور صلح و همبستگی تحت لوای یک دولت جهانی است. کتیبه‌های میخی و ایلامی، دروازه ملل، کاخ آپادانا با ستون‌های سر به فلک کشیده و آرامگاه شاهانه نقش رستم، همگی گواهی بر نبوغ مهندسی و ذوق هنری هستند که پس از ۲۵۰۰ سال همچنان هیبت و عظمت خود را حفظ کرده‌اند.
-          </p>
-          <span class="tag-static">فارس</span>
-        </div>
+    <footer role="contentinfo">
+        <a href="https://www.pasgah.org/" aria-label="بازگشت به صفحه اصلی وبلاگ پاسگاه" rel="home">
+            <img src="https://www.pasgah.org/blog.svg" alt="وبلاگ پاسگاه">
+        </a>
+    </footer>
 
-        <div class="history-card">
-          <div class="card-emoji" aria-hidden="true">🏹</div>
-          <h3>شاهنامه</h3>
-          <p class="card-desc">
-            شاهنامه حکیم ابوالقاسم فردوسی، ستون فقرات هویت ملی ایرانیان و یکی از بزرگ‌ترین حماسه‌های ادبیات جهان است. این اثر سترگ که در طول سی سال رنج و تلاش سروده شد، تنها مجموعه‌ای از داستان‌های اسطوره‌ای و پهلوانی نیست، بلکه دانشنامه‌ای از خرد، اخلاق و فرهنگ ایران باستان است که زبان فارسی را در برابر هجوم بیگانگان زنده نگه داشت. از نبرد رستم و اسفندیار که آزمون سرنوشت و تراژدی قدرت را به تصویر می‌کشد تا شورش کاوه آهنگر علیه ضحاک که نماد مبارزه با استبداد است، همگی لایه‌های عمیق حکمت و عبرت را برای نسل‌ها به ارمغان آورده‌اند. فردوسی با این کتاب، حافظ و نگهبان زبان پارسی دری شد و اثری خلق کرد که سینه‌به‌سینه روایتگر روح حماسی این سرزمین باقی مانده است.
-          </p>
-          <span class="tag-static">ادبیات</span>
-        </div>
+    <script>
+        (function () {
+            var btn = document.getElementById('load-more-shared');
+            if (!btn) return;
 
-        <div class="history-card">
-          <div class="card-emoji" aria-hidden="true">🕌</div>
-          <h3>میدان نقش جهان</h3>
-          <p class="card-desc">
-            میدان نقش جهان اصفهان، شاهکار بی‌بدیل عصر صفوی و یکی از بزرگ‌ترین میدان‌های تاریخی جهان است که نفس‌ها را در سینه حبس می‌کند. این میدان که در زمان شاه عباس بزرگ طراحی شد، به عنوان قلب تپنده پایتخت صفوی، تلفیقی هوشمندانه از سیاست، اقتصاد، مذهب و زندگی روزمره را در یک قاب معماری موزون به نمایش می‌گذارد. چهار عنصر اصلی میدان، هر کدام داستانی دارند: کاخ عالی‌قاپو با ایوان ستون‌دارش جایگاه تماشای مسابقات چوگان و رژه‌های رسمی بود، مسجد امام (مسجد شاه) با کاشی‌کاری‌های هفت رنگ، اوج شکوه معنوی را فریاد می‌زند، مسجد شیخ لطف‌الله با گنبد ظریف نخودی‌رنگش، خلوتگاهی برای عبادت درباریان بود و سردر قیصریه، نبض بازار و اقتصاد شهری را می‌تپاند. این هماهنگی خارق‌العاده، اصفهان را به «نصف جهان» بدل کرد و الگویی برای شهرسازی مدرن ایرانی شد.
-          </p>
-          <span class="tag-static">اصفهان</span>
-        </div>
-      </div>
-    </section>
-  </main>
+            var hiddenPosts = Array.from(
+                document.querySelectorAll('a.post-card-item.hidden-post')
+            );
+            var batchSize = 10;
+            var offset = 0;
 
-  <footer class="footer">
-    طراحی شده با ♥️
-  </footer>
+            btn.addEventListener('click', function () {
+                var batch = hiddenPosts.slice(offset, offset + batchSize);
+                offset += batchSize;
+
+                batch.forEach(function (post) {
+                    post.classList.remove('hidden-post');
+                    post.removeAttribute('aria-hidden');
+                    post.removeAttribute('tabindex');
+                });
+
+                if (batch.length > 0) {
+                    requestAnimationFrame(function () {
+                        batch[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                }
+
+                if (offset >= hiddenPosts.length) {
+                    btn.hidden = true;
+                }
+            });
+        }());
+    </script>
+
+    {% if page.type == 'post' %}
+    <script>
+        (function () {
+            var dateEl = document.querySelector('.post-date');
+            if (!dateEl) return;
+            var dateStr = dateEl.getAttribute('datetime');
+            if (!dateStr) return;
+            var date = new Date(dateStr);
+            if (isNaN(date)) return;
+            var formatter = new Intl.DateTimeFormat('fa-IR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            var span = dateEl.querySelector('.date-text');
+            if (span) span.textContent = formatter.format(date);
+        }());
+
+        (function () {
+            var tables = document.querySelectorAll('.article-content table');
+            if (tables.length === 0) return;
+
+            var article = tables[0].closest('.article-content');
+            var originalVisibility = '';
+            
+            if (article) {
+                originalVisibility = article.style.visibility;
+                article.style.visibility = 'hidden';
+            }
+
+            tables.forEach(function (table) {
+                if (table.parentElement.classList.contains('table-scroll')) return;
+                var wrapper = document.createElement('figure');
+                wrapper.className = 'table-scroll';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+
+            if (article) {
+                article.style.visibility = originalVisibility || '';
+            }
+        }());
+    </script>
+    {% endif %}
 </body>
 </html>
