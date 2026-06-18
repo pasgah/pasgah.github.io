@@ -124,7 +124,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -467,6 +467,20 @@
       background-color: #000;
     }
 
+    /* استایل‌های بهبودیافته برای صفحه پست */
+    .post-header {
+      margin-bottom: 3rem;
+    }
+
+    .post-title {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.3;
+      color: #1c1917;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
     .post-breadcrumb {
       margin-bottom: 2rem;
     }
@@ -478,6 +492,7 @@
       color: #0d9488;
       text-decoration: none;
       font-size: 0.95rem;
+      font-weight: 500;
     }
 
     .post-breadcrumb a:hover {
@@ -487,42 +502,53 @@
     .post-meta {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-      color: #4a4643;
-      font-size: 0.9rem;
+      color: #1c1917;
+      font-size: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid #f0ebe3;
     }
 
     .post-meta time {
-      color: #0d9488;
+      color: #1c1917;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     .post-author {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.35rem;
+      color: #1c1917;
     }
 
-    .post-author i {
-      color: #ff4d6d;
+    .post-author i,
+    .post-meta time i {
+      font-size: 1.1rem;
+      color: #1c1917;
     }
 
     .article-content {
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #2d2a28;
+      margin-top: 2rem;
     }
 
     .article-content h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      margin: 2rem 0 1rem;
+      margin: 2.5rem 0 1rem;
+      color: #1c1917;
     }
 
     .article-content h3 {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin: 1.5rem 0 0.75rem;
+      margin: 2rem 0 0.75rem;
+      color: #1c1917;
     }
 
     .article-content p {
@@ -532,6 +558,7 @@
     .article-content a {
       color: #0d9488;
       text-decoration: none;
+      font-weight: 500;
     }
 
     .article-content a:hover {
@@ -542,25 +569,35 @@
       max-width: 100%;
       height: auto;
       border-radius: 0.75rem;
-      margin: 1.5rem 0;
+      margin: 2rem 0;
     }
 
     .article-content blockquote {
-      border-right: 3px solid #0d9488;
-      padding-right: 1rem;
-      margin: 1.5rem 0;
+      border-right: 4px solid #0d9488;
+      padding-right: 1.5rem;
+      margin: 2rem 0;
       color: #4a4643;
       font-style: italic;
+      background: #faf8f5;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
     }
 
     .article-content ul,
     .article-content ol {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       padding-right: 2rem;
     }
 
     .article-content li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .other-posts-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 4rem 0 1.5rem;
+      color: #1c1917;
     }
 
     .site-footer {
@@ -653,29 +690,33 @@
   <main class="main-content" role="main">
     <article class="main-content-inner">
       {% if page.type == 'post' %}
-      <nav class="post-breadcrumb" aria-label="مسیر صفحه">
-        <a href="{{ site.url }}/blog">
-          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-          وبلاگ
-        </a>
-      </nav>
+      <header class="post-header">
+        <nav class="post-breadcrumb" aria-label="مسیر صفحه">
+          <a href="{{ site.url }}/blog">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            وبلاگ
+          </a>
+        </nav>
 
-      <h1>{{ page.title }}</h1>
+        <h1 class="post-title">{{ page.title }}</h1>
 
-      <section class="post-meta">
-        <span class="post-author">
-          <i class="fa-solid fa-user" aria-hidden="true"></i>
-          احسان چهری
-        </span>
-        <time datetime="{{ page.date | date_to_xmlschema }}"></time>
-      </section>
+        <section class="post-meta">
+          <span class="post-author">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <span>احسان چهری</span>
+          </span>
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+          </time>
+        </section>
+      </header>
 
       <section class="article-content">
         {{ content }}
       </section>
 
-      <section class="articles-section" style="margin-top: 4rem;">
-        <h2 style="margin-bottom: 1.5rem;">نوشته‌های دیگر</h2>
+      <section class="articles-section">
+        <h2 class="other-posts-title">نوشته‌های دیگر</h2>
         <ul class="article-list">
           {% assign other_posts = site.posts | where_exp: "item", "item.id != page.id" %}
           {% for post in other_posts limit: 3 %}
