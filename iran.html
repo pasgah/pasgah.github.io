@@ -32,10 +32,8 @@
       z-index: 50;
       background-color: #000000;
       border-bottom: 1px solid #2a2a2a;
-      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-        opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-        box-shadow 0.5s ease;
-      will-change: transform, opacity;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+      will-change: transform;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
@@ -45,15 +43,10 @@
 
     .site-header.hidden-nav {
       transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .site-header.visible-nav {
       transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
     }
 
     .header-inner {
@@ -114,8 +107,6 @@
       padding: 2rem 1.5rem;
       z-index: 49;
       border-top: 1px solid #2a2a2a;
-      height: auto;
-      overflow: visible;
     }
 
     .mobile-nav.open {
