@@ -3,46 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>پاسگاه</title>
+  <title>پاسگاه · مرجعی برای اندیشه، فرهنگ و تاریخ</title>
+  <meta name="description" content="پاسگاه، پایگاه اندیشه، فرهنگ و تاریخ ایران" />
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Vazirmatn', system-ui, sans-serif;
+      background-color: #f8f1e9;
+      color: #1e1b1a;
+      line-height: 1.6;
     }
-    .hero-slider {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background-color: rgba(12, 12, 12, 0.95);
+      border-bottom: 1px solid rgba(40, 40, 40, 0.5);
+      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+        opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+        box-shadow 0.5s ease;
+      will-change: transform, opacity;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
-    .slide {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
+
+    .site-header:not(.hidden-nav) {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .site-header.hidden-nav {
+      transform: translateY(-100%);
       opacity: 0;
-      transition: opacity 1.2s ease-in-out;
+      pointer-events: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
-    .slide.active {
+
+    .site-header.visible-nav {
+      transform: translateY(0);
       opacity: 1;
+      pointer-events: auto;
     }
-    .hero-overlay {
-      position: absolute;
+
+    .header-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: white;
+    }
+
+    .brand img {
+      height: 2.5rem;
+      width: auto;
+    }
+
+    .brand span {
+      font-size: 1.875rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .desktop-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .desktop-nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .desktop-nav a:hover {
+      color: #2dd4bf;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
       inset: 0;
-      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75));
-      z-index: 1;
-    }
-    .card {
-      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-    .card:hover {
-      transform: translateY(-10px);
-    }
-    .hamburger span {
+      top: 4.5625rem;
+      background-color: rgba(12, 12, 12, 0.98);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(40, 40, 40, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       transition: all 0.3s ease;
     }
+
+    .mobile-nav.open {
+      display: block;
+    }
+
+    .mobile-nav ul {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+      list-style: none;
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      color: #2dd4bf;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 0.375rem;
+      background: none;
+      border: none;
+      padding: 0.25rem;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 1.75rem;
+      height: 0.125rem;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -52,217 +166,391 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
-    .navbar {
-      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                  opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                  box-shadow 0.5s ease;
-      will-change: transform, opacity;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
     }
-    .navbar:not(.hidden-nav) {
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+
+    @media (min-width: 769px) {
+      .mobile-nav {
+        display: none !important;
+      }
     }
-    .navbar.hidden-nav {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+    .main-content {
+      padding-top: 5.5rem;
+      padding-bottom: 4rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      background-color: white;
     }
-    .navbar.visible-nav {
-      transform: translateY(0);
+
+    .main-content-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .page-title h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #1c1917;
+      line-height: 1.2;
+    }
+
+    .page-title p {
+      font-size: 1.25rem;
+      color: #4a4643;
+      max-width: 42rem;
+      margin: 0.5rem auto 0;
+    }
+
+    @media (min-width: 768px) {
+      .page-title h1 {
+        font-size: 3.75rem;
+      }
+      .page-title p {
+        font-size: 1.5rem;
+      }
+    }
+
+    .articles-section h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #1c1917;
+    }
+
+    .article-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    @media (min-width: 768px) {
+      .article-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .article-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .article-item {
+      background-color: white;
+      border: 1px solid #e5e0db;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .article-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-item figure {
+      margin: 0;
+    }
+
+    .article-item figure img {
+      display: block;
+      width: 100%;
+      height: 14rem;
+      object-fit: cover;
+    }
+
+    .article-item .article-body {
+      padding: 1.75rem;
+    }
+
+    .article-item time {
+      display: inline-block;
+      color: #0d9488;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-item h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .article-item p {
+      color: #4a4643;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-item .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      color: #0d9488;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .article-item .read-more:hover {
+      color: #0f766e;
+    }
+
+    .view-all-wrapper {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: #1c1917;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #000;
+    }
+
+    .site-footer {
+      background-color: #1c1917;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .site-footer img {
+      height: 3.5rem;
+      width: auto;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .site-footer img:hover {
       opacity: 1;
-      pointer-events: auto;
-    }
-    #mobile-menu {
-      transition: all 0.3s ease;
-      backdrop-filter: blur(4px);
-      background-color: rgba(12, 12, 12, 0.98);
     }
   </style>
 </head>
-<body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
+<body>
 
-  <!-- Navbar -->
-  <nav class="navbar visible-nav fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 border-b border-zinc-800/50">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-12">
-        <a href="https://www.pasgah.org/" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
-          <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-10 w-auto" />
-          <span class="text-3xl font-bold tracking-tight text-white">پاسگاه</span>
-        </a>
-        <div class="hidden md:flex items-center gap-10 text-base font-medium text-white">
-          <a href="#" class="hover:text-teal-400 transition-colors">خانه</a>
-          <a href="#" class="hover:text-teal-400 transition-colors">مقالات</a>
-          <a href="#" class="hover:text-teal-400 transition-colors">فرهنگ</a>
-          <a href="#" class="hover:text-teal-400 transition-colors">تاریخ</a>
-          <a href="#" class="hover:text-teal-400 transition-colors">درباره ما</a>
-        </div>
-      </div>
-      <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
-        <span class="block w-7 h-0.5 bg-white"></span>
-        <span class="block w-7 h-0.5 bg-white"></span>
-        <span class="block w-7 h-0.5 bg-white"></span>
+  <header class="site-header visible-nav" role="banner">
+    <section class="header-inner">
+      <a href="https://www.pasgah.org/" class="brand" aria-label="صفحه اصلی پاسگاه">
+        <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
+        <span>پاسگاه</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="منوی اصلی">
+        <ul>
+          <li><a href="#">خانه</a></li>
+          <li><a href="#">مقالات</a></li>
+          <li><a href="#">فرهنگ</a></li>
+          <li><a href="#">تاریخ</a></li>
+          <li><a href="#">درباره ما</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="باز و بسته کردن منو" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] border-b border-zinc-800/50 shadow-2xl">
-      <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-white">
-        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">خانه</a>
-        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">مقالات</a>
-        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">فرهنگ</a>
-        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">تاریخ</a>
-        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">درباره ما</a>
-      </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- Hero Slider -->
-  <div class="hero-slider relative">
-    <div class="slide active" style="background-image: url('https://picsum.photos/id/1015/2000/1400')"></div>
-    <div class="slide" style="background-image: url('https://picsum.photos/id/133/2000/1400')"></div>
-    <div class="slide" style="background-image: url('https://picsum.photos/id/201/2000/1400')"></div>
-    <div class="slide" style="background-image: url('https://picsum.photos/id/866/2000/1400')"></div>
-    <div class="hero-overlay"></div>
-    <div class="absolute inset-0 flex items-center z-10">
-      <div class="max-w-5xl mx-auto px-6 text-center text-white">
-        <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tight mb-6">پاسگاه</h1>
-        <p class="max-w-2xl mx-auto text-2xl opacity-90">مرجعی برای اندیشه، فرهنگ و تاریخ ایران</p>
-      </div>
-    </div>
-  </div>
+    <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
+      <ul>
+        <li><a href="#" class="mobile-link">خانه</a></li>
+        <li><a href="#" class="mobile-link">مقالات</a></li>
+        <li><a href="#" class="mobile-link">فرهنگ</a></li>
+        <li><a href="#" class="mobile-link">تاریخ</a></li>
+        <li><a href="#" class="mobile-link">درباره ما</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Latest Posts -->
-  <section class="py-24 px-6 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-16">آخرین نوشته‌ها</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
-          <img src="https://picsum.photos/id/1015/800/500" class="w-full h-56 object-cover" alt="پست" />
-          <div class="p-7">
-            <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-            <h3 class="text-xl font-bold leading-tight mb-3">کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
-            <p class="text-zinc-600 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
-            <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
-              ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
-            </a>
-          </div>
-        </div>
-        <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
-          <img src="https://picsum.photos/id/133/800/500" class="w-full h-56 object-cover" alt="پست" />
-          <div class="p-7">
-            <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-            <h3 class="text-xl font-bold leading-tight mb-3">معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
-            <p class="text-zinc-600 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
-            <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
-              ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
-            </a>
-          </div>
-        </div>
-        <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
-          <img src="https://picsum.photos/id/201/800/500" class="w-full h-56 object-cover" alt="پست" />
-          <div class="p-7">
-            <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-            <h3 class="text-xl font-bold leading-tight mb-3">هویت فرهنگی ایرانی در عصر دیجیتال</h3>
-            <p class="text-zinc-600 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
-            <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
-              ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-12">
-        <a href="https://www.pasgah.org/" class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-2xl hover:bg-black transition-colors">
-          مشاهده همه نوشته‌ها <i class="fa-solid fa-arrow-left"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+  <main class="main-content" role="main">
+    <article class="main-content-inner">
+      <header class="page-title">
+        <h1>پاسگاه</h1>
+        <p>مرجعی برای اندیشه، فرهنگ و تاریخ ایران</p>
+      </header>
 
-  <!-- ===== فوتر: فقط لوگو ===== -->
-  <footer class="bg-zinc-950 py-16">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="flex justify-center">
-        <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-14 w-auto opacity-90 hover:opacity-100 transition-opacity" />
-      </div>
-    </div>
+      <section class="articles-section" aria-labelledby="latest-heading">
+        <h2 id="latest-heading">آخرین نوشته‌ها</h2>
+
+        <ul class="article-list">
+          <li class="article-item">
+            <article>
+              <figure>
+                <img src="https://picsum.photos/id/1015/800/500" alt="تصویر تزیینی مربوط به کوروش کبیر" loading="lazy" />
+                <figcaption class="sr-only">تصویر تزیینی مقاله کوروش کبیر</figcaption>
+              </figure>
+              <section class="article-body">
+                <time datetime="1404-01-15">فروردین ۱۴۰۴</time>
+                <h3>کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
+                <p>منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست که نشان‌دهندهٔ پیشگامی ایران در عدالت و آزادی‌های بنیادین است.</p>
+                <a href="#" class="read-more">
+                  ادامه مطلب
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+              </section>
+            </article>
+          </li>
+
+          <li class="article-item">
+            <article>
+              <figure>
+                <img src="https://picsum.photos/id/133/800/500" alt="تصویر تزیینی از معماری ایرانی" loading="lazy" />
+                <figcaption class="sr-only">تصویر تزیینی مقاله معماری ایرانی</figcaption>
+              </figure>
+              <section class="article-body">
+                <time datetime="1404-01-12">فروردین ۱۴۰۴</time>
+                <h3>معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
+                <p>سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر؛ از ستون‌های بلند تخت‌جمشید تا طرح‌های مدرن الهام‌گرفته از هندسهٔ ایرانی.</p>
+                <a href="#" class="read-more">
+                  ادامه مطلب
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+              </section>
+            </article>
+          </li>
+
+          <li class="article-item">
+            <article>
+              <figure>
+                <img src="https://picsum.photos/id/201/800/500" alt="تصویر تزیینی از هویت فرهنگی دیجیتال" loading="lazy" />
+                <figcaption class="sr-only">تصویر تزیینی مقاله هویت فرهنگی در عصر دیجیتال</figcaption>
+              </figure>
+              <section class="article-body">
+                <time datetime="1404-01-08">فروردین ۱۴۰۴</time>
+                <h3>هویت فرهنگی ایرانی در عصر دیجیتال</h3>
+                <p>چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟ بررسی چالش‌ها و فرصت‌های فضای مجازی برای ترویج فرهنگ ایرانی.</p>
+                <a href="#" class="read-more">
+                  ادامه مطلب
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </a>
+              </section>
+            </article>
+          </li>
+        </ul>
+
+        <footer class="view-all-wrapper">
+          <a href="https://www.pasgah.org/" class="btn-primary">
+            مشاهده همه نوشته‌ها
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          </a>
+        </footer>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
   </footer>
 
   <script>
-    // ===== اسلایدر =====
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    function showSlide(index) {
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-    }
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-    setInterval(nextSlide, 5000);
+    (function() {
+      'use strict';
 
-    // ===== منوی موبایل =====
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    function toggleMenu() {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('hidden');
-    }
-    hamburger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (!mobileMenu.classList.contains('hidden')) toggleMenu();
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMenu() {
+        const isOpen = mobileMenu.classList.contains('open');
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(!isOpen));
+      }
+
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
       });
-    });
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.classList.contains('hidden') &&
-        !mobileMenu.contains(e.target) &&
-        !hamburger.contains(e.target)) {
-        toggleMenu();
-      }
-    });
 
-    // ===== مدیریت منو هنگام اسکرول =====
-    const navbar = document.querySelector('.navbar');
-    let lastScrollY = window.scrollY;
-    const SCROLL_THRESHOLD = 30;
-
-    function updateNavbarVisibility(currentScrollY) {
-      if (!mobileMenu.classList.contains('hidden')) {
-        toggleMenu();
-      }
-
-      if (currentScrollY > SCROLL_THRESHOLD) {
-        if (currentScrollY > lastScrollY) {
-          navbar.classList.remove('visible-nav');
-          navbar.classList.add('hidden-nav');
-        } else {
-          navbar.classList.remove('hidden-nav');
-          navbar.classList.add('visible-nav');
-        }
-      } else {
-        navbar.classList.remove('hidden-nav');
-        navbar.classList.add('visible-nav');
-      }
-      lastScrollY = currentScrollY;
-    }
-
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          updateNavbarVisibility(window.scrollY);
-          ticking = false;
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (mobileMenu.classList.contains('open')) {
+            toggleMenu();
+          }
         });
-        ticking = true;
-      }
-    });
+      });
 
-    window.addEventListener('load', () => {
-      navbar.classList.add('visible-nav');
-      navbar.classList.remove('hidden-nav');
-    });
+      document.addEventListener('click', function(e) {
+        if (mobileMenu.classList.contains('open') &&
+          !mobileMenu.contains(e.target) &&
+          !hamburger.contains(e.target)) {
+          toggleMenu();
+        }
+      });
+
+      const header = document.querySelector('.site-header');
+      let lastScrollY = window.scrollY;
+      const SCROLL_THRESHOLD = 30;
+      let ticking = false;
+
+      function updateNavbarVisibility(currentScrollY) {
+        if (mobileMenu.classList.contains('open')) {
+          toggleMenu();
+        }
+
+        if (currentScrollY > SCROLL_THRESHOLD) {
+          if (currentScrollY > lastScrollY) {
+            header.classList.remove('visible-nav');
+            header.classList.add('hidden-nav');
+          } else {
+            header.classList.remove('hidden-nav');
+            header.classList.add('visible-nav');
+          }
+        } else {
+          header.classList.remove('hidden-nav');
+          header.classList.add('visible-nav');
+        }
+        lastScrollY = currentScrollY;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateNavbarVisibility(window.scrollY);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      window.addEventListener('load', function() {
+        header.classList.add('visible-nav');
+        header.classList.remove('hidden-nav');
+      });
+
+    })();
   </script>
+
 </body>
 </html>
