@@ -31,7 +31,6 @@
       flex: 1;
     }
 
-    /* ---------- HEADER ---------- */
     .site-header {
       position: fixed;
       top: 0;
@@ -91,7 +90,6 @@
       margin: 0;
       padding: 0;
       direction: rtl;
-      /* راست‌به‌چپ */
     }
 
     .desktop-nav a {
@@ -142,7 +140,6 @@
       transform: rotate(-45deg) translate(6px, -6px);
     }
 
-    /* ---------- منوی موبایل ---------- */
     .mobile-nav-overlay {
       position: fixed;
       top: 0;
@@ -170,7 +167,7 @@
       width: 300px;
       max-width: 80vw;
       background-color: #000000;
-      padding: 5rem 2rem 2rem 2rem;
+      padding: 6.75rem 2rem 2rem 2rem;
       z-index: 49;
       transform: translateX(100%);
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -206,6 +203,13 @@
       color: #2dd4bf;
     }
 
+    .mobile-nav h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
     @media (max-width: 768px) {
       .desktop-nav {
         display: none;
@@ -225,9 +229,7 @@
       }
     }
 
-    /* ---------- محتوای اصلی ---------- */
     .main-content {
-      /* padding-top = ارتفاع هدر (5rem) + 2rem فاصله */
       padding-top: 7rem;
       padding-bottom: 1.5rem;
       padding-left: 1.5rem;
@@ -288,25 +290,25 @@
       object-fit: cover;
     }
 
-    .article-item .article-body {
+    .article-body {
       padding: 1.75rem;
     }
 
-    .article-item time {
+    .article-body time {
       display: inline-block;
       color: #0d9488;
       font-size: 0.875rem;
       margin-bottom: 0.5rem;
     }
 
-    .article-item h3 {
+    .article-body h3 {
       font-size: 1.25rem;
       font-weight: 700;
       line-height: 1.4;
       margin: 0 0 0.5rem 0;
     }
 
-    .article-item p {
+    .article-body p {
       color: #4a4643;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -314,7 +316,7 @@
       overflow: hidden;
     }
 
-    .article-item .read-more {
+    .read-more {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -325,7 +327,7 @@
       transition: color 0.2s;
     }
 
-    .article-item .read-more:hover {
+    .read-more:hover {
       color: #0f766e;
     }
 
@@ -335,7 +337,7 @@
 
     .load-more-wrapper {
       text-align: center;
-      margin-top: 1.5rem;           /* کاهش فاصله از 3rem */
+      margin-top: 1.5rem;
     }
 
     .btn-primary {
@@ -359,7 +361,6 @@
       background-color: #000;
     }
 
-    /* ---------- فوتر ---------- */
     .site-footer {
       background-color: #000000;
       padding: 2rem 1.5rem;
@@ -394,6 +395,7 @@
       font-weight: 400;
       direction: rtl;
       text-align: right;
+      margin: 0;
     }
 
     .footer-credit i {
@@ -416,9 +418,8 @@
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
   <header class="site-header visible-nav" role="banner">
-    <div class="header-inner">
+    <section class="header-inner">
       <a href="https://www.pasgah.org/" class="brand" aria-label="صفحه اصلی پاسگاه">
         <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
       </a>
@@ -438,16 +439,16 @@
         <span></span>
         <span></span>
       </button>
-    </div>
+    </section>
   </header>
 
-  <!-- ========== OVERLAY ========== -->
-  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+  <section class="mobile-nav-overlay" id="mobileOverlay"></section>
 
-  <!-- ========== منوی موبایل ========== -->
   <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
     <ul>
-      <li><a href="#" class="mobile-link">خانه</a></li>
+      <li>
+        <h1><a href="#" class="mobile-link">پاسگاه</a></h1>
+      </li>
       <li><a href="#" class="mobile-link">مقالات</a></li>
       <li><a href="#" class="mobile-link">فرهنگ</a></li>
       <li><a href="#" class="mobile-link">تاریخ</a></li>
@@ -455,10 +456,8 @@
     </ul>
   </nav>
 
-  <!-- ========== MAIN ========== -->
   <main class="main-content" role="main">
     <article class="main-content-inner">
-      <!-- عنوان حذف شده است -->
       <section class="articles-section" aria-label="مطالب وبلاگ پاسگاه">
         <ul class="article-list">
           <li class="article-item">
@@ -467,7 +466,7 @@
                 <img src="https://picsum.photos/id/1015/800/500" alt="تصویر تزیینی مربوط به کوروش کبیر" loading="lazy" />
                 <figcaption class="sr-only">تصویر تزیینی مقاله کوروش کبیر</figcaption>
               </figure>
-              <div class="article-body">
+              <section class="article-body">
                 <time datetime="1404-01-15">فروردین ۱۴۰۴</time>
                 <h3>کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
                 <p>منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست که نشان‌دهندهٔ پیشگامی ایران در عدالت و آزادی‌های بنیادین است.</p>
@@ -475,7 +474,7 @@
                   ادامه مطلب
                   <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 </a>
-              </div>
+              </section>
             </article>
           </li>
           <li class="article-item">
@@ -484,7 +483,7 @@
                 <img src="https://picsum.photos/id/133/800/500" alt="تصویر تزیینی از معماری ایرانی" loading="lazy" />
                 <figcaption class="sr-only">تصویر تزیینی مقاله معماری ایرانی</figcaption>
               </figure>
-              <div class="article-body">
+              <section class="article-body">
                 <time datetime="1404-01-12">فروردین ۱۴۰۴</time>
                 <h3>معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
                 <p>سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر؛ از ستون‌های بلند تخت‌جمشید تا طرح‌های مدرن الهام‌گرفته از هندسهٔ ایرانی.</p>
@@ -492,7 +491,7 @@
                   ادامه مطلب
                   <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 </a>
-              </div>
+              </section>
             </article>
           </li>
           <li class="article-item">
@@ -501,7 +500,7 @@
                 <img src="https://picsum.photos/id/201/800/500" alt="تصویر تزیینی از هویت فرهنگی دیجیتال" loading="lazy" />
                 <figcaption class="sr-only">تصویر تزیینی مقاله هویت فرهنگی در عصر دیجیتال</figcaption>
               </figure>
-              <div class="article-body">
+              <section class="article-body">
                 <time datetime="1404-01-08">فروردین ۱۴۰۴</time>
                 <h3>هویت فرهنگی ایرانی در عصر دیجیتال</h3>
                 <p>چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟ بررسی چالش‌ها و فرصت‌های فضای مجازی برای ترویج فرهنگ ایرانی.</p>
@@ -509,17 +508,16 @@
                   ادامه مطلب
                   <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 </a>
-              </div>
+              </section>
             </article>
           </li>
-          <!-- پست‌های مخفی -->
           <li class="article-item hidden-article">
             <article>
               <figure>
                 <img src="https://picsum.photos/id/104/800/500" alt="تصویر تزیینی نوروز" loading="lazy" />
                 <figcaption class="sr-only">تصویر تزیینی مقاله نوروز</figcaption>
               </figure>
-              <div class="article-body">
+              <section class="article-body">
                 <time datetime="1403-12-29">اسفند ۱۴۰۳</time>
                 <h3>نوروز؛ جشن همبستگی و نوزایی طبیعت</h3>
                 <p>آیین‌های نوروزی از دیرباز نماد همبستگی، امید و پیوند ایرانیان با طبیعت بوده‌اند. نگاهی به ریشه‌های فرهنگی این جشن جهانی.</p>
@@ -527,7 +525,7 @@
                   ادامه مطلب
                   <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 </a>
-              </div>
+              </section>
             </article>
           </li>
           <li class="article-item hidden-article">
@@ -536,7 +534,7 @@
                 <img src="https://picsum.photos/id/163/800/500" alt="تصویر تزیینی شاهنامه" loading="lazy" />
                 <figcaption class="sr-only">تصویر تزیینی مقاله شاهنامه</figcaption>
               </figure>
-              <div class="article-body">
+              <section class="article-body">
                 <time datetime="1403-12-22">اسفند ۱۴۰۳</time>
                 <h3>شاهنامه؛ خردنامه‌ای برای تمام اعصار</h3>
                 <p>حکیم فردوسی با سرایش شاهنامه، نه تنها تاریخ که درس‌های زندگی، جوانمردی و خرد را برای نسل‌های آینده به یادگار گذاشت.</p>
@@ -544,7 +542,7 @@
                   ادامه مطلب
                   <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 </a>
-              </div>
+              </section>
             </article>
           </li>
           <li class="article-item hidden-article">
@@ -553,7 +551,7 @@
                 <img src="https://picsum.photos/id/180/800/500" alt="تصویر تزیینی صنایع دستی" loading="lazy" />
                 <figcaption class="sr-only">تصویر تزیینی مقاله صنایع دستی</figcaption>
               </figure>
-              <div class="article-body">
+              <section class="article-body">
                 <time datetime="1403-12-15">اسفند ۱۴۰۳</time>
                 <h3>صنایع دستی ایران؛ گنجینه‌ای از هنر و هویت</h3>
                 <p>از فرش و میناکاری تا خاتم‌کاری، صنایع دستی ایران بازتابی از فرهنگ غنی و ذوق هنری مردمان این سرزمین است.</p>
@@ -561,34 +559,31 @@
                   ادامه مطلب
                   <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 </a>
-              </div>
+              </section>
             </article>
           </li>
         </ul>
 
-        <div class="load-more-wrapper" id="loadMoreWrapper">
+        <footer class="load-more-wrapper" id="loadMoreWrapper">
           <button class="btn-primary" id="loadMoreBtn">
             بارگذاری بیشتر
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
-        </div>
+        </footer>
       </section>
     </article>
   </main>
 
-  <!-- ========== FOOTER ========== -->
   <footer class="site-footer" role="contentinfo">
-    <div class="footer-logo">
+    <figure class="footer-logo">
       <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
-    </div>
-    <div class="footer-credit">
+    </figure>
+    <p class="footer-credit">
       ساخته شده با <i class="fa-solid fa-heart" aria-hidden="true"></i>
-    </div>
+    </p>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
   <script>
-    // ---------- منوی همبرگری ----------
     (function() {
       'use strict';
       const hamburger = document.getElementById('hamburger');
@@ -625,7 +620,6 @@
         if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu();
       });
 
-      // اسکرول هدر
       const header = document.querySelector('.site-header');
       let lastScrollY = window.scrollY;
       const SCROLL_THRESHOLD = 30;
@@ -664,7 +658,6 @@
       });
     })();
 
-    // ---------- بارگذاری بیشتر پست‌ها ----------
     (function() {
       const loadMoreBtn = document.getElementById('loadMoreBtn');
       const hiddenArticles = document.querySelectorAll('.hidden-article');
