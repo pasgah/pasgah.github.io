@@ -1,246 +1,235 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پاسگاه</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
-        
-        body {
-            font-family: 'Vazirmatn', system-ui, sans-serif;
-        }
-
-        .hero-slider {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .slide {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75));
-            z-index: 1;
-        }
-
-        .card {
-            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .hamburger span {
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پاسگاه</title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+    body {
+      font-family: 'Vazirmatn', system-ui, sans-serif;
+    }
+    .hero-slider {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75));
+      z-index: 1;
+    }
+    .card {
+      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .hamburger span {
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    .navbar {
+      transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+    }
+  </style>
 </head>
 <body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950 border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            
-            <div class="flex items-center gap-12">
-                <a href="https://www.pasgah.org/" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
-                    <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-10 w-auto">
-                    <span class="text-3xl font-bold tracking-tight text-white">پاسگاه</span>
-                </a>
-
-                <div class="hidden md:flex items-center gap-10 text-base font-medium text-white">
-                    <a href="#" class="hover:text-teal-400 transition-colors">خانه</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">مقالات</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">فرهنگ</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">تاریخ</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">درباره ما</a>
-                </div>
-            </div>
-
-            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
-                <span class="block w-7 h-0.5 bg-white"></span>
-                <span class="block w-7 h-0.5 bg-white"></span>
-                <span class="block w-7 h-0.5 bg-white"></span>
-            </button>
+  <!-- Navbar -->
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-zinc-950 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-12">
+        <a href="https://www.pasgah.org/" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-10 w-auto" />
+          <span class="text-3xl font-bold tracking-tight text-white">پاسگاه</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10 text-base font-medium text-white">
+          <a href="#" class="hover:text-teal-400 transition-colors">خانه</a>
+          <a href="#" class="hover:text-teal-400 transition-colors">مقالات</a>
+          <a href="#" class="hover:text-teal-400 transition-colors">فرهنگ</a>
+          <a href="#" class="hover:text-teal-400 transition-colors">تاریخ</a>
+          <a href="#" class="hover:text-teal-400 transition-colors">درباره ما</a>
         </div>
-
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-zinc-950 border-b border-zinc-800 shadow-2xl">
-            <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-white">
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">خانه</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">مقالات</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">فرهنگ</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">تاریخ</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">درباره ما</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Slider -->
-    <div class="hero-slider relative">
-        <div class="slide active" style="background-image: url('https://picsum.photos/id/1015/2000/1400')"></div>
-        <div class="slide" style="background-image: url('https://picsum.photos/id/133/2000/1400')"></div>
-        <div class="slide" style="background-image: url('https://picsum.photos/id/201/2000/1400')"></div>
-        <div class="slide" style="background-image: url('https://picsum.photos/id/866/2000/1400')"></div>
-
-        <div class="hero-overlay"></div>
-
-        <div class="absolute inset-0 flex items-center z-10">
-            <div class="max-w-5xl mx-auto px-6 text-center text-white">
-                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tight mb-6">
-                    پاسگاه
-                </h1>
-                <p class="max-w-2xl mx-auto text-2xl opacity-90">
-                    مرجعی برای اندیشه، فرهنگ و تاریخ ایران
-                </p>
-            </div>
-        </div>
+      </div>
+      <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
+        <span class="block w-7 h-0.5 bg-white"></span>
+        <span class="block w-7 h-0.5 bg-white"></span>
+        <span class="block w-7 h-0.5 bg-white"></span>
+      </button>
     </div>
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-zinc-950 border-b border-zinc-800 shadow-2xl">
+      <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-white">
+        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">خانه</a>
+        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">مقالات</a>
+        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">فرهنگ</a>
+        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">تاریخ</a>
+        <a href="#" class="mobile-link hover:text-teal-400 transition-colors">درباره ما</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Latest Posts -->
-    <section class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16">آخرین نوشته‌ها</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
-                    <img src="https://picsum.photos/id/1015/800/500" class="w-full h-56 object-cover" alt="پست">
-                    <div class="p-7">
-                        <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-                        <h3 class="text-xl font-bold leading-tight mb-3">کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
-                        <p class="text-zinc-600 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
-                        <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
-                            ادامه مطلب
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
+  <!-- Hero Slider -->
+  <div class="hero-slider relative">
+    <div class="slide active" style="background-image: url('https://picsum.photos/id/1015/2000/1400')"></div>
+    <div class="slide" style="background-image: url('https://picsum.photos/id/133/2000/1400')"></div>
+    <div class="slide" style="background-image: url('https://picsum.photos/id/201/2000/1400')"></div>
+    <div class="slide" style="background-image: url('https://picsum.photos/id/866/2000/1400')"></div>
+    <div class="hero-overlay"></div>
+    <div class="absolute inset-0 flex items-center z-10">
+      <div class="max-w-5xl mx-auto px-6 text-center text-white">
+        <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tight mb-6">پاسگاه</h1>
+        <p class="max-w-2xl mx-auto text-2xl opacity-90">مرجعی برای اندیشه، فرهنگ و تاریخ ایران</p>
+      </div>
+    </div>
+  </div>
 
-                <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
-                    <img src="https://picsum.photos/id/133/800/500" class="w-full h-56 object-cover" alt="پست">
-                    <div class="p-7">
-                        <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-                        <h3 class="text-xl font-bold leading-tight mb-3">معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
-                        <p class="text-zinc-600 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
-                        <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
-                            ادامه مطلب
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
-                    <img src="https://picsum.photos/id/201/800/500" class="w-full h-56 object-cover" alt="پست">
-                    <div class="p-7">
-                        <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-                        <h3 class="text-xl font-bold leading-tight mb-3">هویت فرهنگی ایرانی در عصر دیجیتال</h3>
-                        <p class="text-zinc-600 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
-                        <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
-                            ادامه مطلب
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- دکمه مشاهده همه نوشته‌ها -->
-            <div class="text-center mt-12">
-                <a href="https://www.pasgah.org/" 
-                   class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-2xl hover:bg-black transition-colors">
-                    مشاهده همه نوشته‌ها
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-            </div>
+  <!-- Latest Posts -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-16">آخرین نوشته‌ها</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+          <img src="https://picsum.photos/id/1015/800/500" class="w-full h-56 object-cover" alt="پست" />
+          <div class="p-7">
+            <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
+            <h3 class="text-xl font-bold leading-tight mb-3">کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
+            <p class="text-zinc-600 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
+            <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
+              ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-zinc-950 text-white py-20">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="mb-6">
-                <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-12 w-auto mx-auto">
-            </div>
-            <p class="text-zinc-400">پاسگاه — مرجعی برای اندیشه و فرهنگ</p>
-            <p class="text-xs text-zinc-500 mt-8">© ۱۴۰۴ پاسگاه. تمامی حقوق محفوظ است.</p>
+        <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+          <img src="https://picsum.photos/id/133/800/500" class="w-full h-56 object-cover" alt="پست" />
+          <div class="p-7">
+            <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
+            <h3 class="text-xl font-bold leading-tight mb-3">معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
+            <p class="text-zinc-600 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
+            <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
+              ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
         </div>
-    </footer>
+        <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+          <img src="https://picsum.photos/id/201/800/500" class="w-full h-56 object-cover" alt="پست" />
+          <div class="p-7">
+            <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
+            <h3 class="text-xl font-bold leading-tight mb-3">هویت فرهنگی ایرانی در عصر دیجیتال</h3>
+            <p class="text-zinc-600 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
+            <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 hover:text-teal-700 font-medium">
+              ادامه مطلب <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://www.pasgah.org/" class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-2xl hover:bg-black transition-colors">
+          مشاهده همه نوشته‌ها <i class="fa-solid fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Simple Slider
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+  <!-- Footer -->
+  <footer class="bg-zinc-950 text-white py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="mb-6">
+        <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-12 w-auto mx-auto" />
+      </div>
+      <p class="text-zinc-400">پاسگاه — مرجعی برای اندیشه و فرهنگ</p>
+      <p class="text-xs text-zinc-500 mt-8">© ۱۴۰۴ پاسگاه. تمامی حقوق محفوظ است.</p>
+    </div>
+  </footer>
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
+  <script>
+    // ===== اسلایدر =====
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(index) {
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    setInterval(nextSlide, 5000);
+
+    // ===== منوی موبایل =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('hidden');
+    }
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (!mobileMenu.classList.contains('hidden')) toggleMenu();
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') &&
+        !mobileMenu.contains(e.target) &&
+        !hamburger.contains(e.target)) {
+        toggleMenu();
+      }
+    });
+
+    // ===== محو و نمایان شدن منو هنگام اسکرول (اصلی) =====
+    const navbar = document.querySelector('.navbar');
+    let lastScrollY = window.scrollY;
+    const SCROLL_THRESHOLD = 50;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      // ----- بستن خودکار منوی موبایل هنگام اسکرول (بهبود UX) -----
+      if (!mobileMenu.classList.contains('hidden')) {
+        toggleMenu(); // منوی همبرگری را می‌بندد
+      }
+
+      // ----- رفتار محو/ظاهر منوی اصلی -----
+      if (currentScrollY > SCROLL_THRESHOLD) {
+        if (currentScrollY > lastScrollY) {
+          navbar.style.transform = 'translateY(-100%)';
+          navbar.style.opacity = '0';
+        } else {
+          navbar.style.transform = 'translateY(0)';
+          navbar.style.opacity = '1';
         }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 5000);
-
-        // Mobile Menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('hidden');
-        }
-
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.classList.contains('hidden') && 
-                !mobileMenu.contains(e.target) && 
-                !hamburger.contains(e.target)) {
-                toggleMenu();
-            }
-        });
-    </script>
+      } else {
+        navbar.style.transform = 'translateY(0)';
+        navbar.style.opacity = '1';
+      }
+      lastScrollY = currentScrollY;
+    });
+  </script>
 </body>
 </html>
