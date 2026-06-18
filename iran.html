@@ -70,38 +70,40 @@
 </head>
 <body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#e6d9c8]">
+    <!-- Navbar - Black -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950 border-b border-zinc-800">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             
             <div class="flex items-center gap-12">
                 <div class="flex items-center gap-3">
                     <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-10 w-auto">
-                    <span class="text-3xl font-bold tracking-tight text-[#1f2e29]">ایران</span>
+                    <span class="text-3xl font-bold tracking-tight text-white">ایران</span>
                 </div>
 
-                <div class="hidden md:flex items-center gap-10 text-base font-medium">
-                    <a href="#geography" class="hover:text-teal-700 transition-colors">جغرافیا</a>
-                    <a href="#history" class="hover:text-teal-700 transition-colors">تاریخ</a>
-                    <a href="#culture" class="hover:text-teal-700 transition-colors">فرهنگ</a>
-                    <a href="#heritage" class="hover:text-teal-700 transition-colors">میراث</a>
-                    <a href="#people" class="hover:text-teal-700 transition-colors">مردم</a>
+                <div class="hidden md:flex items-center gap-10 text-base font-medium text-white">
+                    <a href="#geography" class="hover:text-teal-400 transition-colors">جغرافیا</a>
+                    <a href="#history" class="hover:text-teal-400 transition-colors">تاریخ</a>
+                    <a href="#culture" class="hover:text-teal-400 transition-colors">فرهنگ</a>
+                    <a href="#heritage" class="hover:text-teal-400 transition-colors">میراث</a>
+                    <a href="#people" class="hover:text-teal-400 transition-colors">مردم</a>
                 </div>
             </div>
 
             <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
-                <span class="block w-7 h-0.5 bg-zinc-800"></span>
-                <span class="block w-7 h-0.5 bg-zinc-800"></span>
-                <span class="block w-7 h-0.5 bg-zinc-800"></span>
+                <span class="block w-7 h-0.5 bg-white"></span>
+                <span class="block w-7 h-0.5 bg-white"></span>
+                <span class="block w-7 h-0.5 bg-white"></span>
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-white border-b border-[#e6d9c8] shadow-2xl">
-            <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6">
-                <a href="#geography" class="mobile-link hover:text-teal-700 transition-colors">جغرافیا</a>
-                <a href="#history" class="mobile-link hover:text-teal-700 transition-colors">تاریخ</a>
-                <a href="#culture" class="mobile-link hover:text-teal-700 transition-colors">فرهنگ</a>
-                <a href="#heritage" class="mobile-link hover:text-teal-700 transition-colors">میراث</a>
-                <a href="#people" class="mobile-link hover:text-teal-700 transition-colors">مردم</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-zinc-950 border-b border-zinc-800 shadow-2xl">
+            <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-white">
+                <a href="#geography" class="mobile-link hover:text-teal-400 transition-colors">جغرافیا</a>
+                <a href="#history" class="mobile-link hover:text-teal-400 transition-colors">تاریخ</a>
+                <a href="#culture" class="mobile-link hover:text-teal-400 transition-colors">فرهنگ</a>
+                <a href="#heritage" class="mobile-link hover:text-teal-400 transition-colors">میراث</a>
+                <a href="#people" class="mobile-link hover:text-teal-400 transition-colors">مردم</a>
             </div>
         </div>
     </nav>
