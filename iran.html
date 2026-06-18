@@ -71,7 +71,7 @@
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" 
                         class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-                    <i id="theme-icon" class="fa-solid fa-moon text-xl text-zinc-700 dark:text-amber-400"></i>
+                    <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
                 </button>
 
                 <!-- Hamburger -->
@@ -121,12 +121,11 @@
                         <p class="text-zinc-600 dark:text-zinc-400 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
                         <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 dark:text-teal-400 hover:text-teal-700 font-medium">
                             ادامه مطلب
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- دو پست دیگر مشابه -->
                 <div class="card bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/133/800/500" class="w-full h-56 object-cover" alt="پست">
                     <div class="p-7">
@@ -135,7 +134,7 @@
                         <p class="text-zinc-600 dark:text-zinc-400 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
                         <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 dark:text-teal-400 hover:text-teal-700 font-medium">
                             ادامه مطلب
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
@@ -148,7 +147,7 @@
                         <p class="text-zinc-600 dark:text-zinc-400 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
                         <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 dark:text-teal-400 hover:text-teal-700 font-medium">
                             ادامه مطلب
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
@@ -158,7 +157,7 @@
                 <a href="https://www.pasgah.org/" 
                    class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white dark:text-zinc-900 text-white rounded-2xl hover:bg-black dark:hover:bg-zinc-100 transition-colors">
                     مشاهده همه نوشته‌ها
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
                 </a>
             </div>
         </div>
@@ -182,30 +181,30 @@
         const themeIcon = document.getElementById('theme-icon');
 
         // Theme Toggle
-        function setTheme(isDark) {
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
             if (isDark) {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.theme = 'light';
+            } else {
                 document.documentElement.classList.add('dark');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
                 localStorage.theme = 'dark';
-            } else {
-                document.documentElement.classList.remove('dark');
-                themeIcon.classList.add('fa-moon');
-                themeIcon.classList.remove('fa-sun');
-                localStorage.theme = 'light';
             }
         }
 
         // Load saved theme
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            setTheme(true);
-        } else {
-            setTheme(false);
+        if (localStorage.theme === 'dark' || 
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
 
-        themeToggle.addEventListener('click', () => {
-            setTheme(!document.documentElement.classList.contains('dark'));
-        });
+        themeToggle.addEventListener('click', toggleTheme);
 
         // Mobile Menu
         function toggleMenu() {
@@ -220,9 +219,7 @@
 
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    toggleMenu();
-                }
+                if (!mobileMenu.classList.contains('hidden')) toggleMenu();
             });
         });
 
