@@ -55,7 +55,6 @@
             <div class="flex items-center gap-12">
                 <a href="https://www.pasgah.org/" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
                     <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-10 w-auto">
-                    <span class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">پاسگاه</span>
                 </a>
 
                 <div class="hidden md:flex items-center gap-10 text-base font-medium text-zinc-700 dark:text-zinc-200">
@@ -67,20 +66,14 @@
                 </div>
             </div>
 
-            <div class="flex items-center gap-4">
-                <button id="theme-toggle" 
-                        class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-                    <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
-                </button>
-
-                <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
-                    <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
-                    <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
-                    <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
-                </button>
-            </div>
+            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
+                <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
+                <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
+                <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
+            </button>
         </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 shadow-2xl">
             <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-zinc-700 dark:text-zinc-200">
                 <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">خانه</a>
@@ -164,40 +157,6 @@
     </footer>
 
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            const isDark = html.classList.contains('dark');
-            
-            if (isDark) {
-                html.classList.remove('dark');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.theme = 'light';
-            } else {
-                html.classList.add('dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.theme = 'dark';
-            }
-        }
-
-        // Initialize theme on load
-        function initTheme() {
-            if (localStorage.theme === 'dark' || 
-                (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            }
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
-        initTheme();
-
-        // Mobile Menu (بدون تغییر)
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
 
