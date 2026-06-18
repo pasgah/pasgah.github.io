@@ -51,19 +51,31 @@
       padding: 1.25rem 1.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      /* منو و لوگو در چپ، همبرگر در راست */
+      gap: 2rem;
     }
 
+    /* لوگو در چپ */
     .brand {
       display: flex;
       align-items: center;
       text-decoration: none;
       color: white;
+      flex-shrink: 0;
     }
 
     .brand img {
       height: 2.5rem;
       width: auto;
+    }
+
+    /* منوی دسکتاپ - چسبیده به لوگو در چپ */
+    .desktop-nav {
+      flex: 1;
+      /* فضای باقی‌مانده را پر می‌کند ولی items در سمت چپ می‌مانند */
+      display: flex;
+      justify-content: flex-start;
     }
 
     .desktop-nav ul {
@@ -75,18 +87,22 @@
       font-size: 1rem;
       margin: 0;
       padding: 0;
+      direction: ltr;
+      /* برای نمایش از چپ به راست (شروع از سمت لوگو) */
     }
 
     .desktop-nav a {
       color: white;
       text-decoration: none;
       transition: color 0.2s;
+      white-space: nowrap;
     }
 
     .desktop-nav a:hover {
       color: #2dd4bf;
     }
 
+    /* همبرگر در راست */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -95,6 +111,9 @@
       border: none;
       padding: 0.25rem;
       cursor: pointer;
+      margin-right: auto;
+      /* چسبیدن به راست */
+      flex-shrink: 0;
     }
 
     .hamburger span {
@@ -186,6 +205,10 @@
       .hamburger {
         display: flex;
       }
+      .header-inner {
+        justify-content: space-between;
+        /* در موبایل لوگو چپ، همبرگر راست */
+      }
     }
 
     @media (min-width: 769px) {
@@ -209,7 +232,6 @@
       margin: 0 auto;
     }
 
-    /* عنوان "وبلاگ پاسگاه" با فونت کوچک‌تر */
     .page-headline {
       text-align: center;
       margin-bottom: 3rem;
@@ -217,7 +239,6 @@
 
     .page-headline h1 {
       font-size: 2.25rem;
-      /* قبلاً 3rem بود */
       font-weight: 700;
       letter-spacing: -0.025em;
       color: #1c1917;
@@ -228,7 +249,6 @@
     @media (min-width: 768px) {
       .page-headline h1 {
         font-size: 2.75rem;
-        /* قبلاً 3.75rem بود */
       }
     }
 
@@ -343,7 +363,7 @@
       background-color: #000;
     }
 
-    /* ---------- فوتر: لوگو چپ، متن راست ---------- */
+    /* ---------- فوتر: لوگو در سمت راست، نوشته در سمت چپ ---------- */
     .site-footer {
       background-color: #000000;
       padding: 2rem 1.5rem;
@@ -352,6 +372,8 @@
       justify-content: space-between;
       max-width: 80rem;
       margin: 0 auto;
+      flex-direction: row-reverse;
+      /* باعث می‌شود اولین عنصر (نوشته) به راست و دومی (لوگو) به چپ برود */
     }
 
     .footer-logo {
@@ -374,9 +396,10 @@
       color: #ffffff;
       font-size: 1rem;
       font-weight: 400;
-      direction: ltr;
+      direction: rtl;
+      /* راست‌به‌چپ برای نمایش درست متن فارسی */
       text-align: right;
-      /* راست‌چین برای راست‌ترین حالت */
+      /* راست‌چین */
     }
 
     .footer-credit i {
@@ -386,7 +409,8 @@
 
     @media (max-width: 600px) {
       .site-footer {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        /* در موبایل لوگو پایین، نوشته بالا */
         gap: 1rem;
         text-align: center;
       }
@@ -411,7 +435,7 @@
         <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
       </a>
 
-      <!-- منوی دسکتاپ (وسط) -->
+      <!-- منوی دسکتاپ (چسبیده به لوگو، از چپ شروع می‌شود) -->
       <nav class="desktop-nav" aria-label="منوی اصلی">
         <ul>
           <li><a href="#">خانه</a></li>
@@ -524,13 +548,13 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="site-footer" role="contentinfo">
-    <!-- لوگو در چپ -->
-    <div class="footer-logo">
-      <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
-    </div>
-    <!-- متن "ساخته شده با ♥️" در راست -->
+    <!-- نوشته در سمت راست (چپ صفحه در RTL) -->
     <div class="footer-credit">
       ساخته شده با <i class="fa-solid fa-heart" aria-hidden="true"></i>
+    </div>
+    <!-- لوگو در سمت چپ (راست صفحه در RTL) -->
+    <div class="footer-logo">
+      <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
     </div>
   </footer>
 
