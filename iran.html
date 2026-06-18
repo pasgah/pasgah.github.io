@@ -18,7 +18,7 @@
     }
 
     :root {
-      --header-height: 5rem; /* ارتفاع هدر (padding + لوگو) */
+      --header-height: 5rem; /* ارتفاع تقریبی هدر */
     }
 
     body {
@@ -73,7 +73,7 @@
       padding: 1.25rem 1.5rem;
       display: flex;
       align-items: center;
-      justify-content: flex-end; /* لوگو و منو در چپ (پایان) */
+      justify-content: flex-start; /* بازگشت به حالت اولیه */
       gap: 2rem;
     }
 
@@ -134,8 +134,8 @@
       border: none;
       padding: 0.25rem;
       cursor: pointer;
+      margin-right: auto; /* بازگشت به حالت اولیه: همبرگر به سمت راست */
       flex-shrink: 0;
-      margin-left: auto; /* چسباندن همبرگر به راست */
     }
 
     .hamburger span {
@@ -246,7 +246,7 @@
     }
 
     .main-content {
-      padding-top: calc(var(--header-height) + 2rem); /* فاصله 2rem از هدر */
+      padding-top: calc(var(--header-height) + 2rem);
       padding-bottom: 1.5rem;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
@@ -386,7 +386,7 @@
       max-width: 80rem;
       margin: 0 auto;
       width: 100%;
-      flex-direction: row;
+      flex-direction: row; /* لوگو سمت راست (اول)، نوشته سمت چپ (دوم) */
     }
 
     .footer-logo {
