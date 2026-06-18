@@ -373,14 +373,17 @@
       border-radius: 1.5rem;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      display: block;
-      text-decoration: none;
-      color: inherit;
     }
 
     .article-item:hover {
       transform: translateY(-10px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
 
     .article-item figure {
@@ -427,7 +430,6 @@
       margin-top: 1.5rem;
       color: #0d9488;
       font-weight: 400;
-      text-decoration: none;
       transition: color 0.2s;
     }
 
@@ -463,6 +465,102 @@
 
     .btn-primary:hover {
       background-color: #000;
+    }
+
+    .post-breadcrumb {
+      margin-bottom: 2rem;
+    }
+
+    .post-breadcrumb a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #0d9488;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .post-breadcrumb a:hover {
+      color: #0f766e;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      color: #4a4643;
+      font-size: 0.9rem;
+    }
+
+    .post-meta time {
+      color: #0d9488;
+    }
+
+    .post-author {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .post-author i {
+      color: #ff4d6d;
+    }
+
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .article-content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 2rem 0 1rem;
+    }
+
+    .article-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-content a {
+      color: #0d9488;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    .article-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .article-content blockquote {
+      border-right: 3px solid #0d9488;
+      padding-right: 1rem;
+      margin: 1.5rem 0;
+      color: #4a4643;
+      font-style: italic;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 1rem 0;
+      padding-right: 2rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.5rem;
     }
 
     .site-footer {
@@ -554,29 +652,74 @@
 
   <main class="main-content" role="main">
     <article class="main-content-inner">
+      {% if page.type == 'post' %}
+      <nav class="post-breadcrumb" aria-label="مسیر صفحه">
+        <a href="{{ site.url }}/blog">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          وبلاگ
+        </a>
+      </nav>
+
+      <h1>{{ page.title }}</h1>
+
+      <section class="post-meta">
+        <span class="post-author">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          احسان چهری
+        </span>
+        <time datetime="{{ page.date | date_to_xmlschema }}"></time>
+      </section>
+
+      <section class="article-content">
+        {{ content }}
+      </section>
+
+      <section class="articles-section" style="margin-top: 4rem;">
+        <h2 style="margin-bottom: 1.5rem;">نوشته‌های دیگر</h2>
+        <ul class="article-list">
+          {% assign other_posts = site.posts | where_exp: "item", "item.id != page.id" %}
+          {% for post in other_posts limit: 3 %}
+          <li class="article-item">
+            <a href="{{ post.url | relative_url }}" class="article-link">
+              {% if post.image %}
+              <figure>
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" />
+                <figcaption class="sr-only">{{ post.title }}</figcaption>
+              </figure>
+              {% endif %}
+              <section class="article-body">
+                <time datetime="{{ post.date | date_to_xmlschema }}"></time>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+              </section>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      {% else %}
       <section class="articles-section" aria-label="مطالب وبلاگ پاسگاه">
         <ul class="article-list">
           {% assign posts_per_page = 10 %}
           {% for post in site.posts %}
           <li class="article-item {% if forloop.index > posts_per_page %}hidden-article{% endif %}">
-            <a href="{{ post.url | relative_url }}">
-              <article>
-                {% if post.image %}
-                <figure>
-                  <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" />
-                  <figcaption class="sr-only">{{ post.title }}</figcaption>
-                </figure>
-                {% endif %}
-                <section class="article-body">
-                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-                  <h3>{{ post.title }}</h3>
-                  <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-                  <span class="read-more">
-                    ادامه مطلب
-                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                  </span>
-                </section>
-              </article>
+            <a href="{{ post.url | relative_url }}" class="article-link">
+              {% if post.image %}
+              <figure>
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" />
+                <figcaption class="sr-only">{{ post.title }}</figcaption>
+              </figure>
+              {% endif %}
+              <section class="article-body">
+                <time datetime="{{ post.date | date_to_xmlschema }}"></time>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+                <span class="read-more">
+                  ادامه مطلب
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </span>
+              </section>
             </a>
           </li>
           {% endfor %}
@@ -591,6 +734,7 @@
         </footer>
         {% endif %}
       </section>
+      {% endif %}
     </article>
   </main>
 
@@ -606,6 +750,20 @@
   <script>
     (function() {
       'use strict';
+
+      function formatJalaliDate(element) {
+        const datetime = element.getAttribute('datetime');
+        if (!datetime) return;
+        const date = new Date(datetime);
+        if (isNaN(date)) return;
+        element.textContent = new Intl.DateTimeFormat('fa-IR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }).format(date);
+      }
+
+      document.querySelectorAll('time').forEach(formatJalaliDate);
 
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
