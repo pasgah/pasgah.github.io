@@ -51,7 +51,7 @@
             transform: translateY(-10px);
         }
 
-        /* Mobile Menu */
+        /* Mobile Hamburger */
         .hamburger span {
             transition: all 0.3s ease;
         }
@@ -73,25 +73,28 @@
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#e6d9c8]">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             
-            <!-- Logo -->
-            <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-3xl shadow-inner">🇮🇷</div>
-                <span class="text-3xl font-bold tracking-tight text-[#1f2e29]">ایران</span>
-            </div>
+            <!-- Logo + Menu Container -->
+            <div class="flex items-center gap-12">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-3xl shadow-inner">🇮🇷</div>
+                    <span class="text-3xl font-bold tracking-tight text-[#1f2e29]">ایران</span>
+                </div>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-10 text-base font-medium">
-                <a href="#geography" class="hover:text-teal-700 transition-colors">جغرافیا</a>
-                <a href="#history" class="hover:text-teal-700 transition-colors">تاریخ</a>
-                <a href="#culture" class="hover:text-teal-700 transition-colors">فرهنگ</a>
-                <a href="#heritage" class="hover:text-teal-700 transition-colors">میراث</a>
-                <a href="#people" class="hover:text-teal-700 transition-colors">مردم</a>
+                <!-- Desktop Menu - Right next to Logo -->
+                <div class="hidden md:flex items-center gap-10 text-base font-medium">
+                    <a href="#geography" class="hover:text-teal-700 transition-colors">جغرافیا</a>
+                    <a href="#history" class="hover:text-teal-700 transition-colors">تاریخ</a>
+                    <a href="#culture" class="hover:text-teal-700 transition-colors">فرهنگ</a>
+                    <a href="#heritage" class="hover:text-teal-700 transition-colors">میراث</a>
+                    <a href="#people" class="hover:text-teal-700 transition-colors">مردم</a>
+                </div>
             </div>
 
             <!-- Mobile Hamburger -->
-            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
+            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5">
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
@@ -250,8 +253,7 @@
                 <div>
                     <h3 class="text-3xl font-semibold mb-8">مردم ایران</h3>
                     <p class="text-zinc-600 leading-relaxed">
-                        مردمی مهمان‌نواز با تنوع قومی و زبانی غنی (فارس، آذری، کرد، لر، بلوچ، عرب و …). 
-                        زبان رسمی فارسی و دین غالب اسلام است.
+                        مردمی مهمان‌نواز با تنوع قومی و زبانی غنی. زبان رسمی فارسی و دین غالب اسلام است.
                     </p>
                 </div>
                 <div>
@@ -259,7 +261,7 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="bg-white rounded-2xl p-6 text-center">چلوکباب</div>
                         <div class="bg-white rounded-2xl p-6 text-center">قورمه سبزی</div>
-                        <div class="bg-white rounded-2xl p-6 text-center">زرشک پلو با مرغ</div>
+                        <div class="bg-white rounded-2xl p-6 text-center">زرشک پلو</div>
                         <div class="bg-white rounded-2xl p-6 text-center">میرزا قاسمی</div>
                     </div>
                 </div>
@@ -292,7 +294,6 @@
             }
         });
 
-        // Close mobile menu on link click
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
