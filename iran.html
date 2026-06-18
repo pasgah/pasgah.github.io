@@ -75,15 +75,14 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#e6d9c8]">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             
-            <!-- Logo + Menu Container -->
+            <!-- Logo + Desktop Menu -->
             <div class="flex items-center gap-12">
-                <!-- Logo -->
                 <div class="flex items-center gap-3">
                     <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-3xl shadow-inner">🇮🇷</div>
                     <span class="text-3xl font-bold tracking-tight text-[#1f2e29]">ایران</span>
                 </div>
 
-                <!-- Desktop Menu - Right next to Logo -->
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-10 text-base font-medium">
                     <a href="#geography" class="hover:text-teal-700 transition-colors">جغرافیا</a>
                     <a href="#history" class="hover:text-teal-700 transition-colors">تاریخ</a>
@@ -94,7 +93,7 @@
             </div>
 
             <!-- Mobile Hamburger -->
-            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5">
+            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
@@ -102,7 +101,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed top-[73px] left-0 right-0 bg-white border-b border-[#e6d9c8] shadow-xl">
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-white border-b border-[#e6d9c8] shadow-2xl">
             <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6">
                 <a href="#geography" class="mobile-link hover:text-teal-700 transition-colors">جغرافیا</a>
                 <a href="#history" class="mobile-link hover:text-teal-700 transition-colors">تاریخ</a>
@@ -182,17 +181,17 @@
                 <div class="card bg-white border border-zinc-100 rounded-3xl p-8">
                     <div class="text-4xl mb-4">🏛️</div>
                     <h3 class="text-2xl font-semibold mb-3">هخامنشیان</h3>
-                    <p class="text-zinc-600">بزرگ‌ترین امپراتوری باستانی جهان توسط کوروش کبیر بنیان نهاده شد. منشور کوروش اولین سند حقوق بشر شناخته می‌شود.</p>
+                    <p class="text-zinc-600">بزرگ‌ترین امپراتوری باستانی جهان توسط کوروش کبیر بنیان نهاده شد.</p>
                 </div>
                 <div class="card bg-white border border-zinc-100 rounded-3xl p-8">
                     <div class="text-4xl mb-4">📜</div>
-                    <h3 class="text-2xl font-semibold mb-3">ساسانیان و پیش از اسلام</h3>
+                    <h3 class="text-2xl font-semibold mb-3">ساسانیان</h3>
                     <p class="text-zinc-600">دوران شکوفایی هنر، علم و فرهنگ ایرانی.</p>
                 </div>
                 <div class="card bg-white border border-zinc-100 rounded-3xl p-8">
                     <div class="text-4xl mb-4">🕌</div>
                     <h3 class="text-2xl font-semibold mb-3">پس از اسلام</h3>
-                    <p class="text-zinc-600">دوران صفویه، قاجار و پهلوی تا جمهوری اسلامی امروز.</p>
+                    <p class="text-zinc-600">دوران صفویه تا جمهوری اسلامی امروز.</p>
                 </div>
             </div>
         </div>
@@ -206,17 +205,17 @@
                 <div class="card bg-white rounded-3xl p-10">
                     <div class="text-6xl mb-6">📖</div>
                     <h3 class="text-3xl font-bold mb-3">ادبیات</h3>
-                    <p class="text-zinc-600">شاهنامه فردوسی، غزلیات حافظ و سعدی، رباعیات خیام — میراث ادبی جهان.</p>
+                    <p class="text-zinc-600">شاهنامه، حافظ، سعدی و خیام — میراث ادبی جهان.</p>
                 </div>
                 <div class="card bg-white rounded-3xl p-10">
                     <div class="text-6xl mb-6">🎵</div>
                     <h3 class="text-3xl font-bold mb-3">موسیقی</h3>
-                    <p class="text-zinc-600">موسیقی سنتی ایرانی با دستگاه‌ها، آواز و سازهای اصیل مانند تار، سنتور و نی.</p>
+                    <p class="text-zinc-600">موسیقی سنتی با سازهای اصیل ایرانی.</p>
                 </div>
                 <div class="card bg-white rounded-3xl p-10">
                     <div class="text-6xl mb-6">🧶</div>
                     <h3 class="text-3xl font-bold mb-3">هنرهای دستی</h3>
-                    <p class="text-zinc-600">فرش‌بافی، مینیاتور، کاشی‌کاری و صنایع دستی با شهرت جهانی.</p>
+                    <p class="text-zinc-600">فرش‌بافی، مینیاتور و کاشی‌کاری.</p>
                 </div>
             </div>
         </div>
@@ -225,20 +224,20 @@
     <!-- Heritage -->
     <section id="heritage" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <h2 class="section-title text-5xl font-bold text-center mb-16">میراث فرهنگی و طبیعی</h2>
+            <h2 class="section-title text-5xl font-bold text-center mb-16">میراث فرهنگی</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="card bg-zinc-50 border border-zinc-100 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/1015/800/500" class="w-full h-72 object-cover" alt="تخت جمشید">
                     <div class="p-8">
-                        <h3 class="font-bold text-2xl">تخت جمشید (پرسپولیس)</h3>
-                        <p class="text-zinc-600 mt-3">پایتخت تشریفاتی هخامنشیان و یکی از مهم‌ترین بناهای تاریخی جهان.</p>
+                        <h3 class="font-bold text-2xl">تخت جمشید</h3>
+                        <p class="text-zinc-600 mt-3">یکی از مهم‌ترین بناهای تاریخی جهان.</p>
                     </div>
                 </div>
                 <div class="card bg-zinc-50 border border-zinc-100 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/133/800/500" class="w-full h-72 object-cover" alt="اصفهان">
                     <div class="p-8">
-                        <h3 class="font-bold text-2xl">میدان نقش جهان — اصفهان</h3>
-                        <p class="text-zinc-600 mt-3">شاهکاری از معماری اسلامی و یکی از زیباترین میدان‌های جهان.</p>
+                        <h3 class="font-bold text-2xl">میدان نقش جهان</h3>
+                        <p class="text-zinc-600 mt-3">شاهکار معماری اسلامی.</p>
                     </div>
                 </div>
             </div>
@@ -253,11 +252,11 @@
                 <div>
                     <h3 class="text-3xl font-semibold mb-8">مردم ایران</h3>
                     <p class="text-zinc-600 leading-relaxed">
-                        مردمی مهمان‌نواز با تنوع قومی و زبانی غنی. زبان رسمی فارسی و دین غالب اسلام است.
+                        مردمی مهمان‌نواز با تنوع قومی و زبانی غنی. زبان رسمی فارسی است.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-3xl font-semibold mb-8">غذاهای معروف ایرانی</h3>
+                    <h3 class="text-3xl font-semibold mb-8">غذاهای معروف</h3>
                     <div class="grid grid-cols-2 gap-6">
                         <div class="bg-white rounded-2xl p-6 text-center">چلوکباب</div>
                         <div class="bg-white rounded-2xl p-6 text-center">قورمه سبزی</div>
@@ -274,32 +273,40 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="text-4xl mb-6">🇮🇷</div>
             <p class="text-zinc-400">ایران — مهد تمدن، فرهنگ و تاریخ بشریت</p>
-            <p class="text-xs text-zinc-500 mt-10">صفحه معرفی تک‌صفحه‌ای • طراحی مدرن</p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        hamburger.addEventListener('click', () => {
+        function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('hidden');
-            
-            if (!mobileMenu.classList.contains('hidden')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'visible';
-            }
+        }
+
+        // Open / Close with hamburger
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
 
+        // Close when clicking on menu links
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'visible';
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.classList.contains('hidden') && 
+                !mobileMenu.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                toggleMenu();
+            }
         });
 
         // Smooth Scroll
