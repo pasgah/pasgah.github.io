@@ -46,41 +46,51 @@
         }
     </style>
 </head>
-<body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
+<body class="bg-[#f8f1e9] text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 overflow-x-hidden">
 
-    <!-- Navbar - Black -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950 border-b border-zinc-800">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             
             <div class="flex items-center gap-12">
                 <a href="https://www.pasgah.org/" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
                     <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-10 w-auto">
-                    <span class="text-3xl font-bold tracking-tight text-white">پاسگاه</span>
+                    <span class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">پاسگاه</span>
                 </a>
 
-                <div class="hidden md:flex items-center gap-10 text-base font-medium text-white">
-                    <a href="#" class="hover:text-teal-400 transition-colors">خانه</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">مقالات</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">فرهنگ</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">تاریخ</a>
-                    <a href="#" class="hover:text-teal-400 transition-colors">درباره ما</a>
+                <div class="hidden md:flex items-center gap-10 text-base font-medium text-zinc-700 dark:text-zinc-200">
+                    <a href="#" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">خانه</a>
+                    <a href="#" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">مقالات</a>
+                    <a href="#" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">فرهنگ</a>
+                    <a href="#" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">تاریخ</a>
+                    <a href="#" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">درباره ما</a>
                 </div>
             </div>
 
-            <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
-                <span class="block w-7 h-0.5 bg-white"></span>
-                <span class="block w-7 h-0.5 bg-white"></span>
-                <span class="block w-7 h-0.5 bg-white"></span>
-            </button>
+            <div class="flex items-center gap-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" 
+                        class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                    <i id="theme-icon" class="fa-solid fa-moon text-xl text-zinc-700 dark:text-amber-400"></i>
+                </button>
+
+                <!-- Hamburger -->
+                <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
+                    <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
+                    <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
+                    <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
+                </button>
+            </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-zinc-950 border-b border-zinc-800 shadow-2xl">
-            <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-white">
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">خانه</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">مقالات</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">فرهنگ</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">تاریخ</a>
-                <a href="#" class="mobile-link hover:text-teal-400 transition-colors">درباره ما</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 shadow-2xl">
+            <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-zinc-700 dark:text-zinc-200">
+                <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">خانه</a>
+                <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">مقالات</a>
+                <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">فرهنگ</a>
+                <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">تاریخ</a>
+                <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">درباره ما</a>
             </div>
         </div>
     </nav>
@@ -98,55 +108,63 @@
     </header>
 
     <!-- Latest Posts -->
-    <section class="py-24 px-6 bg-white">
+    <section class="py-24 px-6 bg-white dark:bg-zinc-900">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16">آخرین نوشته‌ها</h2>
+            <h2 class="text-4xl font-bold text-center mb-16 text-zinc-900 dark:text-white">آخرین نوشته‌ها</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                <div class="card bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/1015/800/500" class="w-full h-56 object-cover" alt="پست">
                     <div class="p-7">
                         <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-                        <h3 class="text-xl font-bold leading-tight mb-3">کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
-                        <p class="text-zinc-600 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
-                        <a href="#" class="inline-block mt-6 text-teal-600 hover:text-teal-700 font-medium">ادامه مطلب →</a>
+                        <h3 class="text-xl font-bold leading-tight mb-3 text-zinc-900 dark:text-white">کوروش کبیر و مفهوم حقوق بشر در دنیای باستان</h3>
+                        <p class="text-zinc-600 dark:text-zinc-400 line-clamp-3">منشور کوروش بزرگ‌ترین سند تاریخی در زمینه احترام به حقوق انسان‌هاست...</p>
+                        <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 dark:text-teal-400 hover:text-teal-700 font-medium">
+                            ادامه مطلب
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                <!-- دو پست دیگر مشابه -->
+                <div class="card bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/133/800/500" class="w-full h-56 object-cover" alt="پست">
                     <div class="p-7">
                         <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-                        <h3 class="text-xl font-bold leading-tight mb-3">معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
-                        <p class="text-zinc-600 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
-                        <a href="#" class="inline-block mt-6 text-teal-600 hover:text-teal-700 font-medium">ادامه مطلب →</a>
+                        <h3 class="text-xl font-bold leading-tight mb-3 text-zinc-900 dark:text-white">معماری ایرانی؛ از پرسپولیس تا مدرنیته</h3>
+                        <p class="text-zinc-600 dark:text-zinc-400 line-clamp-3">سفری در تاریخ معماری ایران و تأثیر آن بر جهان معاصر...</p>
+                        <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 dark:text-teal-400 hover:text-teal-700 font-medium">
+                            ادامه مطلب
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="card bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                <div class="card bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-3xl overflow-hidden">
                     <img src="https://picsum.photos/id/201/800/500" class="w-full h-56 object-cover" alt="پست">
                     <div class="p-7">
                         <div class="text-teal-600 text-sm mb-3">فروردین ۱۴۰۴</div>
-                        <h3 class="text-xl font-bold leading-tight mb-3">هویت فرهنگی ایرانی در عصر دیجیتال</h3>
-                        <p class="text-zinc-600 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
-                        <a href="#" class="inline-block mt-6 text-teal-600 hover:text-teal-700 font-medium">ادامه مطلب →</a>
+                        <h3 class="text-xl font-bold leading-tight mb-3 text-zinc-900 dark:text-white">هویت فرهنگی ایرانی در عصر دیجیتال</h3>
+                        <p class="text-zinc-600 dark:text-zinc-400 line-clamp-3">چگونه می‌توانیم هویت فرهنگی غنی خود را در دنیای امروز حفظ کنیم؟</p>
+                        <a href="#" class="inline-flex items-center gap-2 mt-6 text-teal-600 dark:text-teal-400 hover:text-teal-700 font-medium">
+                            ادامه مطلب
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-
             </div>
 
             <div class="text-center mt-12">
                 <a href="https://www.pasgah.org/" 
-                   class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-2xl hover:bg-black transition-colors">
+                   class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white dark:text-zinc-900 text-white rounded-2xl hover:bg-black dark:hover:bg-zinc-100 transition-colors">
                     مشاهده همه نوشته‌ها
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer - Black -->
+    <!-- Footer -->
     <footer class="bg-zinc-950 text-white py-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="mb-6">
@@ -160,7 +178,36 @@
     <script>
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
 
+        // Theme Toggle
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.theme = 'dark';
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.add('fa-moon');
+                themeIcon.classList.remove('fa-sun');
+                localStorage.theme = 'light';
+            }
+        }
+
+        // Load saved theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
+
+        // Mobile Menu
         function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('hidden');
@@ -187,6 +234,7 @@
             }
         });
 
+        // Progress Bar
         const progressBar = document.createElement('div');
         progressBar.style.cssText = `
             position: fixed; top: 0; left: 0; height: 3px; 
