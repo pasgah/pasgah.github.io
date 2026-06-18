@@ -30,8 +30,8 @@
       left: 0;
       right: 0;
       z-index: 50;
-      background-color: rgba(12, 12, 12, 0.95);
-      border-bottom: 1px solid rgba(40, 40, 40, 0.5);
+      background-color: #0a0a0a;
+      border-bottom: 1px solid #2a2a2a;
       transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
         opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
         box-shadow 0.5s ease;
@@ -76,12 +76,14 @@
     .brand img {
       height: 2.5rem;
       width: auto;
+      filter: brightness(0) invert(1);
     }
 
     .brand span {
       font-size: 1.875rem;
       font-weight: 700;
       letter-spacing: -0.025em;
+      color: white;
     }
 
     .desktop-nav ul {
@@ -106,13 +108,15 @@
     .mobile-nav {
       display: none;
       position: fixed;
-      inset: 0;
       top: 4.5625rem;
-      background-color: rgba(12, 12, 12, 0.98);
-      backdrop-filter: blur(4px);
-      border-bottom: 1px solid rgba(40, 40, 40, 0.5);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #0a0a0a;
+      padding: 2rem 1.5rem;
+      z-index: 49;
+      overflow-y: auto;
+      border-top: 1px solid #2a2a2a;
     }
 
     .mobile-nav.open {
@@ -122,7 +126,6 @@
     .mobile-nav ul {
       display: flex;
       flex-direction: column;
-      padding: 2rem 1.5rem;
       gap: 1.5rem;
       list-style: none;
       font-size: 1.125rem;
@@ -133,6 +136,8 @@
       color: white;
       text-decoration: none;
       transition: color 0.2s;
+      display: block;
+      padding: 0.5rem 0;
     }
 
     .mobile-nav a:hover {
@@ -339,7 +344,7 @@
     }
 
     .site-footer {
-      background-color: #1c1917;
+      background-color: #0a0a0a;
       padding: 3rem 1.5rem;
       text-align: center;
     }
@@ -347,6 +352,7 @@
     .site-footer img {
       height: 3.5rem;
       width: auto;
+      filter: brightness(0) invert(1);
       opacity: 0.9;
       transition: opacity 0.2s;
     }
