@@ -51,7 +51,6 @@
             transform: translateY(-10px);
         }
 
-        /* Mobile Hamburger */
         .hamburger span {
             transition: all 0.3s ease;
         }
@@ -71,18 +70,15 @@
 </head>
 <body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
 
-    <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#e6d9c8]">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             
-            <!-- Logo + Desktop Menu -->
             <div class="flex items-center gap-12">
                 <div class="flex items-center gap-3">
                     <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-3xl shadow-inner">🇮🇷</div>
                     <span class="text-3xl font-bold tracking-tight text-[#1f2e29]">ایران</span>
                 </div>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-10 text-base font-medium">
                     <a href="#geography" class="hover:text-teal-700 transition-colors">جغرافیا</a>
                     <a href="#history" class="hover:text-teal-700 transition-colors">تاریخ</a>
@@ -92,7 +88,6 @@
                 </div>
             </div>
 
-            <!-- Mobile Hamburger -->
             <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
                 <span class="block w-7 h-0.5 bg-zinc-800"></span>
@@ -100,7 +95,6 @@
             </button>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-white border-b border-[#e6d9c8] shadow-2xl">
             <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6">
                 <a href="#geography" class="mobile-link hover:text-teal-700 transition-colors">جغرافیا</a>
@@ -112,7 +106,6 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <header class="hero-bg min-h-screen flex items-center text-white pt-16">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <div class="mb-8 inline-flex items-center gap-3 bg-white/20 backdrop-blur px-6 py-2.5 rounded-3xl text-sm">
@@ -128,7 +121,6 @@
         </div>
     </header>
 
-    <!-- Basic Facts -->
     <section class="py-12 bg-white border-b">
         <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
             <div class="text-center">
@@ -150,7 +142,6 @@
         </div>
     </section>
 
-    <!-- Geography -->
     <section id="geography" class="py-24 px-6 bg-[#f8f1e9]">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-5xl font-bold text-center mb-16">جغرافیا و طبیعت</h2>
@@ -173,7 +164,6 @@
         </div>
     </section>
 
-    <!-- History -->
     <section id="history" class="py-24 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-5xl font-bold text-center mb-16">تاریخ و تمدن</h2>
@@ -197,7 +187,6 @@
         </div>
     </section>
 
-    <!-- Culture -->
     <section id="culture" class="py-24 px-6 persian-tile">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-5xl font-bold text-center mb-16">فرهنگ و هنر</h2>
@@ -221,7 +210,6 @@
         </div>
     </section>
 
-    <!-- Heritage -->
     <section id="heritage" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="section-title text-5xl font-bold text-center mb-16">میراث فرهنگی</h2>
@@ -244,7 +232,6 @@
         </div>
     </section>
 
-    <!-- People -->
     <section id="people" class="py-24 px-6 bg-[#f8f1e9]">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-5xl font-bold text-center mb-16">مردم و زندگی</h2>
@@ -268,7 +255,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-[#1f2e29] text-white py-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="text-4xl mb-6">🇮🇷</div>
@@ -298,7 +284,6 @@
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenu.classList.contains('hidden') && 
                 !mobileMenu.contains(e.target) && 
@@ -307,7 +292,6 @@
             }
         });
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -318,7 +302,6 @@
             });
         });
 
-        // Progress Bar
         const progressBar = document.createElement('div');
         progressBar.style.cssText = `
             position: fixed; top: 0; left: 0; height: 3px; 
