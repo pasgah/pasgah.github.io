@@ -34,12 +34,7 @@
       background-color: #000000;
       border-bottom: 1px solid #2a2a2a;
       transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-      will-change: transform;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .site-header:not(.hidden-nav) {
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
     }
 
     .site-header.hidden-nav {
@@ -57,16 +52,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      /* لوگو چپ، همبرگر راست */
     }
 
-    /* لوگو در چپ */
+    /* لوگو - در چپ */
     .brand {
       display: flex;
       align-items: center;
       text-decoration: none;
       color: white;
-      order: 0;
-      /* چپ */
     }
 
     .brand img {
@@ -74,11 +68,7 @@
       width: auto;
     }
 
-    /* منوی دسکتاپ در راست */
-    .desktop-nav {
-      order: 1;
-    }
-
+    /* منوی دسکتاپ - در وسط (در موبایل مخفی) */
     .desktop-nav ul {
       display: flex;
       align-items: center;
@@ -100,7 +90,7 @@
       color: #2dd4bf;
     }
 
-    /* همبرگر در راست */
+    /* همبرگر - در راست */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -109,8 +99,6 @@
       border: none;
       padding: 0.25rem;
       cursor: pointer;
-      order: 2;
-      /* راست */
     }
 
     .hamburger span {
@@ -195,6 +183,7 @@
       color: #2dd4bf;
     }
 
+    /* واکنش‌گرایی */
     @media (max-width: 768px) {
       .desktop-nav {
         display: none;
@@ -397,13 +386,13 @@
   <header class="site-header visible-nav" role="banner">
     <div class="header-inner">
 
-      <!-- لوگو (چپ) -->
+      <!-- لوگو در چپ -->
       <a href="https://www.pasgah.org/" class="brand" aria-label="صفحه اصلی پاسگاه">
         <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
-        <!-- عنوان حذف شد -->
+        <!-- عنوان "پاسگاه" حذف شد -->
       </a>
 
-      <!-- منوی دسکتاپ (راست) -->
+      <!-- منوی دسکتاپ (در وسط) -->
       <nav class="desktop-nav" aria-label="منوی اصلی">
         <ul>
           <li><a href="#">خانه</a></li>
@@ -414,7 +403,7 @@
         </ul>
       </nav>
 
-      <!-- همبرگر (راست) -->
+      <!-- همبرگر در راست -->
       <button class="hamburger" id="hamburger" aria-label="باز و بسته کردن منو" aria-expanded="false">
         <span></span>
         <span></span>
@@ -423,7 +412,7 @@
     </div>
   </header>
 
-  <!-- Overlay و منوی موبایل -->
+  <!-- Overlay & منوی موبایل -->
   <div class="mobile-nav-overlay" id="mobileOverlay"></div>
   <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
     <ul>
@@ -435,7 +424,7 @@
     </ul>
   </nav>
 
-  <!-- محتوای اصلی (بدون تغییر) -->
+  <!-- محتوای اصلی -->
   <main class="main-content" role="main">
     <article class="main-content-inner">
       <header class="page-title">
