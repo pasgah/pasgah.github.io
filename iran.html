@@ -68,13 +68,11 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <!-- Theme Toggle -->
                 <button id="theme-toggle" 
                         class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-                    <i id="theme-icon" class="fa-solid fa-moon text-xl text-zinc-700 dark:text-amber-400"></i>
+                    <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
                 </button>
 
-                <!-- Hamburger -->
                 <button id="hamburger" class="hamburger md:hidden flex flex-col gap-1.5 z-50">
                     <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
                     <span class="block w-7 h-0.5 bg-zinc-800 dark:bg-white"></span>
@@ -83,7 +81,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 shadow-2xl">
             <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-zinc-700 dark:text-zinc-200">
                 <a href="#" class="mobile-link hover:text-teal-600 dark:hover:text-teal-400 transition-colors">خانه</a>
@@ -167,45 +164,43 @@
     </footer>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
-        // Theme Toggle Function
         function toggleTheme() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+            
+            if (isDark) {
+                html.classList.remove('dark');
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
                 localStorage.theme = 'light';
             } else {
-                document.documentElement.classList.add('dark');
+                html.classList.add('dark');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
                 localStorage.theme = 'dark';
             }
         }
 
-        // Initialize theme
+        // Initialize theme on load
         function initTheme() {
             if (localStorage.theme === 'dark' || 
                 (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
-            } else {
-                document.documentElement.classList.remove('dark');
-                themeIcon.classList.add('fa-moon');
-                themeIcon.classList.remove('fa-sun');
             }
         }
 
-        // Event Listeners
         themeToggle.addEventListener('click', toggleTheme);
         initTheme();
 
-        // Mobile Menu
+        // Mobile Menu (بدون تغییر)
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
         function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('hidden');
@@ -228,20 +223,6 @@
                 !hamburger.contains(e.target)) {
                 toggleMenu();
             }
-        });
-
-        // Progress Bar
-        const progressBar = document.createElement('div');
-        progressBar.style.cssText = `
-            position: fixed; top: 0; left: 0; height: 3px; 
-            background: linear-gradient(to right, #2dd4bf, #14b8a6); 
-            z-index: 100; transition: width 0.15s ease;
-        `;
-        document.body.appendChild(progressBar);
-
-        window.addEventListener('scroll', () => {
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            progressBar.style.width = scrollPercent + '%';
         });
     </script>
 </body>
