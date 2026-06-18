@@ -91,7 +91,7 @@
       margin: 0;
       padding: 0;
       direction: rtl;
-      /* راست‌به‌چپ برای منوی دسکتاپ */
+      /* راست‌به‌چپ */
     }
 
     .desktop-nav a {
@@ -105,7 +105,6 @@
       color: #2dd4bf;
     }
 
-    /* هدینگ h1 درون منو */
     .desktop-nav h1 {
       margin: 0;
       font-size: 1rem;
@@ -228,8 +227,9 @@
 
     /* ---------- محتوای اصلی ---------- */
     .main-content {
-      padding-top: 5.5rem;
-      padding-bottom: 4rem;
+      /* padding-top = ارتفاع هدر (5rem) + 2rem فاصله */
+      padding-top: 7rem;
+      padding-bottom: 1.5rem;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
       background-color: white;
@@ -335,7 +335,7 @@
 
     .load-more-wrapper {
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 1.5rem;           /* کاهش فاصله از 3rem */
     }
 
     .btn-primary {
@@ -458,7 +458,7 @@
   <!-- ========== MAIN ========== -->
   <main class="main-content" role="main">
     <article class="main-content-inner">
-      <!-- عنوان حذف شد -->
+      <!-- عنوان حذف شده است -->
       <section class="articles-section" aria-label="مطالب وبلاگ پاسگاه">
         <ul class="article-list">
           <li class="article-item">
@@ -512,6 +512,7 @@
               </div>
             </article>
           </li>
+          <!-- پست‌های مخفی -->
           <li class="article-item hidden-article">
             <article>
               <figure>
