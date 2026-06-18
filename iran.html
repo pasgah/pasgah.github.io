@@ -52,8 +52,6 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
-
-    /* ===== منوی نرم و زیبا ===== */
     .navbar {
       transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
                   opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -61,25 +59,20 @@
       will-change: transform, opacity;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
-    /* وقتی منو کاملاً نمایان است، سایه‌ی بیشتری دارد */
     .navbar:not(.hidden-nav) {
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
     }
-    /* کلاس مخفی‌سازی (با جاوااسکریپت مدیریت می‌شود) */
     .navbar.hidden-nav {
       transform: translateY(-100%);
       opacity: 0;
-      pointer-events: none; /* جلوگیری از کلیک روی منوی مخفی */
+      pointer-events: none;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
-    /* حالت نمایش پیش‌فرض */
     .navbar.visible-nav {
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
-
-    /* بهبود منوی موبایل */
     #mobile-menu {
       transition: all 0.3s ease;
       backdrop-filter: blur(4px);
@@ -184,14 +177,12 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-zinc-950 text-white py-20">
+  <!-- ===== فوتر: فقط لوگو ===== -->
+  <footer class="bg-zinc-950 py-16">
     <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="mb-6">
-        <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-12 w-auto mx-auto" />
+      <div class="flex justify-center">
+        <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" class="h-14 w-auto opacity-90 hover:opacity-100 transition-opacity" />
       </div>
-      <p class="text-zinc-400">پاسگاه — مرجعی برای اندیشه و فرهنگ</p>
-      <p class="text-xs text-zinc-500 mt-8">© ۱۴۰۴ پاسگاه. تمامی حقوق محفوظ است.</p>
     </div>
   </footer>
 
@@ -232,37 +223,31 @@
       }
     });
 
-    // ===== مدیریت نرم منو هنگام اسکرول =====
+    // ===== مدیریت منو هنگام اسکرول =====
     const navbar = document.querySelector('.navbar');
     let lastScrollY = window.scrollY;
-    const SCROLL_THRESHOLD = 30; // آستانه‌ی کمتر برای شروع نرم‌تر
+    const SCROLL_THRESHOLD = 30;
 
     function updateNavbarVisibility(currentScrollY) {
-      // اگر منوی موبایل باز است، بسته شود
       if (!mobileMenu.classList.contains('hidden')) {
         toggleMenu();
       }
 
       if (currentScrollY > SCROLL_THRESHOLD) {
-        // اسکرول به پایین → مخفی کردن
         if (currentScrollY > lastScrollY) {
           navbar.classList.remove('visible-nav');
           navbar.classList.add('hidden-nav');
-        }
-        // اسکرول به بالا → نمایش
-        else {
+        } else {
           navbar.classList.remove('hidden-nav');
           navbar.classList.add('visible-nav');
         }
       } else {
-        // در بالای صفحه همیشه نمایش داده شود
         navbar.classList.remove('hidden-nav');
         navbar.classList.add('visible-nav');
       }
       lastScrollY = currentScrollY;
     }
 
-    // استفاده از requestAnimationFrame برای همگام‌سازی با رندر و کاهش پرش
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
@@ -274,7 +259,6 @@
       }
     });
 
-    // همچنین در صورت لود مجدد صفحه، وضعیت اولیه را تنظیم کن
     window.addEventListener('load', () => {
       navbar.classList.add('visible-nav');
       navbar.classList.remove('hidden-nav');
