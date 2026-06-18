@@ -3,276 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ایران | سرزمین نور و گل</title>
+    <title>ایران | سرزمین تمدن و فرهنگ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&amp;display=swap');
-        
-        :root {
-            --turquoise: #2dd4bf;
-            --terracotta: #e07a5f;
-        }
         
         body {
             font-family: 'Vazirmatn', system-ui, sans-serif;
         }
         
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), 
+            background-image: linear-gradient(rgba(20, 60, 50, 0.65), rgba(20, 60, 50, 0.75)), 
                              url('https://picsum.photos/id/1015/2000/1400');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
         
         .persian-tile {
             background-image: 
-                linear-gradient(45deg, rgba(45, 212, 191, 0.08) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(45, 212, 191, 0.08) 25%, transparent 25%);
+                linear-gradient(45deg, rgba(45, 212, 191, 0.07) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(45, 212, 191, 0.07) 25%, transparent 25%);
             background-size: 60px 60px;
         }
         
-        .section-header {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 700;
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 65%;
+            height: 3px;
+            background: #2dd4bf;
+            bottom: -10px;
+            right: 0;
         }
         
         .card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
         
         .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 60px -15px rgb(45 212 191 / 0.2);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--turquoise);
-            transition: all 0.4s ease;
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
-            right: auto;
-            left: 0;
+            transform: translateY(-10px);
         }
     </style>
 </head>
 <body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-[#e6d9c8]">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-[#e6d9c8]">
         <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-2xl shadow-inner">🇮🇷</div>
-                <span class="text-3xl font-bold tracking-tight text-[#2a3f35]">ایران</span>
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-3xl shadow">🇮🇷</div>
+                <div>
+                    <span class="text-3xl font-bold tracking-tight text-[#1f2e29]">ایران</span>
+                </div>
             </div>
             
-            <div class="flex gap-10 text-lg font-medium">
-                <a href="#history" class="nav-link hover:text-teal-600 transition-colors">تاریخ</a>
-                <a href="#culture" class="nav-link hover:text-teal-600 transition-colors">فرهنگ</a>
-                <a href="#places" class="nav-link hover:text-teal-600 transition-colors">جاذبه‌ها</a>
-                <a href="#modern" class="nav-link hover:text-teal-600 transition-colors">ایران امروز</a>
+            <div class="hidden md:flex gap-9 text-base font-medium">
+                <a href="#geography" class="hover:text-teal-700 transition-colors">جغرافیا</a>
+                <a href="#history" class="hover:text-teal-700 transition-colors">تاریخ</a>
+                <a href="#culture" class="hover:text-teal-700 transition-colors">فرهنگ</a>
+                <a href="#heritage" class="hover:text-teal-700 transition-colors">میراث</a>
+                <a href="#people" class="hover:text-teal-700 transition-colors">مردم</a>
             </div>
-            
-            <button onclick="window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'})" 
-                    class="flex items-center gap-3 px-7 py-3.5 bg-[#2dd4bf] hover:bg-teal-600 text-white rounded-3xl font-medium transition-all">
-                <i class="fa-solid fa-compass"></i>
-                <span>سفر کن</span>
-            </button>
         </div>
     </nav>
 
     <!-- Hero -->
-    <header class="hero-bg min-h-screen flex items-center justify-center text-white relative">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <div class="inline-block bg-white/20 backdrop-blur-md px-8 py-3 rounded-3xl mb-10 text-sm tracking-widest">
-                سرزمین گل و بلبل • تمدن ۷۰۰۰ ساله
+    <header class="hero-bg min-h-screen flex items-center text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="mb-8 inline-flex items-center gap-3 bg-white/20 backdrop-blur px-6 py-2.5 rounded-3xl text-sm">
+                جمهوری اسلامی ایران
             </div>
-            <h1 class="text-7xl md:text-8xl font-bold leading-none mb-6 drop-shadow-lg">
-                ایران،<br>بهشت زمین
+            <h1 class="text-7xl md:text-8xl font-bold leading-none tracking-tight mb-6">
+                سرزمین تمدن‌ها
             </h1>
-            <p class="text-2xl max-w-lg mx-auto opacity-90">
-                جایی که تاریخ، طبیعت و فرهنگ در آرامش کامل با هم زندگی می‌کنند
+            <p class="max-w-2xl mx-auto text-xl md:text-2xl opacity-90">
+                کشوری با تاریخ هفت‌هزار ساله، مهد یکی از قدیمی‌ترین تمدن‌های بشری، 
+                با فرهنگ غنی، طبیعت متنوع و هویتی جاودان.
             </p>
-        </div>
-        
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80">
-            <span class="text-sm tracking-widest">پایین بکش</span>
-            <i class="fa-solid fa-chevron-down animate-bounce text-2xl"></i>
         </div>
     </header>
 
-    <!-- Stats -->
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 -mt-12 relative z-10 px-6">
-        <div class="bg-white rounded-3xl shadow-xl p-8 text-center card">
-            <div class="text-5xl font-bold text-teal-600">۸۸</div>
-            <div class="text-zinc-600 mt-2">میلیون نفر</div>
+    <!-- Basic Facts -->
+    <section class="py-12 bg-white border-b">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
+            <div class="text-center">
+                <div class="text-5xl font-bold text-teal-600">۱٬۶۴۸٬۱۹۵</div>
+                <div class="text-zinc-600 mt-2">کیلومتر مربع</div>
+            </div>
+            <div class="text-center">
+                <div class="text-5xl font-bold text-teal-600">۸۸٫۵</div>
+                <div class="text-zinc-600 mt-2">میلیون نفر</div>
+            </div>
+            <div class="text-center">
+                <div class="text-5xl font-bold text-teal-600">۲۲</div>
+                <div class="text-zinc-600 mt-2">استان</div>
+            </div>
+            <div class="text-center">
+                <div class="text-5xl font-bold text-teal-600">۲۹</div>
+                <div class="text-zinc-600 mt-2">میراث جهانی یونسکو</div>
+            </div>
         </div>
-        <div class="bg-white rounded-3xl shadow-xl p-8 text-center card">
-            <div class="text-5xl font-bold text-teal-600">۲۹</div>
-            <div class="text-zinc-600 mt-2">میراث یونسکو</div>
+    </section>
+
+    <!-- Geography -->
+    <section id="geography" class="py-24 px-6 bg-[#f8f1e9]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-5xl font-bold text-center mb-16">جغرافیا و طبیعت</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg leading-relaxed text-zinc-700">
+                        ایران در جنوب غربی آسیا واقع شده و دارای تنوع جغرافیایی بسیار بالایی است. 
+                        از کوه‌های البرز و زاگرس گرفته تا کویرهای مرکزی، جنگل‌های شمال و سواحل جنوب.
+                    </p>
+                    <ul class="mt-8 space-y-4 text-zinc-600">
+                        <li class="flex items-start gap-3">🌊 <span>سواحل طولانی در شمال (دریای خزر) و جنوب (خلیج فارس و دریای عمان)</span></li>
+                        <li class="flex items-start gap-3">🏔️ <span>قله دماوند، بلندترین کوه ایران</span></li>
+                        <li class="flex items-start gap-3">🏜️ <span>کویر لوت، یکی از گرم‌ترین نقاط زمین</span></li>
+                    </ul>
+                </div>
+                <div class="persian-tile bg-white border border-teal-100 rounded-3xl p-8">
+                    <img src="https://picsum.photos/id/1018/800/500" alt="طبیعت ایران" class="rounded-2xl w-full">
+                </div>
+            </div>
         </div>
-        <div class="bg-white rounded-3xl shadow-xl p-8 text-center card">
-            <div class="text-5xl font-bold text-teal-600">۲۲</div>
-            <div class="text-zinc-600 mt-2">استان</div>
-        </div>
-        <div class="bg-white rounded-3xl shadow-xl p-8 text-center card">
-            <div class="text-5xl font-bold text-teal-600">۷۰۰۰</div>
-            <div class="text-zinc-600 mt-2">سال تاریخ</div>
-        </div>
-    </div>
+    </section>
 
     <!-- History -->
-    <section id="history" class="py-28 px-6 bg-white">
+    <section id="history" class="py-24 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-teal-600 text-sm font-medium tracking-widest">از هخامنشی تا امروز</span>
-                <h2 class="section-header text-[#2a3f35] mt-4">تاریخ پرافتخار</h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="flex gap-6">
-                        <div class="w-20 h-20 bg-amber-100 rounded-2xl flex-shrink-0 flex items-center justify-center text-4xl">🏛️</div>
-                        <div>
-                            <h3 class="text-2xl font-semibold mb-2">پرسپولیس</h3>
-                            <p class="text-zinc-600">نماد شکوه امپراتوری هخامنشی و یکی از بزرگ‌ترین شاهکارهای معماری جهان</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <div class="w-20 h-20 bg-amber-100 rounded-2xl flex-shrink-0 flex items-center justify-center text-4xl">📜</div>
-                        <div>
-                            <h3 class="text-2xl font-semibold mb-2">منشور کوروش</h3>
-                            <p class="text-zinc-600">اولین اعلامیه حقوق بشر در تاریخ بشریت</p>
-                        </div>
-                    </div>
+            <h2 class="section-title text-5xl font-bold text-center mb-16">تاریخ و تمدن</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card bg-white border border-zinc-100 rounded-3xl p-8">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h3 class="text-2xl font-semibold mb-3">هخامنشیان</h3>
+                    <p class="text-zinc-600">بزرگ‌ترین امپراتوری باستانی جهان توسط کوروش کبیر بنیان نهاده شد. منشور کوروش اولین سند حقوق بشر شناخته می‌شود.</p>
                 </div>
-                
-                <div class="persian-tile bg-[#f8f1e9] border border-teal-200 rounded-3xl p-12 text-center">
-                    <p class="text-3xl leading-relaxed italic text-zinc-700">
-                        «ما مردمی هستیم که در برابر ظلم می‌ایستیم و به زیبایی عشق می‌ورزیم»
-                    </p>
-                    <div class="mt-8 text-teal-600 font-medium">— روح ایرانی</div>
+                <div class="card bg-white border border-zinc-100 rounded-3xl p-8">
+                    <div class="text-4xl mb-4">📜</div>
+                    <h3 class="text-2xl font-semibold mb-3">ساسانیان و پیش از اسلام</h3>
+                    <p class="text-zinc-600">دوران شکوفایی هنر، علم و فرهنگ ایرانی.</p>
+                </div>
+                <div class="card bg-white border border-zinc-100 rounded-3xl p-8">
+                    <div class="text-4xl mb-4">🕌</div>
+                    <h3 class="text-2xl font-semibold mb-3">پس از اسلام</h3>
+                    <p class="text-zinc-600">دوران صفویه، قاجار و پهلوی تا جمهوری اسلامی امروز.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Culture -->
-    <section id="culture" class="py-28 px-6 persian-tile">
+    <section id="culture" class="py-24 px-6 persian-tile">
         <div class="max-w-6xl mx-auto">
-            <h2 class="section-header text-center mb-20">فرهنگ جاودان</h2>
+            <h2 class="section-title text-5xl font-bold text-center mb-16">فرهنگ و هنر</h2>
             
             <div class="grid md:grid-cols-3 gap-10">
-                <div class="bg-white rounded-3xl p-10 card">
+                <div class="card bg-white rounded-3xl p-10">
                     <div class="text-6xl mb-6">📖</div>
-                    <h3 class="text-3xl font-bold mb-4">ادبیات و شعر</h3>
-                    <p class="text-zinc-600">حافظ، سعدی، خیام و فردوسی — گنجینه‌ای از حکمت و زیبایی که هنوز جهان را تحت تأثیر قرار می‌دهد.</p>
+                    <h3 class="text-3xl font-bold mb-3">ادبیات</h3>
+                    <p class="text-zinc-600">شاهنامه فردوسی، غزلیات حافظ و سعدی، رباعیات خیام — میراث ادبی جهان.</p>
                 </div>
-                <div class="bg-white rounded-3xl p-10 card">
-                    <div class="text-6xl mb-6">🎨</div>
-                    <h3 class="text-3xl font-bold mb-4">مینیاتور و هنر</h3>
-                    <p class="text-zinc-600">نقاشی‌های ظریف، کاشی‌کاری‌های فیروزه‌ای و هنر دستان ایرانی.</p>
+                <div class="card bg-white rounded-3xl p-10">
+                    <div class="text-6xl mb-6">🎵</div>
+                    <h3 class="text-3xl font-bold mb-3">موسیقی</h3>
+                    <p class="text-zinc-600">موسیقی سنتی ایرانی با دستگاه‌ها، آواز و سازهای اصیل مانند تار، سنتور و نی.</p>
                 </div>
-                <div class="bg-white rounded-3xl p-10 card">
-                    <div class="text-6xl mb-6">🎶</div>
-                    <h3 class="text-3xl font-bold mb-4">موسیقی سنتی</h3>
-                    <p class="text-zinc-600">دستگاه‌های ایرانی، آواز و سازهایی مثل تار، سنتور و کمانچه.</p>
+                <div class="card bg-white rounded-3xl p-10">
+                    <div class="text-6xl mb-6">🧶</div>
+                    <h3 class="text-3xl font-bold mb-3">هنرهای دستی</h3>
+                    <p class="text-zinc-600">فرش‌بافی، مینیاتور، کاشی‌کاری و صنایع دستی با شهرت جهانی.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Places -->
-    <section id="places" class="py-28 px-6 bg-white">
+    <!-- Heritage -->
+    <section id="heritage" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <h2 class="section-header text-center mb-16">جاذبه‌های ماندگار</h2>
+            <h2 class="section-title text-5xl font-bold text-center mb-16">میراث فرهنگی و طبیعی</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group bg-white border border-zinc-100 rounded-3xl overflow-hidden card">
-                    <img src="https://picsum.photos/id/1015/800/600" class="w-full h-64 object-cover" alt="تخت جمشید">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card bg-zinc-50 border border-zinc-100 rounded-3xl overflow-hidden">
+                    <img src="https://picsum.photos/id/1015/800/500" class="w-full h-72 object-cover" alt="تخت جمشید">
                     <div class="p-8">
-                        <span class="text-teal-600 text-sm">فارس</span>
-                        <h3 class="text-2xl font-bold mt-2">تخت جمشید</h3>
+                        <h3 class="font-bold text-2xl">تخت جمشید (پرسپولیس)</h3>
+                        <p class="text-zinc-600 mt-3">پایتخت تشریفاتی هخامنشیان و یکی از مهم‌ترین بناهای تاریخی جهان.</p>
                     </div>
                 </div>
                 
-                <div class="group bg-white border border-zinc-100 rounded-3xl overflow-hidden card">
-                    <img src="https://picsum.photos/id/133/800/600" class="w-full h-64 object-cover" alt="اصفهان">
+                <div class="card bg-zinc-50 border border-zinc-100 rounded-3xl overflow-hidden">
+                    <img src="https://picsum.photos/id/133/800/500" class="w-full h-72 object-cover" alt="اصفهان">
                     <div class="p-8">
-                        <span class="text-teal-600 text-sm">اصفهان</span>
-                        <h3 class="text-2xl font-bold mt-2">نصف جهان</h3>
-                    </div>
-                </div>
-                
-                <div class="group bg-white border border-zinc-100 rounded-3xl overflow-hidden card">
-                    <img src="https://picsum.photos/id/201/800/600" class="w-full h-64 object-cover" alt="کویر لوت">
-                    <div class="p-8">
-                        <span class="text-teal-600 text-sm">کرمان</span>
-                        <h3 class="text-2xl font-bold mt-2">کویر لوت</h3>
+                        <h3 class="font-bold text-2xl">میدان نقش جهان — اصفهان</h3>
+                        <p class="text-zinc-600 mt-3">شاهکاری از معماری اسلامی و یکی از زیباترین میدان‌های جهان.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modern Iran -->
-    <section id="modern" class="py-28 px-6 bg-gradient-to-br from-teal-50 to-amber-50">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="section-header mb-8">ایران آینده</h2>
-            <p class="text-2xl text-zinc-600 max-w-2xl mx-auto">
-                کشوری جوان، پر از استعداد، در حال پیشرفت سریع در علم، فناوری و نوآوری
-            </p>
+    <!-- People & Cuisine -->
+    <section id="people" class="py-24 px-6 bg-[#f8f1e9]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-5xl font-bold text-center mb-16">مردم و زندگی</h2>
             
-            <div class="mt-20 grid md:grid-cols-3 gap-8">
-                <div class="bg-white/70 backdrop-blur p-10 rounded-3xl card">
-                    <div class="text-5xl mb-6">🚀</div>
-                    <h4 class="font-bold text-xl">استارتاپ و فناوری</h4>
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-3xl font-semibold mb-8">مردم ایران</h3>
+                    <p class="text-zinc-600 leading-relaxed">
+                        مردمی مهمان‌نواز با تنوع قومی و زبانی غنی (فارس، ترک، کرد، لر، بلوچ و ...). 
+                        زبان رسمی فارسی است و اسلام دین غالب می‌باشد.
+                    </p>
                 </div>
-                <div class="bg-white/70 backdrop-blur p-10 rounded-3xl card">
-                    <div class="text-5xl mb-6">☀️</div>
-                    <h4 class="font-bold text-xl">انرژی پاک</h4>
-                </div>
-                <div class="bg-white/70 backdrop-blur p-10 rounded-3xl card">
-                    <div class="text-5xl mb-6">🎓</div>
-                    <h4 class="font-bold text-xl">علوم و آموزش</h4>
+                
+                <div>
+                    <h3 class="text-3xl font-semibold mb-8">غذای ایرانی</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white rounded-2xl p-6">چلوکباب</div>
+                        <div class="bg-white rounded-2xl p-6">قورمه‌سبزی</div>
+                        <div class="bg-white rounded-2xl p-6">زرشک‌پلو</div>
+                        <div class="bg-white rounded-2xl p-6">میرزا قاسمی</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#2a3f35] text-white py-20">
-        <div class="max-w-7xl mx-auto text-center px-6">
-            <p class="text-3xl mb-6">🇮🇷</p>
-            <p class="opacity-70">ساخته شده با عشق به ایران • سبک جدید ۱۴۰۵</p>
+    <footer class="bg-[#1f2e29] text-white py-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="text-4xl mb-6">🇮🇷</div>
+            <p class="text-zinc-400">ایران — مهد تمدن، فرهنگ و تاریخ بشریت</p>
+            <p class="text-xs text-zinc-500 mt-10">صفحه معرفی تک‌صفحه‌ای • طراحی مدرن ۱۴۰۵</p>
         </div>
     </footer>
 
     <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
         // Progress bar
-        const progress = document.createElement('div');
-        progress.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#2dd4bf,#14b8a6);z-index:50;transition:width 0.1s;';
-        document.body.appendChild(progress);
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed; top: 0; left: 0; height: 3px; 
+            background: linear-gradient(to right, #2dd4bf, #14b8a6); 
+            z-index: 100; transition: width 0.15s ease;
+        `;
+        document.body.appendChild(progressBar);
 
         window.addEventListener('scroll', () => {
             const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            progress.style.width = `${scrollPercent}%`;
+            progressBar.style.width = scrollPercent + '%';
         });
-
-        console.log('%c🇮🇷 صفحه جدید با سبک روشن و گرم آماده شد!', 'color:#2dd4bf;font-size:15px');
     </script>
 </body>
 </html>
