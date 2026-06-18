@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ایران | سرزمین تمدن و فرهنگ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
         
@@ -285,13 +285,11 @@
             mobileMenu.classList.toggle('hidden');
         }
 
-        // Open / Close with hamburger
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
         });
 
-        // Close when clicking on menu links
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (!mobileMenu.classList.contains('hidden')) {
