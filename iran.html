@@ -52,15 +52,45 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
+
+    /* ===== منوی نرم و زیبا ===== */
     .navbar {
-      transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  box-shadow 0.5s ease;
+      will-change: transform, opacity;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    /* وقتی منو کاملاً نمایان است، سایه‌ی بیشتری دارد */
+    .navbar:not(.hidden-nav) {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    }
+    /* کلاس مخفی‌سازی (با جاوااسکریپت مدیریت می‌شود) */
+    .navbar.hidden-nav {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none; /* جلوگیری از کلیک روی منوی مخفی */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    /* حالت نمایش پیش‌فرض */
+    .navbar.visible-nav {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* بهبود منوی موبایل */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      background-color: rgba(12, 12, 12, 0.98);
     }
   </style>
 </head>
 <body class="bg-[#f8f1e9] text-zinc-800 overflow-x-hidden">
 
   <!-- Navbar -->
-  <nav class="navbar fixed top-0 left-0 right-0 z-50 bg-zinc-950 border-b border-zinc-800">
+  <nav class="navbar visible-nav fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 border-b border-zinc-800/50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <div class="flex items-center gap-12">
         <a href="https://www.pasgah.org/" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
@@ -81,7 +111,7 @@
         <span class="block w-7 h-0.5 bg-white"></span>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] bg-zinc-950 border-b border-zinc-800 shadow-2xl">
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[73px] border-b border-zinc-800/50 shadow-2xl">
       <div class="flex flex-col py-8 px-6 text-lg font-medium space-y-6 text-white">
         <a href="#" class="mobile-link hover:text-teal-400 transition-colors">خانه</a>
         <a href="#" class="mobile-link hover:text-teal-400 transition-colors">مقالات</a>
@@ -202,33 +232,52 @@
       }
     });
 
-    // ===== محو و نمایان شدن منو هنگام اسکرول (اصلی) =====
+    // ===== مدیریت نرم منو هنگام اسکرول =====
     const navbar = document.querySelector('.navbar');
     let lastScrollY = window.scrollY;
-    const SCROLL_THRESHOLD = 50;
+    const SCROLL_THRESHOLD = 30; // آستانه‌ی کمتر برای شروع نرم‌تر
 
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-
-      // ----- بستن خودکار منوی موبایل هنگام اسکرول (بهبود UX) -----
+    function updateNavbarVisibility(currentScrollY) {
+      // اگر منوی موبایل باز است، بسته شود
       if (!mobileMenu.classList.contains('hidden')) {
-        toggleMenu(); // منوی همبرگری را می‌بندد
+        toggleMenu();
       }
 
-      // ----- رفتار محو/ظاهر منوی اصلی -----
       if (currentScrollY > SCROLL_THRESHOLD) {
+        // اسکرول به پایین → مخفی کردن
         if (currentScrollY > lastScrollY) {
-          navbar.style.transform = 'translateY(-100%)';
-          navbar.style.opacity = '0';
-        } else {
-          navbar.style.transform = 'translateY(0)';
-          navbar.style.opacity = '1';
+          navbar.classList.remove('visible-nav');
+          navbar.classList.add('hidden-nav');
+        }
+        // اسکرول به بالا → نمایش
+        else {
+          navbar.classList.remove('hidden-nav');
+          navbar.classList.add('visible-nav');
         }
       } else {
-        navbar.style.transform = 'translateY(0)';
-        navbar.style.opacity = '1';
+        // در بالای صفحه همیشه نمایش داده شود
+        navbar.classList.remove('hidden-nav');
+        navbar.classList.add('visible-nav');
       }
       lastScrollY = currentScrollY;
+    }
+
+    // استفاده از requestAnimationFrame برای همگام‌سازی با رندر و کاهش پرش
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateNavbarVisibility(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // همچنین در صورت لود مجدد صفحه، وضعیت اولیه را تنظیم کن
+    window.addEventListener('load', () => {
+      navbar.classList.add('visible-nav');
+      navbar.classList.remove('hidden-nav');
     });
   </script>
 </body>
