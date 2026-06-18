@@ -71,7 +71,7 @@
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" 
                         class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-                    <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+                    <i id="theme-icon" class="fa-solid fa-moon text-xl text-zinc-700 dark:text-amber-400"></i>
                 </button>
 
                 <!-- Hamburger -->
@@ -152,14 +152,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="text-center mt-12">
-                <a href="https://www.pasgah.org/" 
-                   class="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white dark:text-zinc-900 text-white rounded-2xl hover:bg-black dark:hover:bg-zinc-100 transition-colors">
-                    مشاهده همه نوشته‌ها
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-            </div>
         </div>
     </section>
 
@@ -180,10 +172,9 @@
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
-        // Theme Toggle
+        // Theme Toggle Function
         function toggleTheme() {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
+            if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
@@ -196,15 +187,23 @@
             }
         }
 
-        // Load saved theme
-        if (localStorage.theme === 'dark' || 
-            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+        // Initialize theme
+        function initTheme() {
+            if (localStorage.theme === 'dark' || 
+                (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.add('fa-moon');
+                themeIcon.classList.remove('fa-sun');
+            }
         }
 
+        // Event Listeners
         themeToggle.addEventListener('click', toggleTheme);
+        initTheme();
 
         // Mobile Menu
         function toggleMenu() {
