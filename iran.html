@@ -8,9 +8,10 @@
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -18,11 +19,13 @@
     }
 
     :root {
-      --header-height: 5rem; /* ارتفاع تقریبی هدر */
+      --header-height: 5rem;
+      --gap: clamp(1rem, 2vw, 2rem);
     }
 
     body {
       font-family: 'Vazirmatn', system-ui, sans-serif;
+      font-weight: 400;
       background-color: #f8f1e9;
       color: #1e1b1a;
       line-height: 1.6;
@@ -70,11 +73,11 @@
     .header-inner {
       max-width: 80rem;
       margin: 0 auto;
-      padding: 1.25rem 1.5rem;
+      padding: 1.25rem clamp(1rem, 3vw, 1.5rem);
       display: flex;
       align-items: center;
-      justify-content: flex-start; /* بازگشت به حالت اولیه */
-      gap: 2rem;
+      justify-content: flex-start;
+      gap: var(--gap);
     }
 
     .brand {
@@ -99,10 +102,10 @@
     .desktop-nav ul {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: clamp(1rem, 2.5vw, 2.5rem);
       list-style: none;
-      font-weight: 500;
-      font-size: 1rem;
+      font-weight: 400;
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
       margin: 0;
       padding: 0;
       direction: rtl;
@@ -121,8 +124,8 @@
 
     .desktop-nav h1 {
       margin: 0;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: inherit;
+      font-weight: 400;
       display: inline;
     }
 
@@ -134,7 +137,7 @@
       border: none;
       padding: 0.25rem;
       cursor: pointer;
-      margin-right: auto; /* بازگشت به حالت اولیه: همبرگر به سمت راست */
+      margin-right: auto;
       flex-shrink: 0;
     }
 
@@ -180,10 +183,9 @@
       left: auto;
       right: 0;
       bottom: 0;
-      width: 300px;
-      max-width: 80vw;
+      width: min(300px, 80vw);
       background-color: #000000;
-      padding: calc(var(--header-height) + 1.75rem) 2rem 2rem 2rem;
+      padding: calc(var(--header-height) + 1.75rem) clamp(1rem, 3vw, 2rem) 2rem;
       z-index: 49;
       transform: translateX(100%);
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -200,8 +202,8 @@
       flex-direction: column;
       gap: 1.75rem;
       list-style: none;
-      font-size: 1.25rem;
-      font-weight: 500;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 400;
       padding: 0;
       margin: 0;
     }
@@ -221,35 +223,16 @@
 
     .mobile-nav h1 {
       margin: 0;
-      font-size: 1.25rem;
-      font-weight: 500;
+      font-size: inherit;
+      font-weight: 400;
       line-height: 1.4;
-    }
-
-    @media (max-width: 768px) {
-      .desktop-nav {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .header-inner {
-        justify-content: space-between;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .mobile-nav-overlay,
-      .mobile-nav {
-        display: none !important;
-      }
     }
 
     .main-content {
       padding-top: calc(var(--header-height) + 2rem);
       padding-bottom: 1.5rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      padding-left: clamp(1rem, 3vw, 1.5rem);
+      padding-right: clamp(1rem, 3vw, 1.5rem);
       background-color: white;
     }
 
@@ -264,22 +247,10 @@
 
     .article-list {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+      gap: var(--gap);
       list-style: none;
       padding: 0;
-    }
-
-    @media (min-width: 768px) {
-      .article-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .article-list {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
 
     .article-item {
@@ -302,12 +273,12 @@
     .article-item figure img {
       display: block;
       width: 100%;
-      height: 14rem;
+      height: clamp(10rem, 20vw, 14rem);
       object-fit: cover;
     }
 
     .article-body {
-      padding: 1.75rem;
+      padding: clamp(1rem, 2.5vw, 1.75rem);
     }
 
     .article-body time {
@@ -318,7 +289,7 @@
     }
 
     .article-body h3 {
-      font-size: 1.25rem;
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
       font-weight: 700;
       line-height: 1.4;
       margin: 0 0 0.5rem 0;
@@ -338,7 +309,7 @@
       gap: 0.5rem;
       margin-top: 1.5rem;
       color: #0d9488;
-      font-weight: 500;
+      font-weight: 400;
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -353,7 +324,7 @@
 
     .load-more-wrapper {
       text-align: center;
-      margin-top: 1.5rem;
+      margin-top: var(--gap);
     }
 
     .btn-primary {
@@ -364,7 +335,7 @@
       color: white;
       padding: 0.75rem 2rem;
       border-radius: 1rem;
-      font-weight: 500;
+      font-weight: 400;
       text-decoration: none;
       transition: background-color 0.2s;
       cursor: pointer;
@@ -379,14 +350,14 @@
 
     .site-footer {
       background-color: #000000;
-      padding: 2rem 1.5rem;
+      padding: 2rem clamp(1rem, 3vw, 1.5rem);
       display: flex;
       align-items: center;
       justify-content: space-between;
       max-width: 80rem;
       margin: 0 auto;
       width: 100%;
-      flex-direction: row; /* لوگو سمت راست (اول)، نوشته سمت چپ (دوم) */
+      flex-direction: row;
     }
 
     .footer-logo {
@@ -407,7 +378,7 @@
 
     .footer-credit {
       color: #ffffff;
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
       font-weight: 400;
       direction: rtl;
       text-align: right;
@@ -417,14 +388,6 @@
     .footer-credit i {
       color: #ff4d6d;
       margin: 0 0.25rem;
-    }
-
-    @media (max-width: 600px) {
-      .site-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1.5rem 1rem;
-      }
     }
 
     body.no-scroll {
@@ -582,7 +545,7 @@
 
         <footer class="load-more-wrapper" id="loadMoreWrapper">
           <button class="btn-primary" id="loadMoreBtn">
-            بارگذاری بیشتر
+            پست‌های بیشتر
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
         </footer>
@@ -602,11 +565,27 @@
   <script>
     (function() {
       'use strict';
+
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
       const mobileOverlay = document.getElementById('mobileOverlay');
       const mobileLinks = document.querySelectorAll('.mobile-link');
       const body = document.body;
+      const desktopNav = document.querySelector('.desktop-nav');
+
+      function handleResize() {
+        const width = window.innerWidth;
+        if (width > 768) {
+          if (desktopNav) desktopNav.style.display = 'flex';
+          if (hamburger) hamburger.style.display = 'none';
+          if (mobileMenu) mobileMenu.classList.remove('open');
+          if (mobileOverlay) mobileOverlay.classList.remove('open');
+          body.classList.remove('no-scroll');
+        } else {
+          if (desktopNav) desktopNav.style.display = 'none';
+          if (hamburger) hamburger.style.display = 'flex';
+        }
+      }
 
       function toggleMenu() {
         const isOpen = mobileMenu.classList.contains('open');
@@ -635,6 +614,9 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu();
       });
+
+      window.addEventListener('resize', handleResize);
+      handleResize();
 
       const header = document.querySelector('.site-header');
       let lastScrollY = window.scrollY;
@@ -672,9 +654,7 @@
         header.classList.add('visible-nav');
         header.classList.remove('hidden-nav');
       });
-    })();
 
-    (function() {
       const loadMoreBtn = document.getElementById('loadMoreBtn');
       const hiddenArticles = document.querySelectorAll('.hidden-article');
 
