@@ -20,7 +20,7 @@
   <meta name="description" content="{{ desc }}">
   <meta itemprop="description" content="{{ desc }}">
   {%- else -%}
-  <meta name="description" content="پاسگاه، پایگاه اندیشه، فرهنگ و تاریخ ایران">
+  <meta name="description" content="{{ desc }}">
   {%- endif -%}
 
   <meta property="og:title" content="{{ page.title }}">
@@ -419,7 +419,7 @@
       font-size: inherit;
     }
 
-    .article-body h3 {
+    .article-body h2 {
       font-weight: 700;
       line-height: 1.4;
       margin: 0 0 0.5rem 0;
@@ -559,13 +559,6 @@
       font-size: inherit;
     }
 
-    .article-content h3 {
-      font-weight: 700;
-      margin: 2rem 0 0.75rem;
-      color: #1c1917;
-      font-size: inherit;
-    }
-
     .article-content p {
       margin-bottom: 1.5rem;
       font-size: inherit;
@@ -665,7 +658,11 @@
       <nav class="desktop-nav" aria-label="منوی اصلی">
         <ul>
           <li>
-            <h1><a href="{{ site.url }}/blog">پاسگاه</a></h1>
+            {% if page.is_home %}
+            <h1><a href="https://www.pasgah.org/">پاسگاه</a></h1>
+            {% else %}
+            <a href="https://www.pasgah.org/">پاسگاه</a>
+            {% endif %}
           </li>
           <li><a href="#">مقالات</a></li>
           <li><a href="#">فرهنگ</a></li>
@@ -686,7 +683,11 @@
   <nav class="mobile-nav" id="mobileMenu" aria-label="منوی موبایل">
     <ul>
       <li>
-        <h1><a href="{{ site.url }}/blog" class="mobile-link">پاسگاه</a></h1>
+        {% if page.is_home %}
+        <h1><a href="https://www.pasgah.org/" class="mobile-link">پاسگاه</a></h1>
+        {% else %}
+        <a href="https://www.pasgah.org/" class="mobile-link">پاسگاه</a>
+        {% endif %}
       </li>
       <li><a href="#" class="mobile-link">مقالات</a></li>
       <li><a href="#" class="mobile-link">فرهنگ</a></li>
@@ -738,7 +739,7 @@
               {% endif %}
               <section class="article-body">
                 <time datetime="{{ post.date | date_to_xmlschema }}"></time>
-                <h3>{{ post.title }}</h3>
+                <h2>{{ post.title }}</h2>
                 <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
               </section>
             </a>
@@ -762,7 +763,7 @@
               {% endif %}
               <section class="article-body">
                 <time datetime="{{ post.date | date_to_xmlschema }}"></time>
-                <h3>{{ post.title }}</h3>
+                <h2>{{ post.title }}</h2>
                 <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
                 <span class="read-more">
                   ادامه مطلب
@@ -788,9 +789,9 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <figure class="footer-logo">
+    <a href="https://www.pasgah.org/" class="footer-logo" aria-label="صفحه اصلی پاسگاه">
       <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
-    </figure>
+    </a>
     <a href="https://www.facebook.com/ehsanchehri" rel="me" class="footer-social-link" aria-label="فیسبوک">
       <i class="fa-brands fa-facebook" aria-hidden="true"></i>
     </a>
