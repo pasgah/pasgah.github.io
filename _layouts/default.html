@@ -626,18 +626,16 @@
       opacity: 1;
     }
 
-    .footer-credit {
+    .footer-social-link {
       color: #ffffff;
-      font-size: clamp(0.875rem, 1.5vw, 1rem);
-      font-weight: 400;
-      direction: rtl;
-      text-align: right;
-      margin: 0;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
     }
 
-    .footer-credit i {
-      color: #ff4d6d;
-      margin: 0 0.25rem;
+    .footer-social-link:hover {
+      color: #2dd4bf;
     }
 
     body.no-scroll {
@@ -782,9 +780,9 @@
     <figure class="footer-logo">
       <img src="https://www.pasgah.org/blog.svg" alt="لوگوی پاسگاه" />
     </figure>
-    <p class="footer-credit">
-      ساخته شده با <i class="fa-solid fa-heart" aria-hidden="true"></i>
-    </p>
+    <a href="https://www.facebook.com/ehsanchehri" rel="me" class="footer-social-link" aria-label="فیسبوک">
+      <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+    </a>
   </footer>
 
   <script>
