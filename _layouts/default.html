@@ -124,7 +124,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -135,6 +135,7 @@
     :root {
       --header-height: 5rem;
       --gap: clamp(1rem, 2vw, 2rem);
+      --font-size-base: 1.125rem;
     }
 
     body {
@@ -146,6 +147,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      font-size: var(--font-size-base);
     }
 
     main {
@@ -174,6 +176,7 @@
       border-bottom: 1px solid #2a2a2a;
       transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      font-size: inherit;
     }
 
     .site-header.hidden-nav {
@@ -200,6 +203,7 @@
       text-decoration: none;
       color: white;
       flex-shrink: 0;
+      font-size: inherit;
     }
 
     .brand img {
@@ -211,6 +215,7 @@
       flex: 1;
       display: flex;
       justify-content: flex-start;
+      font-size: inherit;
     }
 
     .desktop-nav ul {
@@ -219,10 +224,10 @@
       gap: clamp(1rem, 2.5vw, 2.5rem);
       list-style: none;
       font-weight: 400;
-      font-size: clamp(0.875rem, 1.2vw, 1rem);
       margin: 0;
       padding: 0;
       direction: rtl;
+      font-size: inherit;
     }
 
     .desktop-nav a {
@@ -230,6 +235,7 @@
       text-decoration: none;
       transition: color 0.2s;
       white-space: nowrap;
+      font-size: inherit;
     }
 
     .desktop-nav a:hover {
@@ -238,9 +244,9 @@
 
     .desktop-nav h1 {
       margin: 0;
-      font-size: inherit;
-      font-weight: 400;
+      font-weight: 700;
       display: inline;
+      font-size: inherit;
     }
 
     .hamburger {
@@ -253,6 +259,7 @@
       cursor: pointer;
       margin-right: auto;
       flex-shrink: 0;
+      font-size: inherit;
     }
 
     .hamburger span {
@@ -305,6 +312,7 @@
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       box-shadow: -8px 0 30px rgba(0, 0, 0, 0.3);
+      font-size: inherit;
     }
 
     .mobile-nav.open {
@@ -316,10 +324,10 @@
       flex-direction: column;
       gap: 1.75rem;
       list-style: none;
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
       font-weight: 400;
       padding: 0;
       margin: 0;
+      font-size: inherit;
     }
 
     .mobile-nav a {
@@ -329,6 +337,7 @@
       display: block;
       padding: 0.5rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: inherit;
     }
 
     .mobile-nav a:hover {
@@ -337,9 +346,9 @@
 
     .mobile-nav h1 {
       margin: 0;
-      font-size: inherit;
-      font-weight: 400;
+      font-weight: 700;
       line-height: 1.4;
+      font-size: inherit;
     }
 
     .main-content {
@@ -348,6 +357,7 @@
       padding-left: clamp(1rem, 3vw, 1.5rem);
       padding-right: clamp(1rem, 3vw, 1.5rem);
       background-color: white;
+      font-size: inherit;
     }
 
     .main-content-inner {
@@ -399,20 +409,21 @@
 
     .article-body {
       padding: clamp(1rem, 2.5vw, 1.75rem);
+      font-size: inherit;
     }
 
     .article-body time {
       display: inline-block;
       color: #0d9488;
-      font-size: 0.875rem;
       margin-bottom: 0.5rem;
+      font-size: inherit;
     }
 
     .article-body h3 {
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
       font-weight: 700;
       line-height: 1.4;
       margin: 0 0 0.5rem 0;
+      font-size: inherit;
     }
 
     .article-body p {
@@ -421,6 +432,7 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: inherit;
     }
 
     .read-more {
@@ -431,6 +443,7 @@
       color: #0d9488;
       font-weight: 400;
       transition: color 0.2s;
+      font-size: inherit;
     }
 
     .read-more:hover {
@@ -444,6 +457,7 @@
     .load-more-wrapper {
       text-align: center;
       margin-top: var(--gap);
+      font-size: inherit;
     }
 
     .btn-primary {
@@ -460,7 +474,7 @@
       cursor: pointer;
       border: none;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: inherit;
     }
 
     .btn-primary:hover {
@@ -472,16 +486,17 @@
     }
 
     .post-title {
-      font-size: clamp(2rem, 5vw, 2.5rem);
       font-weight: 800;
       line-height: 1.3;
       color: #1c1917;
       margin-bottom: 2rem;
       letter-spacing: -0.02em;
+      font-size: inherit;
     }
 
     .post-breadcrumb {
       margin-bottom: 2rem;
+      font-size: inherit;
     }
 
     .post-breadcrumb a {
@@ -490,8 +505,8 @@
       gap: 0.5rem;
       color: #0d9488;
       text-decoration: none;
-      font-size: 0.95rem;
       font-weight: 500;
+      font-size: inherit;
     }
 
     .post-breadcrumb a:hover {
@@ -504,8 +519,8 @@
       gap: 2.5rem;
       flex-wrap: wrap;
       color: #1c1917;
-      font-size: 1rem;
       padding-bottom: 1.5rem;
+      font-size: inherit;
     }
 
     .post-meta time {
@@ -513,6 +528,7 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      font-size: inherit;
     }
 
     .post-author {
@@ -520,6 +536,7 @@
       align-items: center;
       gap: 0.35rem;
       color: #1c1917;
+      font-size: inherit;
     }
 
     .post-author i,
@@ -529,28 +546,29 @@
     }
 
     .article-content {
-      font-size: 1.15rem;
       line-height: 1.9;
       color: #2d2a28;
       margin-top: 2.5rem;
+      font-size: inherit;
     }
 
     .article-content h2 {
-      font-size: 1.75rem;
       font-weight: 700;
       margin: 2.5rem 0 1rem;
       color: #1c1917;
+      font-size: inherit;
     }
 
     .article-content h3 {
-      font-size: 1.4rem;
       font-weight: 700;
       margin: 2rem 0 0.75rem;
       color: #1c1917;
+      font-size: inherit;
     }
 
     .article-content p {
       margin-bottom: 1.5rem;
+      font-size: inherit;
     }
 
     .article-content a {
@@ -591,13 +609,6 @@
       margin-bottom: 0.75rem;
     }
 
-    .other-posts-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 4rem 0 1.5rem;
-      color: #1c1917;
-    }
-
     .site-footer {
       background-color: #000000;
       padding: 2rem clamp(1rem, 3vw, 1.5rem);
@@ -608,6 +619,7 @@
       margin: 0 auto;
       width: 100%;
       flex-direction: row;
+      font-size: inherit;
     }
 
     .footer-logo {
@@ -710,30 +722,6 @@
 
       <section class="article-content">
         {{ content }}
-      </section>
-
-      <section class="articles-section">
-        <h2 class="other-posts-title">نوشته‌های دیگر</h2>
-        <ul class="article-list">
-          {% assign other_posts = site.posts | where_exp: "item", "item.id != page.id" %}
-          {% for post in other_posts limit: 3 %}
-          <li class="article-item">
-            <a href="{{ post.url | relative_url }}" class="article-link">
-              {% if post.image %}
-              <figure>
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" />
-                <figcaption class="sr-only">{{ post.title }}</figcaption>
-              </figure>
-              {% endif %}
-              <section class="article-body">
-                <time datetime="{{ post.date | date_to_xmlschema }}"></time>
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-              </section>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
       </section>
 
       {% else %}
