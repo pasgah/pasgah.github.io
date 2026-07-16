@@ -7,4 +7,10 @@ title: صفحهٔ اصلی
 <p>ایندکس یک دانشنامهٔ آزاد است. هدف ما گردآوری دانش بشری به زبان فارسی است.</p>
 
 <h2>آخرین مقالات</h2>
-<ul id="postList"></ul>
+<ul id="postList">
+    {% for post in site.posts limit:10 %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {% else %}
+        <li>هیچ مقاله‌ای منتشر نشده است.</li>
+    {% endfor %}
+</ul>
