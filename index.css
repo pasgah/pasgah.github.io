@@ -186,12 +186,17 @@ a:hover { text-decoration: underline; }
 .mw-content blockquote footer::before {
     content: "— ";
 }
+.mw-content table,
+.mw-content table th,
+.mw-content table td {
+    direction: rtl !important;
+    text-align: right !important;
+}
 .mw-content table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.2rem 0;
     font-size: 0.95rem;
-    direction: rtl;
 }
 .mw-content table thead {
     background: #f0f0f0;
@@ -199,15 +204,11 @@ a:hover { text-decoration: underline; }
 }
 .mw-content table th {
     padding: 0.6rem 0.8rem;
-    text-align: right;
     font-weight: 600;
-    direction: rtl;
 }
 .mw-content table td {
     padding: 0.5rem 0.8rem;
     border-bottom: 1px solid #e2e2e2;
-    text-align: right;
-    direction: rtl;
 }
 .mw-content table tbody tr:hover {
     background: #f8f9fa;
