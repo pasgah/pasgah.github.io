@@ -1,0 +1,112 @@
+---
+layout: null
+---
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        .alert-box {
+            background-color: #fff3cd;
+            border-right: 8px solid #ffc107;
+            border-radius: 12px;
+            padding: 2.5rem 3rem;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .alert-icon {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+        .alert-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #856404;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+        .alert-message {
+            font-size: 1.3rem;
+            color: #533f03;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .alert-message strong {
+            font-weight: 700;
+            color: #6b4d00;
+        }
+        .btn-link {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #212529;
+            padding: 0.9rem 2.8rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.25s, transform 0.15s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0a800;
+        }
+        .btn-link:hover {
+            background-color: #e0a800;
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .btn-link:active {
+            transform: scale(0.97);
+        }
+        .btn-link i {
+            margin-left: 8px;
+        }
+        @media (max-width: 500px) {
+            .alert-box {
+                padding: 1.8rem 1.5rem;
+            }
+            .alert-title {
+                font-size: 1.6rem;
+            }
+            .alert-message {
+                font-size: 1.1rem;
+            }
+            .btn-link {
+                font-size: 1.1rem;
+                padding: 0.7rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-box">
+        <div class="alert-icon">⚠️</div>
+        <h1 class="alert-title">تغییر آدرس دامنه</h1>
+        <div class="alert-message">
+            این دامنه به آدرس جدید <strong>pasgah.org</strong> منتقل شده است.
+            <br>
+            لطفاً از لینک زیر وارد شوید.
+        </div>
+        <a href="https://www.pasgah.org" class="btn-link" target="_blank">
+            بازدید از pasgah.org
+        </a>
+    </div>
+</body>
+</html>
