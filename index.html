@@ -4,55 +4,7 @@ title: صفحهٔ اصلی
 ---
 
 <h1>به دانشنامهٔ ایندکس خوش آمدید</h1>
-<p>ایندکس یک دانشنامهٔ آزاد است که توسط خود من توسعه داده می‌شود. هدف ما گردآوری دانش بشری به زبان فارسی است.</p>
+<p>ایندکس یک دانشنامهٔ آزاد است. هدف ما گردآوری دانش بشری به زبان فارسی است.</p>
 
-<h2>آخرین پست‌ها</h2>
-<div id="postListContainer">
-    <ul id="postList"></ul>
-</div>
-
-<script>
-    (function() {
-        const postListEl = document.getElementById('postList');
-        const searchInput = document.getElementById('searchInput');
-
-        let postsData = [];
-
-        function renderPosts(filter = '') {
-            const query = filter.trim().toLowerCase();
-            const filtered = query === ''
-                ? postsData
-                : postsData.filter(p => p.title.toLowerCase().includes(query));
-
-            if (filtered.length === 0) {
-                postListEl.innerHTML = '<li>هیچ پستی یافت نشد</li>';
-                return;
-            }
-
-            let html = '';
-            for (const post of filtered) {
-                html += `<li><a href="${post.url}">${post.title}</a></li>`;
-            }
-            postListEl.innerHTML = html;
-        }
-
-        fetch('/index.json')
-            .then(res => {
-                if (!res.ok) throw new Error('Network response was not ok');
-                return res.json();
-            })
-            .then(data => {
-                postsData = data;
-                renderPosts();
-            })
-            .catch(() => {
-                postListEl.innerHTML = '<li>خطا در بارگذاری لیست پست‌ها</li>';
-            });
-
-        if (searchInput) {
-            searchInput.addEventListener('input', function(e) {
-                renderPosts(e.target.value);
-            });
-        }
-    })();
-</script>
+<h2>آخرین مقالات</h2>
+<ul id="postList"></ul>
