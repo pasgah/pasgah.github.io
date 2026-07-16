@@ -25,6 +25,9 @@
             <a href="{{ '/' | relative_url }}">→ بازگشت به صفحه اصلی</a>
         </div>
         {% endif %}
+        {% if page.title and page.url != '/' %}
+        <h1 class="article-title">{{ page.title }}</h1>
+        {% endif %}
         {{ content }}
     </main>
     <footer class="mw-footer">
