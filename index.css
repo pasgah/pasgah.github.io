@@ -201,11 +201,13 @@ a:hover { text-decoration: underline; }
     padding: 0.6rem 0.8rem;
     text-align: right;
     font-weight: 600;
+    direction: rtl;
 }
 .mw-content table td {
     padding: 0.5rem 0.8rem;
     border-bottom: 1px solid #e2e2e2;
     text-align: right;
+    direction: rtl;
 }
 .mw-content table tbody tr:hover {
     background: #f8f9fa;
