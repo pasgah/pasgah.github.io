@@ -1,17 +1,18 @@
-url: https://indexes.ir
-
-title: وبلاگ ایندکس
-
-description: وبلاگ ایندکس
-
-permalink: /:title
-
-encoding: UTF-8
-
+title: ایندکس
+description: دانشنامهٔ آزاد ایندکس
+baseurl: ""
+url: "https://indexes.ir"
+markdown: kramdown
+theme: null
+permalink: /:title/
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "default"
-      type: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
