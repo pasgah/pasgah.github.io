@@ -19,6 +19,11 @@
         </div>
     </header>
     <main class="mw-content">
+        {% if page.url != '/' %}
+        <div class="back-link">
+            <a href="{{ '/' | relative_url }}">← بازگشت به صفحه اصلی</a>
+        </div>
+        {% endif %}
         {{ content }}
     </main>
     <footer class="mw-footer">
@@ -33,14 +38,11 @@
 <script>
     (function() {
         'use strict';
-
         var searchInput = document.getElementById('searchInput');
         var resultsBox = document.getElementById('liveSearchResults');
         if (!searchInput || !resultsBox) return;
-
         var postsData = [];
         var debounceTimer;
-
         function normalize(text) {
             if (!text) return '';
             return text
@@ -50,20 +52,16 @@
                 .replace(/[ك]/g, 'ک')
                 .trim();
         }
-
         function renderResults(term) {
             var normalizedTerm = normalize(term);
             var html = '';
-
             if (!normalizedTerm || postsData.length === 0) {
                 resultsBox.style.display = 'none';
                 return;
             }
-
             var filtered = postsData.filter(function(item) {
                 return normalize(item.title).includes(normalizedTerm);
             });
-
             if (filtered.length === 0) {
                 html = '<li class="no-result">هیچ مقاله‌ای یافت نشد</li>';
             } else {
@@ -71,11 +69,9 @@
                     html += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
                 });
             }
-
             resultsBox.innerHTML = html;
             resultsBox.style.display = 'block';
         }
-
         fetch('/index.json')
             .then(function(response) {
                 if (!response.ok) throw new Error('مشکل در بارگذاری داده‌ها');
@@ -87,20 +83,17 @@
             .catch(function(err) {
                 console.warn('خطا در بارگذاری index.json:', err);
             });
-
         searchInput.addEventListener('input', function() {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(function() {
                 renderResults(searchInput.value);
             }, 200);
         });
-
         searchInput.addEventListener('focus', function() {
             if (searchInput.value.trim() !== '' && postsData.length > 0) {
                 renderResults(searchInput.value);
             }
         });
-
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.live-search-wrapper')) {
                 resultsBox.style.display = 'none';
