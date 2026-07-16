@@ -24,7 +24,7 @@ a:hover { text-decoration: underline; }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1.5rem;
 }
 .mw-logo {
@@ -32,6 +32,7 @@ a:hover { text-decoration: underline; }
     font-weight: 700;
     color: #1a1a1a;
     letter-spacing: -0.5px;
+    flex-shrink: 0;
 }
 .mw-logo small {
     font-size: 0.9rem;
@@ -42,10 +43,12 @@ a:hover { text-decoration: underline; }
 .live-search-wrapper {
     position: relative;
     width: 300px;
+    margin: 0 auto;
 }
 .live-search-input {
     width: 100%;
-    padding: 0.4rem 2rem 0.4rem 0.7rem;
+    padding: 0.4rem 0.7rem;
+    padding-left: 2rem;
     font-size: 0.95rem;
     border: 1px solid #c8c8c8;
     border-radius: 4px;
@@ -171,6 +174,7 @@ a:hover { text-decoration: underline; }
     }
     .live-search-wrapper {
         width: 100%;
+        margin: 0;
     }
     .mw-content {
         padding: 0 1.2rem 1.2rem 1.2rem;
