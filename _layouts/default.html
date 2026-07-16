@@ -31,41 +31,47 @@
 </div>
 <script>
     (function() {
-        const searchInput = document.getElementById('searchInput');
-        if (!searchInput) return;
-        const postList = document.getElementById('postList');
-        if (!postList) return;
+        // المنت‌ها
+        var searchInput = document.getElementById('searchInput');
+        var postList = document.getElementById('postList');
+        if (!searchInput || !postList) return;
 
-        let postsData = [];
+        var postsData = [];
 
-        function renderPosts(filter = '') {
-            const query = filter.trim().toLowerCase();
-            const filtered = query === ''
-                ? postsData
-                : postsData.filter(p => p.title.toLowerCase().includes(query));
+        function renderPosts(filter) {
+            filter = filter || '';
+            var query = filter.trim().toLowerCase();
+            var filtered = query === '' ? postsData : postsData.filter(function(p) {
+                return p.title.toLowerCase().includes(query);
+            });
 
             if (filtered.length === 0) {
                 postList.innerHTML = '<li>هیچ مقاله‌ای یافت نشد</li>';
                 return;
             }
 
-            let html = '';
-            for (const post of filtered) {
-                html += `<li><a href="${post.url}">${post.title}</a></li>`;
+            var html = '';
+            for (var i = 0; i < filtered.length; i++) {
+                html += '<li><a href="' + filtered[i].url + '">' + filtered[i].title + '</a></li>';
             }
             postList.innerHTML = html;
         }
 
+        // بارگذاری داده‌ها از index.json
         fetch('/index.json')
-            .then(res => res.ok ? res.json() : Promise.reject())
-            .then(data => {
-                postsData = data;
-                renderPosts();
+            .then(function(res) {
+                if (!res.ok) throw new Error('Network error');
+                return res.json();
             })
-            .catch(() => {
+            .then(function(data) {
+                postsData = data;
+                renderPosts('');
+            })
+            .catch(function() {
                 postList.innerHTML = '<li>خطا در بارگذاری لیست مقالات</li>';
             });
 
+        // رویداد جستجو
         searchInput.addEventListener('input', function(e) {
             renderPosts(e.target.value);
         });
