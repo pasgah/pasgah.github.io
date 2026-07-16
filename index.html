@@ -7,200 +7,283 @@ layout: null
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وبلاگ ایندکس</title>
+    <title>ایندکس · دانشنامهٔ آزاد</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ===== reset & base ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            display: flex;
-            justify-content: center;
-            padding: 2rem 1rem;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f6f6;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+        a { color: #0645ad; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        /* ===== container ===== */
+        .mw-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            grid-template-rows: auto 1fr auto;
             min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem 2.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e9ecef;
-            height: fit-content;
-        }
-        h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #1e293b;
-            border-bottom: 3px solid #e9ecef;
-            padding-bottom: 1rem;
-            margin-bottom: 1.8rem;
+        /* ===== header ===== */
+        .mw-header {
+            grid-column: 1 / -1;
+            background: #fff;
+            border-bottom: 1px solid #e2e2e2;
+            padding: 0.8rem 1.5rem;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
         }
-        h1 span {
-            background: #e9ecef;
-            font-size: 1rem;
-            padding: 0.2rem 0.9rem;
-            border-radius: 40px;
-            color: #475569;
-            font-weight: 400;
+        .mw-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
         }
-        .post-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-        .post-item {
-            background: #f1f5f9;
-            border-radius: 14px;
-            transition: all 0.15s ease;
-            border: 1px solid transparent;
-        }
-        .post-item:hover {
-            background: #e9edf5;
-            border-color: #cbd5e1;
-            transform: translateX(4px);
-        }
-        .post-link {
-            display: block;
-            padding: 0.9rem 1.4rem;
-            text-decoration: none;
-            color: #0f172a;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border-radius: 14px;
-            transition: color 0.2s;
-            position: relative;
-        }
-        .post-link::after {
-            content: "→";
-            position: absolute;
-            left: 1.4rem;
-            opacity: 0;
-            transition: opacity 0.2s, transform 0.2s;
-            transform: translateX(-6px);
-        }
-        .post-link:hover {
-            color: #2563eb;
-        }
-        .post-link:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .empty-message {
-            text-align: center;
-            color: #94a3b8;
-            padding: 2.5rem 0;
-            font-size: 1.1rem;
-            background: #f8fafc;
-            border-radius: 16px;
-            border: 2px dashed #d1d9e8;
-        }
-        .footer-note {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e9ecef;
+        .mw-logo small {
             font-size: 0.9rem;
-            color: #94a3b8;
-            text-align: left;
+            font-weight: 400;
+            color: #54595d;
+            margin-right: 0.5rem;
         }
-        .footer-note code {
-            background: #f1f5f9;
-            padding: 0.2rem 0.6rem;
-            border-radius: 8px;
+        .mw-search {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .mw-search input {
+            border: 1px solid #c8c8c8;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            font-size: 0.95rem;
+            width: 220px;
+            background: #fcfcfc;
+        }
+        .mw-search input:focus {
+            outline: none;
+            border-color: #0645ad;
+            background: #fff;
+        }
+        .mw-search button {
+            background: #e8e8e8;
+            border: 1px solid #c8c8c8;
+            border-radius: 4px;
+            padding: 0.4rem 1rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+        .mw-search button:hover {
+            background: #d0d0d0;
+        }
+        /* ===== sidebar ===== */
+        .mw-sidebar {
+            background: #f9f9f9;
+            border-left: 1px solid #e2e2e2;
+            padding: 1.5rem 1rem;
+            font-size: 0.95rem;
+        }
+        .mw-sidebar h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #222;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.3rem;
+            margin: 1.2rem 0 0.6rem 0;
+        }
+        .mw-sidebar h3:first-of-type { margin-top: 0; }
+        .mw-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .mw-sidebar li {
+            margin: 0.3rem 0;
+        }
+        .mw-sidebar a {
+            color: #0645ad;
+            display: block;
+            padding: 0.2rem 0;
+        }
+        .mw-sidebar a:hover {
+            text-decoration: underline;
+        }
+        /* ===== main content ===== */
+        .mw-content {
+            padding: 1.8rem 2rem 2rem 2rem;
+            background: #fff;
+        }
+        .mw-content h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e2e2;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1.2rem;
+        }
+        .mw-content h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            border-bottom: 1px solid #e2e2e2;
+            padding-bottom: 0.2rem;
+            margin: 1.8rem 0 0.8rem 0;
+        }
+        .mw-content h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin: 1.2rem 0 0.6rem 0;
+        }
+        .mw-content p {
+            margin: 0.6rem 0;
+        }
+        .mw-content ul, .mw-content ol {
+            margin: 0.4rem 0 0.8rem 1.8rem;
+        }
+        .mw-content li {
+            margin: 0.2rem 0;
+        }
+        .post-meta {
+            color: #54595d;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #e2e2e2;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .post-meta span {
+            margin-left: 1rem;
+        }
+        .post-tags {
+            margin-top: 1.8rem;
+            border-top: 1px solid #e2e2e2;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .post-tags a {
+            background: #f1f1f1;
+            padding: 0.2rem 0.7rem;
+            border-radius: 12px;
+            margin-left: 0.3rem;
+            color: #0645ad;
+        }
+        .post-tags a:hover {
+            background: #d8d8d8;
+            text-decoration: none;
+        }
+        /* ===== footer ===== */
+        .mw-footer {
+            grid-column: 1 / -1;
+            background: #f9f9f9;
+            border-top: 1px solid #e2e2e2;
+            padding: 1rem 1.5rem;
             font-size: 0.85rem;
-            color: #1e293b;
+            color: #54595d;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
-        @media (max-width: 550px) {
-            .container {
-                padding: 1.5rem 1rem;
+        .mw-footer a {
+            color: #0645ad;
+        }
+        /* ===== responsive ===== */
+        @media (max-width: 820px) {
+            .mw-wrapper {
+                grid-template-columns: 1fr;
             }
-            h1 {
-                font-size: 1.6rem;
+            .mw-sidebar {
+                border-left: none;
+                border-top: 1px solid #e2e2e2;
+                display: flex;
                 flex-wrap: wrap;
+                gap: 1.5rem;
+                padding: 1rem 1.5rem;
             }
-            .post-link {
-                font-size: 1rem;
-                padding: 0.8rem 1rem;
+            .mw-sidebar > div {
+                flex: 1 1 160px;
             }
-            .post-link::after {
-                display: none;
+            .mw-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
             }
+            .mw-search input {
+                width: 100%;
+            }
+            .mw-content {
+                padding: 1.2rem 1.2rem;
+            }
+            .mw-content h1 { font-size: 1.8rem; }
+        }
+        @media (max-width: 480px) {
+            .mw-logo { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>
-            📋 لیست پست‌ها
-            <span id="postCount">۰</span>
-        </h1>
+<div class="mw-wrapper">
 
-        <ul class="post-list" id="postList">
-            <!-- آیتم‌های لیست توسط جاوااسکریپت اضافه می‌شوند -->
-        </ul>
-
-        <div class="footer-note">
-            💡 برای افزودن پست جدید، آرایه <code>posts</code> را در جاوااسکریپت ویرایش کنید.
+    <!-- ===== HEADER ===== -->
+    <header class="mw-header">
+        <div class="mw-logo">
+            <small>دانشنامهٔ</small> ایندکس
         </div>
-    </div>
+        <div class="mw-search">
+            <input type="search" placeholder="جستجو در ایندکس" aria-label="جستجو">
+            <button type="button">برو</button>
+        </div>
+    </header>
 
-    <script>
-        (function() {
-            // =================== لیست پست‌ها (اینجا اضافه/کم کنید) ===================
-            const posts = [
-                { title: "سخنان عجیب نیکولا تسلا", url: "https://indexes.ir/#" },
-                { title: "دیوید هیوم کیست؟", url: "https://indexes.ir/#" },
-                { title: "جان لاک؛ پدر لیبرالیسم", url: "https://indexes.ir/#" },
-                { title: "چرا تخت جمشید بازسازی نمی‌شود؟", url: "https://indexes.ir/#" },
-                { title: "علت ساخت تخت جمشید", url: "https://indexes.ir/#" },
-                { title: "خلاصه کتاب پاسخ به تاریخ", url: "https://indexes.ir/#" },
-                { title: "زندگینامه محمدرضا پهلوی", url: "https://indexes.ir/#" },
-                { title: "تاریخ ایران؛ از ایلام تا جمهوری اسلامی", url: "https://indexes.ir/#" },
-                { title: "چرا رضاشاه تبعید شد؟", url: "https://indexes.ir/#" },
-                { title: "قلعه الموت و حسن صباح", url: "https://indexes.ir/#" }
-            ];
-            // =========================================================================
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="mw-sidebar">
+        <div>
+            <h3>ابزارها</h3>
+            <ul>
+                <li><a href="#">صفحهٔ اصلی</a></li>
+                <li><a href="#">فهرست مقالات</a></li>
+                <li><a href="#">تغییرات اخیر</a></li>
+                <li><a href="#">دربارهٔ ایندکس</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>دسته‌بندی</h3>
+            <ul>
+                <li><a href="#">تاریخ</a></li>
+                <li><a href="#">فلسفه</a></li>
+                <li><a href="#">سیاست</a></li>
+                <li><a href="#">فناوری</a></li>
+                <li><a href="#">ادبیات</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>آمار</h3>
+            <ul>
+                <li><a href="#">مقالات جدید</a></li>
+                <li><a href="#">پر بازدیدترین</a></li>
+            </ul>
+        </div>
+    </aside>
 
-            const postListEl = document.getElementById('postList');
-            const postCountEl = document.getElementById('postCount');
+    <!-- ===== CONTENT ===== -->
+    <main class="mw-content">
+        <!-- محتوای صفحه اصلی یا پست بر اساس فایل -->
+        {{ content }}
+    </main>
 
-            function renderPosts() {
-                if (!postListEl) return;
+    <!-- ===== FOOTER ===== -->
+    <footer class="mw-footer">
+        <div>
+            این محتوا تحت مجوز <a href="#">CC BY-SA 4.0</a> منتشر شده است.
+        </div>
+        <div>
+            <a href="https://indexes.ir">indexes.ir</a> · دانشنامهٔ آزاد
+        </div>
+    </footer>
 
-                if (posts.length === 0) {
-                    postListEl.innerHTML = `<li class="empty-message">📭 هیچ پستی در لیست وجود ندارد</li>`;
-                    if (postCountEl) postCountEl.textContent = '۰';
-                    return;
-                }
-
-                let html = '';
-                for (let i = 0; i < posts.length; i++) {
-                    const post = posts[i];
-                    const title = post.title || 'عنوان نامشخص';
-                    const url = post.url || '#';
-                    html += `
-                        <li class="post-item">
-                            <a href="${url}" class="post-link" target="_blank" rel="noopener noreferrer">
-                                ${title}
-                            </a>
-                        </li>
-                    `;
-                }
-
-                postListEl.innerHTML = html;
-                if (postCountEl) postCountEl.textContent = posts.length;
-            }
-
-            renderPosts();
-        })();
-    </script>
+</div>
 </body>
 </html>
