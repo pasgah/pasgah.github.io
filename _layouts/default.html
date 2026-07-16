@@ -15,13 +15,14 @@
         </div>
         <div class="live-search-wrapper">
             <input type="text" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off">
+            <button type="button" class="clear-search" id="clearSearch" aria-label="پاک کردن متن جستجو">×</button>
             <ul class="live-search-results" id="liveSearchResults"></ul>
         </div>
     </header>
     <main class="mw-content">
         {% if page.url != '/' %}
         <div class="back-link">
-            <a href="{{ '/' | relative_url }}">← بازگشت به صفحه اصلی</a>
+            <a href="{{ '/' | relative_url }}">→ بازگشت به صفحه اصلی</a>
         </div>
         {% endif %}
         {{ content }}
@@ -40,7 +41,8 @@
         'use strict';
         var searchInput = document.getElementById('searchInput');
         var resultsBox = document.getElementById('liveSearchResults');
-        if (!searchInput || !resultsBox) return;
+        var clearBtn = document.getElementById('clearSearch');
+        if (!searchInput || !resultsBox || !clearBtn) return;
         var postsData = [];
         var debounceTimer;
         function normalize(text) {
@@ -72,6 +74,11 @@
             resultsBox.innerHTML = html;
             resultsBox.style.display = 'block';
         }
+        function clearSearch() {
+            searchInput.value = '';
+            resultsBox.style.display = 'none';
+            searchInput.focus();
+        }
         fetch('/index.json')
             .then(function(response) {
                 if (!response.ok) throw new Error('مشکل در بارگذاری داده‌ها');
@@ -88,11 +95,21 @@
             debounceTimer = setTimeout(function() {
                 renderResults(searchInput.value);
             }, 200);
+            if (searchInput.value.trim() !== '') {
+                clearBtn.style.display = 'block';
+            } else {
+                clearBtn.style.display = 'none';
+            }
         });
         searchInput.addEventListener('focus', function() {
             if (searchInput.value.trim() !== '' && postsData.length > 0) {
                 renderResults(searchInput.value);
             }
+        });
+        clearBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            clearSearch();
+            clearBtn.style.display = 'none';
         });
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.live-search-wrapper')) {
