@@ -7,7 +7,7 @@ layout: null
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>indexes.ir</title>
+    <title>وبلاگ ایندکس</title>
     <style>
         * {
             margin: 0;
@@ -15,99 +15,192 @@ layout: null
             box-sizing: border-box;
         }
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
             display: flex;
             justify-content: center;
-            align-items: center;
+            padding: 2rem 1rem;
             min-height: 100vh;
-            background-color: #f4f4f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
         }
-        .alert-box {
-            background-color: #fff3cd;
-            border-right: 8px solid #ffc107;
-            border-radius: 12px;
-            padding: 2.5rem 3rem;
-            max-width: 700px;
+        .container {
+            max-width: 800px;
             width: 100%;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-            text-align: center;
-            transition: all 0.2s ease;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e9ecef;
+            height: fit-content;
         }
-        .alert-icon {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-        }
-        .alert-title {
+        h1 {
             font-size: 2rem;
-            font-weight: 700;
-            color: #856404;
-            margin-bottom: 1.2rem;
-            letter-spacing: 0.5px;
-        }
-        .alert-message {
-            font-size: 1.3rem;
-            color: #533f03;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-        .alert-message strong {
-            font-weight: 700;
-            color: #6b4d00;
-        }
-        .btn-link {
-            display: inline-block;
-            background-color: #ffc107;
-            color: #212529;
-            padding: 0.9rem 2.8rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
             font-weight: 600;
+            color: #1e293b;
+            border-bottom: 3px solid #e9ecef;
+            padding-bottom: 1rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 span {
+            background: #e9ecef;
+            font-size: 1rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            color: #475569;
+            font-weight: 400;
+        }
+        .post-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .post-item {
+            background: #f1f5f9;
+            border-radius: 14px;
+            transition: all 0.15s ease;
+            border: 1px solid transparent;
+        }
+        .post-item:hover {
+            background: #e9edf5;
+            border-color: #cbd5e1;
+            transform: translateX(4px);
+        }
+        .post-link {
+            display: block;
+            padding: 0.9rem 1.4rem;
             text-decoration: none;
-            transition: background-color 0.25s, transform 0.15s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e0a800;
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 14px;
+            transition: color 0.2s;
+            position: relative;
         }
-        .btn-link:hover {
-            background-color: #e0a800;
-            transform: scale(1.02);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        .post-link::after {
+            content: "→";
+            position: absolute;
+            left: 1.4rem;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            transform: translateX(-6px);
         }
-        .btn-link:active {
-            transform: scale(0.97);
+        .post-link:hover {
+            color: #2563eb;
         }
-        .btn-link i {
-            margin-left: 8px;
+        .post-link:hover::after {
+            opacity: 1;
+            transform: translateX(0);
         }
-        @media (max-width: 500px) {
-            .alert-box {
-                padding: 1.8rem 1.5rem;
+        .empty-message {
+            text-align: center;
+            color: #94a3b8;
+            padding: 2.5rem 0;
+            font-size: 1.1rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            border: 2px dashed #d1d9e8;
+        }
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-align: left;
+        }
+        .footer-note code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #1e293b;
+        }
+        @media (max-width: 550px) {
+            .container {
+                padding: 1.5rem 1rem;
             }
-            .alert-title {
+            h1 {
                 font-size: 1.6rem;
+                flex-wrap: wrap;
             }
-            .alert-message {
-                font-size: 1.1rem;
+            .post-link {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
             }
-            .btn-link {
-                font-size: 1.1rem;
-                padding: 0.7rem 2rem;
+            .post-link::after {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="alert-box">
-        <div class="alert-icon">⚠️</div>
-        <h1 class="alert-title">تغییر آدرس دامنه</h1>
-        <div class="alert-message">
-            این دامنه به آدرس جدید <strong>pasgah.org</strong> منتقل شده است.
-            <br>
-            لطفاً از لینک زیر وارد شوید.
+    <div class="container">
+        <h1>
+            📋 لیست پست‌ها
+            <span id="postCount">۰</span>
+        </h1>
+
+        <ul class="post-list" id="postList">
+            <!-- آیتم‌های لیست توسط جاوااسکریپت اضافه می‌شوند -->
+        </ul>
+
+        <div class="footer-note">
+            💡 برای افزودن پست جدید، آرایه <code>posts</code> را در جاوااسکریپت ویرایش کنید.
         </div>
-        <a href="https://www.pasgah.org" class="btn-link" target="_blank">
-            بازدید از pasgah.org
-        </a>
     </div>
+
+    <script>
+        (function() {
+            // =================== لیست پست‌ها (اینجا اضافه/کم کنید) ===================
+            const posts = [
+                { title: "سخنان عجیب نیکولا تسلا", url: "https://indexes.ir/#" },
+                { title: "دیوید هیوم کیست؟", url: "https://indexes.ir/#" },
+                { title: "جان لاک؛ پدر لیبرالیسم", url: "https://indexes.ir/#" },
+                { title: "چرا تخت جمشید بازسازی نمی‌شود؟", url: "https://indexes.ir/#" },
+                { title: "علت ساخت تخت جمشید", url: "https://indexes.ir/#" },
+                { title: "خلاصه کتاب پاسخ به تاریخ", url: "https://indexes.ir/#" },
+                { title: "زندگینامه محمدرضا پهلوی", url: "https://indexes.ir/#" },
+                { title: "تاریخ ایران؛ از ایلام تا جمهوری اسلامی", url: "https://indexes.ir/#" },
+                { title: "چرا رضاشاه تبعید شد؟", url: "https://indexes.ir/#" },
+                { title: "قلعه الموت و حسن صباح", url: "https://indexes.ir/#" }
+            ];
+            // =========================================================================
+
+            const postListEl = document.getElementById('postList');
+            const postCountEl = document.getElementById('postCount');
+
+            function renderPosts() {
+                if (!postListEl) return;
+
+                if (posts.length === 0) {
+                    postListEl.innerHTML = `<li class="empty-message">📭 هیچ پستی در لیست وجود ندارد</li>`;
+                    if (postCountEl) postCountEl.textContent = '۰';
+                    return;
+                }
+
+                let html = '';
+                for (let i = 0; i < posts.length; i++) {
+                    const post = posts[i];
+                    const title = post.title || 'عنوان نامشخص';
+                    const url = post.url || '#';
+                    html += `
+                        <li class="post-item">
+                            <a href="${url}" class="post-link" target="_blank" rel="noopener noreferrer">
+                                ${title}
+                            </a>
+                        </li>
+                    `;
+                }
+
+                postListEl.innerHTML = html;
+                if (postCountEl) postCountEl.textContent = posts.length;
+            }
+
+            renderPosts();
+        })();
+    </script>
 </body>
 </html>
