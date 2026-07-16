@@ -13,8 +13,9 @@
         <div class="mw-logo">
             <small>دانشنامهٔ</small> ایندکس
         </div>
-        <div class="mw-search">
-            <input type="search" id="searchInput" placeholder="جستجو در مقالات" aria-label="جستجو" autocomplete="off">
+        <div class="live-search-wrapper">
+            <input type="text" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off">
+            <ul class="live-search-results" id="liveSearchResults"></ul>
         </div>
     </header>
     <main class="mw-content">
@@ -34,8 +35,8 @@
         'use strict';
 
         var searchInput = document.getElementById('searchInput');
-        var postList = document.getElementById('postList');
-        if (!searchInput || !postList) return;
+        var resultsBox = document.getElementById('liveSearchResults');
+        if (!searchInput || !resultsBox) return;
 
         var postsData = [];
         var debounceTimer;
@@ -50,19 +51,12 @@
                 .trim();
         }
 
-        function renderPosts(term) {
+        function renderResults(term) {
             var normalizedTerm = normalize(term);
             var html = '';
 
             if (!normalizedTerm || postsData.length === 0) {
-                if (postsData.length === 0) {
-                    postList.innerHTML = '<li>در حال بارگذاری...</li>';
-                } else {
-                    postsData.forEach(function(post) {
-                        html += '<li><a href="' + post.url + '">' + post.title + '</a></li>';
-                    });
-                    postList.innerHTML = html;
-                }
+                resultsBox.style.display = 'none';
                 return;
             }
 
@@ -71,13 +65,15 @@
             });
 
             if (filtered.length === 0) {
-                html = '<li>هیچ مقاله‌ای یافت نشد</li>';
+                html = '<li class="no-result">هیچ مقاله‌ای یافت نشد</li>';
             } else {
                 filtered.forEach(function(item) {
                     html += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
                 });
             }
-            postList.innerHTML = html;
+
+            resultsBox.innerHTML = html;
+            resultsBox.style.display = 'block';
         }
 
         fetch('/index.json')
@@ -87,29 +83,27 @@
             })
             .then(function(data) {
                 postsData = data;
-                renderPosts('');
             })
             .catch(function(err) {
                 console.warn('خطا در بارگذاری index.json:', err);
-                postList.innerHTML = '<li>خطا در بارگذاری لیست مقالات</li>';
             });
 
         searchInput.addEventListener('input', function() {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(function() {
-                renderPosts(searchInput.value);
+                renderResults(searchInput.value);
             }, 200);
         });
 
         searchInput.addEventListener('focus', function() {
             if (searchInput.value.trim() !== '' && postsData.length > 0) {
-                renderPosts(searchInput.value);
+                renderResults(searchInput.value);
             }
         });
 
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.mw-search')) {
-                // اگر نیاز به مخفی کردن نتایج دارید، می‌توانید اینجا کد بگذارید
+            if (!e.target.closest('.live-search-wrapper')) {
+                resultsBox.style.display = 'none';
             }
         });
     })();
