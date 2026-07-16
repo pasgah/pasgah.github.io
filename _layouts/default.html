@@ -1,215 +1,58 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ایندکس · {{ page.title | default: 'دانشنامهٔ آزاد' }}</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #f6f6f6;
-            color: #1a1a1a;
-            line-height: 1.6;
-            padding: 0 1rem;
-        }
-        a { color: #0645ad; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .mw-wrapper {
-            max-width: 1280px;
-            margin: 0 auto;
-            background: #fff;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-            display: grid;
-            grid-template-columns: 1fr 220px;
-            grid-template-rows: auto 1fr auto;
-            min-height: 100vh;
-        }
-        .mw-header {
-            grid-column: 1 / -1;
-            background: #fff;
-            border-bottom: 1px solid #e2e2e2;
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .mw-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            letter-spacing: -0.5px;
-        }
-        .mw-logo small {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #54595d;
-            margin-left: 0.5rem;
-        }
-        .mw-search input {
-            border: 1px solid #c8c8c8;
-            border-radius: 4px;
-            padding: 0.4rem 0.7rem;
-            font-size: 0.95rem;
-            width: 220px;
-            background: #fcfcfc;
-            text-align: right;
-        }
-        .mw-search input:focus {
-            outline: none;
-            border-color: #0645ad;
-            background: #fff;
-        }
-        .mw-sidebar {
-            background: #f9f9f9;
-            border-right: 1px solid #e2e2e2;
-            padding: 1.5rem 1rem;
-            font-size: 0.95rem;
-        }
-        .mw-sidebar h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #222;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 0.3rem;
-            margin: 1.2rem 0 0.6rem 0;
-        }
-        .mw-sidebar h3:first-of-type { margin-top: 0; }
-        .mw-sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .mw-sidebar li {
-            margin: 0.3rem 0;
-        }
-        .mw-sidebar a {
-            color: #0645ad;
-            display: block;
-            padding: 0.2rem 0;
-        }
-        .mw-sidebar a:hover { text-decoration: underline; }
-        .mw-content {
-            padding: 1.8rem 2rem 2rem 2rem;
-            background: #fff;
-        }
-        .mw-content h1 {
-            font-size: 2.2rem;
-            font-weight: 500;
-            border-bottom: 1px solid #e2e2e2;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1.2rem;
-        }
-        .mw-content h2 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            border-bottom: 1px solid #e2e2e2;
-            padding-bottom: 0.2rem;
-            margin: 1.8rem 0 0.8rem 0;
-        }
-        .mw-content h3 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin: 1.2rem 0 0.6rem 0;
-        }
-        .mw-content p { margin: 0.6rem 0; }
-        .mw-content ul, .mw-content ol {
-            margin: 0.4rem 1.8rem 0.8rem 0;
-        }
-        .mw-content li { margin: 0.2rem 0; }
-        .post-meta {
-            color: #54595d;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #e2e2e2;
-            padding-bottom: 0.6rem;
-            margin-bottom: 1.2rem;
-        }
-        .post-meta span { margin-right: 1rem; }
-        .post-tags {
-            margin-top: 1.8rem;
-            border-top: 1px solid #e2e2e2;
-            padding-top: 1rem;
-            font-size: 0.9rem;
-        }
-        .post-tags a {
-            background: #f1f1f1;
-            padding: 0.2rem 0.7rem;
-            border-radius: 12px;
-            margin-right: 0.3rem;
-            color: #0645ad;
-        }
-        .post-tags a:hover {
-            background: #d8d8d8;
-            text-decoration: none;
-        }
-        .mw-footer {
-            grid-column: 1 / -1;
-            background: #f9f9f9;
-            border-top: 1px solid #e2e2e2;
-            padding: 1rem 1.5rem;
-            font-size: 0.85rem;
-            color: #54595d;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .mw-footer a { color: #0645ad; }
-        @media (max-width: 820px) {
-            .mw-wrapper {
-                grid-template-columns: 1fr;
-            }
-            .mw-sidebar {
-                border-right: none;
-                border-top: 1px solid #e2e2e2;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1.5rem;
-                padding: 1rem 1.5rem;
-            }
-            .mw-sidebar > div { flex: 1 1 160px; }
-            .mw-header { flex-direction: column; align-items: stretch; gap: 0.6rem; }
-            .mw-search input { width: 100%; }
-            .mw-content { padding: 1.2rem 1.2rem; }
-            .mw-content h1 { font-size: 1.8rem; }
-        }
-        @media (max-width: 480px) {
-            .mw-logo { font-size: 1.6rem; }
-        }
-    </style>
-</head>
-<body>
-<div class="mw-wrapper">
-    <header class="mw-header">
-        <div class="mw-logo">
-            <small>دانشنامهٔ</small> ایندکس
-        </div>
-        <div class="mw-search">
-            <input type="search" placeholder="جستجو در ایندکس" aria-label="جستجو">
-        </div>
-    </header>
-    <aside class="mw-sidebar">
-        <div>
-            <h3>آخرین مقالات</h3>
-            <ul>
-                {% for post in site.posts limit:10 %}
-                <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-                {% else %}
-                <li>هیچ مقاله‌ای یافت نشد</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </aside>
-    <main class="mw-content">
-        {{ content }}
-    </main>
-    <footer class="mw-footer">
-        <div>
-            این محتوا تحت مجوز <a href="#">CC BY-SA 4.0</a> منتشر شده است.
-        </div>
-        <div>
-            <a href="https://indexes.ir">indexes.ir</a> · دانشنامهٔ آزاد
-        </div>
-    </footer>
+---
+layout: default
+title: صفحهٔ اصلی
+---
+
+<h1>به دانشنامهٔ ایندکس خوش آمدید</h1>
+<p>ایندکس یک دانشنامهٔ آزاد است که توسط خود من توسعه داده می‌شود. هدف ما گردآوری دانش بشری به زبان فارسی است.</p>
+
+<h2>آخرین پست‌ها</h2>
+<div id="postListContainer">
+    <ul id="postList"></ul>
 </div>
-</body>
-</html>
+
+<script>
+    (function() {
+        const postListEl = document.getElementById('postList');
+        const searchInput = document.getElementById('searchInput');
+
+        let postsData = [];
+
+        function renderPosts(filter = '') {
+            const query = filter.trim().toLowerCase();
+            const filtered = query === ''
+                ? postsData
+                : postsData.filter(p => p.title.toLowerCase().includes(query));
+
+            if (filtered.length === 0) {
+                postListEl.innerHTML = '<li>هیچ پستی یافت نشد</li>';
+                return;
+            }
+
+            let html = '';
+            for (const post of filtered) {
+                html += `<li><a href="${post.url}">${post.title}</a></li>`;
+            }
+            postListEl.innerHTML = html;
+        }
+
+        fetch('/index.json')
+            .then(res => {
+                if (!res.ok) throw new Error('Network response was not ok');
+                return res.json();
+            })
+            .then(data => {
+                postsData = data;
+                renderPosts();
+            })
+            .catch(() => {
+                postListEl.innerHTML = '<li>خطا در بارگذاری لیست پست‌ها</li>';
+            });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                renderPosts(e.target.value);
+            });
+        }
+    })();
+</script>
