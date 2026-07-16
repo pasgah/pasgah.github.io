@@ -14,10 +14,9 @@
             <small>دانشنامهٔ</small> ایندکس
         </div>
         <div class="mw-search">
-            <input type="search" id="searchInput" placeholder="جستجو در ایندکس" aria-label="جستجو">
+            <input type="search" id="searchInput" placeholder="جستجو در مقالات" aria-label="جستجو">
         </div>
     </header>
-    <aside class="mw-sidebar"></aside>
     <main class="mw-content">
         {{ content }}
     </main>
@@ -46,7 +45,7 @@
                 : postsData.filter(p => p.title.toLowerCase().includes(query));
 
             if (filtered.length === 0) {
-                postList.innerHTML = '<li>هیچ پستی یافت نشد</li>';
+                postList.innerHTML = '<li>هیچ مقاله‌ای یافت نشد</li>';
                 return;
             }
 
@@ -64,7 +63,7 @@
                 renderPosts();
             })
             .catch(() => {
-                postList.innerHTML = '<li>خطا در بارگذاری لیست پست‌ها</li>';
+                postList.innerHTML = '<li>خطا در بارگذاری لیست مقالات</li>';
             });
 
         searchInput.addEventListener('input', function(e) {
