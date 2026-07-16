@@ -14,7 +14,7 @@
             <small>دانشنامهٔ</small> ایندکس
         </div>
         <div class="mw-search">
-            <input type="search" id="searchInput" placeholder="جستجو در مقالات" aria-label="جستجو">
+            <input type="search" id="searchInput" placeholder="جستجو در مقالات" aria-label="جستجو" autocomplete="off">
         </div>
     </header>
     <main class="mw-content">
@@ -31,49 +31,86 @@
 </div>
 <script>
     (function() {
-        // المنت‌ها
+        'use strict';
+
         var searchInput = document.getElementById('searchInput');
         var postList = document.getElementById('postList');
         if (!searchInput || !postList) return;
 
         var postsData = [];
+        var debounceTimer;
 
-        function renderPosts(filter) {
-            filter = filter || '';
-            var query = filter.trim().toLowerCase();
-            var filtered = query === '' ? postsData : postsData.filter(function(p) {
-                return p.title.toLowerCase().includes(query);
-            });
+        function normalize(text) {
+            if (!text) return '';
+            return text
+                .toLowerCase()
+                .replace(/[\u200c\s]+/g, ' ')
+                .replace(/[يى]/g, 'ی')
+                .replace(/[ك]/g, 'ک')
+                .trim();
+        }
 
-            if (filtered.length === 0) {
-                postList.innerHTML = '<li>هیچ مقاله‌ای یافت نشد</li>';
+        function renderPosts(term) {
+            var normalizedTerm = normalize(term);
+            var html = '';
+
+            if (!normalizedTerm || postsData.length === 0) {
+                if (postsData.length === 0) {
+                    postList.innerHTML = '<li>در حال بارگذاری...</li>';
+                } else {
+                    postsData.forEach(function(post) {
+                        html += '<li><a href="' + post.url + '">' + post.title + '</a></li>';
+                    });
+                    postList.innerHTML = html;
+                }
                 return;
             }
 
-            var html = '';
-            for (var i = 0; i < filtered.length; i++) {
-                html += '<li><a href="' + filtered[i].url + '">' + filtered[i].title + '</a></li>';
+            var filtered = postsData.filter(function(item) {
+                return normalize(item.title).includes(normalizedTerm);
+            });
+
+            if (filtered.length === 0) {
+                html = '<li>هیچ مقاله‌ای یافت نشد</li>';
+            } else {
+                filtered.forEach(function(item) {
+                    html += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
+                });
             }
             postList.innerHTML = html;
         }
 
-        // بارگذاری داده‌ها از index.json
         fetch('/index.json')
-            .then(function(res) {
-                if (!res.ok) throw new Error('Network error');
-                return res.json();
+            .then(function(response) {
+                if (!response.ok) throw new Error('مشکل در بارگذاری داده‌ها');
+                return response.json();
             })
             .then(function(data) {
                 postsData = data;
                 renderPosts('');
             })
-            .catch(function() {
+            .catch(function(err) {
+                console.warn('خطا در بارگذاری index.json:', err);
                 postList.innerHTML = '<li>خطا در بارگذاری لیست مقالات</li>';
             });
 
-        // رویداد جستجو
-        searchInput.addEventListener('input', function(e) {
-            renderPosts(e.target.value);
+        searchInput.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() {
+                renderPosts(searchInput.value);
+            }, 200);
+        });
+
+        searchInput.addEventListener('focus', function() {
+            if (searchInput.value.trim() !== '' && postsData.length > 0) {
+                renderPosts(searchInput.value);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.mw-search')) {
+                // اگر نیاز به مخفی کردن نتایج دارید، می‌توانید اینجا کد بگذارید
+            }
         });
     })();
 </script>
