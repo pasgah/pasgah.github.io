@@ -191,6 +191,7 @@ a:hover { text-decoration: underline; }
     border-collapse: collapse;
     margin: 1.2rem 0;
     font-size: 0.95rem;
+    direction: rtl;
 }
 .mw-content table thead {
     background: #f0f0f0;
