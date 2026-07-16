@@ -77,6 +77,7 @@
         function clearSearch() {
             searchInput.value = '';
             resultsBox.style.display = 'none';
+            clearBtn.style.display = 'none';
             searchInput.focus();
         }
         fetch('/index.json')
@@ -109,7 +110,6 @@
         clearBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             clearSearch();
-            clearBtn.style.display = 'none';
         });
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.live-search-wrapper')) {
