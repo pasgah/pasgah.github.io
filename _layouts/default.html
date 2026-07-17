@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ایندکس · {{ page.title | default: 'دانشنامهٔ آزاد' }}</title>
-    <link rel="stylesheet" href="{{ '/index.css' | relative_url }}">
+    <link rel="preload" href="{{ '/index.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ '/index.css' | relative_url }}"></noscript>
     <link rel="icon" href="{{ '/index.svg' | relative_url }}" type="image/svg+xml">
 </head>
 <body>
