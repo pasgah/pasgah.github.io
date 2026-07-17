@@ -48,7 +48,7 @@ a:hover { text-decoration: underline; }
 .live-search-input {
     width: 100%;
     padding: 0.4rem 0.7rem;
-    padding-left: 2rem;
+    padding-left: 0.4rem;  /* کاهش فاصله سمت چپ برای نزدیک شدن ضربدر پیش‌فرض */
     font-size: 0.95rem;
     border: 1px solid #c8c8c8;
     border-radius: 4px;
@@ -61,22 +61,13 @@ a:hover { text-decoration: underline; }
     border-color: #0645ad;
     background: #fff;
 }
-.clear-search {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: #888;
-    cursor: pointer;
-    padding: 0 4px;
-    display: none;
-    line-height: 1;
+.live-search-input::-webkit-search-cancel-button {
+    /* اختیاری: تنظیم موقعیت و فاصله ضربدر پیش‌فرض در مرورگرهای WebKit */
+    margin-left: 0;
 }
-.clear-search:hover {
-    color: #333;
+.clear-search {
+    /* این کلاس دیگر استفاده نمی‌شود اما می‌تواند باقی بماند */
+    display: none;
 }
 .live-search-results {
     position: absolute;
