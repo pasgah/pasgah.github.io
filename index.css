@@ -33,6 +33,7 @@ a:hover { text-decoration: underline; }
     color: #1a1a1a;
     letter-spacing: -0.5px;
     flex-shrink: 0;
+    min-height: 2.5rem;
 }
 .mw-logo small {
     font-size: 0.9rem;
@@ -107,6 +108,7 @@ a:hover { text-decoration: underline; }
     padding: 0 2rem 2rem 2rem;
     background: #fff;
     text-align: right;
+    min-height: 60vh;
 }
 .mw-content h1 {
     font-size: clamp(1.8rem, 5vw, 2.2rem);
@@ -229,6 +231,7 @@ a:hover { text-decoration: underline; }
     height: auto;
     border-radius: 4px;
     margin: 0.8rem 0;
+    display: block;
 }
 .mw-content figure {
     margin: 1.2rem 0;
