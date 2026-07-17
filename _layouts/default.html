@@ -15,7 +15,6 @@
         </div>
         <div class="live-search-wrapper" role="search">
             <input type="search" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off" aria-label="جستجو در مقالات" aria-autocomplete="list" aria-controls="liveSearchResults" aria-expanded="false">
-            <button type="button" class="clear-search" id="clearSearch" aria-label="پاک کردن متن جستجو" style="display: none;">×</button>
             <ul class="live-search-results" id="liveSearchResults" role="listbox" aria-label="نتایج جستجو" style="display: none;"></ul>
         </div>
     </header>
@@ -43,8 +42,7 @@
     (() => {
         const searchInput = document.getElementById('searchInput');
         const resultsBox = document.getElementById('liveSearchResults');
-        const clearBtn = document.getElementById('clearSearch');
-        if (!searchInput || !resultsBox || !clearBtn) return;
+        if (!searchInput || !resultsBox) return;
         let postsData = [];
         let debounceTimer;
         const escapeHtml = (str) => {
@@ -82,13 +80,6 @@
             resultsBox.style.display = 'block';
             searchInput.setAttribute('aria-expanded', 'true');
         };
-        const clearSearch = () => {
-            searchInput.value = '';
-            resultsBox.style.display = 'none';
-            clearBtn.style.display = 'none';
-            searchInput.setAttribute('aria-expanded', 'false');
-            searchInput.focus();
-        };
         fetch('/index.json')
             .then((response) => {
                 if (!response.ok) throw new Error('Network error');
@@ -105,16 +96,11 @@
             debounceTimer = setTimeout(() => {
                 renderResults(searchInput.value);
             }, 200);
-            clearBtn.style.display = searchInput.value.trim() !== '' ? 'block' : 'none';
         });
         searchInput.addEventListener('focus', () => {
             if (searchInput.value.trim() !== '' && postsData.length > 0) {
                 renderResults(searchInput.value);
             }
-        });
-        clearBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            clearSearch();
         });
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.live-search-wrapper')) {
