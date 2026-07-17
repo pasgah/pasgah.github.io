@@ -28,7 +28,7 @@ a:hover { text-decoration: underline; }
     gap: 1.5rem;
 }
 .mw-logo {
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 4vw, 2rem);
     font-weight: 700;
     color: #1a1a1a;
     letter-spacing: -0.5px;
@@ -42,7 +42,8 @@ a:hover { text-decoration: underline; }
 }
 .live-search-wrapper {
     position: relative;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
 }
 .live-search-input {
@@ -63,9 +64,6 @@ a:hover { text-decoration: underline; }
 }
 .live-search-input::-webkit-search-cancel-button {
     margin-left: 0;
-}
-.clear-search {
-    display: none;
 }
 .live-search-results {
     position: absolute;
@@ -111,39 +109,23 @@ a:hover { text-decoration: underline; }
     text-align: right;
 }
 .mw-content h1 {
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
     font-weight: 500;
     border-bottom: 1px solid #e2e2e2;
     padding-bottom: 0.3rem;
     margin-bottom: 1.2rem;
 }
 .mw-content h2 {
-    font-size: 1.6rem;
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
     font-weight: 400;
     border-bottom: 1px solid #e2e2e2;
     padding-bottom: 0.2rem;
     margin: 1.8rem 0 0.8rem 0;
 }
 .mw-content h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
     font-weight: 400;
     margin: 1.2rem 0 0.6rem 0;
-}
-.mw-content h4 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin: 1rem 0 0.4rem 0;
-}
-.mw-content h5 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0.8rem 0 0.3rem 0;
-}
-.mw-content h6 {
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin: 0.6rem 0 0.2rem 0;
-    color: #54595d;
 }
 .mw-content p {
     margin: 0.6rem 0;
@@ -279,7 +261,7 @@ a:hover { text-decoration: underline; }
     margin: 1rem 0;
 }
 .article-title {
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
     font-weight: 500;
     border-bottom: 1px solid #e2e2e2;
     padding-bottom: 0.3rem;
@@ -310,34 +292,3 @@ a:hover { text-decoration: underline; }
     justify-content: space-between;
 }
 .mw-footer a { color: #0645ad; }
-@media (max-width: 820px) {
-    .mw-header {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.6rem;
-        justify-content: flex-start;
-    }
-    .live-search-wrapper {
-        width: 100%;
-        margin: 0;
-    }
-    .mw-content {
-        padding: 0 1.2rem 1.2rem 1.2rem;
-    }
-    .mw-content h1 { font-size: 1.8rem; }
-    .mw-content table {
-        font-size: 0.85rem;
-    }
-    .mw-content table th,
-    .mw-content table td {
-        padding: 0.4rem 0.5rem;
-    }
-}
-@media (max-width: 480px) {
-    .mw-logo { font-size: 1.6rem; }
-    .mw-content h1 { font-size: 1.5rem; }
-    .mw-content h2 { font-size: 1.3rem; }
-    .mw-content blockquote {
-        padding: 0.6rem 1rem;
-    }
-}
