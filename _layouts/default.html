@@ -13,10 +13,10 @@
         <div class="mw-logo">
             <small>دانشنامهٔ</small> ایندکس
         </div>
-        <div class="live-search-wrapper">
-            <input type="text" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off">
-            <button type="button" class="clear-search" id="clearSearch" aria-label="پاک کردن متن جستجو">×</button>
-            <ul class="live-search-results" id="liveSearchResults"></ul>
+        <div class="live-search-wrapper" role="search">
+            <input type="search" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off" aria-label="جستجو در مقالات" aria-autocomplete="list" aria-controls="liveSearchResults" aria-expanded="false">
+            <button type="button" class="clear-search" id="clearSearch" aria-label="پاک کردن متن جستجو" style="display: none;">×</button>
+            <ul class="live-search-results" id="liveSearchResults" role="listbox" aria-label="نتایج جستجو" style="display: none;"></ul>
         </div>
     </header>
     <main class="mw-content">
@@ -40,15 +40,20 @@
     </footer>
 </div>
 <script>
-    (function() {
-        'use strict';
-        var searchInput = document.getElementById('searchInput');
-        var resultsBox = document.getElementById('liveSearchResults');
-        var clearBtn = document.getElementById('clearSearch');
+    (() => {
+        const searchInput = document.getElementById('searchInput');
+        const resultsBox = document.getElementById('liveSearchResults');
+        const clearBtn = document.getElementById('clearSearch');
         if (!searchInput || !resultsBox || !clearBtn) return;
-        var postsData = [];
-        var debounceTimer;
-        function normalize(text) {
+        let postsData = [];
+        let debounceTimer;
+        const escapeHtml = (str) => {
+            return str.replace(/[&<>'"]/g, (tag) => {
+                const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' };
+                return chars[tag] || tag;
+            });
+        };
+        const normalize = (text) => {
             if (!text) return '';
             return text
                 .toLowerCase()
@@ -56,67 +61,65 @@
                 .replace(/[يى]/g, 'ی')
                 .replace(/[ك]/g, 'ک')
                 .trim();
-        }
-        function renderResults(term) {
-            var normalizedTerm = normalize(term);
-            var html = '';
+        };
+        const renderResults = (term) => {
+            const normalizedTerm = normalize(term);
             if (!normalizedTerm || postsData.length === 0) {
                 resultsBox.style.display = 'none';
+                searchInput.setAttribute('aria-expanded', 'false');
                 return;
             }
-            var filtered = postsData.filter(function(item) {
-                return normalize(item.title).includes(normalizedTerm);
-            });
+            const filtered = postsData.filter((item) => normalize(item.title).includes(normalizedTerm));
+            let html = '';
             if (filtered.length === 0) {
-                html = '<li class="no-result">هیچ مقاله‌ای یافت نشد</li>';
+                html = '<li class="no-result" role="option" aria-selected="false">هیچ مقاله‌ای یافت نشد</li>';
             } else {
-                filtered.forEach(function(item) {
-                    html += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
+                filtered.forEach((item) => {
+                    html += `<li role="option"><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></li>`;
                 });
             }
             resultsBox.innerHTML = html;
             resultsBox.style.display = 'block';
-        }
-        function clearSearch() {
+            searchInput.setAttribute('aria-expanded', 'true');
+        };
+        const clearSearch = () => {
             searchInput.value = '';
             resultsBox.style.display = 'none';
             clearBtn.style.display = 'none';
+            searchInput.setAttribute('aria-expanded', 'false');
             searchInput.focus();
-        }
+        };
         fetch('/index.json')
-            .then(function(response) {
-                if (!response.ok) throw new Error('مشکل در بارگذاری داده‌ها');
+            .then((response) => {
+                if (!response.ok) throw new Error('Network error');
                 return response.json();
             })
-            .then(function(data) {
+            .then((data) => {
                 postsData = data;
             })
-            .catch(function(err) {
-                console.warn('خطا در بارگذاری index.json:', err);
+            .catch((err) => {
+                console.warn(err);
             });
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', () => {
             clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(function() {
+            debounceTimer = setTimeout(() => {
                 renderResults(searchInput.value);
             }, 200);
-            if (searchInput.value.trim() !== '') {
-                clearBtn.style.display = 'block';
-            } else {
-                clearBtn.style.display = 'none';
-            }
+            clearBtn.style.display = searchInput.value.trim() !== '' ? 'block' : 'none';
         });
-        searchInput.addEventListener('focus', function() {
+        searchInput.addEventListener('focus', () => {
             if (searchInput.value.trim() !== '' && postsData.length > 0) {
                 renderResults(searchInput.value);
             }
         });
-        clearBtn.addEventListener('click', function(e) {
+        clearBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             clearSearch();
         });
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', (e) => {
             if (!e.target.closest('.live-search-wrapper')) {
                 resultsBox.style.display = 'none';
+                searchInput.setAttribute('aria-expanded', 'false');
             }
         });
     })();
