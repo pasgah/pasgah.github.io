@@ -1,6 +1,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-family: 'sans-serif';
     background: #f6f6f6;
     color: #1a1a1a;
     line-height: 1.6;
@@ -234,7 +234,6 @@ a:hover { text-decoration: underline; }
     padding: 1rem;
     margin: 1rem 0;
     overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
     direction: ltr;
     text-align: left;
@@ -243,7 +242,6 @@ a:hover { text-decoration: underline; }
     background: #f0f0f0;
     padding: 0.1rem 0.3rem;
     border-radius: 3px;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
 }
 .mw-content pre code {
