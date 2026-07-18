@@ -11,19 +11,26 @@ layout: default
 
 <script>
     (() => {
-        const postsDataElement = document.getElementById('posts-data');
-        const postList = document.getElementById('postList');
-        if (!postsDataElement || !postList) return;
-        const postsData = JSON.parse(postsDataElement.textContent);
-        const fragment = document.createDocumentFragment();
-        postsData.forEach(post => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = post.url;
-            a.textContent = post.title;
-            li.appendChild(a);
-            fragment.appendChild(li);
-        });
-        postList.appendChild(fragment);
+        const renderPosts = (postsData) => {
+            const postList = document.getElementById('postList');
+            if (!postList) return;
+            const fragment = document.createDocumentFragment();
+            postsData.forEach(post => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = post.url;
+                a.textContent = post.title;
+                li.appendChild(a);
+                fragment.appendChild(li);
+            });
+            postList.appendChild(fragment);
+        };
+        if (window.__POSTS_READY__) {
+            renderPosts(window.__POSTS__);
+        } else {
+            window.addEventListener('postsReady', (e) => {
+                renderPosts(e.detail);
+            });
+        }
     })();
 </script>
