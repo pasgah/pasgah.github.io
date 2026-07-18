@@ -7,30 +7,8 @@ layout: default
 <p>می‌توانید از جستجوی بالا استفاده کنید یا به <a href="{{ '/' | relative_url }}">صفحه اصلی</a> بازگردید.</p>
 
 <h2>آخرین مقالات</h2>
-<ul id="postList"></ul>
-
-<script>
-    (() => {
-        const renderPosts = (postsData) => {
-            const postList = document.getElementById('postList');
-            if (!postList) return;
-            const fragment = document.createDocumentFragment();
-            postsData.forEach(post => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = post.url;
-                a.textContent = post.title;
-                li.appendChild(a);
-                fragment.appendChild(li);
-            });
-            postList.appendChild(fragment);
-        };
-        if (window.__POSTS_READY__) {
-            renderPosts(window.__POSTS__);
-        } else {
-            window.addEventListener('postsReady', (e) => {
-                renderPosts(e.detail);
-            });
-        }
-    })();
-</script>
+<ul>
+    {% for post in site.posts %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
