@@ -39,33 +39,27 @@
         </div>
     </footer>
 </div>
-
 <script type="application/json" id="posts-data">
     [
         {% for post in site.posts %}
-            { "title": {{ post.title | jsonify }}, "url": {{ post.url | jsonify }} }{% unless forloop.last %},{% endunless %}
+            { "title": {{ post.title | jsonify }}, "url": {{ post.url | relative_url | jsonify }} }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ]
 </script>
-
 <script>
     (() => {
         const postsDataElement = document.getElementById('posts-data');
         const postsData = postsDataElement ? JSON.parse(postsDataElement.textContent) : [];
-        
         const searchInput = document.getElementById('searchInput');
         const resultsBox = document.getElementById('liveSearchResults');
         if (!searchInput || !resultsBox) return;
-        
         let debounceTimer;
-        
         const escapeHtml = (str) => {
             return str.replace(/[&<>'"]/g, (tag) => {
                 const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' };
                 return chars[tag] || tag;
             });
         };
-        
         const normalize = (text) => {
             if (!text) return '';
             return text
@@ -75,7 +69,6 @@
                 .replace(/[ك]/g, 'ک')
                 .trim();
         };
-        
         const renderResults = (term) => {
             const normalizedTerm = normalize(term);
             if (!normalizedTerm || postsData.length === 0) {
@@ -96,20 +89,17 @@
             resultsBox.style.display = 'block';
             searchInput.setAttribute('aria-expanded', 'true');
         };
-        
         searchInput.addEventListener('input', () => {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => {
                 renderResults(searchInput.value);
             }, 200);
         });
-        
         searchInput.addEventListener('focus', () => {
             if (searchInput.value.trim() !== '' && postsData.length > 0) {
                 renderResults(searchInput.value);
             }
         });
-        
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.live-search-wrapper')) {
                 resultsBox.style.display = 'none';
