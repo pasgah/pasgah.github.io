@@ -47,13 +47,9 @@
     ]
 </script>
 <script>
-    window.__POSTS_READY__ = false;
     (() => {
         const postsDataElement = document.getElementById('posts-data');
         const postsData = postsDataElement ? JSON.parse(postsDataElement.textContent) : [];
-        window.__POSTS__ = postsData;
-        window.__POSTS_READY__ = true;
-        window.dispatchEvent(new CustomEvent('postsReady', { detail: postsData }));
         const searchInput = document.getElementById('searchInput');
         const resultsBox = document.getElementById('liveSearchResults');
         if (!searchInput || !resultsBox) return;
