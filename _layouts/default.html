@@ -20,8 +20,8 @@
             line-height: 1.6;
             padding: 0 1rem;
         }
-        a { color: #0645ad; text-decoration: underline; }
-        a:hover { text-decoration: none; }
+        a { color: #0645ad; text-decoration: none; font-weight: 500; }
+        a:hover, a:focus { text-decoration: underline; }
         .mw-wrapper {
             max-width: 1280px;
             margin: 0 auto;
@@ -108,11 +108,10 @@
             color: #1a1a1a;
             display: block;
             font-size: 0.95rem;
-            text-decoration: underline;
         }
-        .live-search-results a:hover {
+        .live-search-results a:hover, .live-search-results a:focus {
             color: #0645ad;
-            text-decoration: none;
+            text-decoration: underline;
         }
         .live-search-results .no-result {
             color: #6b6560;
@@ -295,10 +294,6 @@
         }
         .back-link a {
             color: #0645ad;
-            text-decoration: underline;
-        }
-        .back-link a:hover {
-            text-decoration: none;
         }
         .mw-footer {
             background: #f9f9f9;
@@ -310,8 +305,7 @@
             flex-wrap: wrap;
             justify-content: space-between;
         }
-        .mw-footer a { color: #0645ad; text-decoration: underline; }
-        .mw-footer a:hover { text-decoration: none; }
+        .mw-footer a { color: #0645ad; }
     </style>
     <link rel="icon" href="{{ '/index.svg' | relative_url }}" type="image/svg+xml">
 </head>
