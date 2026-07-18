@@ -8,32 +8,22 @@ layout: default
 
 <h2>آخرین مقالات</h2>
 <ul id="postList"></ul>
-<noscript>
-    <ul>
-        {% for post in site.posts %}
-            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-        {% else %}
-            <li>هیچ مقاله‌ای منتشر نشده است.</li>
-        {% endfor %}
-    </ul>
-</noscript>
 
 <script>
     (() => {
         const postsDataElement = document.getElementById('posts-data');
-        const postsData = postsDataElement ? JSON.parse(postsDataElement.textContent) : [];
         const postList = document.getElementById('postList');
-        if (postList && postsData.length > 0) {
-            postsData.forEach(post => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = post.url;
-                a.textContent = post.title;
-                li.appendChild(a);
-                postList.appendChild(li);
-            });
-        } else if (postList && postsData.length === 0) {
-            postList.innerHTML = '<li>هیچ مقاله‌ای منتشر نشده است.</li>';
-        }
+        if (!postsDataElement || !postList) return;
+        const postsData = JSON.parse(postsDataElement.textContent);
+        const fragment = document.createDocumentFragment();
+        postsData.forEach(post => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = post.url;
+            a.textContent = post.title;
+            li.appendChild(a);
+            fragment.appendChild(li);
+        });
+        postList.appendChild(fragment);
     })();
 </script>
