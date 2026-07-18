@@ -316,8 +316,8 @@
             <small>دانشنامهٔ</small> ایندکس
         </div>
         <div class="live-search-wrapper" role="search">
-            <input type="search" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off" aria-label="جستجو در مقالات" aria-autocomplete="list" aria-controls="liveSearchResults" aria-expanded="false">
-            <ul class="live-search-results" id="liveSearchResults" aria-label="نتایج جستجو" style="display: none;"></ul>
+            <input type="search" id="searchInput" class="live-search-input" placeholder="جستجو در مقالات" autocomplete="off" aria-label="جستجو در مقالات" role="combobox" aria-autocomplete="list" aria-controls="liveSearchResults" aria-expanded="false">
+            <ul class="live-search-results" id="liveSearchResults" role="listbox" aria-label="نتایج جستجو" style="display: none;"></ul>
         </div>
     </header>
     <main class="mw-content">
@@ -380,10 +380,10 @@
             const filtered = postsData.filter((item) => normalize(item.title).includes(normalizedTerm));
             let html = '';
             if (filtered.length === 0) {
-                html = '<li class="no-result">هیچ مقاله‌ای یافت نشد</li>';
+                html = '<li class="no-result" role="option">هیچ مقاله‌ای یافت نشد</li>';
             } else {
                 filtered.forEach((item) => {
-                    html += `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></li>`;
+                    html += `<li role="option"><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></li>`;
                 });
             }
             resultsBox.innerHTML = html;
