@@ -7,7 +7,7 @@ layout: null
 
   <url>
     <loc>https://indexes.ir/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
