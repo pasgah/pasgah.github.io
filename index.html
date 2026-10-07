@@ -3,953 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fbf8f3">
-<meta name="description" content="آرشیو نوشته‌های وبلاگ — مجموعه‌ای از یادداشت‌ها، مقالات و نوشته‌های کوتاه">
-<title>آرشیو نوشته‌ها | دفتر یادداشت</title>
+<title>آرشیو نوشته‌ها</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #fbf8f3;
-    --paper: #ffffff;
-    --ink: #2c2419;
-    --ink-soft: #4a3f30;
-    --muted: #8a7a63;
-    --accent: #a0522d;
-    --accent-soft: #c18456;
-    --accent-dim: rgba(160, 82, 45, 0.08);
-    --line: #e8e0d3;
-    --line-strong: #d8ceba;
-    --shadow: 0 2px 12px rgba(80, 60, 30, 0.06);
-    --shadow-hover: 0 8px 28px rgba(80, 60, 30, 0.12);
-    --radius: 6px;
-    --max: 1180px;
-    --serif: 'Lora', 'Vazirmatn', Georgia, serif;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
-
   body {
-    font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
+    font-family: 'Vazirmatn', system-ui, sans-serif;
+    background: #fbf8f3;
+    color: #2c2419;
     line-height: 2;
     font-size: 16px;
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(160, 82, 45, 0.03), transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.02), transparent 50%);
-    background-attachment: fixed;
+    padding: 60px 24px;
   }
 
-  a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-  a:hover { color: var(--accent-soft); }
-
-  .container {
-    max-width: var(--max);
+  .wrap {
+    max-width: 640px;
     margin: 0 auto;
-    padding: 0 24px;
   }
 
-  header.site-header {
-    background: rgba(251, 248, 243, 0.92);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .brand-mark {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #7d3f22);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: 1.3rem;
-    box-shadow: 0 4px 14px rgba(160, 82, 45, 0.3);
-  }
-
-  .brand-text h1 {
-    font-family: var(--serif);
-    font-size: 1.35rem;
+  h1 {
+    font-size: 1.5rem;
     font-weight: 600;
-    color: var(--ink);
-    line-height: 1.3;
-    letter-spacing: -0.2px;
+    color: #2c2419;
+    margin-bottom: 8px;
   }
 
-  .brand-text p {
-    font-size: 0.78rem;
-    color: var(--muted);
-    line-height: 1.5;
-    margin-top: 2px;
-  }
-
-  nav.main-nav {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-  }
-
-  nav.main-nav a {
-    color: var(--ink-soft);
-    padding: 8px 14px;
-    font-size: 0.92rem;
-    border-radius: 4px;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-
-  nav.main-nav a:hover,
-  nav.main-nav a.active {
-    background: var(--accent-dim);
-    color: var(--accent);
-  }
-
-  .page-hero {
-    padding: 60px 0 40px;
-    text-align: center;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 50px;
-    position: relative;
-  }
-
-  .page-hero::before {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: var(--accent);
-  }
-
-  .page-hero .kicker {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--accent);
-    font-size: 0.95rem;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-  }
-
-  .page-hero h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.4;
-    margin-bottom: 14px;
-    letter-spacing: -0.3px;
-  }
-
-  .page-hero p {
-    color: var(--muted);
-    max-width: 620px;
-    margin: 0 auto;
-    font-size: 1rem;
-    line-height: 1.9;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 60px;
-    padding-bottom: 80px;
-  }
-
-  .archive-section {
-    margin-bottom: 56px;
-  }
-
-  .year-heading {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
-
-  .year-heading .year {
-    font-family: var(--serif);
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-
-  .year-heading .count {
-    font-size: 0.82rem;
-    color: var(--muted);
-    background: var(--accent-dim);
-    color: var(--accent);
-    padding: 4px 12px;
-    border-radius: 100px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .year-heading .line {
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-  }
-
-  .month-group {
-    margin-bottom: 34px;
-  }
-
-  .month-title {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-style: italic;
-  }
-
-  .month-title::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to left, var(--line), transparent);
-  }
-
-  .posts-list {
-    list-style: none;
-    border-right: 2px solid var(--line);
-    padding-right: 0;
-  }
-
-  .post-item {
-    position: relative;
-    padding: 0 26px 26px 0;
-  }
-
-  .post-item:last-child {
-    padding-bottom: 0;
-  }
-
-  .post-item::before {
-    content: "";
-    position: absolute;
-    right: -7px;
-    top: 14px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--paper);
-    border: 2px solid var(--line-strong);
-    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-    z-index: 1;
-  }
-
-  .post-item:hover::before {
-    border-color: var(--accent);
-    background: var(--accent);
-    transform: scale(1.15);
-  }
-
-  .post-link {
-    display: block;
-    padding: 12px 18px;
-    border-radius: var(--radius);
-    transition: background 0.25s ease, transform 0.25s ease;
-    color: inherit;
-  }
-
-  .post-link:hover {
-    background: var(--paper);
-    transform: translateX(-4px);
-    box-shadow: var(--shadow);
-  }
-
-  .post-date {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin-bottom: 4px;
-    display: block;
-  }
-
-  .post-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.6;
-    margin-bottom: 6px;
-    transition: color 0.2s ease;
-  }
-
-  .post-link:hover .post-title {
-    color: var(--accent);
-  }
-
-  .post-excerpt {
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-    line-height: 1.8;
-    margin-bottom: 10px;
-    opacity: 0.85;
-  }
-
-  .post-meta {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-
-  .post-meta .tag {
-    color: var(--accent);
-    border-bottom: 1px dotted var(--accent-soft);
-    padding-bottom: 1px;
-  }
-
-  .post-meta .tag:hover {
-    color: var(--accent-soft);
-  }
-
-  .post-meta .dot {
-    color: var(--line-strong);
-  }
-
-  aside.sidebar {
-    position: relative;
-  }
-
-  .sidebar-widget {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 24px 22px;
-    margin-bottom: 22px;
-    box-shadow: var(--shadow);
-  }
-
-  .sidebar-widget h3 {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .sidebar-widget h3::before {
-    content: "";
-    width: 4px;
-    height: 16px;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-
-  .search-form {
-    position: relative;
-  }
-
-  .search-form input {
-    width: 100%;
-    font-family: inherit;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 10px 38px 10px 14px;
-    color: var(--ink);
+  .sub {
+    color: #8a7a63;
     font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 40px;
   }
 
-  .search-form input:focus {
-    border-color: var(--accent);
-    background: var(--paper);
-  }
-
-  .search-form .icon {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    pointer-events: none;
-    font-size: 0.95rem;
-  }
-
-  .widget-list {
+  ul {
     list-style: none;
   }
 
-  .widget-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--line);
-    font-size: 0.9rem;
+  li {
+    border-bottom: 1px solid #e8e0d3;
   }
 
-  .widget-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  li:last-child {
+    border-bottom: none;
+  }
 
-  .widget-list li a {
-    color: var(--ink-soft);
+  a {
+    display: block;
+    padding: 18px 0;
+    color: #2c2419;
+    text-decoration: none;
     transition: color 0.2s ease, padding 0.2s ease;
   }
 
-  .widget-list li a:hover {
-    color: var(--accent);
-    padding-right: 4px;
+  a:hover {
+    color: #a0522d;
+    padding-right: 6px;
   }
 
-  .widget-list li .count {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--muted);
-    font-size: 0.82rem;
-    background: var(--accent-dim);
-    color: var(--accent);
-    padding: 2px 10px;
-    border-radius: 100px;
-  }
-
-  .recent-list {
-    list-style: none;
-  }
-
-  .recent-list li {
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--line);
-  }
-
-  .recent-list li:last-child { border-bottom: none; padding-bottom: 0; }
-
-  .recent-list li a {
-    display: block;
-    color: var(--ink-soft);
-    font-size: 0.92rem;
-    line-height: 1.7;
+  a .title {
+    font-size: 1.05rem;
     font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  .recent-list li a:hover { color: var(--accent); }
-
-  .recent-list li .rdate {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.76rem;
-    color: var(--muted);
-    margin-top: 3px;
     display: block;
+    margin-bottom: 4px;
   }
 
-  .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag-cloud a {
+  a .date {
     font-size: 0.82rem;
-    color: var(--ink-soft);
-    background: var(--bg);
-    border: 1px solid var(--line);
-    padding: 4px 12px;
-    border-radius: 100px;
-    transition: all 0.2s ease;
+    color: #8a7a63;
   }
-
-  .tag-cloud a:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-    transform: translateY(-1px);
-  }
-
-  .tag-cloud a.lg { font-size: 0.95rem; }
-  .tag-cloud a.sm { font-size: 0.76rem; }
-
-  footer.site-footer {
-    border-top: 1px solid var(--line);
-    padding: 40px 0 30px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85rem;
-    background: rgba(255, 255, 255, 0.4);
-  }
-
-  footer.site-footer .fmark {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  footer.site-footer .quote-mark {
-    font-family: var(--serif);
-    font-size: 1.8rem;
-    color: var(--line-strong);
-    line-height: 0.5;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  @media (max-width: 900px) {
-    .layout {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    aside.sidebar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-    }
-    .sidebar-widget { margin-bottom: 0; }
-  }
-
-  @media (max-width: 640px) {
-    body { font-size: 15px; }
-    .header-inner { padding: 16px 0; }
-    .brand-mark { width: 36px; height: 36px; font-size: 1.1rem; }
-    .brand-text h1 { font-size: 1.15rem; }
-    nav.main-nav { gap: 0; }
-    nav.main-nav a { padding: 6px 10px; font-size: 0.85rem; }
-    .page-hero { padding: 40px 0 30px; margin-bottom: 36px; }
-    .year-heading .year { font-size: 1.7rem; }
-    .post-item { padding-right: 22px; }
-    .post-title { font-size: 1.05rem; }
-    aside.sidebar { grid-template-columns: 1fr; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; scroll-behavior: auto !important; }
-  }
-
-  ::selection { background: var(--accent); color: #fff; }
-
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 6px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 </style>
 </head>
 <body>
+  <div class="wrap">
+    <h1>آرشیو نوشته‌ها</h1>
+    <p class="sub">فهرست یادداشت‌ها و نوشته‌ها</p>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="#" class="brand">
-      <div class="brand-mark">✎</div>
-      <div class="brand-text">
-        <h1>دفتر یادداشت</h1>
-        <p>آرشیو نوشته‌های پراکنده</p>
-      </div>
-    </a>
-    <nav class="main-nav">
-      <a href="#" class="active">آرشیو</a>
-      <a href="#">درباره</a>
-      <a href="#">تماس</a>
-      <a href="#">خوراک RSS</a>
-    </nav>
+    <ul>
+      <li>
+        <a href="#">
+          <span class="title">عنوان نوشته اول</span>
+          <span class="date">۲۸ آذر ۱۴۰۳</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="title">عنوان نوشته دوم</span>
+          <span class="date">۱۵ آذر ۱۴۰۳</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="title">عنوان نوشته سوم</span>
+          <span class="date">۳ آذر ۱۴۰۳</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="title">عنوان نوشته چهارم</span>
+          <span class="date">۲۲ مهر ۱۴۰۳</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="title">عنوان نوشته پنجم</span>
+          <span class="date">۹ مهر ۱۴۰۳</span>
+        </a>
+      </li>
+    </ul>
   </div>
-</header>
-
-<section class="page-hero">
-  <div class="container">
-    <div class="kicker">— فهرست کامل —</div>
-    <h2>آرشیو نوشته‌ها</h2>
-    <p>مجموعه‌ای از یادداشت‌ها، مقالات کوتاه و بلند، و پراکنده‌نوشته‌هایی که در طول سال‌ها اینجا ثبت شده‌اند.</p>
-  </div>
-</section>
-
-<div class="container">
-  <div class="layout">
-
-    <main class="archive-main">
-
-      <section class="archive-section">
-        <div class="year-heading">
-          <span class="year">۱۴۰۳</span>
-          <span class="count">۷ نوشته</span>
-          <span class="line"></span>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">آذر</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۲۸ آذر ۱۴۰۳</span>
-                <h3 class="post-title">درباره سکوتِ میان واژه‌ها</h3>
-                <p class="post-excerpt">گاهی آنچه در نوشتن اهمیت دارد، فاصله میان کلمات است؛ سفیدی‌هایی که معنا را نفس‌کش می‌کنند و به خواننده مجال درنگ می‌دهند...</p>
-                <div class="post-meta">
-                  <span class="tag">#نوشتن</span>
-                  <span class="tag">#تأمل</span>
-                  <span class="dot">•</span>
-                  <span>۸ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۱۵ آذر ۱۴۰۳</span>
-                <h3 class="post-title">راه رفتن در شهر بی‌نقشه</h3>
-                <p class="post-excerpt">شهرها مثل کتاب‌اند؛ بعضی را باید در خط راست خواند و بعضی را باید گم شد تا فهمید. این یادداشتی است درباره پیاده‌روی و مشاهده.</p>
-                <div class="post-meta">
-                  <span class="tag">#شهر</span>
-                  <span class="tag">#پیاده‌روی</span>
-                  <span class="dot">•</span>
-                  <span>۶ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۳ آذر ۱۴۰۳</span>
-                <h3 class="post-title">چای تلخ، صبح دیر</h3>
-                <p class="post-excerpt">جستاری کوتاه درباره عادت‌های کوچکی که زندگی روزمره را شکل می‌دهند، بی‌آنکه ما متوجه‌شان باشیم.</p>
-                <div class="post-meta">
-                  <span class="tag">#روزمره</span>
-                  <span class="dot">•</span>
-                  <span>۴ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">مهر</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۲۲ مهر ۱۴۰۳</span>
-                <h3 class="post-title">کتاب‌هایی که نیمه‌کاره ماندند</h3>
-                <p class="post-excerpt">بعضی کتاب‌ها را نباید تمام کرد. درباره رها کردن به‌عنوان یک انتخاب آگاهانه و نه شکست.</p>
-                <div class="post-meta">
-                  <span class="tag">#کتاب</span>
-                  <span class="tag">#خواندن</span>
-                  <span class="dot">•</span>
-                  <span>۷ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۹ مهر ۱۴۰۳</span>
-                <h3 class="post-title">پاییز، فصل آغاز دوباره</h3>
-                <p class="post-excerpt">چرا پاییز بیش از بهار حس شروع می‌دهد؟ یادداشتی درباره تقویم‌های درونی و فصل‌های ذهنی.</p>
-                <div class="post-meta">
-                  <span class="tag">#پاییز</span>
-                  <span class="tag">#تأمل</span>
-                  <span class="dot">•</span>
-                  <span>۵ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="archive-section">
-        <div class="year-heading">
-          <span class="year">۱۴۰۲</span>
-          <span class="count">۶ نوشته</span>
-          <span class="line"></span>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">اسفند</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۲۷ اسفند ۱۴۰۲</span>
-                <h3 class="post-title">سفره‌ای که سال را تمام می‌کند</h3>
-                <p class="post-excerpt">درباره آیین‌های کوچک پایان سال و معنایی که در تکرارشان پنهان است.</p>
-                <div class="post-meta">
-                  <span class="tag">#نوروز</span>
-                  <span class="tag">#سنت</span>
-                  <span class="dot">•</span>
-                  <span>۶ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۱۱ اسفند ۱۴۰۲</span>
-                <h3 class="post-title">یادداشت‌های یک شب بی‌خواب</h3>
-                <p class="post-excerpt">شب‌هایی که خواب نمی‌آید، ذهن شروع می‌کند به نوشتن. این متن حاصل یکی از همان شب‌هاست.</p>
-                <div class="post-meta">
-                  <span class="tag">#شب</span>
-                  <span class="tag">#نوشتن</span>
-                  <span class="dot">•</span>
-                  <span>۴ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">شهریور</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۳۱ شهریور ۱۴۰۲</span>
-                <h3 class="post-title">مسیرهای فرعی، مقصدهای ناخواسته</h3>
-                <p class="post-excerpt">گاهی انحراف از مسیر اصلی، خودش تبدیل به مقصد می‌شود. روایتی از یک سفر کوتاه.</p>
-                <div class="post-meta">
-                  <span class="tag">#سفر</span>
-                  <span class="dot">•</span>
-                  <span>۹ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۵ شهریور ۱۴۰۲</span>
-                <h3 class="post-title">در ستایشِ کارهای نصفه‌کاره</h3>
-                <p class="post-excerpt">چرا باید برای کارهای ناتمام ارزش قائل شد و چطور آن‌ها را از شکست تفکیک کنیم.</p>
-                <div class="post-meta">
-                  <span class="tag">#خلاقیت</span>
-                  <span class="tag">#کار</span>
-                  <span class="dot">•</span>
-                  <span>۷ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">فروردین</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۱۹ فروردین ۱۴۰۲</span>
-                <h3 class="post-title">بهار و شلوغیِ دلپذیر</h3>
-                <p class="post-excerpt">از پنجره به بیرون نگاه می‌کنم؛ درختان دوباره به دنیا می‌آیند و شهر نفس تازه می‌کشد.</p>
-                <div class="post-meta">
-                  <span class="tag">#بهار</span>
-                  <span class="dot">•</span>
-                  <span>۳ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۳ فروردین ۱۴۰۲</span>
-                <h3 class="post-title">سال نو، همان آدم قدیمی</h3>
-                <p class="post-excerpt">یادداشتی صادقانه درباره اینکه تغییر واقعی از کجا شروع می‌شود؛ نه با تقویم، بلکه با تصمیم.</p>
-                <div class="post-meta">
-                  <span class="tag">#تغییر</span>
-                  <span class="tag">#تأمل</span>
-                  <span class="dot">•</span>
-                  <span>۵ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="archive-section">
-        <div class="year-heading">
-          <span class="year">۱۴۰۱</span>
-          <span class="count">۴ نوشته</span>
-          <span class="line"></span>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">دی</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۲۳ دی ۱۴۰۱</span>
-                <h3 class="post-title">سرما، تنهایی، چای</h3>
-                <p class="post-excerpt">سه‌گانه‌ای که زمستان را برای من قابل تحمل می‌کند. یادداشتی درباره هم‌نشینی با خود.</p>
-                <div class="post-meta">
-                  <span class="tag">#زمستان</span>
-                  <span class="tag">#تنهایی</span>
-                  <span class="dot">•</span>
-                  <span>۴ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۷ دی ۱۴۰۱</span>
-                <h3 class="post-title">روزهای بی‌تقویم</h3>
-                <p class="post-excerpt">درباره تعطیلاتی که تاریخ ندارند و روزهایی که به خاطر نمی‌آوریم کِی گذشتند.</p>
-                <div class="post-meta">
-                  <span class="tag">#زمان</span>
-                  <span class="dot">•</span>
-                  <span>۶ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="month-group">
-          <div class="month-title">تیر</div>
-          <ul class="posts-list">
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۱۴ تیر ۱۴۰۱</span>
-                <h3 class="post-title">گرمای بی‌رحم، بستنی ارزان</h3>
-                <p class="post-excerpt">خاطره‌ای کوتاه از تابستان‌های قدیم و طعم ساده‌شان که دیگر تکرار نمی‌شود.</p>
-                <div class="post-meta">
-                  <span class="tag">#تابستان</span>
-                  <span class="tag">#خاطره</span>
-                  <span class="dot">•</span>
-                  <span>۵ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-            <li class="post-item">
-              <a href="#" class="post-link">
-                <span class="post-date">۲ تیر ۱۴۰۱</span>
-                <h3 class="post-title">آغاز دوباره‌ای به نام وبلاگ</h3>
-                <p class="post-excerpt">این اولین نوشته در این دفتر است؛ آغاز راهی که امیدوارم طولانی و پرماجرا باشد.</p>
-                <div class="post-meta">
-                  <span class="tag">#وبلاگ</span>
-                  <span class="tag">#آغاز</span>
-                  <span class="dot">•</span>
-                  <span>۳ دقیقه مطالعه</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-    </main>
-
-    <aside class="sidebar">
-
-      <div class="sidebar-widget">
-        <h3>جستجو در آرشیو</h3>
-        <form class="search-form" onsubmit="return false;">
-          <input type="search" placeholder="واژه‌ای را بنویسید...">
-          <span class="icon">⌕</span>
-        </form>
-      </div>
-
-      <div class="sidebar-widget">
-        <h3>دسته‌بندی‌ها</h3>
-        <ul class="widget-list">
-          <li><a href="#">نوشتن و خلاقیت</a><span class="count">۶</span></li>
-          <li><a href="#">سفر و مکان</a><span class="count">۴</span></li>
-          <li><a href="#">روزمره‌نگاری</a><span class="count">۹</span></li>
-          <li><a href="#">تأملات شخصی</a><span class="count">۱۲</span></li>
-          <li><a href="#">کتاب و خواندن</a><span class="count">۵</span></li>
-          <li><a href="#">فصل‌ها و آیین‌ها</a><span class="count">۳</span></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-widget">
-        <h3>آخرین نوشته‌ها</h3>
-        <ul class="recent-list">
-          <li>
-            <a href="#">درباره سکوتِ میان واژه‌ها</a>
-            <span class="rdate">۲۸ آذر ۱۴۰۳</span>
-          </li>
-          <li>
-            <a href="#">راه رفتن در شهر بی‌نقشه</a>
-            <span class="rdate">۱۵ آذر ۱۴۰۳</span>
-          </li>
-          <li>
-            <a href="#">چای تلخ، صبح دیر</a>
-            <span class="rdate">۳ آذر ۱۴۰۳</span>
-          </li>
-          <li>
-            <a href="#">کتاب‌هایی که نیمه‌کاره ماندند</a>
-            <span class="rdate">۲۲ مهر ۱۴۰۳</span>
-          </li>
-          <li>
-            <a href="#">پاییز، فصل آغاز دوباره</a>
-            <span class="rdate">۹ مهر ۱۴۰۳</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="sidebar-widget">
-        <h3>برچسب‌ها</h3>
-        <div class="tag-cloud">
-          <a href="#" class="lg">#نوشتن</a>
-          <a href="#" class="sm">#روزمره</a>
-          <a href="#" class="lg">#تأمل</a>
-          <a href="#" class="sm">#سفر</a>
-          <a href="#">#کتاب</a>
-          <a href="#" class="lg">#خاطره</a>
-          <a href="#" class="sm">#پاییز</a>
-          <a href="#">#زمان</a>
-          <a href="#" class="lg">#شهر</a>
-          <a href="#" class="sm">#بهار</a>
-          <a href="#">#تنهایی</a>
-          <a href="#" class="lg">#خلاقیت</a>
-          <a href="#" class="sm">#سنت</a>
-        </div>
-      </div>
-
-      <div class="sidebar-widget">
-        <h3>بایگانی زمانی</h3>
-        <ul class="widget-list">
-          <li><a href="#">۱۴۰۳</a><span class="count">۷</span></li>
-          <li><a href="#">۱۴۰۲</a><span class="count">۶</span></li>
-          <li><a href="#">۱۴۰۱</a><span class="count">۴</span></li>
-        </ul>
-      </div>
-
-    </aside>
-
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="fmark">دفتر یادداشت</div>
-    <span class="quote-mark">“</span>
-    <p>کلمات جایی برای ماندن می‌خواهند، اینجا خانه‌شان است.</p>
-    <p style="margin-top: 12px;">تمام نوشته‌ها تحت مجوز شخصی منتشر می‌شوند © ۱۴۰۳</p>
-  </div>
-</footer>
-
 </body>
 </html>
