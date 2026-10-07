@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1720">
-<title>آرشیو لینک‌های من</title>
+<meta name="theme-color" content="#fbf8f3">
+<meta name="description" content="آرشیو نوشته‌های وبلاگ — مجموعه‌ای از یادداشت‌ها، مقالات و نوشته‌های کوتاه">
+<title>آرشیو نوشته‌ها | دفتر یادداشت</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1720;
-    --bg-soft: #16212d;
-    --surface: #1c2b3a;
-    --surface-hi: #24384a;
-    --accent: #4cc9a4;
-    --accent-soft: #7ce0c3;
-    --accent-dim: rgba(76, 201, 164, 0.15);
-    --danger: #ef6b6b;
-    --text: #e7eef5;
-    --muted: #93a6b8;
-    --line: rgba(124, 224, 195, 0.15);
-    --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-    --radius: 16px;
-    --max: 1120px;
+    --bg: #fbf8f3;
+    --paper: #ffffff;
+    --ink: #2c2419;
+    --ink-soft: #4a3f30;
+    --muted: #8a7a63;
+    --accent: #a0522d;
+    --accent-soft: #c18456;
+    --accent-dim: rgba(160, 82, 45, 0.08);
+    --line: #e8e0d3;
+    --line-strong: #d8ceba;
+    --shadow: 0 2px 12px rgba(80, 60, 30, 0.06);
+    --shadow-hover: 0 8px 28px rgba(80, 60, 30, 0.12);
+    --radius: 6px;
+    --max: 1180px;
+    --serif: 'Lora', 'Vazirmatn', Georgia, serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,906 +35,921 @@
   body {
     font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
     background: var(--bg);
-    color: var(--text);
-    line-height: 1.8;
+    color: var(--ink);
+    line-height: 2;
     font-size: 16px;
-    min-height: 100vh;
     background-image:
-      radial-gradient(circle at 10% 0%, rgba(76, 201, 164, 0.08), transparent 40%),
-      radial-gradient(circle at 90% 100%, rgba(76, 201, 164, 0.06), transparent 45%);
+      radial-gradient(circle at 20% 10%, rgba(160, 82, 45, 0.03), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.02), transparent 50%);
     background-attachment: fixed;
   }
+
+  a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
+  a:hover { color: var(--accent-soft); }
 
   .container {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
-  header.top {
-    padding: 60px 0 30px;
-    text-align: center;
-    position: relative;
+  header.site-header {
+    background: rgba(251, 248, 243, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
-  header.top h1 {
-    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-    font-weight: 800;
-    background: linear-gradient(180deg, #ffffff 0%, var(--accent-soft) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.4px;
-    margin-bottom: 10px;
-  }
-
-  header.top p {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  .badge-line {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    margin-top: 18px;
-    font-size: 0.85rem;
-    color: var(--accent-soft);
-    background: var(--accent-dim);
-    padding: 6px 16px;
-    border-radius: 100px;
-    border: 1px solid var(--line);
-  }
-
-  .badge-line .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-  }
-
-  .panel {
-    background: linear-gradient(160deg, var(--bg-soft), var(--bg));
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 26px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow);
-  }
-
-  .panel h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--accent-soft);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .panel h2::before {
-    content: "";
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-  }
-
-  form.add-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field.full { grid-column: 1 / -1; }
-
-  .field label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-weight: 500;
-    padding-right: 4px;
-  }
-
-  .field input,
-  .field textarea,
-  .field select {
-    font-family: inherit;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 11px 14px;
-    color: var(--text);
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    outline: none;
-    width: 100%;
-  }
-
-  .field textarea { resize: vertical; min-height: 72px; }
-
-  .field input::placeholder,
-  .field textarea::placeholder { color: #5a6d80; }
-
-  .field input:focus,
-  .field textarea:focus,
-  .field select:focus {
-    border-color: var(--accent);
-    background: rgba(0, 0, 0, 0.35);
-    box-shadow: 0 0 0 3px var(--accent-dim);
-  }
-
-  .field select option { background: var(--surface); }
-
-  .actions {
-    grid-column: 1 / -1;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-  }
-
-  button {
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 11px 22px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text);
-  }
-
-  button:active { transform: scale(0.97); }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), #2ea88a);
-    color: #08231d;
-    box-shadow: 0 6px 20px rgba(76, 201, 164, 0.3);
-  }
-
-  .btn-primary:hover { background: linear-gradient(135deg, var(--accent-soft), var(--accent)); }
-
-  .btn-ghost {
-    background: transparent;
-    border-color: var(--line);
-    color: var(--muted);
-  }
-
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-soft); background: var(--accent-dim); }
-
-  .btn-danger {
-    background: transparent;
-    border-color: rgba(239, 107, 107, 0.35);
-    color: var(--danger);
-  }
-
-  .btn-danger:hover { background: rgba(239, 107, 107, 0.1); border-color: var(--danger); }
-
-  .toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 22px;
-  }
-
-  .search-box {
-    flex: 1;
-    min-width: 220px;
-    position: relative;
-  }
-
-  .search-box input {
-    width: 100%;
-    font-family: inherit;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 12px 44px 12px 16px;
-    color: var(--text);
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .search-box input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-dim);
-  }
-
-  .search-box .icon {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 1rem;
-    pointer-events: none;
-  }
-
-  .filter-select {
-    font-family: inherit;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 12px 16px;
-    color: var(--text);
-    font-size: 0.95rem;
-    outline: none;
-    cursor: pointer;
-    min-width: 160px;
-    transition: border-color 0.2s ease;
-  }
-
-  .filter-select:focus { border-color: var(--accent); }
-
-  .stats {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
-    font-size: 0.88rem;
-    color: var(--muted);
-  }
-
-  .stats strong { color: var(--accent-soft); font-weight: 700; }
-
-  .links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .link-card {
-    background: linear-gradient(160deg, var(--surface), var(--bg-soft));
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    overflow: hidden;
-  }
-
-  .link-card::after {
-    content: "";
-    position: absolute;
-    top: 0; right: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(to left, transparent, var(--accent), transparent);
-    opacity: 0.7;
-  }
-
-  .link-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(76, 201, 164, 0.5);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  .link-card h3 {
-    font-size: 1.05rem;
-    color: #fff;
-    font-weight: 700;
-    line-height: 1.5;
-    word-break: break-word;
-  }
-
-  .link-card .url {
-    font-size: 0.82rem;
-    color: var(--accent-soft);
-    text-decoration: none;
-    word-break: break-all;
-    direction: ltr;
-    text-align: left;
-    display: block;
-    opacity: 0.85;
-    transition: opacity 0.2s ease;
-  }
-
-  .link-card .url:hover { opacity: 1; text-decoration: underline; }
-
-  .link-card .desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.75;
-    flex: 1;
-    word-break: break-word;
-  }
-
-  .link-card .meta {
+  .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    padding: 20px 0;
+    gap: 24px;
     flex-wrap: wrap;
-    padding-top: 12px;
-    border-top: 1px solid var(--line);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #7d3f22);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 14px rgba(160, 82, 45, 0.3);
+  }
+
+  .brand-text h1 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+  }
+
+  .brand-text p {
     font-size: 0.78rem;
     color: var(--muted);
+    line-height: 1.5;
+    margin-top: 2px;
   }
 
-  .tag {
-    background: var(--accent-dim);
-    color: var(--accent-soft);
-    padding: 3px 12px;
-    border-radius: 100px;
-    font-size: 0.76rem;
-    font-weight: 600;
-    border: 1px solid var(--line);
-  }
-
-  .link-card .card-actions {
+  nav.main-nav {
     display: flex;
-    gap: 6px;
-    margin-top: 4px;
+    gap: 4px;
+    flex-wrap: wrap;
   }
 
-  .icon-btn {
-    background: transparent;
-    border: 1px solid var(--line);
+  nav.main-nav a {
+    color: var(--ink-soft);
+    padding: 8px 14px;
+    font-size: 0.92rem;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  nav.main-nav a:hover,
+  nav.main-nav a.active {
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  .page-hero {
+    padding: 60px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 50px;
+    position: relative;
+  }
+
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .page-hero .kicker {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .page-hero h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
+  }
+
+  .page-hero p {
     color: var(--muted);
-    border-radius: 8px;
-    padding: 6px 10px;
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+    padding-bottom: 80px;
+  }
+
+  .archive-section {
+    margin-bottom: 56px;
+  }
+
+  .year-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+
+  .year-heading .year {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .year-heading .count {
     font-size: 0.82rem;
-    cursor: pointer;
+    color: var(--muted);
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .year-heading .line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .month-group {
+    margin-bottom: 34px;
+  }
+
+  .month-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-style: italic;
+  }
+
+  .month-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, var(--line), transparent);
+  }
+
+  .posts-list {
+    list-style: none;
+    border-right: 2px solid var(--line);
+    padding-right: 0;
+  }
+
+  .post-item {
+    position: relative;
+    padding: 0 26px 26px 0;
+  }
+
+  .post-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .post-item::before {
+    content: "";
+    position: absolute;
+    right: -7px;
+    top: 14px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--line-strong);
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    z-index: 1;
+  }
+
+  .post-item:hover::before {
+    border-color: var(--accent);
+    background: var(--accent);
+    transform: scale(1.15);
+  }
+
+  .post-link {
+    display: block;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    transition: background 0.25s ease, transform 0.25s ease;
+    color: inherit;
+  }
+
+  .post-link:hover {
+    background: var(--paper);
+    transform: translateX(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .post-date {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .post-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 6px;
+    transition: color 0.2s ease;
+  }
+
+  .post-link:hover .post-title {
+    color: var(--accent);
+  }
+
+  .post-excerpt {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .post-meta .tag {
+    color: var(--accent);
+    border-bottom: 1px dotted var(--accent-soft);
+    padding-bottom: 1px;
+  }
+
+  .post-meta .tag:hover {
+    color: var(--accent-soft);
+  }
+
+  .post-meta .dot {
+    color: var(--line-strong);
+  }
+
+  aside.sidebar {
+    position: relative;
+  }
+
+  .sidebar-widget {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+
+  .sidebar-widget h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sidebar-widget h3::before {
+    content: "";
+    width: 4px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .search-form {
+    position: relative;
+  }
+
+  .search-form input {
+    width: 100%;
+    font-family: inherit;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 10px 38px 10px 14px;
+    color: var(--ink);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .search-form input:focus {
+    border-color: var(--accent);
+    background: var(--paper);
+  }
+
+  .search-form .icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+    font-size: 0.95rem;
+  }
+
+  .widget-list {
+    list-style: none;
+  }
+
+  .widget-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 0.9rem;
+  }
+
+  .widget-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .widget-list li a {
+    color: var(--ink-soft);
+    transition: color 0.2s ease, padding 0.2s ease;
+  }
+
+  .widget-list li a:hover {
+    color: var(--accent);
+    padding-right: 4px;
+  }
+
+  .widget-list li .count {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.82rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 2px 10px;
+    border-radius: 100px;
+  }
+
+  .recent-list {
+    list-style: none;
+  }
+
+  .recent-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .recent-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .recent-list li a {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .recent-list li a:hover { color: var(--accent); }
+
+  .recent-list li .rdate {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-top: 3px;
+    display: block;
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-cloud a {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 4px 12px;
+    border-radius: 100px;
     transition: all 0.2s ease;
   }
 
-  .icon-btn:hover { border-color: var(--accent); color: var(--accent-soft); background: var(--accent-dim); }
-
-  .icon-btn.del:hover { border-color: var(--danger); color: var(--danger); background: rgba(239, 107, 107, 0.1); }
-
-  .empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-    border: 1px dashed var(--line);
-    border-radius: var(--radius);
-    background: rgba(0, 0, 0, 0.15);
+  .tag-cloud a:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: translateY(-1px);
   }
 
-  .empty .big { font-size: 3rem; margin-bottom: 12px; opacity: 0.5; }
+  .tag-cloud a.lg { font-size: 0.95rem; }
+  .tag-cloud a.sm { font-size: 0.76rem; }
 
-  .empty p { font-size: 0.95rem; }
-
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translate(-50%, 120%);
-    background: var(--surface-hi);
-    border: 1px solid var(--accent);
-    color: var(--text);
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    box-shadow: var(--shadow);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: calc(100% - 40px);
-  }
-
-  .toast.show { transform: translate(-50%, 0); }
-
-  .toast .mark { color: var(--accent); font-weight: 700; }
-
-  footer.bottom {
+  footer.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0 30px;
     text-align: center;
-    padding: 40px 20px 30px;
     color: var(--muted);
     font-size: 0.85rem;
-    border-top: 1px solid var(--line);
-    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.4);
   }
 
-  footer.bottom strong { color: var(--accent-soft); }
+  footer.site-footer .fmark {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
 
-  @media (max-width: 720px) {
-    form.add-form { grid-template-columns: 1fr; }
-    .panel { padding: 20px; }
-    header.top { padding: 40px 0 20px; }
-    .links-grid { grid-template-columns: 1fr; }
+  footer.site-footer .quote-mark {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--line-strong);
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    aside.sidebar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+    .sidebar-widget { margin-bottom: 0; }
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 15px; }
+    .header-inner { padding: 16px 0; }
+    .brand-mark { width: 36px; height: 36px; font-size: 1.1rem; }
+    .brand-text h1 { font-size: 1.15rem; }
+    nav.main-nav { gap: 0; }
+    nav.main-nav a { padding: 6px 10px; font-size: 0.85rem; }
+    .page-hero { padding: 40px 0 30px; margin-bottom: 36px; }
+    .year-heading .year { font-size: 1.7rem; }
+    .post-item { padding-right: 22px; }
+    .post-title { font-size: 1.05rem; }
+    aside.sidebar { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    * { transition: none !important; scroll-behavior: auto !important; }
   }
 
-  ::selection { background: var(--accent); color: var(--bg); }
+  ::selection { background: var(--accent); color: #fff; }
 
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 6px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 </style>
 </head>
 <body>
 
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark">✎</div>
+      <div class="brand-text">
+        <h1>دفتر یادداشت</h1>
+        <p>آرشیو نوشته‌های پراکنده</p>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="#" class="active">آرشیو</a>
+      <a href="#">درباره</a>
+      <a href="#">تماس</a>
+      <a href="#">خوراک RSS</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="kicker">— فهرست کامل —</div>
+    <h2>آرشیو نوشته‌ها</h2>
+    <p>مجموعه‌ای از یادداشت‌ها، مقالات کوتاه و بلند، و پراکنده‌نوشته‌هایی که در طول سال‌ها اینجا ثبت شده‌اند.</p>
+  </div>
+</section>
+
 <div class="container">
+  <div class="layout">
 
-  <header class="top">
-    <h1>آرشیو لینک‌های من</h1>
-    <p>مجموعه‌ای شخصی از لینک‌های مهم، دسته‌بندی‌شده و همیشه در دسترس</p>
-    <div class="badge-line">
-      <span class="dot"></span>
-      <span id="headerCount">۰ لینک ذخیره‌شده</span>
-    </div>
-  </header>
+    <main class="archive-main">
 
-  <section class="panel">
-    <h2 id="formTitle">افزودن لینک جدید</h2>
-    <form class="add-form" id="linkForm" autocomplete="off">
-      <input type="hidden" id="editId" value="">
-      <div class="field">
-        <label for="title">عنوان</label>
-        <input type="text" id="title" placeholder="مثلاً: مستندات جاوااسکریپت" required maxlength="120">
-      </div>
-      <div class="field">
-        <label for="url">نشانی اینترنتی</label>
-        <input type="text" id="url" placeholder="https://example.com" required>
-      </div>
-      <div class="field">
-        <label for="category">دسته‌بندی</label>
-        <input type="text" id="category" placeholder="مثلاً: برنامه‌نویسی" list="categoryList" maxlength="40">
-        <datalist id="categoryList"></datalist>
-      </div>
-      <div class="field">
-        <label for="tags">برچسب‌ها (با کاما جدا کنید)</label>
-        <input type="text" id="tags" placeholder="مثلاً: آموزش, مرجع" maxlength="120">
-      </div>
-      <div class="field full">
-        <label for="desc">توضیحات (اختیاری)</label>
-        <textarea id="desc" placeholder="یادداشتی کوتاه درباره این لینک..." maxlength="400"></textarea>
-      </div>
-      <div class="actions">
-        <button type="submit" class="btn-primary" id="submitBtn">
-          <span id="submitText">افزودن به آرشیو</span>
-        </button>
-        <button type="button" class="btn-ghost" id="cancelEdit" style="display:none;">انصراف</button>
-        <button type="button" class="btn-ghost" id="exportBtn">خروجی JSON</button>
-        <button type="button" class="btn-ghost" id="importBtn">ورود JSON</button>
-        <input type="file" id="importFile" accept="application/json" style="display:none;">
-      </div>
-    </form>
-  </section>
+      <section class="archive-section">
+        <div class="year-heading">
+          <span class="year">۱۴۰۳</span>
+          <span class="count">۷ نوشته</span>
+          <span class="line"></span>
+        </div>
 
-  <section class="panel">
-    <div class="toolbar">
-      <div class="search-box">
-        <input type="search" id="searchInput" placeholder="جستجو در عنوان، توضیحات، برچسب یا دسته‌بندی...">
-        <span class="icon">⌕</span>
+        <div class="month-group">
+          <div class="month-title">آذر</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۲۸ آذر ۱۴۰۳</span>
+                <h3 class="post-title">درباره سکوتِ میان واژه‌ها</h3>
+                <p class="post-excerpt">گاهی آنچه در نوشتن اهمیت دارد، فاصله میان کلمات است؛ سفیدی‌هایی که معنا را نفس‌کش می‌کنند و به خواننده مجال درنگ می‌دهند...</p>
+                <div class="post-meta">
+                  <span class="tag">#نوشتن</span>
+                  <span class="tag">#تأمل</span>
+                  <span class="dot">•</span>
+                  <span>۸ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۱۵ آذر ۱۴۰۳</span>
+                <h3 class="post-title">راه رفتن در شهر بی‌نقشه</h3>
+                <p class="post-excerpt">شهرها مثل کتاب‌اند؛ بعضی را باید در خط راست خواند و بعضی را باید گم شد تا فهمید. این یادداشتی است درباره پیاده‌روی و مشاهده.</p>
+                <div class="post-meta">
+                  <span class="tag">#شهر</span>
+                  <span class="tag">#پیاده‌روی</span>
+                  <span class="dot">•</span>
+                  <span>۶ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۳ آذر ۱۴۰۳</span>
+                <h3 class="post-title">چای تلخ، صبح دیر</h3>
+                <p class="post-excerpt">جستاری کوتاه درباره عادت‌های کوچکی که زندگی روزمره را شکل می‌دهند، بی‌آنکه ما متوجه‌شان باشیم.</p>
+                <div class="post-meta">
+                  <span class="tag">#روزمره</span>
+                  <span class="dot">•</span>
+                  <span>۴ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="month-group">
+          <div class="month-title">مهر</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۲۲ مهر ۱۴۰۳</span>
+                <h3 class="post-title">کتاب‌هایی که نیمه‌کاره ماندند</h3>
+                <p class="post-excerpt">بعضی کتاب‌ها را نباید تمام کرد. درباره رها کردن به‌عنوان یک انتخاب آگاهانه و نه شکست.</p>
+                <div class="post-meta">
+                  <span class="tag">#کتاب</span>
+                  <span class="tag">#خواندن</span>
+                  <span class="dot">•</span>
+                  <span>۷ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۹ مهر ۱۴۰۳</span>
+                <h3 class="post-title">پاییز، فصل آغاز دوباره</h3>
+                <p class="post-excerpt">چرا پاییز بیش از بهار حس شروع می‌دهد؟ یادداشتی درباره تقویم‌های درونی و فصل‌های ذهنی.</p>
+                <div class="post-meta">
+                  <span class="tag">#پاییز</span>
+                  <span class="tag">#تأمل</span>
+                  <span class="dot">•</span>
+                  <span>۵ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="archive-section">
+        <div class="year-heading">
+          <span class="year">۱۴۰۲</span>
+          <span class="count">۶ نوشته</span>
+          <span class="line"></span>
+        </div>
+
+        <div class="month-group">
+          <div class="month-title">اسفند</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۲۷ اسفند ۱۴۰۲</span>
+                <h3 class="post-title">سفره‌ای که سال را تمام می‌کند</h3>
+                <p class="post-excerpt">درباره آیین‌های کوچک پایان سال و معنایی که در تکرارشان پنهان است.</p>
+                <div class="post-meta">
+                  <span class="tag">#نوروز</span>
+                  <span class="tag">#سنت</span>
+                  <span class="dot">•</span>
+                  <span>۶ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۱۱ اسفند ۱۴۰۲</span>
+                <h3 class="post-title">یادداشت‌های یک شب بی‌خواب</h3>
+                <p class="post-excerpt">شب‌هایی که خواب نمی‌آید، ذهن شروع می‌کند به نوشتن. این متن حاصل یکی از همان شب‌هاست.</p>
+                <div class="post-meta">
+                  <span class="tag">#شب</span>
+                  <span class="tag">#نوشتن</span>
+                  <span class="dot">•</span>
+                  <span>۴ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="month-group">
+          <div class="month-title">شهریور</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۳۱ شهریور ۱۴۰۲</span>
+                <h3 class="post-title">مسیرهای فرعی، مقصدهای ناخواسته</h3>
+                <p class="post-excerpt">گاهی انحراف از مسیر اصلی، خودش تبدیل به مقصد می‌شود. روایتی از یک سفر کوتاه.</p>
+                <div class="post-meta">
+                  <span class="tag">#سفر</span>
+                  <span class="dot">•</span>
+                  <span>۹ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۵ شهریور ۱۴۰۲</span>
+                <h3 class="post-title">در ستایشِ کارهای نصفه‌کاره</h3>
+                <p class="post-excerpt">چرا باید برای کارهای ناتمام ارزش قائل شد و چطور آن‌ها را از شکست تفکیک کنیم.</p>
+                <div class="post-meta">
+                  <span class="tag">#خلاقیت</span>
+                  <span class="tag">#کار</span>
+                  <span class="dot">•</span>
+                  <span>۷ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="month-group">
+          <div class="month-title">فروردین</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۱۹ فروردین ۱۴۰۲</span>
+                <h3 class="post-title">بهار و شلوغیِ دلپذیر</h3>
+                <p class="post-excerpt">از پنجره به بیرون نگاه می‌کنم؛ درختان دوباره به دنیا می‌آیند و شهر نفس تازه می‌کشد.</p>
+                <div class="post-meta">
+                  <span class="tag">#بهار</span>
+                  <span class="dot">•</span>
+                  <span>۳ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۳ فروردین ۱۴۰۲</span>
+                <h3 class="post-title">سال نو، همان آدم قدیمی</h3>
+                <p class="post-excerpt">یادداشتی صادقانه درباره اینکه تغییر واقعی از کجا شروع می‌شود؛ نه با تقویم، بلکه با تصمیم.</p>
+                <div class="post-meta">
+                  <span class="tag">#تغییر</span>
+                  <span class="tag">#تأمل</span>
+                  <span class="dot">•</span>
+                  <span>۵ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="archive-section">
+        <div class="year-heading">
+          <span class="year">۱۴۰۱</span>
+          <span class="count">۴ نوشته</span>
+          <span class="line"></span>
+        </div>
+
+        <div class="month-group">
+          <div class="month-title">دی</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۲۳ دی ۱۴۰۱</span>
+                <h3 class="post-title">سرما، تنهایی، چای</h3>
+                <p class="post-excerpt">سه‌گانه‌ای که زمستان را برای من قابل تحمل می‌کند. یادداشتی درباره هم‌نشینی با خود.</p>
+                <div class="post-meta">
+                  <span class="tag">#زمستان</span>
+                  <span class="tag">#تنهایی</span>
+                  <span class="dot">•</span>
+                  <span>۴ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۷ دی ۱۴۰۱</span>
+                <h3 class="post-title">روزهای بی‌تقویم</h3>
+                <p class="post-excerpt">درباره تعطیلاتی که تاریخ ندارند و روزهایی که به خاطر نمی‌آوریم کِی گذشتند.</p>
+                <div class="post-meta">
+                  <span class="tag">#زمان</span>
+                  <span class="dot">•</span>
+                  <span>۶ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="month-group">
+          <div class="month-title">تیر</div>
+          <ul class="posts-list">
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۱۴ تیر ۱۴۰۱</span>
+                <h3 class="post-title">گرمای بی‌رحم، بستنی ارزان</h3>
+                <p class="post-excerpt">خاطره‌ای کوتاه از تابستان‌های قدیم و طعم ساده‌شان که دیگر تکرار نمی‌شود.</p>
+                <div class="post-meta">
+                  <span class="tag">#تابستان</span>
+                  <span class="tag">#خاطره</span>
+                  <span class="dot">•</span>
+                  <span>۵ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+            <li class="post-item">
+              <a href="#" class="post-link">
+                <span class="post-date">۲ تیر ۱۴۰۱</span>
+                <h3 class="post-title">آغاز دوباره‌ای به نام وبلاگ</h3>
+                <p class="post-excerpt">این اولین نوشته در این دفتر است؛ آغاز راهی که امیدوارم طولانی و پرماجرا باشد.</p>
+                <div class="post-meta">
+                  <span class="tag">#وبلاگ</span>
+                  <span class="tag">#آغاز</span>
+                  <span class="dot">•</span>
+                  <span>۳ دقیقه مطالعه</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="sidebar">
+
+      <div class="sidebar-widget">
+        <h3>جستجو در آرشیو</h3>
+        <form class="search-form" onsubmit="return false;">
+          <input type="search" placeholder="واژه‌ای را بنویسید...">
+          <span class="icon">⌕</span>
+        </form>
       </div>
-      <select class="filter-select" id="filterCategory">
-        <option value="">همه دسته‌ها</option>
-      </select>
-    </div>
 
-    <div class="stats">
-      <span>نمایش <strong id="visibleCount">۰</strong> از <strong id="totalCount">۰</strong> لینک</span>
-      <span>دسته‌ها: <strong id="catCount">۰</strong></span>
-    </div>
+      <div class="sidebar-widget">
+        <h3>دسته‌بندی‌ها</h3>
+        <ul class="widget-list">
+          <li><a href="#">نوشتن و خلاقیت</a><span class="count">۶</span></li>
+          <li><a href="#">سفر و مکان</a><span class="count">۴</span></li>
+          <li><a href="#">روزمره‌نگاری</a><span class="count">۹</span></li>
+          <li><a href="#">تأملات شخصی</a><span class="count">۱۲</span></li>
+          <li><a href="#">کتاب و خواندن</a><span class="count">۵</span></li>
+          <li><a href="#">فصل‌ها و آیین‌ها</a><span class="count">۳</span></li>
+        </ul>
+      </div>
 
-    <div class="links-grid" id="linksGrid"></div>
+      <div class="sidebar-widget">
+        <h3>آخرین نوشته‌ها</h3>
+        <ul class="recent-list">
+          <li>
+            <a href="#">درباره سکوتِ میان واژه‌ها</a>
+            <span class="rdate">۲۸ آذر ۱۴۰۳</span>
+          </li>
+          <li>
+            <a href="#">راه رفتن در شهر بی‌نقشه</a>
+            <span class="rdate">۱۵ آذر ۱۴۰۳</span>
+          </li>
+          <li>
+            <a href="#">چای تلخ، صبح دیر</a>
+            <span class="rdate">۳ آذر ۱۴۰۳</span>
+          </li>
+          <li>
+            <a href="#">کتاب‌هایی که نیمه‌کاره ماندند</a>
+            <span class="rdate">۲۲ مهر ۱۴۰۳</span>
+          </li>
+          <li>
+            <a href="#">پاییز، فصل آغاز دوباره</a>
+            <span class="rdate">۹ مهر ۱۴۰۳</span>
+          </li>
+        </ul>
+      </div>
 
-    <div class="empty" id="emptyState" style="display:none;">
-      <div class="big">◌</div>
-      <p id="emptyText">هنوز لینکی اضافه نکرده‌اید. اولین لینک را از فرم بالا اضافه کنید.</p>
-    </div>
-  </section>
+      <div class="sidebar-widget">
+        <h3>برچسب‌ها</h3>
+        <div class="tag-cloud">
+          <a href="#" class="lg">#نوشتن</a>
+          <a href="#" class="sm">#روزمره</a>
+          <a href="#" class="lg">#تأمل</a>
+          <a href="#" class="sm">#سفر</a>
+          <a href="#">#کتاب</a>
+          <a href="#" class="lg">#خاطره</a>
+          <a href="#" class="sm">#پاییز</a>
+          <a href="#">#زمان</a>
+          <a href="#" class="lg">#شهر</a>
+          <a href="#" class="sm">#بهار</a>
+          <a href="#">#تنهایی</a>
+          <a href="#" class="lg">#خلاقیت</a>
+          <a href="#" class="sm">#سنت</a>
+        </div>
+      </div>
 
+      <div class="sidebar-widget">
+        <h3>بایگانی زمانی</h3>
+        <ul class="widget-list">
+          <li><a href="#">۱۴۰۳</a><span class="count">۷</span></li>
+          <li><a href="#">۱۴۰۲</a><span class="count">۶</span></li>
+          <li><a href="#">۱۴۰۱</a><span class="count">۴</span></li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
 </div>
 
-<footer class="bottom">
-  <strong>آرشیو لینک‌های من</strong>
-  <div>داده‌ها به‌صورت محلی در مرورگر شما ذخیره می‌شوند</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="fmark">دفتر یادداشت</div>
+    <span class="quote-mark">“</span>
+    <p>کلمات جایی برای ماندن می‌خواهند، اینجا خانه‌شان است.</p>
+    <p style="margin-top: 12px;">تمام نوشته‌ها تحت مجوز شخصی منتشر می‌شوند © ۱۴۰۳</p>
+  </div>
 </footer>
-
-<div class="toast" id="toast"><span class="mark">✓</span><span id="toastText"></span></div>
-
-<script>
-(function () {
-  const STORAGE_KEY = 'my_links_archive_v1';
-
-  const els = {
-    form: document.getElementById('linkForm'),
-    title: document.getElementById('title'),
-    url: document.getElementById('url'),
-    category: document.getElementById('category'),
-    tags: document.getElementById('tags'),
-    desc: document.getElementById('desc'),
-    editId: document.getElementById('editId'),
-    submitBtn: document.getElementById('submitBtn'),
-    submitText: document.getElementById('submitText'),
-    cancelEdit: document.getElementById('cancelEdit'),
-    formTitle: document.getElementById('formTitle'),
-    grid: document.getElementById('linksGrid'),
-    empty: document.getElementById('emptyState'),
-    emptyText: document.getElementById('emptyText'),
-    search: document.getElementById('searchInput'),
-    filterCat: document.getElementById('filterCategory'),
-    categoryList: document.getElementById('categoryList'),
-    visible: document.getElementById('visibleCount'),
-    total: document.getElementById('totalCount'),
-    catCount: document.getElementById('catCount'),
-    headerCount: document.getElementById('headerCount'),
-    toast: document.getElementById('toast'),
-    toastText: document.getElementById('toastText'),
-    exportBtn: document.getElementById('exportBtn'),
-    importBtn: document.getElementById('importBtn'),
-    importFile: document.getElementById('importFile'),
-  };
-
-  let links = [];
-  let editingId = null;
-
-  const faDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-  function toFa(n) {
-    return String(n).replace(/[0-9]/g, d => faDigits[+d]);
-  }
-
-  function load() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) links = parsed;
-      }
-    } catch (e) {
-      links = [];
-    }
-  }
-
-  function save() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-    } catch (e) {}
-  }
-
-  function uid() {
-    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-  }
-
-  function normalizeUrl(input) {
-    let v = String(input).trim();
-    if (!v) return '';
-    if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(v)) v = 'https://' + v;
-    return v;
-  }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
-  function parseTags(str) {
-    return String(str)
-      .split(/[,،]/)
-      .map(t => t.trim())
-      .filter(Boolean)
-      .slice(0, 10);
-  }
-
-  function formatDate(ts) {
-    try {
-      return new Date(ts).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
-    } catch (e) {
-      return '';
-    }
-  }
-
-  function showToast(msg) {
-    els.toastText.textContent = msg;
-    els.toast.classList.add('show');
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => els.toast.classList.remove('show'), 2600);
-  }
-
-  function render() {
-    const q = els.search.value.trim().toLowerCase();
-    const cat = els.filterCat.value;
-
-    const filtered = links.filter(l => {
-      if (cat && l.category !== cat) return false;
-      if (!q) return true;
-      const hay = [
-        l.title, l.desc, l.category, l.url, (l.tags || []).join(' ')
-      ].join(' ').toLowerCase();
-      return hay.includes(q);
-    });
-
-    filtered.sort((a, b) => b.createdAt - a.createdAt);
-
-    els.grid.innerHTML = '';
-    if (filtered.length === 0) {
-      els.empty.style.display = 'block';
-      els.emptyText.textContent = links.length === 0
-        ? 'هنوز لینکی اضافه نکرده‌اید. اولین لینک را از فرم بالا اضافه کنید.'
-        : 'هیچ لینکی با این جستجو یا فیلتر پیدا نشد.';
-    } else {
-      els.empty.style.display = 'none';
-      const frag = document.createDocumentFragment();
-      filtered.forEach(l => frag.appendChild(buildCard(l)));
-      els.grid.appendChild(frag);
-    }
-
-    els.visible.textContent = toFa(filtered.length);
-    els.total.textContent = toFa(links.length);
-    els.headerCount.textContent = toFa(links.length) + ' لینک ذخیره‌شده';
-
-    updateCategories();
-  }
-
-  function buildCard(l) {
-    const card = document.createElement('article');
-    card.className = 'link-card';
-
-    const title = document.createElement('h3');
-    title.textContent = l.title;
-
-    const urlA = document.createElement('a');
-    urlA.className = 'url';
-    urlA.href = l.url;
-    urlA.target = '_blank';
-    urlA.rel = 'noopener noreferrer';
-    urlA.textContent = l.url;
-
-    card.appendChild(title);
-    card.appendChild(urlA);
-
-    if (l.desc) {
-      const p = document.createElement('p');
-      p.className = 'desc';
-      p.textContent = l.desc;
-      card.appendChild(p);
-    }
-
-    if (l.tags && l.tags.length) {
-      const tagsWrap = document.createElement('div');
-      tagsWrap.style.display = 'flex';
-      tagsWrap.style.flexWrap = 'wrap';
-      tagsWrap.style.gap = '6px';
-      l.tags.forEach(t => {
-        const s = document.createElement('span');
-        s.className = 'tag';
-        s.textContent = t;
-        tagsWrap.appendChild(s);
-      });
-      card.appendChild(tagsWrap);
-    }
-
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    const left = document.createElement('span');
-    left.textContent = formatDate(l.createdAt);
-    meta.appendChild(left);
-    if (l.category) {
-      const c = document.createElement('span');
-      c.className = 'tag';
-      c.textContent = l.category;
-      meta.appendChild(c);
-    }
-    card.appendChild(meta);
-
-    const actions = document.createElement('div');
-    actions.className = 'card-actions';
-
-    const editBtn = document.createElement('button');
-    editBtn.type = 'button';
-    editBtn.className = 'icon-btn';
-    editBtn.textContent = 'ویرایش';
-    editBtn.addEventListener('click', () => startEdit(l.id));
-
-    const copyBtn = document.createElement('button');
-    copyBtn.type = 'button';
-    copyBtn.className = 'icon-btn';
-    copyBtn.textContent = 'کپی لینک';
-    copyBtn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(l.url);
-        showToast('نشانی لینک کپی شد');
-      } catch (e) {
-        showToast('کپی نشد. دستی انتخاب کنید.');
-      }
-    });
-
-    const delBtn = document.createElement('button');
-    delBtn.type = 'button';
-    delBtn.className = 'icon-btn del';
-    delBtn.textContent = 'حذف';
-    delBtn.addEventListener('click', () => removeLink(l.id));
-
-    actions.appendChild(editBtn);
-    actions.appendChild(copyBtn);
-    actions.appendChild(delBtn);
-    card.appendChild(actions);
-
-    return card;
-  }
-
-  function updateCategories() {
-    const cats = Array.from(new Set(links.map(l => l.category).filter(Boolean))).sort();
-    const current = els.filterCat.value;
-    els.filterCat.innerHTML = '';
-    const optAll = document.createElement('option');
-    optAll.value = '';
-    optAll.textContent = 'همه دسته‌ها';
-    els.filterCat.appendChild(optAll);
-    cats.forEach(c => {
-      const o = document.createElement('option');
-      o.value = c;
-      o.textContent = c;
-      els.filterCat.appendChild(o);
-    });
-    if (cats.includes(current)) els.filterCat.value = current;
-
-    els.categoryList.innerHTML = '';
-    cats.forEach(c => {
-      const o = document.createElement('option');
-      o.value = c;
-      els.categoryList.appendChild(o);
-    });
-
-    els.catCount.textContent = toFa(cats.length);
-  }
-
-  function resetForm() {
-    els.form.reset();
-    els.editId.value = '';
-    editingId = null;
-    els.submitText.textContent = 'افزودن به آرشیو';
-    els.formTitle.textContent = 'افزودن لینک جدید';
-    els.cancelEdit.style.display = 'none';
-  }
-
-  function startEdit(id) {
-    const l = links.find(x => x.id === id);
-    if (!l) return;
-    editingId = id;
-    els.editId.value = id;
-    els.title.value = l.title;
-    els.url.value = l.url;
-    els.category.value = l.category || '';
-    els.tags.value = (l.tags || []).join(', ');
-    els.desc.value = l.desc || '';
-    els.submitText.textContent = 'ذخیره تغییرات';
-    els.formTitle.textContent = 'ویرایش لینک';
-    els.cancelEdit.style.display = 'inline-flex';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    els.title.focus();
-  }
-
-  function removeLink(id) {
-    if (!confirm('این لینک حذف شود؟')) return;
-    links = links.filter(x => x.id !== id);
-    if (editingId === id) resetForm();
-    save();
-    render();
-    showToast('لینک حذف شد');
-  }
-
-  els.form.addEventListener('submit', e => {
-    e.preventDefault();
-    const title = els.title.value.trim();
-    const rawUrl = els.url.value.trim();
-    const category = els.category.value.trim();
-    const tags = parseTags(els.tags.value);
-    const desc = els.desc.value.trim();
-
-    if (!title || !rawUrl) {
-      showToast('عنوان و نشانی الزامی است');
-      return;
-    }
-
-    const url = normalizeUrl(rawUrl);
-
-    if (editingId) {
-      const l = links.find(x => x.id === editingId);
-      if (l) {
-        l.title = title;
-        l.url = url;
-        l.category = category;
-        l.tags = tags;
-        l.desc = desc;
-        l.updatedAt = Date.now();
-      }
-      showToast('تغییرات ذخیره شد');
-    } else {
-      links.push({
-        id: uid(),
-        title,
-        url,
-        category,
-        tags,
-        desc,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-      });
-      showToast('لینک به آرشیو اضافه شد');
-    }
-
-    save();
-    resetForm();
-    render();
-  });
-
-  els.cancelEdit.addEventListener('click', () => {
-    resetForm();
-    showToast('ویرایش لغو شد');
-  });
-
-  els.search.addEventListener('input', render);
-  els.filterCat.addEventListener('change', render);
-
-  els.exportBtn.addEventListener('click', () => {
-    if (links.length === 0) {
-      showToast('چیزی برای خروجی گرفتن وجود ندارد');
-      return;
-    }
-    const data = JSON.stringify(links, null, 2);
-    const blob = new Blob([data], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'my-links-archive.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    showToast('فایل خروجی آماده شد');
-  });
-
-  els.importBtn.addEventListener('click', () => els.importFile.click());
-
-  els.importFile.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const parsed = JSON.parse(reader.result);
-        if (!Array.isArray(parsed)) throw new Error('bad');
-        const cleaned = parsed
-          .filter(x => x && typeof x === 'object' && x.title && x.url)
-          .map(x => ({
-            id: x.id || uid(),
-            title: String(x.title).slice(0, 200),
-            url: normalizeUrl(String(x.url)),
-            category: x.category ? String(x.category).slice(0, 60) : '',
-            tags: Array.isArray(x.tags) ? x.tags.slice(0, 10).map(String) : [],
-            desc: x.desc ? String(x.desc).slice(0, 500) : '',
-            createdAt: Number(x.createdAt) || Date.now(),
-            updatedAt: Number(x.updatedAt) || Date.now(),
-          }));
-        const merge = confirm('لینک‌های وارد‌شده به آرشیو فعلی اضافه شوند؟ (اگر انصراف بزنید جایگزین می‌شود)');
-        links = merge ? links.concat(cleaned) : cleaned;
-        save();
-        render();
-        showToast(toFa(cleaned.length) + ' لینک وارد شد');
-      } catch (err) {
-        showToast('فایل معتبر نیست');
-      }
-      els.importFile.value = '';
-    };
-    reader.readAsText(file);
-  });
-
-  load();
-  render();
-})();
-</script>
 
 </body>
 </html>
