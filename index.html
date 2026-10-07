@@ -3,25 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="جنگ قادسیه، نبردی سرنوشت‌ساز میان سپاه مسلمانان و امپراتوری ساسانی در سال ۶۳۶ میلادی">
-<meta name="theme-color" content="#0d1b2a">
-<title>جنگ قادسیه | نبردی سرنوشت‌ساز</title>
+<meta name="theme-color" content="#0f1720">
+<title>آرشیو لینک‌های من</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d1b2a;
-    --bg-soft: #122436;
-    --surface: #1b2f45;
-    --gold: #d4a24c;
-    --gold-soft: #e7c07c;
-    --text: #e8eef4;
-    --muted: #9ab0c4;
-    --line: rgba(212, 162, 76, 0.22);
-    --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    --radius: 18px;
-    --max: 1180px;
+    --bg: #0f1720;
+    --bg-soft: #16212d;
+    --surface: #1c2b3a;
+    --surface-hi: #24384a;
+    --accent: #4cc9a4;
+    --accent-soft: #7ce0c3;
+    --accent-dim: rgba(76, 201, 164, 0.15);
+    --danger: #ef6b6b;
+    --text: #e7eef5;
+    --muted: #93a6b8;
+    --line: rgba(124, 224, 195, 0.15);
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    --radius: 16px;
+    --max: 1120px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,620 +34,905 @@
     font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.95;
-    font-size: 17px;
-    overflow-x: hidden;
+    line-height: 1.8;
+    font-size: 16px;
+    min-height: 100vh;
     background-image:
-      radial-gradient(circle at 15% 10%, rgba(212, 162, 76, 0.08), transparent 45%),
-      radial-gradient(circle at 85% 90%, rgba(212, 162, 76, 0.06), transparent 45%);
+      radial-gradient(circle at 10% 0%, rgba(76, 201, 164, 0.08), transparent 40%),
+      radial-gradient(circle at 90% 100%, rgba(76, 201, 164, 0.06), transparent 45%);
     background-attachment: fixed;
   }
 
   .container {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 0 22px;
+    padding: 0 20px;
   }
 
-  header.hero {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  header.top {
+    padding: 60px 0 30px;
     text-align: center;
-    padding: 120px 20px 80px;
-    overflow: hidden;
+    position: relative;
   }
 
-  header.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(rgba(13, 27, 42, 0.82), rgba(13, 27, 42, 0.95)),
-      radial-gradient(circle at 50% 40%, #2a4058, #0d1b2a 70%);
-    z-index: -2;
-  }
-
-  header.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(45deg, rgba(212,162,76,0.03) 0 2px, transparent 2px 22px),
-      repeating-linear-gradient(-45deg, rgba(212,162,76,0.03) 0 2px, transparent 2px 22px);
-    z-index: -1;
-    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-  }
-
-  .hero-inner { max-width: 900px; }
-
-  .eyebrow {
-    display: inline-block;
-    font-size: 0.82rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-    border: 1px solid var(--line);
-    padding: 6px 18px;
-    border-radius: 100px;
-    margin-bottom: 28px;
-    background: rgba(212, 162, 76, 0.06);
-  }
-
-  h1 {
-    font-size: clamp(2.4rem, 6vw, 4.4rem);
-    font-weight: 900;
-    line-height: 1.3;
-    background: linear-gradient(180deg, #fff 0%, var(--gold-soft) 100%);
+  header.top h1 {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    font-weight: 800;
+    background: linear-gradient(180deg, #ffffff 0%, var(--accent-soft) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 22px;
-    letter-spacing: -0.5px;
-  }
-
-  .hero p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: var(--muted);
-    max-width: 720px;
-    margin: 0 auto 40px;
-  }
-
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 20px;
-  }
-
-  .chip {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--line);
-    color: var(--gold-soft);
-    padding: 8px 18px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    backdrop-filter: blur(6px);
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--muted);
-    font-size: 0.85rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    animation: float 2.6s ease-in-out infinite;
-  }
-
-  .scroll-hint span.line {
-    width: 1px;
-    height: 34px;
-    background: linear-gradient(var(--gold), transparent);
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translate(-50%, 0); opacity: 0.8; }
-    50% { transform: translate(-50%, -8px); opacity: 1; }
-  }
-
-  main { padding: 30px 0 100px; }
-
-  section { padding: 60px 0; }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 34px;
-  }
-
-  .section-title h2 {
-    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-    font-weight: 700;
-    color: #fff;
-    white-space: nowrap;
-  }
-
-  .section-title .line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to left, var(--line), transparent);
-  }
-
-  .section-title .mark {
-    width: 8px;
-    height: 30px;
-    background: var(--gold);
-    border-radius: 4px;
-    box-shadow: 0 0 20px rgba(212, 162, 76, 0.6);
-  }
-
-  p + p { margin-top: 18px; }
-
-  .lead {
-    font-size: 1.12rem;
-    color: #dbe6ef;
-  }
-
-  .grid-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 22px;
-    margin-top: 30px;
-  }
-
-  .card {
-    background: linear-gradient(160deg, var(--surface), var(--bg-soft));
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    position: relative;
-    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-    overflow: hidden;
-  }
-
-  .card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to left, transparent, var(--gold), transparent);
-    opacity: 0.7;
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(212, 162, 76, 0.55);
-    box-shadow: var(--shadow);
-  }
-
-  .card .num {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 12px;
-    opacity: 0.9;
-  }
-
-  .card h3 {
-    font-size: 1.15rem;
+    letter-spacing: -0.4px;
     margin-bottom: 10px;
-    color: #fff;
   }
 
-  .card p {
+  header.top p {
     color: var(--muted);
-    font-size: 0.96rem;
-    line-height: 1.85;
+    font-size: 1rem;
+    max-width: 560px;
+    margin: 0 auto;
   }
 
-  .timeline {
-    position: relative;
-    margin-top: 20px;
-    padding-right: 30px;
-  }
-
-  .timeline::before {
-    content: "";
-    position: absolute;
-    right: 8px;
-    top: 6px;
-    bottom: 6px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--gold), rgba(212, 162, 76, 0.1));
-  }
-
-  .tl-item {
-    position: relative;
-    padding: 4px 0 32px 0;
-  }
-
-  .tl-item::before {
-    content: "";
-    position: absolute;
-    right: -30px;
-    top: 14px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 3px solid var(--gold);
-    box-shadow: 0 0 0 4px rgba(212, 162, 76, 0.12);
-  }
-
-  .tl-item h4 {
-    color: var(--gold-soft);
-    font-size: 1.05rem;
-    margin-bottom: 6px;
-  }
-
-  .tl-item p {
-    color: var(--muted);
-    font-size: 0.96rem;
-  }
-
-  .quote {
-    background: linear-gradient(135deg, rgba(212,162,76,0.08), rgba(212,162,76,0.02));
-    border-right: 4px solid var(--gold);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin: 40px 0;
-    font-size: 1.1rem;
-    color: #f0e6d2;
-    font-style: italic;
-    position: relative;
-  }
-
-  .quote::before {
-    content: "❝";
-    position: absolute;
-    top: -22px;
-    right: 18px;
-    font-size: 3.4rem;
-    color: var(--gold);
-    opacity: 0.4;
-    line-height: 1;
-  }
-
-  .quote cite {
-    display: block;
-    margin-top: 12px;
-    font-style: normal;
-    font-size: 0.88rem;
-    color: var(--muted);
-  }
-
-  .facts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 18px;
-    margin-top: 28px;
-  }
-
-  .fact {
-    text-align: center;
-    padding: 24px 16px;
-    background: var(--bg-soft);
+  .badge-line {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 18px;
+    font-size: 0.85rem;
+    color: var(--accent-soft);
+    background: var(--accent-dim);
+    padding: 6px 16px;
+    border-radius: 100px;
     border: 1px solid var(--line);
-    border-radius: 14px;
-    transition: background 0.3s ease;
   }
 
-  .fact:hover { background: var(--surface); }
-
-  .fact .value {
-    font-size: 1.9rem;
-    font-weight: 900;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  .fact .label {
-    font-size: 0.92rem;
-    color: var(--muted);
-  }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 26px;
-    margin-top: 26px;
+  .badge-line .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
   }
 
   .panel {
-    background: var(--bg-soft);
+    background: linear-gradient(160deg, var(--bg-soft), var(--bg));
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 26px 24px;
+    padding: 26px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
   }
 
-  .panel h3 {
-    font-size: 1.15rem;
-    color: var(--gold-soft);
-    margin-bottom: 14px;
+  .panel h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-soft);
+    margin-bottom: 18px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  .panel h3::before {
+  .panel h2::before {
     content: "";
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
   }
 
-  .panel ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  form.add-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
 
-  .panel li {
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+
+  .field label {
+    font-size: 0.85rem;
     color: var(--muted);
-    font-size: 0.96rem;
-    padding-right: 18px;
+    font-weight: 500;
+    padding-right: 4px;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    font-family: inherit;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    width: 100%;
+  }
+
+  .field textarea { resize: vertical; min-height: 72px; }
+
+  .field input::placeholder,
+  .field textarea::placeholder { color: #5a6d80; }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: var(--accent);
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+
+  .field select option { background: var(--surface); }
+
+  .actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  button {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  button:active { transform: scale(0.97); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #2ea88a);
+    color: #08231d;
+    box-shadow: 0 6px 20px rgba(76, 201, 164, 0.3);
+  }
+
+  .btn-primary:hover { background: linear-gradient(135deg, var(--accent-soft), var(--accent)); }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--muted);
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-soft); background: var(--accent-dim); }
+
+  .btn-danger {
+    background: transparent;
+    border-color: rgba(239, 107, 107, 0.35);
+    color: var(--danger);
+  }
+
+  .btn-danger:hover { background: rgba(239, 107, 107, 0.1); border-color: var(--danger); }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 220px;
     position: relative;
   }
 
-  .panel li::before {
-    content: "◆";
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: var(--gold);
-    font-size: 0.7rem;
-    line-height: 2.6;
-  }
-
-  .conclusion {
-    background: linear-gradient(150deg, rgba(212,162,76,0.12), rgba(212,162,76,0.02));
+  .search-box input {
+    width: 100%;
+    font-family: inherit;
+    background: var(--bg-soft);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 40px 32px;
-    text-align: center;
-    margin-top: 20px;
+    border-radius: 12px;
+    padding: 12px 44px 12px 16px;
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .conclusion p {
-    max-width: 820px;
-    margin: 0 auto;
-    color: #e4ecf3;
-    font-size: 1.06rem;
+  .search-box input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
   }
 
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 34px 20px;
-    text-align: center;
+  .search-box .icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--muted);
-    font-size: 0.88rem;
-    background: rgba(0,0,0,0.2);
-  }
-
-  footer .brand {
-    color: var(--gold-soft);
-    font-weight: 700;
-    margin-bottom: 8px;
     font-size: 1rem;
+    pointer-events: none;
   }
 
-  @media (max-width: 780px) {
-    .two-col { grid-template-columns: 1fr; }
-    section { padding: 40px 0; }
-    body { font-size: 16px; }
-    .section-title h2 { white-space: normal; }
+  .filter-select {
+    font-family: inherit;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    min-width: 160px;
+    transition: border-color 0.2s ease;
+  }
+
+  .filter-select:focus { border-color: var(--accent); }
+
+  .stats {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .stats strong { color: var(--accent-soft); font-weight: 700; }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .link-card {
+    background: linear-gradient(160deg, var(--surface), var(--bg-soft));
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+  }
+
+  .link-card::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(to left, transparent, var(--accent), transparent);
+    opacity: 0.7;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(76, 201, 164, 0.5);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .link-card h3 {
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .link-card .url {
+    font-size: 0.82rem;
+    color: var(--accent-soft);
+    text-decoration: none;
+    word-break: break-all;
+    direction: ltr;
+    text-align: left;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+
+  .link-card .url:hover { opacity: 1; text-decoration: underline; }
+
+  .link-card .desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.75;
+    flex: 1;
+    word-break: break-word;
+  }
+
+  .link-card .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .tag {
+    background: var(--accent-dim);
+    color: var(--accent-soft);
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    border: 1px solid var(--line);
+  }
+
+  .link-card .card-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .icon-btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent-soft); background: var(--accent-dim); }
+
+  .icon-btn.del:hover { border-color: var(--danger); color: var(--danger); background: rgba(239, 107, 107, 0.1); }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .empty .big { font-size: 3rem; margin-bottom: 12px; opacity: 0.5; }
+
+  .empty p { font-size: 0.95rem; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 120%);
+    background: var(--surface-hi);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: calc(100% - 40px);
+  }
+
+  .toast.show { transform: translate(-50%, 0); }
+
+  .toast .mark { color: var(--accent); font-weight: 700; }
+
+  footer.bottom {
+    text-align: center;
+    padding: 40px 20px 30px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+  }
+
+  footer.bottom strong { color: var(--accent-soft); }
+
+  @media (max-width: 720px) {
+    form.add-form { grid-template-columns: 1fr; }
+    .panel { padding: 20px; }
+    header.top { padding: 40px 0 20px; }
+    .links-grid { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
 
-  ::selection { background: var(--gold); color: var(--bg); }
+  ::selection { background: var(--accent); color: var(--bg); }
 
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 6px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow">۶۳۶ میلادی • ۱۴ هجری قمری</span>
-    <h1>جنگ قادسیه</h1>
-    <p>نبردی سرنوشت‌ساز که در دشت‌های قادسیه میان سپاه مسلمانان و امپراتوری ساسانی رخ داد و مسیر تاریخ سرزمین پارس را برای همیشه دگرگون ساخت.</p>
-    <div class="hero-meta">
-      <span class="chip">فتح ایران</span>
-      <span class="chip">سعد بن ابی‌وقاص</span>
-      <span class="chip">رستم فرخزاد</span>
-      <span class="chip">چهار روز نبرد</span>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <span>کاوش بیشتر</span>
-    <span class="line"></span>
-  </div>
-</header>
+<div class="container">
 
-<main>
-  <section class="container">
-    <div class="section-title">
-      <span class="mark"></span>
-      <h2>درآمدی بر نبرد</h2>
-      <span class="line"></span>
+  <header class="top">
+    <h1>آرشیو لینک‌های من</h1>
+    <p>مجموعه‌ای شخصی از لینک‌های مهم، دسته‌بندی‌شده و همیشه در دسترس</p>
+    <div class="badge-line">
+      <span class="dot"></span>
+      <span id="headerCount">۰ لینک ذخیره‌شده</span>
     </div>
-    <p class="lead">
-      جنگ قادسیه یکی از مهم‌ترین نبردهای تاریخ خاورمیانه به شمار می‌رود؛ رویارویی‌ای که در سال ۱۴ هجری قمری برابر با ۶۳۶ میلادی، در منطقه‌ای به نام قادسیه در نزدیکی کوفه امروزی رخ داد و سرنوشت امپراتوری ساسانی را رقم زد.
-    </p>
-    <p>
-      پس از فروپاشی نظم سیاسی در شبه‌جزیره عربستان و شکل‌گیری حکومت اسلامی در مدینه، سپاه مسلمانان در ادامه فتوحات خود به سوی مرزهای غربی ایران حرکت کرد. سقوط حیره و شکست‌های پی‌درپی نیروهای ساسانی، خلیفه دوم را بر آن داشت تا سپاهی بزرگ به فرماندهی سعد بن ابی‌وقاص را راهی قلب بین‌النهرین کند.
-    </p>
-    <p>
-      در سوی دیگر میدان، یزدگرد سوم، پادشاه ساسانی، رستم فرخزاد، سپهسالار نامدار ایرانی، را با بزرگ‌ترین ارتش امپراتوری به مقابله فرستاد. برخورد این دو نیرو در دشت قادسیه به یکی از خونین‌ترین و تعیین‌کننده‌ترین نبردهای سده هفتم میلادی بدل شد.
-    </p>
+  </header>
+
+  <section class="panel">
+    <h2 id="formTitle">افزودن لینک جدید</h2>
+    <form class="add-form" id="linkForm" autocomplete="off">
+      <input type="hidden" id="editId" value="">
+      <div class="field">
+        <label for="title">عنوان</label>
+        <input type="text" id="title" placeholder="مثلاً: مستندات جاوااسکریپت" required maxlength="120">
+      </div>
+      <div class="field">
+        <label for="url">نشانی اینترنتی</label>
+        <input type="text" id="url" placeholder="https://example.com" required>
+      </div>
+      <div class="field">
+        <label for="category">دسته‌بندی</label>
+        <input type="text" id="category" placeholder="مثلاً: برنامه‌نویسی" list="categoryList" maxlength="40">
+        <datalist id="categoryList"></datalist>
+      </div>
+      <div class="field">
+        <label for="tags">برچسب‌ها (با کاما جدا کنید)</label>
+        <input type="text" id="tags" placeholder="مثلاً: آموزش, مرجع" maxlength="120">
+      </div>
+      <div class="field full">
+        <label for="desc">توضیحات (اختیاری)</label>
+        <textarea id="desc" placeholder="یادداشتی کوتاه درباره این لینک..." maxlength="400"></textarea>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span id="submitText">افزودن به آرشیو</span>
+        </button>
+        <button type="button" class="btn-ghost" id="cancelEdit" style="display:none;">انصراف</button>
+        <button type="button" class="btn-ghost" id="exportBtn">خروجی JSON</button>
+        <button type="button" class="btn-ghost" id="importBtn">ورود JSON</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none;">
+      </div>
+    </form>
   </section>
 
-  <section class="container">
-    <div class="section-title">
-      <span class="mark"></span>
-      <h2>چهار روز سرنوشت‌ساز</h2>
-      <span class="line"></span>
+  <section class="panel">
+    <div class="toolbar">
+      <div class="search-box">
+        <input type="search" id="searchInput" placeholder="جستجو در عنوان، توضیحات، برچسب یا دسته‌بندی...">
+        <span class="icon">⌕</span>
+      </div>
+      <select class="filter-select" id="filterCategory">
+        <option value="">همه دسته‌ها</option>
+      </select>
     </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <h4>روز نخست — آغاز درگیری</h4>
-        <p>نبرد با حمله نیروهای ساسانی آغاز شد. سربازان ایرانی با فیل‌های جنگی خود صفوف مسلمانان را به هم ریختند و خسارت سنگینی وارد کردند.</p>
-      </div>
-      <div class="tl-item">
-        <h4>روز دوم — روز آغرم</h4>
-        <p>درگیری شدید میان قبایل عرب و سپاه ساسانی ادامه یافت. کمک‌های تازه از مدینه رسید و روحیه مسلمانان تقویت شد. تلفات هر دو طرف سنگین بود.</p>
-      </div>
-      <div class="tl-item">
-        <h4>روز سوم — روز عماس</h4>
-        <p>سخت‌ترین روز نبرد. فیل‌های جنگی همچنان خط مقدم مسلمانان را تهدید می‌کردند تا اینکه با ابتکار عمل برخی سربازان، این حیوانات زخمی و رمیده شدند و روند نبرد تغییر کرد.</p>
-      </div>
-      <div class="tl-item">
-        <h4>روز چهارم — شب هریر</h4>
-        <p>نبرد شبانه و بی‌امان تا سپیده‌دم ادامه یافت. در نهایت رستم فرخزاد در میدان کشته شد و فروپاشی سپاه ساسانی آغاز گردید.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="container">
-    <div class="section-title">
-      <span class="mark"></span>
-      <h2>دو سوی میدان</h2>
-      <span class="line"></span>
+    <div class="stats">
+      <span>نمایش <strong id="visibleCount">۰</strong> از <strong id="totalCount">۰</strong> لینک</span>
+      <span>دسته‌ها: <strong id="catCount">۰</strong></span>
     </div>
-    <div class="two-col">
-      <div class="panel">
-        <h3>سپاه مسلمانان</h3>
-        <ul>
-          <li>فرماندهی: سعد بن ابی‌وقاص</li>
-          <li>تعداد تقریبی: حدود ۳۰٬۰۰۰ نفر</li>
-          <li>ترکیب: قبایل عرب، انصار و مهاجران</li>
-          <li>نقاط قوت: انگیزه دینی، انسجام فرماندهی</li>
-          <li>استراتژی: نبرد فرسایشی و استفاده از روحیه جمعی</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>سپاه ساسانی</h3>
-        <ul>
-          <li>فرماندهی: رستم فرخزاد</li>
-          <li>تعداد تقریبی: حدود ۶۰٬۰۰۰ نفر</li>
-          <li>ترکیب: سواره‌نظام زره‌پوش، پیاده‌نظام، فیل جنگی</li>
-          <li>نقاط قوت: تجهیزات سنگین و فیل‌های جنگی</li>
-          <li>نقاط ضعف: اختلاف داخلی و فرسودگی امپراتوری</li>
-        </ul>
-      </div>
+
+    <div class="links-grid" id="linksGrid"></div>
+
+    <div class="empty" id="emptyState" style="display:none;">
+      <div class="big">◌</div>
+      <p id="emptyText">هنوز لینکی اضافه نکرده‌اید. اولین لینک را از فرم بالا اضافه کنید.</p>
     </div>
   </section>
 
-  <section class="container">
-    <div class="section-title">
-      <span class="mark"></span>
-      <h2>نگاهی به اعداد و ارقام</h2>
-      <span class="line"></span>
-    </div>
-    <div class="facts">
-      <div class="fact">
-        <span class="value">۴</span>
-        <span class="label">روز نبرد پیوسته</span>
-      </div>
-      <div class="fact">
-        <span class="value">۱۴ هـ.ق</span>
-        <span class="label">سال وقوع نبرد</span>
-      </div>
-      <div class="fact">
-        <span class="value">~۹۰٬۰۰۰</span>
-        <span class="label">مجموع نیروهای دو طرف</span>
-      </div>
-      <div class="fact">
-        <span class="value">۶۳۶ م</span>
-        <span class="label">سال میلادی نبرد</span>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <section class="container">
-    <div class="quote">
-      از دشت قادسیه، بادی برخاست که تخت پادشاهان ساسانی را لرزاند و دروازه‌های ایران‌شهر را به روی فاتحان جدید گشود.
-      <cite>— روایت تاریخی از پیامدهای جنگ قادسیه</cite>
-    </div>
-  </section>
-
-  <section class="container">
-    <div class="section-title">
-      <span class="mark"></span>
-      <h2>پیامدهای تاریخی</h2>
-      <span class="line"></span>
-    </div>
-    <div class="grid-cards">
-      <div class="card">
-        <div class="num">۰۱</div>
-        <h3>فروپاشی ساسانیان</h3>
-        <p>پس از قادسیه، سپاه ایران دیگر هرگز نتوانست قدرت پیشین خود را بازسازی کند و امپراتوری ساسانی به سرعت رو به زوال رفت.</p>
-      </div>
-      <div class="card">
-        <div class="num">۰۲</div>
-        <h3>سقوط تیسفون</h3>
-        <p>پایتخت ساسانیان در پی این شکست در معرض سقوط قرار گرفت و مراکز قدرت سیاسی و اقتصادی ایران یکی پس از دیگری فتح شدند.</p>
-      </div>
-      <div class="card">
-        <div class="num">۰۳</div>
-        <h3>دگرگونی فرهنگی</h3>
-        <p>با فروپاشی نظم ساسانی، ساختار سیاسی، اداری و دینی ایران دستخوش تغییرات عمیقی شد که قرن‌ها اثرگذار باقی ماند.</p>
-      </div>
-      <div class="card">
-        <div class="num">۰۴</div>
-        <h3>شکل‌گیری ایران نوین</h3>
-        <p>تلفیق سنت‌های ایرانی با فرهنگ اسلامی، زمینه‌ساز شکل‌گیری تمدنی جدید شد که در سده‌های بعد به شکوفایی رسید.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="container">
-    <div class="section-title">
-      <span class="mark"></span>
-      <h2>جایگاه قادسیه در حافظه تاریخی</h2>
-      <span class="line"></span>
-    </div>
-    <p>
-      جنگ قادسیه در روایت‌های تاریخی و ادبی جهان اسلام و ایران جایگاهی ویژه دارد. در متون کهن عربی، این نبرد به عنوان یکی از «فتوحات بزرگ» ستوده شده و در منابع ایرانی، به عنوان لحظه‌ای سرنوشت‌ساز و در عین حال تلخ از دگرگونی نظم کهن یاد می‌شود.
-    </p>
-    <p>
-      امروزه مورخان قادسیه را نه تنها یک نبرد نظامی، بلکه نقطه پایانی یک دوره تمدنی و آغاز دوره‌ای دیگر می‌دانند؛ برخوردی که سرنوشت سیاسی، فرهنگی و دینی سرزمین‌های میان‌رودان و ایران را برای سده‌ها تعیین کرد.
-    </p>
-  </section>
-
-  <section class="container">
-    <div class="conclusion">
-      <p>
-        قادسیه تنها یک جنگ نبود؛ آستانه‌ای تاریخی بود که در آن یک امپراتوری کهن فروپاشید و نظمی نو پدیدار شد. درک این نبرد، کلید فهم تحولات بزرگ جهان اسلام و ایران در سده‌های نخستین هجری است.
-      </p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="brand">جنگ قادسیه</div>
-  <p>صفحه‌ای درباره یکی از مهم‌ترین رخدادهای تاریخی سده هفتم میلادی</p>
+<footer class="bottom">
+  <strong>آرشیو لینک‌های من</strong>
+  <div>داده‌ها به‌صورت محلی در مرورگر شما ذخیره می‌شوند</div>
 </footer>
+
+<div class="toast" id="toast"><span class="mark">✓</span><span id="toastText"></span></div>
+
+<script>
+(function () {
+  const STORAGE_KEY = 'my_links_archive_v1';
+
+  const els = {
+    form: document.getElementById('linkForm'),
+    title: document.getElementById('title'),
+    url: document.getElementById('url'),
+    category: document.getElementById('category'),
+    tags: document.getElementById('tags'),
+    desc: document.getElementById('desc'),
+    editId: document.getElementById('editId'),
+    submitBtn: document.getElementById('submitBtn'),
+    submitText: document.getElementById('submitText'),
+    cancelEdit: document.getElementById('cancelEdit'),
+    formTitle: document.getElementById('formTitle'),
+    grid: document.getElementById('linksGrid'),
+    empty: document.getElementById('emptyState'),
+    emptyText: document.getElementById('emptyText'),
+    search: document.getElementById('searchInput'),
+    filterCat: document.getElementById('filterCategory'),
+    categoryList: document.getElementById('categoryList'),
+    visible: document.getElementById('visibleCount'),
+    total: document.getElementById('totalCount'),
+    catCount: document.getElementById('catCount'),
+    headerCount: document.getElementById('headerCount'),
+    toast: document.getElementById('toast'),
+    toastText: document.getElementById('toastText'),
+    exportBtn: document.getElementById('exportBtn'),
+    importBtn: document.getElementById('importBtn'),
+    importFile: document.getElementById('importFile'),
+  };
+
+  let links = [];
+  let editingId = null;
+
+  const faDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+  function toFa(n) {
+    return String(n).replace(/[0-9]/g, d => faDigits[+d]);
+  }
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) links = parsed;
+      }
+    } catch (e) {
+      links = [];
+    }
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+    } catch (e) {}
+  }
+
+  function uid() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  function normalizeUrl(input) {
+    let v = String(input).trim();
+    if (!v) return '';
+    if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(v)) v = 'https://' + v;
+    return v;
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function parseTags(str) {
+    return String(str)
+      .split(/[,،]/)
+      .map(t => t.trim())
+      .filter(Boolean)
+      .slice(0, 10);
+  }
+
+  function formatDate(ts) {
+    try {
+      return new Date(ts).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function showToast(msg) {
+    els.toastText.textContent = msg;
+    els.toast.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => els.toast.classList.remove('show'), 2600);
+  }
+
+  function render() {
+    const q = els.search.value.trim().toLowerCase();
+    const cat = els.filterCat.value;
+
+    const filtered = links.filter(l => {
+      if (cat && l.category !== cat) return false;
+      if (!q) return true;
+      const hay = [
+        l.title, l.desc, l.category, l.url, (l.tags || []).join(' ')
+      ].join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+
+    filtered.sort((a, b) => b.createdAt - a.createdAt);
+
+    els.grid.innerHTML = '';
+    if (filtered.length === 0) {
+      els.empty.style.display = 'block';
+      els.emptyText.textContent = links.length === 0
+        ? 'هنوز لینکی اضافه نکرده‌اید. اولین لینک را از فرم بالا اضافه کنید.'
+        : 'هیچ لینکی با این جستجو یا فیلتر پیدا نشد.';
+    } else {
+      els.empty.style.display = 'none';
+      const frag = document.createDocumentFragment();
+      filtered.forEach(l => frag.appendChild(buildCard(l)));
+      els.grid.appendChild(frag);
+    }
+
+    els.visible.textContent = toFa(filtered.length);
+    els.total.textContent = toFa(links.length);
+    els.headerCount.textContent = toFa(links.length) + ' لینک ذخیره‌شده';
+
+    updateCategories();
+  }
+
+  function buildCard(l) {
+    const card = document.createElement('article');
+    card.className = 'link-card';
+
+    const title = document.createElement('h3');
+    title.textContent = l.title;
+
+    const urlA = document.createElement('a');
+    urlA.className = 'url';
+    urlA.href = l.url;
+    urlA.target = '_blank';
+    urlA.rel = 'noopener noreferrer';
+    urlA.textContent = l.url;
+
+    card.appendChild(title);
+    card.appendChild(urlA);
+
+    if (l.desc) {
+      const p = document.createElement('p');
+      p.className = 'desc';
+      p.textContent = l.desc;
+      card.appendChild(p);
+    }
+
+    if (l.tags && l.tags.length) {
+      const tagsWrap = document.createElement('div');
+      tagsWrap.style.display = 'flex';
+      tagsWrap.style.flexWrap = 'wrap';
+      tagsWrap.style.gap = '6px';
+      l.tags.forEach(t => {
+        const s = document.createElement('span');
+        s.className = 'tag';
+        s.textContent = t;
+        tagsWrap.appendChild(s);
+      });
+      card.appendChild(tagsWrap);
+    }
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const left = document.createElement('span');
+    left.textContent = formatDate(l.createdAt);
+    meta.appendChild(left);
+    if (l.category) {
+      const c = document.createElement('span');
+      c.className = 'tag';
+      c.textContent = l.category;
+      meta.appendChild(c);
+    }
+    card.appendChild(meta);
+
+    const actions = document.createElement('div');
+    actions.className = 'card-actions';
+
+    const editBtn = document.createElement('button');
+    editBtn.type = 'button';
+    editBtn.className = 'icon-btn';
+    editBtn.textContent = 'ویرایش';
+    editBtn.addEventListener('click', () => startEdit(l.id));
+
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.className = 'icon-btn';
+    copyBtn.textContent = 'کپی لینک';
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(l.url);
+        showToast('نشانی لینک کپی شد');
+      } catch (e) {
+        showToast('کپی نشد. دستی انتخاب کنید.');
+      }
+    });
+
+    const delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'icon-btn del';
+    delBtn.textContent = 'حذف';
+    delBtn.addEventListener('click', () => removeLink(l.id));
+
+    actions.appendChild(editBtn);
+    actions.appendChild(copyBtn);
+    actions.appendChild(delBtn);
+    card.appendChild(actions);
+
+    return card;
+  }
+
+  function updateCategories() {
+    const cats = Array.from(new Set(links.map(l => l.category).filter(Boolean))).sort();
+    const current = els.filterCat.value;
+    els.filterCat.innerHTML = '';
+    const optAll = document.createElement('option');
+    optAll.value = '';
+    optAll.textContent = 'همه دسته‌ها';
+    els.filterCat.appendChild(optAll);
+    cats.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c;
+      o.textContent = c;
+      els.filterCat.appendChild(o);
+    });
+    if (cats.includes(current)) els.filterCat.value = current;
+
+    els.categoryList.innerHTML = '';
+    cats.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c;
+      els.categoryList.appendChild(o);
+    });
+
+    els.catCount.textContent = toFa(cats.length);
+  }
+
+  function resetForm() {
+    els.form.reset();
+    els.editId.value = '';
+    editingId = null;
+    els.submitText.textContent = 'افزودن به آرشیو';
+    els.formTitle.textContent = 'افزودن لینک جدید';
+    els.cancelEdit.style.display = 'none';
+  }
+
+  function startEdit(id) {
+    const l = links.find(x => x.id === id);
+    if (!l) return;
+    editingId = id;
+    els.editId.value = id;
+    els.title.value = l.title;
+    els.url.value = l.url;
+    els.category.value = l.category || '';
+    els.tags.value = (l.tags || []).join(', ');
+    els.desc.value = l.desc || '';
+    els.submitText.textContent = 'ذخیره تغییرات';
+    els.formTitle.textContent = 'ویرایش لینک';
+    els.cancelEdit.style.display = 'inline-flex';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    els.title.focus();
+  }
+
+  function removeLink(id) {
+    if (!confirm('این لینک حذف شود؟')) return;
+    links = links.filter(x => x.id !== id);
+    if (editingId === id) resetForm();
+    save();
+    render();
+    showToast('لینک حذف شد');
+  }
+
+  els.form.addEventListener('submit', e => {
+    e.preventDefault();
+    const title = els.title.value.trim();
+    const rawUrl = els.url.value.trim();
+    const category = els.category.value.trim();
+    const tags = parseTags(els.tags.value);
+    const desc = els.desc.value.trim();
+
+    if (!title || !rawUrl) {
+      showToast('عنوان و نشانی الزامی است');
+      return;
+    }
+
+    const url = normalizeUrl(rawUrl);
+
+    if (editingId) {
+      const l = links.find(x => x.id === editingId);
+      if (l) {
+        l.title = title;
+        l.url = url;
+        l.category = category;
+        l.tags = tags;
+        l.desc = desc;
+        l.updatedAt = Date.now();
+      }
+      showToast('تغییرات ذخیره شد');
+    } else {
+      links.push({
+        id: uid(),
+        title,
+        url,
+        category,
+        tags,
+        desc,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
+      showToast('لینک به آرشیو اضافه شد');
+    }
+
+    save();
+    resetForm();
+    render();
+  });
+
+  els.cancelEdit.addEventListener('click', () => {
+    resetForm();
+    showToast('ویرایش لغو شد');
+  });
+
+  els.search.addEventListener('input', render);
+  els.filterCat.addEventListener('change', render);
+
+  els.exportBtn.addEventListener('click', () => {
+    if (links.length === 0) {
+      showToast('چیزی برای خروجی گرفتن وجود ندارد');
+      return;
+    }
+    const data = JSON.stringify(links, null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'my-links-archive.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    showToast('فایل خروجی آماده شد');
+  });
+
+  els.importBtn.addEventListener('click', () => els.importFile.click());
+
+  els.importFile.addEventListener('change', e => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result);
+        if (!Array.isArray(parsed)) throw new Error('bad');
+        const cleaned = parsed
+          .filter(x => x && typeof x === 'object' && x.title && x.url)
+          .map(x => ({
+            id: x.id || uid(),
+            title: String(x.title).slice(0, 200),
+            url: normalizeUrl(String(x.url)),
+            category: x.category ? String(x.category).slice(0, 60) : '',
+            tags: Array.isArray(x.tags) ? x.tags.slice(0, 10).map(String) : [],
+            desc: x.desc ? String(x.desc).slice(0, 500) : '',
+            createdAt: Number(x.createdAt) || Date.now(),
+            updatedAt: Number(x.updatedAt) || Date.now(),
+          }));
+        const merge = confirm('لینک‌های وارد‌شده به آرشیو فعلی اضافه شوند؟ (اگر انصراف بزنید جایگزین می‌شود)');
+        links = merge ? links.concat(cleaned) : cleaned;
+        save();
+        render();
+        showToast(toFa(cleaned.length) + ' لینک وارد شد');
+      } catch (err) {
+        showToast('فایل معتبر نیست');
+      }
+      els.importFile.value = '';
+    };
+    reader.readAsText(file);
+  });
+
+  load();
+  render();
+})();
+</script>
 
 </body>
 </html>
